@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,9 @@
 		01FFDCAF253FA091001244D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCAE253FA091001244D1 /* Assets.xcassets */; };
 		01FFDCB2253FA091001244D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCB0253FA091001244D1 /* LaunchScreen.storyboard */; };
 		01FFDCBB253FA140001244D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCBA253FA140001244D1 /* GoogleService-Info.plist */; };
+		730407F5255060D40036E7A6 /* HTTPMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730407F4255060D40036E7A6 /* HTTPMethods.swift */; };
+		730407F92550617C0036E7A6 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 730407F82550617C0036E7A6 /* SwiftKeychainWrapper */; };
+		730407FC255064FE0036E7A6 /* TournamentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730407FB255064FE0036E7A6 /* TournamentModel.swift */; };
 		C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613E7483DAF7CFE6E33A5A2C /* Pods_ChessAggregator.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,8 @@
 		01FFDCBA253FA140001244D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18B12E458DDE1504B14DC4CC /* Pods-ChessAggregator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChessAggregator.release.xcconfig"; path = "Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator.release.xcconfig"; sourceTree = "<group>"; };
 		613E7483DAF7CFE6E33A5A2C /* Pods_ChessAggregator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChessAggregator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		730407F4255060D40036E7A6 /* HTTPMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethods.swift; sourceTree = "<group>"; };
+		730407FB255064FE0036E7A6 /* TournamentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentModel.swift; sourceTree = "<group>"; };
 		BAAF54D7FF0B6F3A13447F17 /* Pods-ChessAggregator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChessAggregator.debug.xcconfig"; path = "Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -37,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				730407F92550617C0036E7A6 /* SwiftKeychainWrapper in Frameworks */,
 				C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,6 +73,8 @@
 			children = (
 				01FFDCA5253FA08B001244D1 /* AppDelegate.swift */,
 				01FFDCA7253FA08B001244D1 /* SceneDelegate.swift */,
+				730407F4255060D40036E7A6 /* HTTPMethods.swift */,
+				730407FB255064FE0036E7A6 /* TournamentModel.swift */,
 				01FFDCA9253FA08B001244D1 /* ViewController.swift */,
 				01FFDCAB253FA08B001244D1 /* Main.storyboard */,
 				01FFDCAE253FA091001244D1 /* Assets.xcassets */,
@@ -112,6 +120,9 @@
 			dependencies = (
 			);
 			name = ChessAggregator;
+			packageProductDependencies = (
+				730407F82550617C0036E7A6 /* SwiftKeychainWrapper */,
+			);
 			productName = ChessAggregator;
 			productReference = 01FFDCA2253FA08B001244D1 /* ChessAggregator.app */;
 			productType = "com.apple.product-type.application";
@@ -139,6 +150,9 @@
 				Base,
 			);
 			mainGroup = 01FFDC99253FA08B001244D1;
+			packageReferences = (
+				730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+			);
 			productRefGroup = 01FFDCA3253FA08B001244D1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -209,6 +223,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				730407FC255064FE0036E7A6 /* TournamentModel.swift in Sources */,
+				730407F5255060D40036E7A6 /* HTTPMethods.swift in Sources */,
 				01FFDCAA253FA08B001244D1 /* ViewController.swift in Sources */,
 				01FFDCA6253FA08B001244D1 /* AppDelegate.swift in Sources */,
 				01FFDCA8253FA08B001244D1 /* SceneDelegate.swift in Sources */,
@@ -415,6 +431,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		730407F82550617C0036E7A6 /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 01FFDC9A253FA08B001244D1 /* Project object */;
 }
