@@ -1,10 +1,3 @@
-//
-//  TournamentModel.swift
-//  ChessAggregator
-//
-//  Created by Максим Сурков on 02.11.2020.
-//
-
 import Foundation
 
 /*struct TableModel{

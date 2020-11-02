@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		01FFDCA6253FA08B001244D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FFDCA5253FA08B001244D1 /* AppDelegate.swift */; };
 		01FFDCA8253FA08B001244D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FFDCA7253FA08B001244D1 /* SceneDelegate.swift */; };
-		01FFDCAA253FA08B001244D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FFDCA9253FA08B001244D1 /* ViewController.swift */; };
 		01FFDCAD253FA08B001244D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCAB253FA08B001244D1 /* Main.storyboard */; };
 		01FFDCAF253FA091001244D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCAE253FA091001244D1 /* Assets.xcassets */; };
 		01FFDCB2253FA091001244D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCB0253FA091001244D1 /* LaunchScreen.storyboard */; };
@@ -17,6 +16,9 @@
 		730407F5255060D40036E7A6 /* HTTPMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730407F4255060D40036E7A6 /* HTTPMethods.swift */; };
 		730407F92550617C0036E7A6 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 730407F82550617C0036E7A6 /* SwiftKeychainWrapper */; };
 		730407FC255064FE0036E7A6 /* TournamentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730407FB255064FE0036E7A6 /* TournamentModel.swift */; };
+		C3E0B9512550802300F69BD4 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E0B9502550802300F69BD4 /* AuthVC.swift */; };
+		C3E0B9552550803800F69BD4 /* AutoLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E0B9532550803800F69BD4 /* AutoLayoutView.swift */; };
+		C3E0B9562550803800F69BD4 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E0B9542550803800F69BD4 /* UIView+Layout.swift */; };
 		C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613E7483DAF7CFE6E33A5A2C /* Pods_ChessAggregator.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +26,6 @@
 		01FFDCA2253FA08B001244D1 /* ChessAggregator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessAggregator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01FFDCA5253FA08B001244D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01FFDCA7253FA08B001244D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		01FFDCA9253FA08B001244D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		01FFDCAC253FA08B001244D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01FFDCAE253FA091001244D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01FFDCB1253FA091001244D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,6 +36,9 @@
 		730407F4255060D40036E7A6 /* HTTPMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethods.swift; sourceTree = "<group>"; };
 		730407FB255064FE0036E7A6 /* TournamentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentModel.swift; sourceTree = "<group>"; };
 		BAAF54D7FF0B6F3A13447F17 /* Pods-ChessAggregator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChessAggregator.debug.xcconfig"; path = "Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator.debug.xcconfig"; sourceTree = "<group>"; };
+		C3E0B9502550802300F69BD4 /* AuthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
+		C3E0B9532550803800F69BD4 /* AutoLayoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutView.swift; sourceTree = "<group>"; };
+		C3E0B9542550803800F69BD4 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,11 +75,13 @@
 		01FFDCA4253FA08B001244D1 /* ChessAggregator */ = {
 			isa = PBXGroup;
 			children = (
+				C3E0B9532550803800F69BD4 /* AutoLayoutView.swift */,
+				C3E0B9542550803800F69BD4 /* UIView+Layout.swift */,
+				C3E0B9502550802300F69BD4 /* AuthVC.swift */,
 				01FFDCA5253FA08B001244D1 /* AppDelegate.swift */,
 				01FFDCA7253FA08B001244D1 /* SceneDelegate.swift */,
 				730407F4255060D40036E7A6 /* HTTPMethods.swift */,
 				730407FB255064FE0036E7A6 /* TournamentModel.swift */,
-				01FFDCA9253FA08B001244D1 /* ViewController.swift */,
 				01FFDCAB253FA08B001244D1 /* Main.storyboard */,
 				01FFDCAE253FA091001244D1 /* Assets.xcassets */,
 				01FFDCB0253FA091001244D1 /* LaunchScreen.storyboard */,
@@ -223,11 +229,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3E0B9512550802300F69BD4 /* AuthVC.swift in Sources */,
 				730407FC255064FE0036E7A6 /* TournamentModel.swift in Sources */,
 				730407F5255060D40036E7A6 /* HTTPMethods.swift in Sources */,
-				01FFDCAA253FA08B001244D1 /* ViewController.swift in Sources */,
 				01FFDCA6253FA08B001244D1 /* AppDelegate.swift in Sources */,
 				01FFDCA8253FA08B001244D1 /* SceneDelegate.swift in Sources */,
+				C3E0B9562550803800F69BD4 /* UIView+Layout.swift in Sources */,
+				C3E0B9552550803800F69BD4 /* AutoLayoutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

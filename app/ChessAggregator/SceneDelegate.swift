@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  ChessAggregator
-//
-//  Created by Николай Пучко on 21.10.2020.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
