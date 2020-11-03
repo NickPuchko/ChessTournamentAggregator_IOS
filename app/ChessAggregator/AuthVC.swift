@@ -21,7 +21,7 @@ class AuthVC: UIViewController {
 
         authView.onTapLoginButton = { [weak self] in
             let alert = UIAlertController(title: "Мы вошли!", message: "На самом деле нет. Ждём Firebase", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ну ладно", style: .default, handler: { _ in  NSLog("Enter alert occured")}))
+            alert.addAction(UIAlertAction(title: "Ну ладно", style: .default, handler: { _ in  NSLog("Enter alert occurred")}))
             self?.present(alert, animated: true, completion: nil)
         }
         // Do any additional setup after loading the view.
@@ -37,12 +37,9 @@ class AuthVC: UIViewController {
 
 class AuthView: AutoLayoutView {
     private let stackView = UIStackView()
-    
-    let uii = UITableView()
-    
+
     let phoneTextField = UITextField()
     let passwordTextField = UITextField()
-    
     let loginButton = UIButton(type: .system)
     
     var onTapLoginButton: (() -> Void)?
@@ -69,33 +66,38 @@ class AuthView: AutoLayoutView {
         loginButton.setTitle("Войти", for: .normal)
         loginButton.backgroundColor = .black
         loginButton.setTitleColor(.white, for: .normal)
-        loginButton.layer.cornerRadius = 16
+        loginButton.layer.cornerRadius = 10
         loginButton.clipsToBounds = false
         loginButton.addTarget(self, action: #selector(onTapLogin), for: .touchUpInside)
-        
-        
+
+
         stackView.addArrangedSubview(phoneTextField)
         //stackView.setCustomSpacing(16, after: phoneTextField)
         
         stackView.addArrangedSubview(passwordTextField)
-        //stackView.setCustomSpacing(16, after: passwordTextField)
+        stackView.setCustomSpacing(24, after: passwordTextField)
 
         stackView.addArrangedSubview(loginButton)
 
-        
     }
     
     override func setupConstraints() {
         super.setupConstraints()
-        
-        
+
+        phoneTextField.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        passwordTextField.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        loginButton.heightAnchor.constraint(equalToConstant: 42).isActive = true
+
+        loginButton.horizontal(80, trailing: -80)
+
         addSubview(stackView)
         stackView.distribution = .equalCentering
 
+
+//        stackView.topAnchor.constraint(equalTo: superview!.topAnchor, constant: 300).isActive = true
+//        stackView.bottomAnchor.constraint(equalTo: superview!.bottomAnchor, constant: -300).isActive = true
+
         self.stackView.pins(UIEdgeInsets(top: 300.0, left: 16.0, bottom: -350.0, right: -16.0))
-        
-        loginButton.leading(50)
-        loginButton.trailing(-50)
     }
     
     
