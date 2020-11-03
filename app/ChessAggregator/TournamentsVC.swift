@@ -20,7 +20,7 @@ class TournamentsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tournamentsView.backgroundColor = .blue
+        tournamentsView.backgroundColor = .black
 
         // Do any additional setup after loading the view.
     }

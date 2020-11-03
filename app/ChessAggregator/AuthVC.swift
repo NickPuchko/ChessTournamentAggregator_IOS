@@ -10,23 +10,35 @@ class AuthVC: UIViewController {
         self.view = AuthView()
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Авторизация"
         
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapDone))
+
         authView.onTapLoginButton = { [weak self] in
-            self?.navigationController?.pushViewController(TournamentsVC(), animated: true)
+            let alert = UIAlertController(title: "Мы вошли!", message: "На самом деле нет. Ждём Firebase", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ну ладно", style: .default, handler: { _ in  NSLog("Enter alert occured")}))
+            self?.present(alert, animated: true, completion: nil)
         }
         // Do any additional setup after loading the view.
     }
+    
+    @objc
+    private func didTapDone() {
+        navigationController?.pushViewController(TournamentsVC(), animated: true)
+    }
 }
+
 
 
 class AuthView: AutoLayoutView {
     private let stackView = UIStackView()
     
-    
+    let uii = UITableView()
     
     let phoneTextField = UITextField()
     let passwordTextField = UITextField()
@@ -48,6 +60,8 @@ class AuthView: AutoLayoutView {
         stackView.axis = .vertical
         
         phoneTextField.placeholder = "Введите номер телефона"
+        phoneTextField.keyboardType = .phonePad
+
         passwordTextField.placeholder = "Введите пароль"
 //        phoneTextField.attributedPlaceholder = NSAttributedString(string: "Введите номер телефона", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
 //        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Введите пароль", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
@@ -57,8 +71,7 @@ class AuthView: AutoLayoutView {
         loginButton.setTitleColor(.white, for: .normal)
         loginButton.layer.cornerRadius = 16
         loginButton.clipsToBounds = false
-        
-        phoneTextField.keyboardType = .phonePad
+        loginButton.addTarget(self, action: #selector(onTapLogin), for: .touchUpInside)
         
         
         stackView.addArrangedSubview(phoneTextField)
@@ -68,7 +81,7 @@ class AuthView: AutoLayoutView {
         //stackView.setCustomSpacing(16, after: passwordTextField)
 
         stackView.addArrangedSubview(loginButton)
-        loginButton.addTarget(self, action: #selector(onTapLogin), for: .touchUpInside)
+
         
     }
     
