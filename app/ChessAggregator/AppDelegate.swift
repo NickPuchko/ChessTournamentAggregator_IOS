@@ -12,12 +12,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //FirebaseApp.configure()
 
         let window = UIWindow()
-        let navigationBar = UINavigationController(rootViewController: AuthVC())
         //navigationBar.navigationBar.backgroundColor = .lightGray
         
-        window.rootViewController = navigationBar
+        window.rootViewController = UINavigationController(rootViewController: AuthVC())
         
         self.window = window
+        window.makeKeyAndVisible()
         return true
     }
 }

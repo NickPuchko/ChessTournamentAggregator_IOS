@@ -19,6 +19,7 @@
 		C3E0B9512550802300F69BD4 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E0B9502550802300F69BD4 /* AuthVC.swift */; };
 		C3E0B9552550803800F69BD4 /* AutoLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E0B9532550803800F69BD4 /* AutoLayoutView.swift */; };
 		C3E0B9562550803800F69BD4 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E0B9542550803800F69BD4 /* UIView+Layout.swift */; };
+		C3F1630C2550A962001855DD /* TournamentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1630B2550A962001855DD /* TournamentsVC.swift */; };
 		C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613E7483DAF7CFE6E33A5A2C /* Pods_ChessAggregator.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		C3E0B9502550802300F69BD4 /* AuthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 		C3E0B9532550803800F69BD4 /* AutoLayoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutView.swift; sourceTree = "<group>"; };
 		C3E0B9542550803800F69BD4 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		C3F1630B2550A962001855DD /* TournamentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +59,8 @@
 		01FFDC99253FA08B001244D1 = {
 			isa = PBXGroup;
 			children = (
-				01FFDCA4253FA08B001244D1 /* ChessAggregator */,
-				01FFDCA3253FA08B001244D1 /* Products */,
 				B79ADC37DD382A392135B108 /* Pods */,
+				01FFDCA4253FA08B001244D1 /* ChessAggregator */,
 				D00E0B4F29C6829A60518CAA /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -70,23 +71,26 @@
 				01FFDCA2253FA08B001244D1 /* ChessAggregator.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		01FFDCA4253FA08B001244D1 /* ChessAggregator */ = {
 			isa = PBXGroup;
 			children = (
-				C3E0B9532550803800F69BD4 /* AutoLayoutView.swift */,
-				C3E0B9542550803800F69BD4 /* UIView+Layout.swift */,
-				C3E0B9502550802300F69BD4 /* AuthVC.swift */,
 				01FFDCA5253FA08B001244D1 /* AppDelegate.swift */,
 				01FFDCA7253FA08B001244D1 /* SceneDelegate.swift */,
+				C3E0B9502550802300F69BD4 /* AuthVC.swift */,
+				C3F1630B2550A962001855DD /* TournamentsVC.swift */,
 				730407F4255060D40036E7A6 /* HTTPMethods.swift */,
 				730407FB255064FE0036E7A6 /* TournamentModel.swift */,
-				01FFDCAB253FA08B001244D1 /* Main.storyboard */,
 				01FFDCAE253FA091001244D1 /* Assets.xcassets */,
-				01FFDCB0253FA091001244D1 /* LaunchScreen.storyboard */,
+				C3E0B9532550803800F69BD4 /* AutoLayoutView.swift */,
+				C3E0B9542550803800F69BD4 /* UIView+Layout.swift */,
 				01FFDCB3253FA091001244D1 /* Info.plist */,
 				01FFDCBA253FA140001244D1 /* GoogleService-Info.plist */,
+				01FFDCAB253FA08B001244D1 /* Main.storyboard */,
+				01FFDCB0253FA091001244D1 /* LaunchScreen.storyboard */,
+				01FFDCA3253FA08B001244D1 /* Products */,
 			);
 			path = ChessAggregator;
 			sourceTree = "<group>";
@@ -236,6 +240,7 @@
 				01FFDCA8253FA08B001244D1 /* SceneDelegate.swift in Sources */,
 				C3E0B9562550803800F69BD4 /* UIView+Layout.swift in Sources */,
 				C3E0B9552550803800F69BD4 /* AutoLayoutView.swift in Sources */,
+				C3F1630C2550A962001855DD /* TournamentsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,9 @@ class AuthVC: UIViewController {
         view.backgroundColor = .white
         title = "Авторизация"
         
-
+        authView.onTapLoginButton = { [weak self] in
+            self?.navigationController?.pushViewController(TournamentsVC(), animated: true)
+        }
         // Do any additional setup after loading the view.
     }
 }
@@ -24,10 +26,14 @@ class AuthVC: UIViewController {
 class AuthView: AutoLayoutView {
     private let stackView = UIStackView()
     
+    
+    
     let phoneTextField = UITextField()
     let passwordTextField = UITextField()
     
     let loginButton = UIButton(type: .system)
+    
+    var onTapLoginButton: (() -> Void)?
     
     init() {
         super.init(frame: .zero)
@@ -49,22 +55,20 @@ class AuthView: AutoLayoutView {
         loginButton.setTitle("Войти", for: .normal)
         loginButton.backgroundColor = .black
         loginButton.setTitleColor(.white, for: .normal)
+        loginButton.layer.cornerRadius = 16
+        loginButton.clipsToBounds = false
         
         phoneTextField.keyboardType = .phonePad
         
+        
         stackView.addArrangedSubview(phoneTextField)
-        stackView.setCustomSpacing(16, after: phoneTextField)
+        //stackView.setCustomSpacing(16, after: phoneTextField)
         
         stackView.addArrangedSubview(passwordTextField)
-        stackView.setCustomSpacing(16, after: passwordTextField)
+        //stackView.setCustomSpacing(16, after: passwordTextField)
 
         stackView.addArrangedSubview(loginButton)
-        
-        phoneTextField.textColor = .white
-        passwordTextField.textColor = .white
-        
-        
-        
+        loginButton.addTarget(self, action: #selector(onTapLogin), for: .touchUpInside)
         
     }
     
@@ -73,11 +77,20 @@ class AuthView: AutoLayoutView {
         
         
         addSubview(stackView)
-        
         stackView.distribution = .equalCentering
 
-        self.stackView.pins(UIEdgeInsets(top: 300.0, left: 16.0, bottom: -32.0, right: -16.0))
+        self.stackView.pins(UIEdgeInsets(top: 300.0, left: 16.0, bottom: -350.0, right: -16.0))
+        
+        loginButton.leading(50)
+        loginButton.trailing(-50)
     }
     
+    
+    @objc
+    private func onTapLogin() {
+        print("tap")
+        onTapLoginButton?()
+    }
+
     
 }
