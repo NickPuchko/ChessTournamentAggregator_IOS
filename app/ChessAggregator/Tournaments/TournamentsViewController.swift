@@ -5,6 +5,28 @@
 import Foundation
 import UIKit
 
-class TournamentsViewController: TournamentsViewControllerProtocol {
+class TournamentsViewController: UIViewController, TournamentsViewProtocol {
+
+    var eventsCollectionView: UICollectionView!
+
+    let selfToAuthSegueName = "TournamentsToAuthSegue"
+
+    var presenter: TournamentsPresenterProtocol!
+    let configurator: TournamentsConfiguratorProtocol! = TournamentsConfigurator()
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configurator.configure(with: self)
+        presenter.configureView()
+        view.backgroundColor = .black
+    }
+
+    func loadEvents(_ events: [Tournament]) {
+        //eventsCollectionView.dataSource = Data()
+        print(events)
+        //TODO: Поставить events в dataSource вместо принта
+    }
+
 
 }

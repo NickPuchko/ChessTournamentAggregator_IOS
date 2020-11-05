@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		01FFDCA6253FA08B001244D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FFDCA5253FA08B001244D1 /* AppDelegate.swift */; };
-		01FFDCA8253FA08B001244D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FFDCA7253FA08B001244D1 /* SceneDelegate.swift */; };
 		01FFDCAF253FA091001244D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCAE253FA091001244D1 /* Assets.xcassets */; };
 		01FFDCB2253FA091001244D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCB0253FA091001244D1 /* LaunchScreen.storyboard */; };
 		01FFDCBB253FA140001244D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCBA253FA140001244D1 /* GoogleService-Info.plist */; };
@@ -17,20 +16,20 @@
 		C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613E7483DAF7CFE6E33A5A2C /* Pods_ChessAggregator.framework */; };
 		D91FC0F560E4FB2BBA875723 /* TournamentsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC9C7CEF3650ACB85764B /* TournamentsInteractor.swift */; };
 		D91FC158966282AE89726026 /* TournamentsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC17A04A984B52D0C3789 /* TournamentsRouter.swift */; };
-		D91FC19CE69AC3C7932B74BF /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCB1324A9B3BA6DA9D0D5 /* AuthPresenter.swift */; };
 		D91FC1BCA9CEF5F7417BA0B9 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCEF3B255AD71D488BD6B /* UIView+Layout.swift */; };
 		D91FC26C613F6A01D1DC8398 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC11574DF8A92DBC0617B /* Player.swift */; };
-		D91FC432D1985359C7874045 /* AuthProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC6C3669552D392D65313 /* AuthProtocols.swift */; };
-		D91FC6A5A0482F243ADE2513 /* AuthContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC66093C6DA97CB761E4F /* AuthContainer.swift */; };
+		D91FC3C58B6F310D29AD170C /* Auth_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCD8875F1287EBEF07F05 /* Auth_Router.swift */; };
+		D91FC65EAC7C99388C755352 /* Auth_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC8F7442D5B0BAC5C5414 /* Auth_Presenter.swift */; };
+		D91FC6C2B563286040E2F265 /* Auth_Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCF2ED693A16B4D6E751E /* Auth_Configurator.swift */; };
 		D91FC76493A71AA245E6D64C /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC5DE303A4B78E2E40946 /* Tournament.swift */; };
+		D91FC851EAEA6097C20CFE38 /* Auth_Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCFEAC6884947B89E77EC /* Auth_Interactor.swift */; };
+		D91FC8B87F13FBE9A04BAAD0 /* Auth_Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC89DDA5BA17C3BB660E0 /* Auth_Protocols.swift */; };
 		D91FC94D2DE0D44B3A935A0A /* TournamentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCDB195F6971A743D1FD1 /* TournamentsView.swift */; };
 		D91FCA163A6EA0488641F96A /* TournamentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC07A2E45005A9BA44F2B /* TournamentsPresenter.swift */; };
-		D91FCAE3687D8AD5B8BF7969 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC3BC2837216F64997993 /* AuthInteractor.swift */; };
-		D91FCC8D5831C32B88A014FA /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC87A2F40F49F65B0D951 /* AuthRouter.swift */; };
 		D91FCCCB3DE4DB1A0C47A174 /* AutoLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC1CB6EBFFFC7483EAC76 /* AutoLayoutView.swift */; };
 		D91FCD2DC0AB3033ED155DB0 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC4072FECB2201DCAADA9 /* AuthView.swift */; };
 		D91FCD4F1919BFE22C09F19D /* TournamentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC3481B3065397D82FDC9 /* TournamentsViewController.swift */; };
-		D91FCD7A82E882B0DB532445 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC4AB436C1778A5CFC5E8 /* AuthViewController.swift */; };
+		D91FCDF3F7B37283E6953867 /* Auth_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC393041099F03FCCDDD8 /* Auth_ViewController.swift */; };
 		D91FCF95D84184E81F62000E /* TournamentsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCD4055CA000E6E6C6712 /* TournamentsConfigurator.swift */; };
 		D91FCFF0127A4A4C4C1B9E8A /* TournamentsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC51B1E5FB9884E5AD8BF /* TournamentsProtocols.swift */; };
 /* End PBXBuildFile section */
@@ -38,7 +37,6 @@
 /* Begin PBXFileReference section */
 		01FFDCA2253FA08B001244D1 /* ChessAggregator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessAggregator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01FFDCA5253FA08B001244D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		01FFDCA7253FA08B001244D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		01FFDCAE253FA091001244D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01FFDCB1253FA091001244D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01FFDCB3253FA091001244D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,19 +51,19 @@
 		D91FC17A04A984B52D0C3789 /* TournamentsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentsRouter.swift; sourceTree = "<group>"; };
 		D91FC1CB6EBFFFC7483EAC76 /* AutoLayoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutView.swift; sourceTree = "<group>"; };
 		D91FC3481B3065397D82FDC9 /* TournamentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentsViewController.swift; sourceTree = "<group>"; };
-		D91FC3BC2837216F64997993 /* AuthInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+		D91FC393041099F03FCCDDD8 /* Auth_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth_ViewController.swift; sourceTree = "<group>"; };
 		D91FC4072FECB2201DCAADA9 /* AuthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
-		D91FC4AB436C1778A5CFC5E8 /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		D91FC51B1E5FB9884E5AD8BF /* TournamentsProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentsProtocols.swift; sourceTree = "<group>"; };
 		D91FC5DE303A4B78E2E40946 /* Tournament.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
-		D91FC66093C6DA97CB761E4F /* AuthContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthContainer.swift; sourceTree = "<group>"; };
-		D91FC6C3669552D392D65313 /* AuthProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthProtocols.swift; sourceTree = "<group>"; };
-		D91FC87A2F40F49F65B0D951 /* AuthRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		D91FC89DDA5BA17C3BB660E0 /* Auth_Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth_Protocols.swift; sourceTree = "<group>"; };
+		D91FC8F7442D5B0BAC5C5414 /* Auth_Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth_Presenter.swift; sourceTree = "<group>"; };
 		D91FC9C7CEF3650ACB85764B /* TournamentsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentsInteractor.swift; sourceTree = "<group>"; };
-		D91FCB1324A9B3BA6DA9D0D5 /* AuthPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
 		D91FCD4055CA000E6E6C6712 /* TournamentsConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentsConfigurator.swift; sourceTree = "<group>"; };
+		D91FCD8875F1287EBEF07F05 /* Auth_Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth_Router.swift; sourceTree = "<group>"; };
 		D91FCDB195F6971A743D1FD1 /* TournamentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentsView.swift; sourceTree = "<group>"; };
 		D91FCEF3B255AD71D488BD6B /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		D91FCF2ED693A16B4D6E751E /* Auth_Configurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth_Configurator.swift; sourceTree = "<group>"; };
+		D91FCFEAC6884947B89E77EC /* Auth_Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth_Interactor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				01FFDCA5253FA08B001244D1 /* AppDelegate.swift */,
-				01FFDCA7253FA08B001244D1 /* SceneDelegate.swift */,
 				C3F1630B2550A962001855DD /* TournamentsVC.swift */,
 				730407F4255060D40036E7A6 /* HTTPMethods.swift */,
 				01FFDCAE253FA091001244D1 /* Assets.xcassets */,
@@ -151,12 +148,12 @@
 		D91FC0279180F3C0EFEA024F /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				D91FCB1324A9B3BA6DA9D0D5 /* AuthPresenter.swift */,
-				D91FC87A2F40F49F65B0D951 /* AuthRouter.swift */,
-				D91FC4AB436C1778A5CFC5E8 /* AuthViewController.swift */,
-				D91FC6C3669552D392D65313 /* AuthProtocols.swift */,
-				D91FC3BC2837216F64997993 /* AuthInteractor.swift */,
-				D91FC66093C6DA97CB761E4F /* AuthContainer.swift */,
+				D91FCF2ED693A16B4D6E751E /* Auth_Configurator.swift */,
+				D91FC393041099F03FCCDDD8 /* Auth_ViewController.swift */,
+				D91FCFEAC6884947B89E77EC /* Auth_Interactor.swift */,
+				D91FC89DDA5BA17C3BB660E0 /* Auth_Protocols.swift */,
+				D91FCD8875F1287EBEF07F05 /* Auth_Router.swift */,
+				D91FC8F7442D5B0BAC5C5414 /* Auth_Presenter.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -303,14 +300,7 @@
 			files = (
 				730407F5255060D40036E7A6 /* HTTPMethods.swift in Sources */,
 				01FFDCA6253FA08B001244D1 /* AppDelegate.swift in Sources */,
-				01FFDCA8253FA08B001244D1 /* SceneDelegate.swift in Sources */,
 				C3F1630C2550A962001855DD /* TournamentsVC.swift in Sources */,
-				D91FC19CE69AC3C7932B74BF /* AuthPresenter.swift in Sources */,
-				D91FCC8D5831C32B88A014FA /* AuthRouter.swift in Sources */,
-				D91FCD7A82E882B0DB532445 /* AuthViewController.swift in Sources */,
-				D91FC432D1985359C7874045 /* AuthProtocols.swift in Sources */,
-				D91FCAE3687D8AD5B8BF7969 /* AuthInteractor.swift in Sources */,
-				D91FC6A5A0482F243ADE2513 /* AuthContainer.swift in Sources */,
 				D91FCD4F1919BFE22C09F19D /* TournamentsViewController.swift in Sources */,
 				D91FCA163A6EA0488641F96A /* TournamentsPresenter.swift in Sources */,
 				D91FC0F560E4FB2BBA875723 /* TournamentsInteractor.swift in Sources */,
@@ -323,6 +313,12 @@
 				D91FCD2DC0AB3033ED155DB0 /* AuthView.swift in Sources */,
 				D91FC1BCA9CEF5F7417BA0B9 /* UIView+Layout.swift in Sources */,
 				D91FCCCB3DE4DB1A0C47A174 /* AutoLayoutView.swift in Sources */,
+				D91FC6C2B563286040E2F265 /* Auth_Configurator.swift in Sources */,
+				D91FCDF3F7B37283E6953867 /* Auth_ViewController.swift in Sources */,
+				D91FC851EAEA6097C20CFE38 /* Auth_Interactor.swift in Sources */,
+				D91FC8B87F13FBE9A04BAAD0 /* Auth_Protocols.swift in Sources */,
+				D91FC3C58B6F310D29AD170C /* Auth_Router.swift in Sources */,
+				D91FC65EAC7C99388C755352 /* Auth_Presenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

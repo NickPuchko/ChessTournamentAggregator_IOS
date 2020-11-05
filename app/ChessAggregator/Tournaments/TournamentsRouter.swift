@@ -4,5 +4,14 @@
 
 import Foundation
 
-class TournamentsRouter {
+class TournamentsRouter: TournamentsRouterProtocol {
+    weak var viewController: TournamentsViewController!
+
+    init(VC: TournamentsViewController) {
+        self.viewController = VC
+    }
+
+    func showApply() {
+        //viewController.present(AuthViewController(), animated: true)
+    }
 }

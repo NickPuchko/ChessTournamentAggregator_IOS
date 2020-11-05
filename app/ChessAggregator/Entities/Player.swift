@@ -5,9 +5,9 @@
 import Foundation
 
 class Player {
-    let fullName: String
-    let birthdate: Date
-    let rating: Int
+    var fullName: String
+    var birthdate: Date
+    var rating: Int
 
 
     required init(fullName: String, birthdate: Date, rating: Int?) {

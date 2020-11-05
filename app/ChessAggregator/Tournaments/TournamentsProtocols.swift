@@ -10,18 +10,19 @@ protocol TournamentsConfiguratorProtocol: class {
 }
 
 protocol TournamentsViewProtocol: class {
-
+    func loadEvents(_ events: [Tournament])
 }
 
 protocol TournamentsPresenterProtocol: class {
-
+    var router: TournamentsRouterProtocol! { get set }
+    func configureView()
 }
 
 protocol TournamentsInteractorProtocol: class {
-
+    var events: [Tournament] { get set }
 }
 
 protocol TournamentsRouterProtocol: class {
-
+    func showApply()
 }
 
