@@ -5,3 +5,6 @@
 import Foundation
 import UIKit
 
+class TournamentsViewController: TournamentsViewControllerProtocol {
+
+}

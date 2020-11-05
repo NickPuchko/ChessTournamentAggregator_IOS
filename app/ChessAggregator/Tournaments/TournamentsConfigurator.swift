@@ -4,5 +4,8 @@
 
 import Foundation
 
-class TournamentsConfigurator {
+class TournamentsConfigurator: TournamentsConfiguratorProtocol {
+    func configure(with viewController: TournamentsViewController) {
+
+    }
 }
