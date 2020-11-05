@@ -1,15 +1,8 @@
 //
-//  TournamentsRouter.swift
-//  app
-//
-//  Created by Administrator on 04.11.2020.
-//  
+// Created by Administrator on 05.11.2020.
 //
 
-import UIKit
+import Foundation
 
-final class TournamentsRouter {
-}
-
-extension TournamentsRouter: TournamentsRouterInput {
+class TournamentsRouter {
 }
