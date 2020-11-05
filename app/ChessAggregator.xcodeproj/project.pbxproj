@@ -12,7 +12,6 @@
 		01FFDCB2253FA091001244D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCB0253FA091001244D1 /* LaunchScreen.storyboard */; };
 		01FFDCBB253FA140001244D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCBA253FA140001244D1 /* GoogleService-Info.plist */; };
 		730407F5255060D40036E7A6 /* HTTPMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730407F4255060D40036E7A6 /* HTTPMethods.swift */; };
-		C3F1630C2550A962001855DD /* TournamentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1630B2550A962001855DD /* TournamentsVC.swift */; };
 		C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613E7483DAF7CFE6E33A5A2C /* Pods_ChessAggregator.framework */; };
 		D91FC0F560E4FB2BBA875723 /* TournamentsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC9C7CEF3650ACB85764B /* TournamentsInteractor.swift */; };
 		D91FC158966282AE89726026 /* TournamentsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC17A04A984B52D0C3789 /* TournamentsRouter.swift */; };
@@ -45,7 +44,6 @@
 		613E7483DAF7CFE6E33A5A2C /* Pods_ChessAggregator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChessAggregator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		730407F4255060D40036E7A6 /* HTTPMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethods.swift; sourceTree = "<group>"; };
 		BAAF54D7FF0B6F3A13447F17 /* Pods-ChessAggregator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChessAggregator.debug.xcconfig"; path = "Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator.debug.xcconfig"; sourceTree = "<group>"; };
-		C3F1630B2550A962001855DD /* TournamentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsVC.swift; sourceTree = "<group>"; };
 		D91FC07A2E45005A9BA44F2B /* TournamentsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentsPresenter.swift; sourceTree = "<group>"; };
 		D91FC11574DF8A92DBC0617B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		D91FC17A04A984B52D0C3789 /* TournamentsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentsRouter.swift; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				01FFDCA5253FA08B001244D1 /* AppDelegate.swift */,
-				C3F1630B2550A962001855DD /* TournamentsVC.swift */,
 				730407F4255060D40036E7A6 /* HTTPMethods.swift */,
 				01FFDCAE253FA091001244D1 /* Assets.xcassets */,
 				01FFDCB3253FA091001244D1 /* Info.plist */,
@@ -300,7 +297,6 @@
 			files = (
 				730407F5255060D40036E7A6 /* HTTPMethods.swift in Sources */,
 				01FFDCA6253FA08B001244D1 /* AppDelegate.swift in Sources */,
-				C3F1630C2550A962001855DD /* TournamentsVC.swift in Sources */,
 				D91FCD4F1919BFE22C09F19D /* TournamentsViewController.swift in Sources */,
 				D91FCA163A6EA0488641F96A /* TournamentsPresenter.swift in Sources */,
 				D91FC0F560E4FB2BBA875723 /* TournamentsInteractor.swift in Sources */,
