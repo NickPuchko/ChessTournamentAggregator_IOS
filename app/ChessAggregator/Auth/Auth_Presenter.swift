@@ -13,14 +13,11 @@ class Auth_Presenter: Auth_PresenterProtocol {
         self.view = view
     }
 
-
-
     func configureView() {
 
     }
 
-
-    func didTapDone() {
+    func didTapSignup() {
         router.showSignup()
         //TODO: Сделать ссылку на регистрацию
     }

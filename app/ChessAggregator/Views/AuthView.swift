@@ -10,8 +10,10 @@ class AuthView: AutoLayoutView {
     let phoneTextField = UITextField()
     let passwordTextField = UITextField()
     let loginButton = UIButton(type: .system)
+    let signupButton = UIButton(type: .system)
 
     var onTapLoginButton: (() -> Void)?
+    var onTapSignupButton: (() -> Void)?
 
     init() {
         super.init(frame: .zero)
@@ -29,6 +31,11 @@ class AuthView: AutoLayoutView {
         phoneTextField.keyboardType = .phonePad
 
         passwordTextField.placeholder = "Введите пароль"
+
+        stackView.addArrangedSubview(phoneTextField)
+        stackView.addArrangedSubview(passwordTextField)
+//        stackView.setCustomSpacing(24, after: passwordTextField)
+
 //        phoneTextField.attributedPlaceholder = NSAttributedString(string: "Введите номер телефона", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
 //        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Введите пароль", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
 
@@ -39,37 +46,54 @@ class AuthView: AutoLayoutView {
         loginButton.clipsToBounds = false
         loginButton.addTarget(self, action: #selector(onTapLogin), for: .touchUpInside)
 
-        stackView.addArrangedSubview(phoneTextField)
-        //stackView.setCustomSpacing(16, after: phoneTextField)
 
-        stackView.addArrangedSubview(passwordTextField)
-        stackView.setCustomSpacing(24, after: passwordTextField)
+        signupButton.setTitle("Регистрация", for: .normal)
+        signupButton.addTarget(self, action: #selector(onTapSignup), for: .touchUpInside)
 
-        stackView.addArrangedSubview(loginButton)
 
+        //stackView.addArrangedSubview(loginButton)
     }
 
     override func setupConstraints() {
         super.setupConstraints()
 
-        phoneTextField.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        passwordTextField.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        loginButton.heightAnchor.constraint(equalToConstant: 42).isActive = true
-
-        loginButton.horizontal(80, trailing: -80)
+        NSLayoutConstraint.activate([
+            phoneTextField.heightAnchor.constraint(equalToConstant: 50),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 50),
+            loginButton.heightAnchor.constraint(equalToConstant: 40),
+            signupButton.heightAnchor.constraint(equalToConstant: 40)
+            //loginButton.centerXAnchor.constraint(equalTo: superview!.centerXAnchor),
+            //loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10)
+        ])
 
         addSubview(stackView)
+        addSubview(loginButton)
+        addSubview(signupButton)
         stackView.distribution = .equalCentering
 
+        signupButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 50).isActive = true
 
-//        stackView.topAnchor.constraint(equalTo: superview!.topAnchor, constant: 300).isActive = true
-//        stackView.bottomAnchor.constraint(equalTo: superview!.bottomAnchor, constant: -300).isActive = true
+        loginButton.leading(90)
+        loginButton.trailing(-90)
+        loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10).isActive = true
 
-        self.stackView.pins(UIEdgeInsets(top: 300.0, left: 16.0, bottom: -350.0, right: -16.0))
+        signupButton.leading(90)
+        signupButton.trailing(-90)
+
+        stackView.top(350)
+        stackView.leading(16)
+        stackView.trailing(-16)
+
+//        stackView.pins(UIEdgeInsets(top: 300.0, left: 16.0, bottom: -350.0, right: -16.0))
     }
 
     @objc
     private func onTapLogin() {
         onTapLoginButton?()
+    }
+
+    @objc
+    private func onTapSignup() {
+        onTapSignupButton?()
     }
 }

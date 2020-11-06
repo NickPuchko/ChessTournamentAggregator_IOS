@@ -37,11 +37,15 @@ class Auth_ViewController: UIViewController, Auth_ViewProtocol {
             self?.presenter.didTapLogin()
         }
 
+        authView.onTapSignupButton = { [weak self] in
+            self?.presenter.didTapSignup()
+        }
+
     }
 
     @objc
     func didTapDone() {
-        presenter.didTapDone()
+
     }
 
 

@@ -9,8 +9,6 @@ class TournamentsViewController: UIViewController, TournamentsViewProtocol {
 
     var eventsCollectionView: UICollectionView!
 
-    let selfToAuthSegueName = "TournamentsToAuthSegue"
-
     var presenter: TournamentsPresenterProtocol!
     let configurator: TournamentsConfiguratorProtocol! = TournamentsConfigurator()
 

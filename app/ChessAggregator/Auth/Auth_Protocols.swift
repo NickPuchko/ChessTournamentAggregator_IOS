@@ -15,8 +15,8 @@ protocol Auth_ViewProtocol: class {
 protocol Auth_PresenterProtocol: class {
     var router: Auth_RouterProtocol! { get set }
     func configureView()
-    func didTapDone()
     func didTapLogin()
+    func didTapSignup()
 }
 
 protocol Auth_InteractorProtocol: class {

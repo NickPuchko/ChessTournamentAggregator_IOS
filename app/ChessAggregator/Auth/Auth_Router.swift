@@ -15,7 +15,9 @@ class Auth_Router: Auth_RouterProtocol {
     func showTournaments() {
         //TODO: dismiss self
         let vc = TournamentsViewController()
-        viewController.present(vc, animated: true)
+        viewController.navigationController?.pushViewController(vc, animated: true)
+
+
     }
 
     func showSignup() {
