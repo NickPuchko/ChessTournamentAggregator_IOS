@@ -1,25 +1,34 @@
 import Foundation
 
-class Tournament{
-    var name: String
-    var mode: Mode
-    var date: Date
-    
-   init(json: [String: Any]) {
-       name = json["name"] as? String ?? ""
-       mode = json["mode"] as? Mode ?? .classic
-       date = json["date"] as? Date ?? Date(timeIntervalSince1970: TimeInterval(1))
-   }
+struct Tournament{
+    var name: String = "Турнир"
+    var mode: Mode = .classic
+    var date: String = "01.01.1970"
+    var location: String = "Москва"
+    var ratingType: String = "FIDE"
 
-    init(name: String, mode: Mode, date: Date) {
-        self.name = name
-        self.mode = mode
-        self.date = date
+    var timeControl: String = "90+30"
+    var prizeFund: Int = 0
+    var fee: Int = 0
+    var url: URL = URL(string: "https://vk.com/oobermensch")!
+
+    // TODO: class Date - DateFormatter!
+    // TODO: class Location
+    // TODO: enum RatingType
+
+
+    mutating func getFromJson(json: [String: Any]) {
+        name = json["name"] as? String ?? "Турнир"
+        mode = json["mode"] as? Mode ?? .classic
+        date = json["date"] as? String ?? "01.01.1970"
+        location = json["location"] as? String ?? "Москва"
+        ratingType = json["ratingType"] as? String ?? "FIDE"
     }
+
 }
 
-enum Mode: String, Codable {
-    case classic, rapid, blitz, bullet
+enum Mode: String, Codable, CaseIterable{
+    case classic = "Классический контроль", rapid = "Рапид", blitz = "Блиц", bullet = "Пуля"
 }
 
 

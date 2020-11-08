@@ -56,11 +56,11 @@ func Post(url: String, request: String, login: String, hash: String) -> Void {
             guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {return}
             //parse
             
-            let Tournament_ = Tournament(json: json)
-           
-            print (Tournament_.name)
-            print (Tournament_.mode)
-
+//            let Tournament_ = Tournament(json: json)
+//
+//            print (Tournament_.name)
+//            print (Tournament_.mode)
+            // TODO: написать нормальный инициализатор Tournament
         } catch let error {
             print(error.localizedDescription)
         }

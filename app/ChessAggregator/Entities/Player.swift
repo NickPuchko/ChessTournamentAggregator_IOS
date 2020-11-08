@@ -4,13 +4,12 @@
 
 import Foundation
 
-class Player {
-    var fullName: String
-    var birthdate: Date
-    var rating: Int
+struct Player: Codable {
+    var fullName: String = "Doe John"
+    var birthdate: Date = Date(timeIntervalSince1970: 100)
+    var rating: Int = 0
 
-
-    required init(fullName: String, birthdate: Date, rating: Int?) {
+    init(fullName: String, birthdate: Date, rating: Int?) {
         self.fullName = fullName
         self.birthdate = birthdate
         if let ELOrating = rating {

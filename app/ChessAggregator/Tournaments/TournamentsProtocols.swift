@@ -10,19 +10,30 @@ protocol TournamentsConfiguratorProtocol: class {
 }
 
 protocol TournamentsViewProtocol: class {
-    func loadEvents(_ events: [Tournament])
+    func loadEvents(_ events: [EventSectionModel])
 }
 
 protocol TournamentsPresenterProtocol: class {
     var router: TournamentsRouterProtocol! { get set }
+    var interactor: TournamentsInteractorProtocol! { get set }
+    var sections: [EventSectionModel] { get set }
     func configureView()
+    //func loadEvents(_ events: Tournament) -> [Tournament]
 }
 
 protocol TournamentsInteractorProtocol: class {
     var events: [Tournament] { get set }
+    func count(mode: Mode) -> Int
+    func count() -> Int
+    //func sendEvents() -> [Tournament]
 }
 
 protocol TournamentsRouterProtocol: class {
     func showApply()
+    func showInfo(section: EventSectionModel)
+}
+
+protocol CellIdentifiable {
+    var cellId: String { get }
 }
 

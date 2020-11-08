@@ -10,14 +10,26 @@ class TournamentsInteractor: TournamentsInteractorProtocol {
 
     required init(presenter: TournamentsPresenterProtocol) {
         self.presenter = presenter
-        self.events = []
+        events = []
 
-        addEvent(event: Tournament(name: "HSE cup", mode: .rapid, date: Date(timeIntervalSince1970: 100)))
-        addEvent(event: Tournament(name: "Aeroflot open", mode: .classic, date: Date(timeIntervalSince1970: 200)))
+        //addEvent(event: Tournament(name: "HSE cup", mode: .rapid, date: "10.12.2020", location: "Москва", ratingType: "Без обсчёта рейтинга"))
+        //addEvent(event: Tournament(name: "Aeroflot open", mode: .classic, date: "18.01.2021", location: "Москва", ratingType: "FIDE"))
         //TODO: Сделать инициализацию ивентов из бэка
     }
 
+
     func addEvent(event: Tournament) {
         events.append(event)
+    }
+}
+
+extension TournamentsInteractor {
+    func count(mode: Mode) -> Int {
+        let filterEvents = events.filter { $0.mode == mode}
+        return filterEvents.count
+    }
+
+    func count() -> Int {
+        events.count
     }
 }

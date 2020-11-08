@@ -5,7 +5,7 @@
 import UIKit
 
 class AuthView: AutoLayoutView {
-    private let stackView = UIStackView()
+    private lazy var stackView = UIStackView()
 
     let phoneTextField = UITextField()
     let passwordTextField = UITextField()
@@ -24,13 +24,26 @@ class AuthView: AutoLayoutView {
         fatalError("init(coder:) has not been implemented")
     }
 
+
     private func setup() {
         stackView.axis = .vertical
 
         phoneTextField.placeholder = "Введите номер телефона"
         phoneTextField.keyboardType = .phonePad
+        phoneTextField.borderStyle = .roundedRect
+
+
+
 
         passwordTextField.placeholder = "Введите пароль"
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.borderStyle = .roundedRect
+
+        phoneTextField.addTarget(self, action: #selector(didEditedPhone), for: UIControl.Event.editingDidEnd)
+
+
+
+
 
         stackView.addArrangedSubview(phoneTextField)
         stackView.addArrangedSubview(passwordTextField)
@@ -50,8 +63,16 @@ class AuthView: AutoLayoutView {
         signupButton.setTitle("Регистрация", for: .normal)
         signupButton.addTarget(self, action: #selector(onTapSignup), for: .touchUpInside)
 
+        stackView.layer.shadowRadius = 5
+        stackView.layer.shadowOpacity = 0.3
 
         //stackView.addArrangedSubview(loginButton)
+    }
+
+    @objc
+    func didEditedPhone() {
+        let user = User(phone: phoneTextField.text ?? "900")
+        saveUser(currentUser: user)
     }
 
     override func setupConstraints() {
