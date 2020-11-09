@@ -3,18 +3,23 @@
 //
 
 import Foundation
+import Firebase
 
 class TournamentsInteractor: TournamentsInteractorProtocol {
     weak var presenter: TournamentsPresenterProtocol!
     var events: [Tournament]
+    var ref: DatabaseReference!
 
-    required init(presenter: TournamentsPresenterProtocol) {
+    required init(presenter: TournamentsPresenterProtocol, ref: DatabaseReference) {
         self.presenter = presenter
+        self.ref = ref
         events = []
     }
 
     func loadEventsFromFirebase() -> [Tournament] {
         var events: [Tournament] = []
+
+
         // TODO: Написить метод загрузки всех турниров из json (Realtime Database)
         return events
     }

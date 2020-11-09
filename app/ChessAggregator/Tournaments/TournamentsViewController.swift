@@ -4,13 +4,26 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class TournamentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TournamentsViewProtocol {
 
     var presenter: TournamentsPresenterProtocol!
-    let configurator: TournamentsConfiguratorProtocol = TournamentsConfigurator()
+    var configurator: TournamentsConfiguratorProtocol = TournamentsConfigurator()
+
+    var ref: DatabaseReference!
 
     private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped)
+
+    required init(ref: DatabaseReference) {
+        self.ref = ref
+        self.configurator = TournamentsConfigurator()
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
 
     var sections: [EventSectionModel] = []
