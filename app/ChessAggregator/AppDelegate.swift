@@ -11,7 +11,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        reference = ref
 
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
@@ -24,6 +23,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-
-var reference: DatabaseReference = DatabaseReference()
 
