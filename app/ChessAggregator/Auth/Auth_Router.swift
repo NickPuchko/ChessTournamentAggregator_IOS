@@ -12,11 +12,10 @@ class Auth_Router: Auth_RouterProtocol {
         self.viewController = VC
     }
 
-    func showTournaments() {
+    func showTournaments(withId phone: String) {
         //TODO: dismiss self
-        let vc = TournamentsViewController(ref: viewController.ref)
+        let vc = TournamentsViewController(ref: viewController.ref, withId: phone)
         viewController.navigationController?.pushViewController(vc, animated: true)
-
 
     }
 
@@ -24,7 +23,6 @@ class Auth_Router: Auth_RouterProtocol {
         let alert = UIAlertController(title: "Nope", message: "Регистрация в разработке...", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Закрыть", style: .destructive))
         viewController.present(alert, animated: true)
-        //viewController.navigationController?.pushViewController(vc, animated: true)
     }
 
 }

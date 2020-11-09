@@ -4,12 +4,16 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 protocol TournamentsConfiguratorProtocol: class {
     func configure(with viewController: TournamentsViewController)
 }
 
 protocol TournamentsViewProtocol: class {
+    var ref: DatabaseReference { get set }
+    var phone: String { get set }
+    init(ref: DatabaseReference, withId phone: String)
     func loadEvents(_ events: [EventSectionModel])
 }
 
@@ -23,7 +27,10 @@ protocol TournamentsPresenterProtocol: class {
 }
 
 protocol TournamentsInteractorProtocol: class {
+    var ref: DatabaseReference { get set }
+    var phone: String { get set }
     var events: [Tournament] { get set }
+    init(presenter: TournamentsPresenterProtocol, ref: DatabaseReference, phone: String)
     func count(mode: Mode) -> Int
     func count() -> Int
     func loadEventsFromFirebase() -> [Tournament]

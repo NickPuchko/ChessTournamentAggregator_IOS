@@ -42,10 +42,6 @@ class Auth_ViewController: UIViewController, Auth_ViewProtocol {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapDone))
 
         authView.onTapLoginButton = { [weak self] in
-//            let alert = UIAlertController(title: "Мы вошли!", message: "На самом деле нет. Ждём Firebase", preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "Ну ладно", style: .default, handler: { _ in  NSLog("Enter alert occurred")}))
-//            self?.present(alert, animated: true, completion: nil)
-        //let number = authView.phoneTextField.text!
             saveUser(currentUser: User())
             self?.presenter.didTapLogin()
         }
@@ -54,16 +50,10 @@ class Auth_ViewController: UIViewController, Auth_ViewProtocol {
             self?.presenter.didTapSignup()
         }
 
-
-
     }
-
-
 
     @objc
     func didTapDone() {
 
     }
-
-
 }

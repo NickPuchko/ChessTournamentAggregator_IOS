@@ -6,6 +6,7 @@ import UIKit
 
 class AuthView: AutoLayoutView {
     private lazy var stackView = UIStackView()
+    var phone: String = "88005553535"
 
     let phoneTextField = UITextField()
     let passwordTextField = UITextField()
@@ -33,24 +34,14 @@ class AuthView: AutoLayoutView {
         phoneTextField.borderStyle = .roundedRect
 
 
-
-
         passwordTextField.placeholder = "Введите пароль"
         passwordTextField.isSecureTextEntry = true
         passwordTextField.borderStyle = .roundedRect
 
-        phoneTextField.addTarget(self, action: #selector(didEditedPhone), for: UIControl.Event.editingDidEnd)
-
-
-
-
 
         stackView.addArrangedSubview(phoneTextField)
         stackView.addArrangedSubview(passwordTextField)
-//        stackView.setCustomSpacing(24, after: passwordTextField)
 
-//        phoneTextField.attributedPlaceholder = NSAttributedString(string: "Введите номер телефона", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
-//        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Введите пароль", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
 
         loginButton.setTitle("Войти", for: .normal)
         loginButton.backgroundColor = .black
@@ -66,14 +57,8 @@ class AuthView: AutoLayoutView {
         stackView.layer.shadowRadius = 5
         stackView.layer.shadowOpacity = 0.3
 
-        //stackView.addArrangedSubview(loginButton)
     }
 
-    @objc
-    func didEditedPhone() {
-        let user = User(phone: phoneTextField.text ?? "900")
-        saveUser(currentUser: user)
-    }
 
     override func setupConstraints() {
         super.setupConstraints()
@@ -110,6 +95,10 @@ class AuthView: AutoLayoutView {
 
     @objc
     private func onTapLogin() {
+
+        phone = phoneTextField.text ?? "88005553535"
+        let user = User(phone: phone)
+        saveUser(currentUser: user)
         onTapLoginButton?()
     }
 

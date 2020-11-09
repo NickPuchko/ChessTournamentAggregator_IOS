@@ -8,11 +8,13 @@ import Firebase
 class TournamentsInteractor: TournamentsInteractorProtocol {
     weak var presenter: TournamentsPresenterProtocol!
     var events: [Tournament]
-    var ref: DatabaseReference!
+    var ref: DatabaseReference
+    var phone: String
 
-    required init(presenter: TournamentsPresenterProtocol, ref: DatabaseReference) {
+    required init(presenter: TournamentsPresenterProtocol, ref: DatabaseReference, phone: String) {
         self.presenter = presenter
         self.ref = ref
+        self.phone = phone
         events = []
     }
 

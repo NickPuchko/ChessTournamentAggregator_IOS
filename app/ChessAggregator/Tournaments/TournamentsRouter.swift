@@ -13,7 +13,7 @@ class TournamentsRouter: TournamentsRouterProtocol {
     }
 
     func showApply() {
-        let applyAlert = UIAlertController(title: "Заявка подана!", message: "Номер телефона: \(currentUserPhone())", preferredStyle: .alert)
+        let applyAlert = UIAlertController(title: "Заявка подана!", message: "Номер телефона: \(viewController.phone)", preferredStyle: .alert)
         viewController.present(applyAlert, animated: true) {
             applyAlert.view.superview?.isUserInteractionEnabled = true
             applyAlert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(

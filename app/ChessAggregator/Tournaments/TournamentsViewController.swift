@@ -9,14 +9,16 @@ import Firebase
 class TournamentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TournamentsViewProtocol {
 
     var presenter: TournamentsPresenterProtocol!
-    var configurator: TournamentsConfiguratorProtocol = TournamentsConfigurator()
+    var configurator: TournamentsConfiguratorProtocol!
 
-    var ref: DatabaseReference!
+    var phone: String
+    var ref: DatabaseReference
 
     private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped)
 
-    required init(ref: DatabaseReference) {
+    required init(ref: DatabaseReference, withId phone: String) {
         self.ref = ref
+        self.phone = phone
         self.configurator = TournamentsConfigurator()
         super.init(nibName: nil, bundle: nil)
     }

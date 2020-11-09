@@ -9,6 +9,7 @@ protocol Auth_ConfiguratorProtocol: class {
 }
 
 protocol Auth_ViewProtocol: class {
+    var authView: AuthView { get }
 }
 
 protocol Auth_PresenterProtocol: class {
@@ -22,7 +23,7 @@ protocol Auth_InteractorProtocol: class {
 }
 
 protocol Auth_RouterProtocol: class {
-    func showTournaments()
+    func showTournaments(withId phone: String)
     func showSignup()
 }
 

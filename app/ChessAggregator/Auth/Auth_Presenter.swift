@@ -23,6 +23,7 @@ class Auth_Presenter: Auth_PresenterProtocol {
     }
 
     func didTapLogin() {
-        router.showTournaments()
+        let phone = view.authView.phone
+        router.showTournaments(withId: phone)
     }
 }
