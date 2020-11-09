@@ -11,15 +11,12 @@ class TournamentsInteractor: TournamentsInteractorProtocol {
     required init(presenter: TournamentsPresenterProtocol) {
         self.presenter = presenter
         events = []
-
-        //addEvent(event: Tournament(name: "HSE cup", mode: .rapid, date: "10.12.2020", location: "Москва", ratingType: "Без обсчёта рейтинга"))
-        //addEvent(event: Tournament(name: "Aeroflot open", mode: .classic, date: "18.01.2021", location: "Москва", ratingType: "FIDE"))
-        //TODO: Сделать инициализацию ивентов из бэка
     }
 
-
-    func addEvent(event: Tournament) {
-        events.append(event)
+    func loadEventsFromFirebase() -> [Tournament] {
+        var events: [Tournament] = []
+        // TODO: Написить метод загрузки всех турниров из json (Realtime Database)
+        return events
     }
 }
 

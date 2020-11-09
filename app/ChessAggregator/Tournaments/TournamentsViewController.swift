@@ -12,6 +12,7 @@ class TournamentsViewController: UIViewController, UITableViewDelegate, UITableV
 
     private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped)
 
+
     var sections: [EventSectionModel] = []
 
     override func loadView() {

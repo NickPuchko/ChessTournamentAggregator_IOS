@@ -23,6 +23,10 @@ class TournamentsPresenter: TournamentsPresenterProtocol {
     }
 
     func createEvents() -> [Tournament] {
+        // TODO: вставить сюда метод, возвращающий массив турниров
+        //var events: [Tournament] = interactor.loadEventsFromFirebase()
+
+        // TODO: когда заработают методы работы с Firebase, пренести создание этих трёх турниров отсюда в интерактор
         var events: [Tournament] = []
         let bestURL = URL(string: "https://vk.com/oobermensch")!
         events.append(Tournament(name: "HSE cup", mode: .rapid, date: "10.12.2020", location: "Москва", ratingType: "Без обсчёта рейтинга", timeControl: "15+0", prizeFund: 10000, fee: 500, url: URL(string: "https://sport.hse.ru/chess") ?? bestURL))
