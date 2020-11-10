@@ -2,8 +2,6 @@
 // Created by Administrator on 05.11.2020.
 //
 
-import UIKit
-
 protocol Auth_ConfiguratorProtocol: class {
     func configure(with viewController: Auth_ViewController)
 }
@@ -26,4 +24,3 @@ protocol Auth_RouterProtocol: class {
     func showTournaments(withId phone: String)
     func showSignup()
 }
-

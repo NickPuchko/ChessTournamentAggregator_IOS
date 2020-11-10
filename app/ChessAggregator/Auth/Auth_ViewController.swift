@@ -26,7 +26,6 @@ class Auth_ViewController: UIViewController, Auth_ViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
 
-
     override func loadView() {
         view = AuthView()
     }
@@ -36,8 +35,7 @@ class Auth_ViewController: UIViewController, Auth_ViewProtocol {
         configurator.configure(with: self)
         presenter.configureView()
 
-        view.backgroundColor = .white
-        title = "Авторизация"
+        title = "Вход"
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapDone))
 

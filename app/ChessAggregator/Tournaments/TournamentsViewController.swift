@@ -16,7 +16,7 @@ class TournamentsViewController: UIViewController, UITableViewDelegate, UITableV
 
     private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped)
 
-    required init(ref: DatabaseReference, withId phone: String) {
+    required init(ref: DatabaseReference, phone: String) {
         self.ref = ref
         self.phone = phone
         self.configurator = TournamentsConfigurator()
@@ -44,7 +44,10 @@ class TournamentsViewController: UIViewController, UITableViewDelegate, UITableV
 
         tableView.dataSource = self
         tableView.delegate = self
-        //tableView.backgroundColor = UIColor(red: 230, green: 230, blue: 230, alpha: 1)
+
+        tableView.sectionHeaderHeight = 0
+        title = "Поиск"
+
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -14,9 +14,10 @@ class Auth_Router: Auth_RouterProtocol {
 
     func showTournaments(withId phone: String) {
         //TODO: dismiss self
-        let vc = TournamentsViewController(ref: viewController.ref, withId: phone)
-        viewController.navigationController?.pushViewController(vc, animated: true)
+        //let vc = TournamentsViewController(ref: viewController.ref, phone: phone)
+        let vc = TabBarController(ref: viewController.ref, phone: phone)
 
+        viewController.navigationController?.pushViewController(vc, animated: true)
     }
 
     func showSignup() {

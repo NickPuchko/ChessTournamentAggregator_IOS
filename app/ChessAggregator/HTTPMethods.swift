@@ -47,23 +47,25 @@ func Post(url: String, request: String, login: String, hash: String) -> Void {
             return
         }
 
-        guard let data = data else {
-            return
-        }
-
-        do {
-            //create json object from data
-            guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {return}
-            //parse
-            
+//        guard let data = data else {
+//            return
+//        }
+//
+//        do {
+//            //create json object from data
+//            guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {return}
+//            //parse
+//
 //            let Tournament_ = Tournament(json: json)
 //
 //            print (Tournament_.name)
 //            print (Tournament_.mode)
-            // TODO: написать нормальный инициализатор Tournament
-        } catch let error {
-            print(error.localizedDescription)
-        }
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
+
+        // TODO: написать нормальный инициализатор Tournament
+
     })
     task.resume()
 }

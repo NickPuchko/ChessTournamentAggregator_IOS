@@ -11,9 +11,9 @@ protocol TournamentsConfiguratorProtocol: class {
 }
 
 protocol TournamentsViewProtocol: class {
-    var ref: DatabaseReference { get set }
-    var phone: String { get set }
-    init(ref: DatabaseReference, withId phone: String)
+    var ref: DatabaseReference { get }
+    var phone: String { get }
+    init(ref: DatabaseReference, phone: String)
     func loadEvents(_ events: [EventSectionModel])
 }
 
@@ -27,8 +27,8 @@ protocol TournamentsPresenterProtocol: class {
 }
 
 protocol TournamentsInteractorProtocol: class {
-    var ref: DatabaseReference { get set }
-    var phone: String { get set }
+    var ref: DatabaseReference { get }
+    var phone: String { get }
     var events: [Tournament] { get set }
     init(presenter: TournamentsPresenterProtocol, ref: DatabaseReference, phone: String)
     func count(mode: Mode) -> Int

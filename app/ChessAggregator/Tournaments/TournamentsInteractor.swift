@@ -19,7 +19,7 @@ class TournamentsInteractor: TournamentsInteractorProtocol {
     }
 
     func loadEventsFromFirebase() -> [Tournament] {
-        var events: [Tournament] = []
+        let events: [Tournament] = []
 
 
         // TODO: Написить метод загрузки всех турниров из json (Realtime Database)

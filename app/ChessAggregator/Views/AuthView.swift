@@ -27,7 +27,10 @@ class AuthView: AutoLayoutView {
 
 
     private func setup() {
+        backgroundColor = .systemGray6
+
         stackView.axis = .vertical
+
 
         phoneTextField.placeholder = "Введите номер телефона"
         phoneTextField.keyboardType = .phonePad
