@@ -1,7 +1,3 @@
-//
-// Created by Иван Лизогуб on 05.11.2020.
-//
-
 import Foundation
 
 class RegistrationInteractor: RegistrationInteractorProtocol {
