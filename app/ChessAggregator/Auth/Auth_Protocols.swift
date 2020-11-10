@@ -1,3 +1,5 @@
+import UIKit
+
 protocol Auth_ConfiguratorProtocol: class {
     func configure(with viewController: Auth_ViewController)
 }

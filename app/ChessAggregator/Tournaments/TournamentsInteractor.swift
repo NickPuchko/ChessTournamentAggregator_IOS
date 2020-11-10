@@ -41,6 +41,7 @@ extension TournamentsInteractor {
         for event in events {
             sections.append(EventSectionModel(event: event))
         }
+
         return sections
     }
 }

@@ -33,7 +33,8 @@ class Auth_ViewController: UIViewController, Auth_ViewProtocol {
 
         title = "Вход"
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapDone))
+        //navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapDone))
+        //TODO: skip login button
 
         authView.onTapLoginButton = { [weak self] in
             saveUser(currentUser: User())
