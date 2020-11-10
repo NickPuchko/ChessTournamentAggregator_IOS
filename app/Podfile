@@ -13,9 +13,10 @@ target 'ChessAggregator' do
     end
   end
   # Pods for ChessAggregator
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Core'
+  #pod 'Firebase/Analytics'
+  #pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'FlagPhoneNumber'
 
 end
