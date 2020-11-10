@@ -29,6 +29,15 @@ extension TournamentsInteractor {
         var sections: [EventSectionModel] = []
 
         let bestURL = URL(string: "https://vk.com/oobermensch")!
+
+
+        ref.child("Tournaments").observe(.value) { (Tournament: DataSnapshot) in
+
+            //self.events.append(Tournament.value!)
+            print (Tournament.value!)
+            //self.tableView.reloadData()
+        }
+        //print (events)
         // TODO: Написить метод загрузки всех турниров из json (Realtime Database)
         events.append(Tournament(name: "HSE cup", mode: .rapid, date: "10.12.2020", location: "Москва", ratingType: "Без обсчёта рейтинга", timeControl: "15+0", prizeFund: 10000, fee: 500, url: URL(string: "https://sport.hse.ru/chess") ?? bestURL))
         events.append(Tournament(name: "Moscow open", mode: .classic, date: "18.01.2021", location: "Москва", ratingType: "FIDE", timeControl: "90+30", prizeFund: 12000000, fee: 50000, url: URL(string: "https://ruchess.ru/championship/detail/2020/aeroflot_open_2020/") ?? bestURL))
