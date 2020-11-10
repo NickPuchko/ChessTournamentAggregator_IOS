@@ -75,6 +75,7 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
     }
 
     private func setup() {
+
         setupRoundedTextField(textField: lastName, textFieldPlaceholder: "Фамилия")
         self.scrollableStackView.addArrangedSubview(lastName)
 

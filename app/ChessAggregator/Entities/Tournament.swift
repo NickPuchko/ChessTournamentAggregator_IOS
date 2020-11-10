@@ -1,7 +1,7 @@
 import Foundation
 
 struct Tournament{
-    var name: String = "Турнир"
+    var name: String = ""
     var mode: Mode = .classic
     var date: String = "01.01.1970"
     var location: String = "Москва"

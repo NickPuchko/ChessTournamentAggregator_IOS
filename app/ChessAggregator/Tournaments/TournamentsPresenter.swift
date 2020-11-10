@@ -17,4 +17,3 @@ class TournamentsPresenter: TournamentsPresenterProtocol {
         view.loadEvents(interactor.loadSections())
     }
 }
-

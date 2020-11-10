@@ -20,7 +20,7 @@ class RegistrationInteractor: RegistrationInteractorProtocol {
         //let fullName = buildFullName(lastName: lastName, firstName: firstName, patronymicName: patronymicName)
         //let eloRating = Int(ratingELO ?? "")
         //let user = User(player: Player(fullName: fullName, birthdate: birthdate, rating: eloRating), phone: phoneNumber)
-        //TODO
+        //TODO: user constructor
     }
 
 

@@ -72,7 +72,7 @@ class NumberRegistrationViewController: UIViewController, NumberRegistrationView
         self.numberFPNTextField.keyboardType = .numberPad
         self.numberFPNTextField.borderStyle = .roundedRect
         self.numberFPNTextField.displayMode = .list
-        self.numberFPNTextField.text = defaultNumber
+        self.numberFPNTextField.placeholder = defaultNumber
         self.numberFPNTextField.delegate = self
 
         self.listController.setup(repository: numberFPNTextField.countryRepository)
