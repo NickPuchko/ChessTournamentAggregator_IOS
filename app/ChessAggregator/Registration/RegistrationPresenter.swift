@@ -23,8 +23,9 @@ class RegistrationPresenter: RegistrationPresenterProtocol {
         guard let pas = password, let val = validation else {return false}
         if pas == val {
             return true
+        } else {
+            return false
         }
-        return true
     }
 
     func configureView() {
@@ -56,16 +57,23 @@ class RegistrationPresenter: RegistrationPresenterProtocol {
         isStringEmpty(string: OrganisationName)
     }
 
-    func validateAll(email: String?, password: String?, passwordValidation: String?,lastName: String?,
-                     firstName: String?, OrganisationName: String?, birthdate: Date) {
+    func addToDatabase(lastName: String?, firstName: String?, patronymicName: String?,
+                       ratingELO: String?, email: String?, password: String?, passwordValidation: String?,
+                       organisationCity: String?, organisationName: String?, birthdate: Date) {
 
-        if emailValidation(with: email) && isPasswordValid(with: password, validation: passwordValidation) &&
-                   firstNameIsNotEmpty(with: firstName) && lastNameIsNotEmpty(with: lastName) &&
-                   organisationNameIsNotEmpty(with: OrganisationName) {
-            interactor.addUserToDataBase()
+        if firstNameIsNotEmpty(with: firstName) && lastNameIsNotEmpty(with: lastName) &&
+                   emailValidation(with: email) && isPasswordValid(with: password, validation: passwordValidation) {
+
+            interactor.addUserToDataBase(lastName: lastName, firstName: firstName, patronymicName: patronymicName,
+                    ratingELO: ratingELO, email: email, password: password, passwordValidation: passwordValidation,
+                    organisationCity: organisationCity, organisationName: organisationName, birthdate: birthdate)
+
             router.goToTournamentsWindow(withPhoneNumber: interactor.getPhoneNumber())
+        } else {
+
         }
     }
+
 
     private func isStringEmpty(string: String?) -> Bool {
         guard let str = string else {return false}
@@ -76,16 +84,5 @@ class RegistrationPresenter: RegistrationPresenterProtocol {
         }
     }
 
-    func getFullName() -> String {
-         view.getFullName()
-    }
-
-    func getBirthdate() -> Date {
-         view.getBirthdate()
-    }
-
-    func getEloRating() -> Int? {
-        view.getEloRating()
-    }
 }
 

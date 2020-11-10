@@ -9,8 +9,10 @@ protocol RegistrationConfiguratorProtocol: class {
 }
 
 protocol RegistrationInteractorProtocol: class {
-    func addUserToDataBase()
     func getPhoneNumber() -> String
+    func addUserToDataBase(lastName: String?, firstName: String?, patronymicName: String?,
+                           ratingELO: String?, email: String?, password: String?, passwordValidation: String?,
+                           organisationCity: String?, organisationName: String?, birthdate: Date)
 }
 
 protocol RegistrationPresenterProtocol: class {
@@ -21,12 +23,10 @@ protocol RegistrationPresenterProtocol: class {
     func firstNameIsNotEmpty(with firstName: String?) -> Bool
     func birthdateIsNotEmpty() -> Bool
     func organisationNameIsNotEmpty(with OrganisationName: String?) -> Bool
-    func validateAll(email: String?, password: String?, passwordValidation: String?,
-                     lastName: String?, firstName: String?, OrganisationName: String?, birthdate: Date)
+    func addToDatabase(lastName: String?, firstName: String?, patronymicName: String?,
+                       ratingELO: String?, email: String?, password: String?, passwordValidation: String?,
+                       organisationCity: String?, organisationName: String?, birthdate: Date)
 
-    func getFullName() -> String
-    func getBirthdate() -> Date
-    func getEloRating() -> Int?
 }
 
 protocol RegistrationRouterProtocol: class {
@@ -41,8 +41,5 @@ protocol RegistrationViewProtocol: class {
     func showBirthdateWarning()
     func showOrganisationNameWarning()
 
-    func getFullName() -> String
-    func getBirthdate() -> Date
-    func getEloRating() -> Int?
 }
 

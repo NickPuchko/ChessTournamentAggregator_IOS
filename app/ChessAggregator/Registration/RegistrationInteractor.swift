@@ -14,16 +14,32 @@ class RegistrationInteractor: RegistrationInteractorProtocol {
         self.phoneNumber = phoneNumber
     }
 
-    func addUserToDataBase() {
+    func addUserToDataBase(lastName: String?, firstName: String?, patronymicName: String?,
+                           ratingELO: String?, email: String?, password: String?, passwordValidation: String?,
+                           organisationCity: String?, organisationName: String?, birthdate: Date) {
         var user: User
-        let fullName = presenter.getFullName()
-        let birthdate = presenter.getBirthdate()
-        let eloRating = presenter.getEloRating()
+        var fullName = buildFullName(lastName: lastName, firstName: firstName, patronymicName: patronymicName)
+        var eloRating = Int(ratingELO ?? "")
+        print(birthdate)
         user = User(player: Player(fullName: fullName, birthdate: birthdate, rating: eloRating), phone: phoneNumber)
         //TODO
     }
 
+
     func getPhoneNumber() -> String {
         phoneNumber
+    }
+
+    private func buildFullName(lastName: String?, firstName: String?, patronymicName: String?) -> String{
+        var fullName: String = ""
+        if let surname = lastName, let name = firstName {
+            fullName = surname + " "
+            fullName += name + " "
+            fullName += patronymicName ?? ""
+        } else {
+            fatalError("They should not be nil")
+        }
+
+        return fullName
     }
 }

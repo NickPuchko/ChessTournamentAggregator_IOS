@@ -136,8 +136,13 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
 
         setupRoundedTextField(textField: organisationCity, textFieldPlaceholder: "Город")
         setupRoundedTextField(textField: organisationName, textFieldPlaceholder: "Название организации")
+        self.organisationCity.isHidden = true
+        self.organisationName.isHidden = true
 
         self.switchToOrganizer.addTarget(self, action: #selector(didTapSwitchToOrganizer), for: .touchUpInside)
+
+        self.scrollableStackView.addArrangedSubview(self.organisationCity)
+        self.scrollableStackView.addArrangedSubview(self.organisationName)
 
     }
 
@@ -164,21 +169,25 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
     }
 
     @objc private func onTapRegistrationButton() -> Void {
-        presenter.validateAll(
-                email: emailAddress.text, password: password.text,
-                passwordValidation: validatePassword.text, lastName: lastName.text,
-                firstName: firstName.text, OrganisationName: organisationName.text,
+        presenter.addToDatabase(
+                lastName: lastName.text,
+                firstName: firstName.text,
+                patronymicName: patronymicName.text,
+                ratingELO: ratingELO.text,
+                email: emailAddress.text,
+                password: password.text,
+                passwordValidation: validatePassword.text,
+                organisationCity: organisationCity.text,
+                organisationName: organisationName.text,
                 birthdate: birthdateDatePicker.date)
     }
 
     @objc private func didTapSwitchToOrganizer() {
         if self.switchToOrganizer.isOn {
-            self.organisationName.isHidden = false
-            self.organisationCity.isHidden = false
             UIView.animate(withDuration: 0.5, delay:0.0, options: [],
                     animations: {
-                        self.scrollableStackView.addArrangedSubview(self.organisationCity)
-                        self.scrollableStackView.addArrangedSubview(self.organisationName)
+                        self.organisationName.isHidden = false
+                        self.organisationCity.isHidden = false
                         self.view.layoutIfNeeded()
                     },
                     completion: nil
@@ -186,8 +195,8 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
         } else {
             UIView.animate(withDuration: 0.5, delay: 0.0, options: [],
                     animations: {
-                        self.scrollableStackView.removeArrangedSubview(self.organisationName)
-                        self.scrollableStackView.removeArrangedSubview(self.organisationCity)
+                        self.organisationName.isHidden = true
+                        self.organisationCity.isHidden = true
                         self.view.layoutIfNeeded()
                     },
                     completion: nil
@@ -197,23 +206,6 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
         }
     }
 
-    func getFullName() -> String {
-        var result: String
-        result = lastName.text! + " "
-        result += firstName.text!
-        result += " "
-        result += (patronymicName.text ?? "")
-        return result
-    }
-
-    func getBirthdate() -> Date {
-        birthdateDatePicker.date
-    }
-
-    func getEloRating() -> Int? {
-        guard let stringElo = ratingELO.text else {return nil}
-        return Int(stringElo)
-    }
 
     func showEmailWarning() {
 
