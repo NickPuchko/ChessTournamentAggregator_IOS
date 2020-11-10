@@ -21,9 +21,14 @@ class Auth_Router: Auth_RouterProtocol {
     }
 
     func showSignup() {
-        let alert = UIAlertController(title: "Nope", message: "Регистрация в разработке...", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Закрыть", style: .destructive))
-        viewController.present(alert, animated: true)
+        viewController.navigationController?.pushViewController(
+                NumberRegistrationViewController(ref: viewController.ref),
+                animated: true
+        )
+//        let alert = UIAlertController(title: "Nope", message: "Регистрация в разработке...", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "Закрыть", style: .destructive))
+//        viewController.present(alert, animated: true)
+
     }
 
 }
