@@ -63,7 +63,6 @@ class CurrentViewController: UIViewController, CurrentViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
 //        let infoButton = UIBarButtonItem(
 //                image: UIImage(systemName: "info"),
 //                style: .plain,
