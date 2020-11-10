@@ -1,10 +1,6 @@
-//
-// Created by Administrator on 05.11.2020.
-//
-
 import Foundation
 import UIKit
-import Firebase
+import FirebaseDatabase
 
 protocol TournamentsConfiguratorProtocol: class {
     func configure(with viewController: TournamentsViewController)

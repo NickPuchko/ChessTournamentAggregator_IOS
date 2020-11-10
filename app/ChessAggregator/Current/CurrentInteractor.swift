@@ -1,9 +1,5 @@
-//
-// Created by Administrator on 10.11.2020.
-//
-
 import Foundation
-import Firebase
+import FirebaseDatabase
 
 class CurrentInteractor: CurrentInteractorProtocol {
     weak var presenter: CurrentPresenterProtocol!

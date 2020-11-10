@@ -1,7 +1,3 @@
-//
-// Created by Administrator on 10.11.2020.
-//
-
 import Foundation
 
 class CurrentPresenter: CurrentPresenterProtocol {

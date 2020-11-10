@@ -1,10 +1,6 @@
-//
-// Created by Administrator on 09.11.2020.
-//
-
 import Foundation
 import UIKit
-import Firebase
+import FirebaseDatabase
 
 class CurrentViewController: UIViewController, CurrentViewControllerProtocol {
 

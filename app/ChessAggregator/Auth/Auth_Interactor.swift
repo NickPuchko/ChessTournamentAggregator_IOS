@@ -1,9 +1,5 @@
-//
-// Created by Administrator on 05.11.2020.
-//
-
 import Foundation
-import Firebase
+import FirebaseDatabase
 
 class Auth_Interactor: Auth_InteractorProtocol {
     weak var presenter: Auth_PresenterProtocol!

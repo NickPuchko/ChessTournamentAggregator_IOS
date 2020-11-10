@@ -1,7 +1,3 @@
-//
-// Created by Administrator on 07.11.2020.
-//
-
 import UIKit
 
 class EventSectionModel {

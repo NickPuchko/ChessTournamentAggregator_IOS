@@ -1,8 +1,4 @@
-//
-// Created by Administrator on 09.11.2020.
-//
-
-import Firebase
+import FirebaseDatabase
 
 protocol ProfileConfiguratorProtocol: class {
     func configure(with viewController: ProfileViewController)
