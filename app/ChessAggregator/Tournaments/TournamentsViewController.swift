@@ -5,7 +5,7 @@ import FirebaseDatabase
 class TournamentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TournamentsViewProtocol {
 
     var presenter: TournamentsPresenterProtocol!
-    var configurator: TournamentsConfiguratorProtocol!
+    var configurator: TournamentsConfiguratorProtocol! = TournamentsConfigurator()
 
     var phone: String
     var ref: DatabaseReference
@@ -15,14 +15,12 @@ class TournamentsViewController: UIViewController, UITableViewDelegate, UITableV
     required init(ref: DatabaseReference, phone: String) {
         self.ref = ref
         self.phone = phone
-        self.configurator = TournamentsConfigurator()
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 
     var sections: [EventSectionModel] = []
 

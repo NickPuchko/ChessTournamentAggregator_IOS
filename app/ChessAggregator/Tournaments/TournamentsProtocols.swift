@@ -15,11 +15,8 @@ protocol TournamentsViewProtocol: class {
 
 protocol TournamentsPresenterProtocol: class {
     var router: TournamentsRouterProtocol! { get set }
-    var interactor: TournamentsInteractorProtocol! { get set }
     var sections: [EventSectionModel] { get set }
-    func createEvents() -> [Tournament]
     func configureView()
-    //func loadEvents(_ events: Tournament) -> [Tournament]
 }
 
 protocol TournamentsInteractorProtocol: class {
@@ -29,7 +26,7 @@ protocol TournamentsInteractorProtocol: class {
     init(presenter: TournamentsPresenterProtocol, ref: DatabaseReference, phone: String)
     func count(mode: Mode) -> Int
     func count() -> Int
-    func loadEventsFromFirebase() -> [Tournament]
+    func loadSections() -> [EventSectionModel]
 }
 
 protocol TournamentsRouterProtocol: class {
