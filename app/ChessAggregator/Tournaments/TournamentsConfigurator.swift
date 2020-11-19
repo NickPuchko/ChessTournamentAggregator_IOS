@@ -1,4 +1,3 @@
-import Foundation
 
 class TournamentsConfigurator: TournamentsConfiguratorProtocol {
     func configure(with viewController: TournamentsViewController) {

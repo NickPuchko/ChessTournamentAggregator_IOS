@@ -1,4 +1,3 @@
-import Foundation
 
 class TournamentsPresenter: TournamentsPresenterProtocol {
 
@@ -15,5 +14,10 @@ class TournamentsPresenter: TournamentsPresenterProtocol {
 
     func configureView() {
         view.loadEvents(interactor.loadSections())
+    }
+
+    func updateView() {
+        configureView()
+        view.updateFeed()
     }
 }

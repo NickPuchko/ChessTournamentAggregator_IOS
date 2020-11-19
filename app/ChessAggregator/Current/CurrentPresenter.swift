@@ -1,4 +1,3 @@
-import Foundation
 
 class CurrentPresenter: CurrentPresenterProtocol {
     weak var view: CurrentViewControllerProtocol!

@@ -1,8 +1,3 @@
-//
-// Created by Administrator on 08.11.2020.
-//
-
-import Foundation
 
 class EventNameCellModel: CellIdentifiable {
     var cellId: String {
@@ -19,6 +14,4 @@ class EventNameCellModel: CellIdentifiable {
         name = event.name
         date = event.date
     }
-
-    // TODO: infoButton
 }

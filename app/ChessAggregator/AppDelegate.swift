@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
+        // TODO: AppCoordinator!
         let vc = UINavigationController(rootViewController: Auth_ViewController(ref: ref))
 
         window.rootViewController = vc

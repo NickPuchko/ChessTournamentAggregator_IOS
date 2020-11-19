@@ -1,4 +1,3 @@
-import Foundation
 import FirebaseDatabase
 
 class CurrentInteractor: CurrentInteractorProtocol {

@@ -1,4 +1,3 @@
-import Foundation
 import FirebaseDatabase
 
 class Auth_Interactor: Auth_InteractorProtocol {

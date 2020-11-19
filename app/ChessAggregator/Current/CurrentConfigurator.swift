@@ -1,4 +1,3 @@
-import Foundation
 
 class CurrentConfigurator: CurrentConfiguratorProtocol{
     func configure(with viewController: CurrentViewControllerProtocol) {

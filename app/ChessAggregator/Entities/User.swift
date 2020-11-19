@@ -1,14 +1,10 @@
-//
-// Created by Administrator on 08.11.2020.
-//
 
 import Foundation
 
 struct User: Codable{
-    var player: Player = Player(fullName: "Doe John", birthdate: Date(timeIntervalSince1970: 1), rating: 2100)
+    var player: Player = Player(fullName: "Doe John", birthdate: Date(), rating: 2100)
     var phone: String = "88005553535"
     // TODO: phone class
-
 }
 
 func saveUser(currentUser: User) {

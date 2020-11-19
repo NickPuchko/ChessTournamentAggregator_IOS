@@ -1,4 +1,3 @@
-import Foundation
 
 class Auth_Configurator: Auth_ConfiguratorProtocol {
     func configure(with viewController: Auth_ViewController) {

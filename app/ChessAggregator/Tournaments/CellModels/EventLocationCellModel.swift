@@ -1,8 +1,3 @@
-//
-// Created by Administrator on 08.11.2020.
-//
-
-import Foundation
 
 class EventLocationCellModel: CellIdentifiable {
     var cellId: String {

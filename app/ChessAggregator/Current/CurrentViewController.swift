@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 import FirebaseDatabase
 
@@ -13,13 +12,6 @@ class CurrentViewController: UIViewController, CurrentViewControllerProtocol {
 
     var eventLabel = UILabel()
 
-//    var currentView: CurrentView {
-//        view as! CurrentView
-//    }
-//
-//    override func loadView() {
-//        view = CurrentView(event: event)
-//    }
     override func loadView() {
         view = UIView()
         view.backgroundColor = .systemGray6
@@ -59,11 +51,5 @@ class CurrentViewController: UIViewController, CurrentViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        let infoButton = UIBarButtonItem(
-//                image: UIImage(systemName: "info"),
-//                style: .plain,
-//                target: self,
-//                action: #selector(presenter.tappedInfo)
-//        )
     }
 }

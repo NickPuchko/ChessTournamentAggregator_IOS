@@ -1,4 +1,3 @@
-import Foundation
 
 class CurrentRouter: CurrentRouterProtocol {
     weak var viewController: CurrentViewControllerProtocol!

@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 import FirebaseDatabase
 
@@ -9,6 +8,10 @@ class Auth_ViewController: UIViewController, Auth_ViewProtocol {
     let configurator: Auth_ConfiguratorProtocol!
 
     var authView: AuthView {
+        // Пока не решён вопрос, через что авторизовывается юзер. С одной стороны, нужен номер телефона, потому что
+        // подавать заявку на участие в турнире может только верифицированным по номеру пользователь. С другой,
+        // с точки зрения бизнес-логики должен быть вариант авторизации без номера телефона, потому что агрегатор так
+        // или иначе не сможет существовать без вэб-версии. Какая из зол меньшая?
         view as! AuthView
     }
 

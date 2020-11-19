@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 import FirebaseDatabase
 
@@ -70,7 +69,7 @@ class TournamentsViewController: UIViewController, UITableViewDelegate, UITableV
             config.image = UIImage(systemName: "location")
         case 2:
             let ratingTypeCell = model as! EventRatingCellModel
-            config.text = ratingTypeCell.ratingType
+            config.text = ratingTypeCell.ratingType.rawValue
             config.image = UIImage(systemName: "crown")
         case 3:
             let modeCell = model as! EventModeCellModel
@@ -104,5 +103,9 @@ class TournamentsViewController: UIViewController, UITableViewDelegate, UITableV
 
     func loadEvents(_ sections: [EventSectionModel]) {
         self.sections = sections
+    }
+
+    func updateFeed() {
+        self.tableView.reloadData()
     }
 }
