@@ -20,7 +20,6 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         let profileVC = ProfileViewController(ref: ref, phone: phone)
         let tournamentsVC = TournamentsViewController(ref: ref, phone: phone)
-
         let currentVC = CurrentViewController(ref: ref, phone: phone)
 
         currentVC.tabBarItem = UITabBarItem(title: "Турнир", image: UIImage(systemName: "house"), tag: 0)

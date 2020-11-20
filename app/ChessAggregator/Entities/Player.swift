@@ -1,11 +1,11 @@
 import Foundation
 
 struct Player: Codable {
-    var fullName: String = "Doe John"
-    var birthdate: Date = Date(timeIntervalSince1970: 100)
-    var rating: Int = 0
+    var fullName: String
+    var birthdate: Date
+    var rating: Int
 
-    init(fullName: String, birthdate: Date, rating: Int?) {
+init(fullName: String = "John Doe", birthdate: Date = Calendar.current.date(from: DateComponents(year: 1953, month: 2, day: 25))!, rating: Int?) {
         self.fullName = fullName
         self.birthdate = birthdate
         if let ELOrating = rating {

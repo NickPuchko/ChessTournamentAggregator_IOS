@@ -10,6 +10,9 @@ class TournamentsViewController: UIViewController, UITableViewDelegate, UITableV
     var ref: DatabaseReference
 
     private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped)
+    
+    var sections: [EventSectionModel] = []
+
 
     required init(ref: DatabaseReference, phone: String) {
         self.ref = ref
@@ -21,13 +24,14 @@ class TournamentsViewController: UIViewController, UITableViewDelegate, UITableV
         fatalError("init(coder:) has not been implemented")
     }
 
-    var sections: [EventSectionModel] = []
 
     override func loadView() {
         view = UIView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
         tableView.pins()
+        
+        
     }
 
     override func viewDidLoad() {
