@@ -48,7 +48,7 @@ final class ScrollableStackView: AutoLayoutView {
 
         self.scrollView.pins()
         self.contentView.pins()
-        self.stackView.pins()
+        self.stackView.pins(config.pinsStackConstraints)
 
         if self.config.stack.axis == .vertical {
             self.contentView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
@@ -103,6 +103,10 @@ final class ScrollableStackView: AutoLayoutView {
         self.scrollView.contentInset = contentInset
     }
 
+    func updateConstraintsStackView(contentInset: UIEdgeInsets) {
+
+    }
+
 }
 
 extension ScrollableStackView {
@@ -126,6 +130,7 @@ extension ScrollableStackView {
 
         var stack: Stack
         var scroll: Scroll
+        var pinsStackConstraints: UIEdgeInsets = .zero
 
         static let defaultVertical = Config(stack: Stack(axis: .vertical),
                 scroll: .defaultVertical

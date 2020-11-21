@@ -11,17 +11,44 @@
 		01FFDCAF253FA091001244D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCAE253FA091001244D1 /* Assets.xcassets */; };
 		01FFDCB2253FA091001244D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCB0253FA091001244D1 /* LaunchScreen.storyboard */; };
 		01FFDCBB253FA140001244D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCBA253FA140001244D1 /* GoogleService-Info.plist */; };
+		6AC970333282630AAF028FFB /* UserRegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9757DD5A6A2BFCBFF52CD /* UserRegistrationInteractor.swift */; };
+		6AC97048CF91C868205B6FE7 /* UserRegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97926635C3D64EB2F98FB /* UserRegistrationRouter.swift */; };
 		6AC9715C76583C1BB9DDF949 /* RegistrationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC975AA37047A6F5E497F2B /* RegistrationProtocols.swift */; };
 		6AC9716C4E780D25C86575EA /* ScrollableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC979F80F68467B6056BE62 /* ScrollableStackView.swift */; };
+		6AC971AF913286716FF3BEFD /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9793A308DF4900602EC89 /* AppCoordinator.swift */; };
+		6AC97205ED8B81DC6959B5A3 /* PhoneNumberRegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97958C0221DE701F88460 /* PhoneNumberRegistrationInteractor.swift */; };
 		6AC9721558890A120707DCBE /* NumberRegistrationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC978FB9F853559B2952202 /* NumberRegistrationConfigurator.swift */; };
+		6AC972935C9E4CBE3FFF2B05 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97EB8203DAE2F5A9B44D0 /* AuthRouter.swift */; };
+		6AC97382D07275AF0B76BE69 /* PhoneNumberRegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97B1861FE999F36D6EEED /* PhoneNumberRegistrationRouter.swift */; };
+		6AC9739D8904CBD7664D3E3B /* AuthProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC977E3509655BD1C9C79BC /* AuthProtocols.swift */; };
+		6AC973BE56C56D620227BF0B /* UserRegistrationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97A91E1C7192A8DC8EE92 /* UserRegistrationProtocols.swift */; };
 		6AC97428C86B6A233B761918 /* RegistrationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97D59628643B7EC7BC475 /* RegistrationConfigurator.swift */; };
 		6AC9743AA16F574C96937F4C /* NumberRegistrationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC970BBC746B3D216B60550 /* NumberRegistrationProtocols.swift */; };
 		6AC9744E601797464ECE743F /* NumberRegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC973D08BF2E498B6DB1FF3 /* NumberRegistrationRouter.swift */; };
+		6AC97455551260AB6321E6A4 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC972332FE6693994C418B3 /* AuthPresenter.swift */; };
+		6AC974DBDEE19C56EC671F51 /* UserRegistrationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC978288F97CE08873FC9E3 /* UserRegistrationContainer.swift */; };
+		6AC974F15BBEACA8C5C83476 /* AuthNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97F94FB4EE2E42B587628 /* AuthNewView.swift */; };
+		6AC9751DEF4DAFF06D620568 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97F10C74986A2767BA5A4 /* AuthInteractor.swift */; };
+		6AC97557716897180F2EDEA8 /* PhoneNumberRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC979A442FEE9214A769A82 /* PhoneNumberRegistrationView.swift */; };
 		6AC975674568D9C0F1768DF9 /* RegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97A935FF05FDB601730C3 /* RegistrationRouter.swift */; };
 		6AC975910B0B5BB816FFA7DE /* NumberRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97AFED1966B66FCC345E8 /* NumberRegistrationViewController.swift */; };
 		6AC975E8FB4F0F595101C4A2 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9794E0745775921A46566 /* RegistrationViewController.swift */; };
 		6AC976867001E25DC3E9D6ED /* NumberRegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9718B2373F94018836B50 /* NumberRegistrationInteractor.swift */; };
+		6AC976C5CE19F0BD7DE38A7C /* PhoneNumberRegistrationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9796F8A297EBFFE1720BF /* PhoneNumberRegistrationProtocols.swift */; };
+		6AC97802452A8F8A4375B804 /* PhoneNumberRegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97407C739A6D3F84E0DFC /* PhoneNumberRegistrationPresenter.swift */; };
+		6AC97815032909668C26DACC /* PhoneNumberRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97751D5D879A37FF46E85 /* PhoneNumberRegistrationViewController.swift */; };
+		6AC9786A6563B1CCD29C7CDE /* PhoneNumberRegistrationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC972C0F6991BBFE501499A /* PhoneNumberRegistrationContainer.swift */; };
+		6AC97A0C115FFA98AC8D5C4B /* FirebaseRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC976FD34911FBA070234AF /* FirebaseRef.swift */; };
+		6AC97A7F1E9C1F5D7BE81FEA /* PasswordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9725DE11A5E51FC080F0F /* PasswordExtension.swift */; };
+		6AC97AB3019955AB64CCD302 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97886350CD68B20F9860F /* BaseRouter.swift */; };
+		6AC97B4021820CC7707CD19D /* UserRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC971C57B5647D7E9557CF9 /* UserRegistrationViewController.swift */; };
+		6AC97C0EFE48060F47FEB81A /* UserRegistrationPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9791A846EE65C04424F99 /* UserRegistrationPlayerView.swift */; };
+		6AC97C11BC4E6B1FA977BFB6 /* UserReg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97CE1D483F9F5F0EFA3D9 /* UserReg.swift */; };
+		6AC97C2733C73AF3E784A904 /* WarningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97E741A3F96679DC44C71 /* WarningLabel.swift */; };
+		6AC97C3BAB64ADF9B302A904 /* UserRegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97698B4FC1FF1E2D74474 /* UserRegistrationPresenter.swift */; };
+		6AC97CB47076DF198EDF70AE /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97628B9B9DFE0B99737C7 /* AuthViewController.swift */; };
 		6AC97DA1CF1AFAAC526268FA /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC975442B561D523AFFC886 /* RegistrationPresenter.swift */; };
+		6AC97DD0DB709798E096E796 /* AuthContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC972223AE2EF8316609BBB /* AuthContainer.swift */; };
 		6AC97E8B693764A2E4ADDDD4 /* EmailExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC974BC8D700AAB6B531B67 /* EmailExtension.swift */; };
 		6AC97EA1D604AA6B50F7068B /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC976D5A2E21DF669BD36D3 /* RegistrationInteractor.swift */; };
 		6AC97ED8B8B4588E99F6F1D4 /* NumberRegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9715996B2496E7BDFD310 /* NumberRegistrationPresenter.swift */; };
@@ -75,17 +102,44 @@
 		6AC970BBC746B3D216B60550 /* NumberRegistrationProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberRegistrationProtocols.swift; sourceTree = "<group>"; };
 		6AC9715996B2496E7BDFD310 /* NumberRegistrationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberRegistrationPresenter.swift; sourceTree = "<group>"; };
 		6AC9718B2373F94018836B50 /* NumberRegistrationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberRegistrationInteractor.swift; sourceTree = "<group>"; };
+		6AC971C57B5647D7E9557CF9 /* UserRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationViewController.swift; sourceTree = "<group>"; };
+		6AC972223AE2EF8316609BBB /* AuthContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthContainer.swift; sourceTree = "<group>"; };
+		6AC972332FE6693994C418B3 /* AuthPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
+		6AC9725DE11A5E51FC080F0F /* PasswordExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordExtension.swift; sourceTree = "<group>"; };
+		6AC972C0F6991BBFE501499A /* PhoneNumberRegistrationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationContainer.swift; sourceTree = "<group>"; };
 		6AC973D08BF2E498B6DB1FF3 /* NumberRegistrationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberRegistrationRouter.swift; sourceTree = "<group>"; };
+		6AC97407C739A6D3F84E0DFC /* PhoneNumberRegistrationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationPresenter.swift; sourceTree = "<group>"; };
 		6AC974BC8D700AAB6B531B67 /* EmailExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailExtension.swift; sourceTree = "<group>"; };
 		6AC975442B561D523AFFC886 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
+		6AC9757DD5A6A2BFCBFF52CD /* UserRegistrationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationInteractor.swift; sourceTree = "<group>"; };
 		6AC975AA37047A6F5E497F2B /* RegistrationProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationProtocols.swift; sourceTree = "<group>"; };
+		6AC97628B9B9DFE0B99737C7 /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		6AC97698B4FC1FF1E2D74474 /* UserRegistrationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationPresenter.swift; sourceTree = "<group>"; };
 		6AC976D5A2E21DF669BD36D3 /* RegistrationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
+		6AC976FD34911FBA070234AF /* FirebaseRef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseRef.swift; sourceTree = "<group>"; };
+		6AC97751D5D879A37FF46E85 /* PhoneNumberRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationViewController.swift; sourceTree = "<group>"; };
+		6AC977E3509655BD1C9C79BC /* AuthProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthProtocols.swift; sourceTree = "<group>"; };
+		6AC978288F97CE08873FC9E3 /* UserRegistrationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationContainer.swift; sourceTree = "<group>"; };
+		6AC97886350CD68B20F9860F /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		6AC978FB9F853559B2952202 /* NumberRegistrationConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberRegistrationConfigurator.swift; sourceTree = "<group>"; };
+		6AC9791A846EE65C04424F99 /* UserRegistrationPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationPlayerView.swift; sourceTree = "<group>"; };
+		6AC97926635C3D64EB2F98FB /* UserRegistrationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationRouter.swift; sourceTree = "<group>"; };
+		6AC9793A308DF4900602EC89 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		6AC9794E0745775921A46566 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		6AC97958C0221DE701F88460 /* PhoneNumberRegistrationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationInteractor.swift; sourceTree = "<group>"; };
+		6AC9796F8A297EBFFE1720BF /* PhoneNumberRegistrationProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationProtocols.swift; sourceTree = "<group>"; };
+		6AC979A442FEE9214A769A82 /* PhoneNumberRegistrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationView.swift; sourceTree = "<group>"; };
 		6AC979F80F68467B6056BE62 /* ScrollableStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableStackView.swift; sourceTree = "<group>"; };
+		6AC97A91E1C7192A8DC8EE92 /* UserRegistrationProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationProtocols.swift; sourceTree = "<group>"; };
 		6AC97A935FF05FDB601730C3 /* RegistrationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationRouter.swift; sourceTree = "<group>"; };
 		6AC97AFED1966B66FCC345E8 /* NumberRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberRegistrationViewController.swift; sourceTree = "<group>"; };
+		6AC97B1861FE999F36D6EEED /* PhoneNumberRegistrationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationRouter.swift; sourceTree = "<group>"; };
+		6AC97CE1D483F9F5F0EFA3D9 /* UserReg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReg.swift; sourceTree = "<group>"; };
 		6AC97D59628643B7EC7BC475 /* RegistrationConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationConfigurator.swift; sourceTree = "<group>"; };
+		6AC97E741A3F96679DC44C71 /* WarningLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningLabel.swift; sourceTree = "<group>"; };
+		6AC97EB8203DAE2F5A9B44D0 /* AuthRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		6AC97F10C74986A2767BA5A4 /* AuthInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+		6AC97F94FB4EE2E42B587628 /* AuthNewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthNewView.swift; sourceTree = "<group>"; };
 		730407F4255060D40036E7A6 /* HTTPMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethods.swift; sourceTree = "<group>"; };
 		BAAF54D7FF0B6F3A13447F17 /* Pods-ChessAggregator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChessAggregator.debug.xcconfig"; path = "Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator.debug.xcconfig"; sourceTree = "<group>"; };
 		D91FC07A2E45005A9BA44F2B /* TournamentsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentsPresenter.swift; sourceTree = "<group>"; };
@@ -174,6 +228,11 @@
 				6AC97004A0D8623316DF6402 /* Registration */,
 				6AC97E74D5F0F7CBC1F95D1F /* NumberRegistration */,
 				6AC97CF89410E6EBA53F52ED /* Extensions */,
+				6AC979B946764083C6D9430A /* UserRegistration */,
+				6AC9794B341DA66F26144585 /* AppCoordinator */,
+				6AC97F46BB0C4EC3BACBDBE4 /* AuthNew */,
+				6AC979BA01AA657206C37BD3 /* PhoneNumberRegistration */,
+				6AC97D2856ACAF5C14548A60 /* GlobalConstants */,
 			);
 			path = ChessAggregator;
 			sourceTree = "<group>";
@@ -187,16 +246,102 @@
 				6AC976D5A2E21DF669BD36D3 /* RegistrationInteractor.swift */,
 				6AC97D59628643B7EC7BC475 /* RegistrationConfigurator.swift */,
 				6AC9794E0745775921A46566 /* RegistrationViewController.swift */,
+				6AC97C6BFD82D795951EA2DF /* Views */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		6AC9713D544A63FE5C74BBC6 /* Structures */ = {
+			isa = PBXGroup;
+			children = (
+				6AC97CE1D483F9F5F0EFA3D9 /* UserReg.swift */,
+			);
+			path = Structures;
+			sourceTree = "<group>";
+		};
+		6AC9794B341DA66F26144585 /* AppCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				6AC9793A308DF4900602EC89 /* AppCoordinator.swift */,
+			);
+			path = AppCoordinator;
+			sourceTree = "<group>";
+		};
+		6AC979B946764083C6D9430A /* UserRegistration */ = {
+			isa = PBXGroup;
+			children = (
+				6AC978288F97CE08873FC9E3 /* UserRegistrationContainer.swift */,
+				6AC9757DD5A6A2BFCBFF52CD /* UserRegistrationInteractor.swift */,
+				6AC97A91E1C7192A8DC8EE92 /* UserRegistrationProtocols.swift */,
+				6AC97698B4FC1FF1E2D74474 /* UserRegistrationPresenter.swift */,
+				6AC97926635C3D64EB2F98FB /* UserRegistrationRouter.swift */,
+				6AC971C57B5647D7E9557CF9 /* UserRegistrationViewController.swift */,
+				6AC97D7D43F4D579F27DA423 /* Views */,
+				6AC9713D544A63FE5C74BBC6 /* Structures */,
+			);
+			path = UserRegistration;
+			sourceTree = "<group>";
+		};
+		6AC979BA01AA657206C37BD3 /* PhoneNumberRegistration */ = {
+			isa = PBXGroup;
+			children = (
+				6AC97407C739A6D3F84E0DFC /* PhoneNumberRegistrationPresenter.swift */,
+				6AC97B1861FE999F36D6EEED /* PhoneNumberRegistrationRouter.swift */,
+				6AC97751D5D879A37FF46E85 /* PhoneNumberRegistrationViewController.swift */,
+				6AC9796F8A297EBFFE1720BF /* PhoneNumberRegistrationProtocols.swift */,
+				6AC97958C0221DE701F88460 /* PhoneNumberRegistrationInteractor.swift */,
+				6AC972C0F6991BBFE501499A /* PhoneNumberRegistrationContainer.swift */,
+				6AC97E46AFC6F3FD64EBAFC9 /* Views */,
+			);
+			path = PhoneNumberRegistration;
+			sourceTree = "<group>";
+		};
+		6AC97C6BFD82D795951EA2DF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		6AC97CF89410E6EBA53F52ED /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				6AC974BC8D700AAB6B531B67 /* EmailExtension.swift */,
+				6AC9725DE11A5E51FC080F0F /* PasswordExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6AC97D2856ACAF5C14548A60 /* GlobalConstants */ = {
+			isa = PBXGroup;
+			children = (
+				6AC976FD34911FBA070234AF /* FirebaseRef.swift */,
+			);
+			path = GlobalConstants;
+			sourceTree = "<group>";
+		};
+		6AC97D7D43F4D579F27DA423 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6AC9791A846EE65C04424F99 /* UserRegistrationPlayerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6AC97E44A162D082C21D50E3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6AC97F94FB4EE2E42B587628 /* AuthNewView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6AC97E46AFC6F3FD64EBAFC9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6AC979A442FEE9214A769A82 /* PhoneNumberRegistrationView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		6AC97E74D5F0F7CBC1F95D1F /* NumberRegistration */ = {
@@ -210,6 +355,20 @@
 				6AC97AFED1966B66FCC345E8 /* NumberRegistrationViewController.swift */,
 			);
 			path = NumberRegistration;
+			sourceTree = "<group>";
+		};
+		6AC97F46BB0C4EC3BACBDBE4 /* AuthNew */ = {
+			isa = PBXGroup;
+			children = (
+				6AC977E3509655BD1C9C79BC /* AuthProtocols.swift */,
+				6AC97628B9B9DFE0B99737C7 /* AuthViewController.swift */,
+				6AC972332FE6693994C418B3 /* AuthPresenter.swift */,
+				6AC97F10C74986A2767BA5A4 /* AuthInteractor.swift */,
+				6AC972223AE2EF8316609BBB /* AuthContainer.swift */,
+				6AC97EB8203DAE2F5A9B44D0 /* AuthRouter.swift */,
+				6AC97E44A162D082C21D50E3 /* Views */,
+			);
+			path = AuthNew;
 			sourceTree = "<group>";
 		};
 		B79ADC37DD382A392135B108 /* Pods */ = {
@@ -287,6 +446,8 @@
 				D91FC1CB6EBFFFC7483EAC76 /* AutoLayoutView.swift */,
 				D91FC876261B8B5CA2E45482 /* CurrentView.swift */,
 				6AC979F80F68467B6056BE62 /* ScrollableStackView.swift */,
+				6AC97886350CD68B20F9860F /* BaseRouter.swift */,
+				6AC97E741A3F96679DC44C71 /* WarningLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -483,6 +644,33 @@
 				6AC975910B0B5BB816FFA7DE /* NumberRegistrationViewController.swift in Sources */,
 				6AC97E8B693764A2E4ADDDD4 /* EmailExtension.swift in Sources */,
 				6AC9716C4E780D25C86575EA /* ScrollableStackView.swift in Sources */,
+				6AC974DBDEE19C56EC671F51 /* UserRegistrationContainer.swift in Sources */,
+				6AC970333282630AAF028FFB /* UserRegistrationInteractor.swift in Sources */,
+				6AC973BE56C56D620227BF0B /* UserRegistrationProtocols.swift in Sources */,
+				6AC97C3BAB64ADF9B302A904 /* UserRegistrationPresenter.swift in Sources */,
+				6AC97048CF91C868205B6FE7 /* UserRegistrationRouter.swift in Sources */,
+				6AC97B4021820CC7707CD19D /* UserRegistrationViewController.swift in Sources */,
+				6AC97C0EFE48060F47FEB81A /* UserRegistrationPlayerView.swift in Sources */,
+				6AC971AF913286716FF3BEFD /* AppCoordinator.swift in Sources */,
+				6AC9739D8904CBD7664D3E3B /* AuthProtocols.swift in Sources */,
+				6AC97CB47076DF198EDF70AE /* AuthViewController.swift in Sources */,
+				6AC97455551260AB6321E6A4 /* AuthPresenter.swift in Sources */,
+				6AC9751DEF4DAFF06D620568 /* AuthInteractor.swift in Sources */,
+				6AC97DD0DB709798E096E796 /* AuthContainer.swift in Sources */,
+				6AC972935C9E4CBE3FFF2B05 /* AuthRouter.swift in Sources */,
+				6AC97AB3019955AB64CCD302 /* BaseRouter.swift in Sources */,
+				6AC974F15BBEACA8C5C83476 /* AuthNewView.swift in Sources */,
+				6AC97802452A8F8A4375B804 /* PhoneNumberRegistrationPresenter.swift in Sources */,
+				6AC97382D07275AF0B76BE69 /* PhoneNumberRegistrationRouter.swift in Sources */,
+				6AC97815032909668C26DACC /* PhoneNumberRegistrationViewController.swift in Sources */,
+				6AC976C5CE19F0BD7DE38A7C /* PhoneNumberRegistrationProtocols.swift in Sources */,
+				6AC97205ED8B81DC6959B5A3 /* PhoneNumberRegistrationInteractor.swift in Sources */,
+				6AC9786A6563B1CCD29C7CDE /* PhoneNumberRegistrationContainer.swift in Sources */,
+				6AC97C11BC4E6B1FA977BFB6 /* UserReg.swift in Sources */,
+				6AC97A7F1E9C1F5D7BE81FEA /* PasswordExtension.swift in Sources */,
+				6AC97A0C115FFA98AC8D5C4B /* FirebaseRef.swift in Sources */,
+				6AC97557716897180F2EDEA8 /* PhoneNumberRegistrationView.swift in Sources */,
+				6AC97C2733C73AF3E784A904 /* WarningLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,10 +19,10 @@ class NumberRegistrationViewController: UIViewController, NumberRegistrationView
     private let scrollableStackView: ScrollableStackView = {
         var config = ScrollableStackView.Config(
                 stack: ScrollableStackView.Config.Stack(axis: .vertical, spacing: 20.0),
-                scroll: .defaultVertical
+                scroll: .defaultVertical,
+                pinsStackConstraints: UIEdgeInsets(top: 20.0, left: 16.0, bottom: 0.0, right: -16.0)
         )
         let result = ScrollableStackView(config: config)
-        result.set(contentInset: UIEdgeInsets(top: 20.0, left: 0.0, bottom: 0.0, right: 0))
         return result
     }()
 
@@ -48,7 +48,7 @@ class NumberRegistrationViewController: UIViewController, NumberRegistrationView
 
     override func loadView() {
         self.view = scrollableStackView
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .systemGray6
         setup()
         setupConstraints()
         title = "Регистрация"
@@ -94,12 +94,6 @@ class NumberRegistrationViewController: UIViewController, NumberRegistrationView
         self.scrollableStackView.addArrangedSubview(numberWasRegisteredLabel)
         self.scrollableStackView.setCustomSpacing(0, after: numberFPNTextField)
 
-        //TODO: delete these default lists
-//        if numberFPNTextField.text!.count != 13 {
-//            self.nextButton.isEnabled = false
-//        } else {
-//            self.nextButton.isEnabled = true
-//        }
         self.nextButton.setTitle("Далее", for: .normal)
         self.nextButton.backgroundColor = .black
         self.nextButton.setTitleColor(.white, for: .normal)
@@ -133,7 +127,7 @@ class NumberRegistrationViewController: UIViewController, NumberRegistrationView
         self.numberWasRegisteredLabel.isHidden = false
     }
 
-    private func hideNumberWasRegisteredWarning() {
+    func hideNumberWasRegisteredWarning() {
         self.numberWasRegisteredLabel.isHidden = true
     }
 }
@@ -149,9 +143,9 @@ extension NumberRegistrationViewController: FPNTextFieldDelegate {
                 withPhoneNumber: textField.getFormattedPhoneNumber(format: .International),
                 isValid: isValid
         ) {
-//            nextButton.isEnabled = true
+            nextButton.isEnabled = true
         } else {
-//            nextButton.isEnabled = false
+            nextButton.isEnabled = false
         }
     }
 

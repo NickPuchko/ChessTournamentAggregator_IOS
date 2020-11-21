@@ -17,11 +17,11 @@ class RegistrationInteractor: RegistrationInteractorProtocol {
     func addUserToDataBase(lastName: String?, firstName: String?, patronymicName: String?,
                            ratingELO: String?, email: String?, password: String?, passwordValidation: String?,
                            organisationCity: String?, organisationName: String?, birthdate: Date) {
-        var user: User
-        var fullName = buildFullName(lastName: lastName, firstName: firstName, patronymicName: patronymicName)
-        var eloRating = Int(ratingELO ?? "")
-        print(birthdate)
-        user = User(player: Player(fullName: fullName, birthdate: birthdate, rating: eloRating), phone: phoneNumber)
+//        var user: User
+//        let fullName = buildFullName(lastName: lastName, firstName: firstName, patronymicName: patronymicName)
+//        let eloRating = Int(ratingELO ?? "")
+//        print(birthdate)
+//        user = User(player: Player(fullName: fullName, birthdate: birthdate, rating: eloRating), phone: phoneNumber)
         //TODO
     }
 
