@@ -4,13 +4,22 @@ import FirebaseDatabase
 class TournamentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TournamentsViewProtocol {
 
     var presenter: TournamentsPresenterProtocol!
-    var configurator: TournamentsConfiguratorProtocol! = TournamentsConfigurator()
+    var configurator = TournamentsConfigurator()
 
     var phone: String
     var ref: DatabaseReference
 
-    private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped)
-    
+    var refreshControl = UIRefreshControl()
+
+    private lazy var tableView: UITableView = {
+        let table = UITableView(frame: .zero, style: .insetGrouped)
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return table
+    }()
+
+
     var sections: [EventSectionModel] = []
 
 
@@ -27,12 +36,11 @@ class TournamentsViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func loadView() {
         view = UIView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
         tableView.pins()
-        
-        
     }
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +49,7 @@ class TournamentsViewController: UIViewController, UITableViewDelegate, UITableV
 
         tableView.dataSource = self
         tableView.delegate = self
+
 
         tableView.sectionHeaderHeight = 0
         title = "Поиск"
@@ -111,5 +120,11 @@ class TournamentsViewController: UIViewController, UITableViewDelegate, UITableV
 
     func updateFeed() {
         self.tableView.reloadData()
+    }
+
+    @objc
+    func refresh() {
+        presenter.refreshOnline()
+        refreshControl.endRefreshing()
     }
 }

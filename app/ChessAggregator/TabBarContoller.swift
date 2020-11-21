@@ -27,7 +27,6 @@ class TabBarController: UITabBarController {
         profileVC.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person"), tag: 2)
 
         viewControllers = [currentVC, tournamentsVC, profileVC]
-        //tabBar.isTranslucent = false
         tabBar.barTintColor = .white
     }
 

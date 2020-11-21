@@ -1,4 +1,4 @@
-
+import Foundation
 class TournamentsPresenter: TournamentsPresenterProtocol {
 
     weak var view: TournamentsViewProtocol!
@@ -19,5 +19,10 @@ class TournamentsPresenter: TournamentsPresenterProtocol {
     func updateView() {
         configureView()
         view.updateFeed()
+
+    }
+
+    func refreshOnline() {
+        interactor.refreshEvents()
     }
 }

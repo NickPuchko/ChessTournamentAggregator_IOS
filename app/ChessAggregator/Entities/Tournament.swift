@@ -1,7 +1,7 @@
 import Foundation
 
 struct Tournament: Identifiable{
-    var id: Int
+    var id: String
 
     var name: String
     var mode: Mode
@@ -17,7 +17,7 @@ struct Tournament: Identifiable{
     // TODO: class Date - DateFormatter!
     // TODO: class Location
 
-    init(id: Int = 0, name: String = "Some event", mode: Mode = .classic, date: String = "01.01.1970",
+    init(id: String = "0", name: String = "Some event", mode: Mode = .classic, date: String = "01.01.1970",
          location: String = "Moscow", ratingType: RatingType = .without, timeControl: String = "90+30",
          prizeFund: Int = 0, fee: Int = 0, url: URL = URL(string: "https://vk.com/oobermensch")!) {
         self.id = id

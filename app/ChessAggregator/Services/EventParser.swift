@@ -7,7 +7,7 @@ class EventParser {
         let eventDict = snapshot.valueInExportFormat() as! NSDictionary
         var events: [Tournament] = []
         for (key, value) in eventDict {
-            var event = Tournament(id: Int(key as! String)!)
+            var event = Tournament(id: key as! String)
             let thisEvent = value as! NSDictionary
 
             event.date = thisEvent["date"] as? String ?? "01.01.1970"

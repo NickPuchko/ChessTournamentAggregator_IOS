@@ -1,4 +1,5 @@
 import FirebaseDatabase
+import UIKit
 
 protocol TournamentsConfiguratorProtocol: class {
     func configure(with viewController: TournamentsViewController)
@@ -7,6 +8,7 @@ protocol TournamentsConfiguratorProtocol: class {
 protocol TournamentsViewProtocol: class {
     var ref: DatabaseReference { get }
     var phone: String { get }
+    var refreshControl: UIRefreshControl { get set }
     init(ref: DatabaseReference, phone: String)
     func loadEvents(_ events: [EventSectionModel])
     func updateFeed()
@@ -17,6 +19,7 @@ protocol TournamentsPresenterProtocol: class {
     var sections: [EventSectionModel] { get set }
     func configureView()
     func updateView()
+    func refreshOnline()
 }
 
 protocol TournamentsInteractorProtocol: class {
@@ -27,6 +30,7 @@ protocol TournamentsInteractorProtocol: class {
     //func count(mode: Mode) -> Int
     //func count() -> Int
     func loadSections() -> [EventSectionModel]
+    func refreshEvents()
 }
 
 protocol TournamentsRouterProtocol: class {

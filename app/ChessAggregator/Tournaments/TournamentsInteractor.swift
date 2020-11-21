@@ -38,4 +38,11 @@ extension TournamentsInteractor {
         }
         return sections
     }
+
+    func refreshEvents() {
+        ref.child("Tournaments").observeSingleEvent(of: .value, with: { [weak self] snapshot in
+            self?.events = EventParser.eventsFromSnapshot(snapshot: snapshot)
+            self?.presenter.updateView()
+        })
+    }
 }

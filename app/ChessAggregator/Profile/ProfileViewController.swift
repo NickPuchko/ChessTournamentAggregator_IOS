@@ -6,7 +6,10 @@ import SafariServices
 // Этот ужасный Massive View Controller - набросок UI, который будет взят за основу нормального модуля :)
 
 class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
-    
+
+    var presenter: ProfilePresenterProtocol!
+    var configurator = ProfileConfigurator()
+
     var ref: DatabaseReference
     var phone: String
     var testUser: User
@@ -26,7 +29,7 @@ class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
     
     private lazy var profileStack = ScrollableStackView(config: .defaultVertical)
 
-    init(ref: DatabaseReference, phone: String) {
+    required init(ref: DatabaseReference, phone: String) {
         self.ref = ref
         self.phone = phone
         self.imageView = UIImageView(image: userImage)
@@ -89,7 +92,8 @@ class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                        
+        configurator.configure(with: self)
+
         imageView.layer.cornerRadius = 32
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 0.1
@@ -181,47 +185,31 @@ class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
     
     @objc
     func tappedEdit() {
-        print("edit!")
+        presenter.editProfile()
     }
     
     @objc
     func tappedCreate() {
-        print("Create!")
+        presenter.createEvent()
     }
     
     @objc
     func tappedMyEvents() {
-        print("My events!")
+        presenter.showMyEvents()
     }
     
     @objc
     func tappedStatistics() {
-        print("Statistics!")
+        presenter.showStatistics()
     }
     
     @objc
     func tappedFIDE() {
-        guard let id = testUser.player.fideID else {
-            print("У вас не указан FIDE id. Если он существует, укажите его в профиле!")
-            // TODO: Сделать алерт, если у игрока нет fide id
-            return
-        }
-        let fideString = "https://ratings.fide.com/profile/" + String(id)
-        let fideURL = URL(string: fideString) ?? URL(string: "https://vk.com/oobermensch")!
-        let fideViewController = SFSafariViewController(url: fideURL)
-        present(fideViewController, animated: true)
+        presenter.showFIDE()
     }
     
     @objc
     func tappedFRC() {
-        guard let id = testUser.player.frcID else {
-            print("У вас не указан ФШР id. Если он существует, укажите его в профиле!")
-            return
-            // TODO: Сделать алерт, если у игрока нет фшр id
-        }
-        let frcString = "https://ratings.ruchess.ru/people/" + String(id)
-        let frcURL = URL(string: frcString) ?? URL(string: "https://vk.com/oobermensch")!
-        let frcViewController = SFSafariViewController(url: frcURL)
-        present(frcViewController, animated: true)
+        presenter.showFRC()
     }
 }
