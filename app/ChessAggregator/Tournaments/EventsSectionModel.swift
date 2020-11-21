@@ -10,7 +10,6 @@ class EventSectionModel {
         rows.append(EventLocationCellModel(event))
         rows.append(EventRatingCellModel(event))
         rows.append(EventModeCellModel(event))
-        // TODO: add apply button Cell
     }
 }
 
