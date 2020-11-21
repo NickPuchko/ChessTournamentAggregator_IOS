@@ -1,20 +1,16 @@
+//
+// Created by Иван Лизогуб on 15.11.2020.
+//
+
 import Foundation
 import UIKit
-import Firebase
 
-class RegistrationViewController: UIViewController, RegistrationViewProtocol {
-
-    var presenter: RegistrationPresenterProtocol!
-    let configurator: RegistrationConfiguratorProtocol
-
-    let phoneNumber: String
-    let ref: DatabaseReference!
-
+class UserRegistrationPlayerView: AutoLayoutView {
     private let scrollableStackView: ScrollableStackView = {
         var result: ScrollableStackView
         let config: ScrollableStackView.Config = ScrollableStackView.Config(
                 stack: ScrollableStackView.Config.Stack(axis: .vertical, distribution: .equalCentering,
-                        alignment: .fill, spacing: 20.0),
+                        alignment: .fill, spacing: 10.0),
                 scroll: .defaultVertical,
                 pinsStackConstraints: UIEdgeInsets(top: 20.0, left: 16.0, bottom: 0.0, right: -16.0)
         )
@@ -23,18 +19,29 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
     }()
 
     private let textFieldHeight: CGFloat = 40.0
+
+    private var lastNameStackView: UIStackView?
     private let lastName = UITextField()
-    private let lastNameWarning = UILabel()
+    let lastNameWarning = WarningLabel()
+
+    private var firstNameStackView: UIStackView?
     private let firstName = UITextField()
-    private let firstNameWarning = UILabel()
+    let firstNameWarning = WarningLabel()
+
     private let patronymicName = UITextField()
     private let ratingELO = UITextField()
+
+    private var emailAddressStackView: UIStackView?
     private let emailAddress = UITextField()
-    private let emailAddressWarning = UILabel()
+    let emailAddressWarning = WarningLabel()
+
+    private var passwordStackView: UIStackView?
     private let password = UITextField()
-    private let passwordWarning = UILabel()
+    let passwordWarning = WarningLabel()
+
+    private var validatePasswordStackView: UIStackView?
     private let validatePassword = UITextField()
-    private let validatePasswordWarning = UILabel()
+    let validatePasswordWarning = WarningLabel()
 
     private let birthdateStackView = UIStackView()
     private let birthdateLabel = UILabel()
@@ -46,51 +53,39 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
 
     private let organisationCity = UITextField()
     private let organisationName = UITextField()
-
+    
     private let registrationButton = UIButton(type: .system)
+    var onTapRegistrationButton: ((String?, String?, String?, String?, String?, String?, String?, String?, String?, Date) -> Void)?
 
-
-    required init(ref: DatabaseReference, withPhoneNumber phoneNumber: String) {
-        self.ref = ref
-        self.phoneNumber = phoneNumber
-        self.configurator = RegistrationConfigurator()
-        super.init(nibName: nil, bundle: nil)
+    init() {
+        super.init(frame: .zero)
+        self.setup()
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func loadView() {
-        self.view = UIView()
-        scrollableStackView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(scrollableStackView)
-        scrollableStackView.pins()
-        self.view.backgroundColor = .systemGray6
-        title = "Регистрация"
-        setup()
-        setupConstraints()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configurator.configure(with: self, andSend: phoneNumber)
-        presenter.configureView()
-    }
-
     private func setup() {
+        self.addSubview(scrollableStackView)
 
         setupRoundedTextField(textField: lastName, textFieldPlaceholder: "Фамилия")
-        self.scrollableStackView.addArrangedSubview(lastName)
+        lastNameWarning.text = "Пустое поле. Введите свою фамилию"
+        self.lastNameStackView = buildStackView(withTextField: lastName, andLabel: lastNameWarning)
+        self.scrollableStackView.addArrangedSubview(lastNameStackView!)
 
         setupRoundedTextField(textField: firstName, textFieldPlaceholder: "Имя")
-        self.scrollableStackView.addArrangedSubview(firstName)
+        firstNameWarning.text = "Пустое поле. Введите свое имя"
+        self.firstNameStackView = buildStackView(withTextField: firstName, andLabel: firstNameWarning)
+        self.scrollableStackView.addArrangedSubview(firstNameStackView!)
 
         setupRoundedTextField(textField: patronymicName, textFieldPlaceholder: "Отчество")
         self.scrollableStackView.addArrangedSubview(patronymicName)
 
         setupRoundedTextField(textField: emailAddress, textFieldPlaceholder: "Введите Ваш email")
-        self.scrollableStackView.addArrangedSubview(emailAddress)
+        emailAddressWarning.text = "Адрес почты недействителен. Введите его в формате email@example.com"
+        self.emailAddressStackView = buildStackView(withTextField: emailAddress, andLabel: emailAddressWarning)
+        self.scrollableStackView.addArrangedSubview(emailAddressStackView!)
 
         setupRoundedTextField(
                 textField: ratingELO,
@@ -100,11 +95,18 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
         self.scrollableStackView.addArrangedSubview(ratingELO)
 
         setupRoundedTextField(textField: password, textFieldPlaceholder: "Пароль")
-        password.isSecureTextEntry = true
-        self.scrollableStackView.addArrangedSubview(password)
+        self.password.isSecureTextEntry = true
+        self.passwordWarning.text = "Пароль недействителен. Он должен содержать 1 Большую букву, 1 маленькую и 1 цифру"
+        self.passwordStackView = buildStackView(withTextField: password, andLabel: passwordWarning)
+        self.scrollableStackView.addArrangedSubview(passwordStackView!)
         setupRoundedTextField(textField: validatePassword, textFieldPlaceholder: "Подтверждение пароля")
-        validatePassword.isSecureTextEntry = true
-        self.scrollableStackView.addArrangedSubview(validatePassword)
+        self.validatePassword.isSecureTextEntry = true
+        self.validatePasswordWarning.text = "Пароли не совпадают."
+        self.validatePasswordStackView = buildStackView(
+                withTextField: validatePassword,
+                andLabel: validatePasswordWarning
+        )
+        self.scrollableStackView.addArrangedSubview(validatePasswordStackView!)
 
         birthdateStackView.axis = .horizontal
         birthdateStackView.distribution = .equalSpacing
@@ -124,7 +126,7 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
         registrationButton.setTitleColor(.white, for: .normal)
         registrationButton.layer.cornerRadius = 10.0
         registrationButton.clipsToBounds = false
-        registrationButton.addTarget(self, action: #selector(onTapRegistrationButton), for: .touchUpInside)
+        registrationButton.addTarget(self, action: #selector(onTapRegistration), for: .touchUpInside)
 
         self.scrollableStackView.addSubview(registrationButton)
 
@@ -144,16 +146,19 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
         self.organisationCity.isHidden = true
         self.organisationName.isHidden = true
 
-        self.switchToOrganizer.addTarget(self, action: #selector(didTapSwitchToOrganizer), for: .touchUpInside)
+        self.switchToOrganizer.addTarget(self, action: #selector(onTapSwitchToOrganizer), for: .touchUpInside)
 
         self.scrollableStackView.addArrangedSubview(self.organisationCity)
         self.scrollableStackView.addArrangedSubview(self.organisationName)
 
     }
 
-    private func setupConstraints() {
+    override func setupConstraints() {
+        super.setupConstraints()
 
-        let margins = view.layoutMarginsGuide
+        self.scrollableStackView.pins()
+
+        let margins = self.layoutMarginsGuide
         NSLayoutConstraint.activate([
             lastName.heightAnchor.constraint(equalToConstant: textFieldHeight),
             firstName.heightAnchor.constraint(equalToConstant: textFieldHeight),
@@ -169,79 +174,46 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
             ),
             registrationButton.heightAnchor.constraint(equalToConstant: 50.0),
             registrationButton.widthAnchor.constraint(equalToConstant: 200.0),
-            registrationButton.centerXAnchor.constraint(equalTo: scrollableStackView.contentView.centerXAnchor)
+            registrationButton.centerXAnchor.constraint(equalTo: scrollableStackView.contentView.centerXAnchor),
+            registrationButton.bottomAnchor.constraint(lessThanOrEqualTo: switchToOrganizerStackView.topAnchor)
         ])
     }
 
-    @objc private func onTapRegistrationButton() -> Void {
-        presenter.addToDatabase(
-                lastName: lastName.text,
-                firstName: firstName.text,
-                patronymicName: patronymicName.text,
-                ratingELO: ratingELO.text,
-                email: emailAddress.text,
-                password: password.text,
-                passwordValidation: validatePassword.text,
-                organisationCity: organisationCity.text,
-                organisationName: organisationName.text,
-                birthdate: birthdateDatePicker.date)
+
+    @objc private func onTapSwitchToOrganizer() {
+        UIView.animate(withDuration: 0.5, delay:0.0, options: [],
+                animations: {
+                    self.organisationName.isHidden = !self.switchToOrganizer.isOn
+                    self.organisationCity.isHidden = !self.switchToOrganizer.isOn
+                    self.layoutIfNeeded()
+                },
+                completion: nil
+        )
     }
 
-    @objc private func didTapSwitchToOrganizer() {
-        if self.switchToOrganizer.isOn {
-            UIView.animate(withDuration: 0.5, delay:0.0, options: [],
-                    animations: {
-                        self.organisationName.isHidden = false
-                        self.organisationCity.isHidden = false
-                        self.view.layoutIfNeeded()
-                    },
-                    completion: nil
-            )
-        } else {
-            UIView.animate(withDuration: 0.5, delay: 0.0, options: [],
-                    animations: {
-                        self.organisationName.isHidden = true
-                        self.organisationCity.isHidden = true
-                        self.view.layoutIfNeeded()
-                    },
-                    completion: nil
-            )
-            self.organisationName.isHidden = true
-            self.organisationCity.isHidden = true
-        }
+    @objc private func onTapRegistration() {
+        self.onTapRegistrationButton?(self.lastName.text, self.firstName.text, self.patronymicName.text,
+                self.ratingELO.text, self.emailAddress.text, self.password.text, self.validatePassword.text,
+                self.organisationCity.text, self.organisationName.text, self.birthdateDatePicker.date)
     }
-
-
-    func showEmailWarning() {
-
-    }
-
-    func showPasswordWarning() {
-    }
-
-    func showLastNameWarning() {
-    }
-
-    func showFirstNameWarning() {
-    }
-
-    func showBirthdateWarning() {
-    }
-
-    func showOrganisationNameWarning() {
-    }
-
 }
 
-extension RegistrationViewController {
-    private func setupRoundedTextField(textField: UITextField, textFieldPlaceholder: String,
+private extension UserRegistrationPlayerView {
+
+    func buildStackView(withTextField textField: UITextField, andLabel label: UILabel) -> UIStackView {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.addArrangedSubview(textField)
+        stackView.addArrangedSubview(label)
+        return stackView
+    }
+
+    func setupRoundedTextField(textField: UITextField, textFieldPlaceholder: String,
                                        textFieldKeyboard: UIKeyboardType = .default) {
         textField.placeholder = textFieldPlaceholder
         textField.borderStyle = .roundedRect
         textField.keyboardType = textFieldKeyboard
     }
 }
-
-//extension RegistrationViewController: UITextFieldDelegate {
-//
-//}

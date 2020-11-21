@@ -5,14 +5,20 @@
 import Foundation
 import UIKit
 
+let firstpart = "[A-Z0-9a-z]([A-Z0-9a-z._%+-]{0,30}[A-Z0-9a-z])?"
+let serverpart = "([A-Z0-9a-z]([A-Z0-9a-z-]{0,30}[A-Z0-9a-z])?\\.){1,5}"
+let emailRegex = firstpart + "@" + serverpart + "[A-Za-z]{2,8}"
+let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+
 extension String {
     func isEmail() -> Bool {
-        return __emailPredicate.evaluate(with: self)
+        emailPredicate.evaluate(with: self)
     }
 }
 
 extension UITextField {
     func isEmail() -> Bool {
-        return self.text!.isEmail()
+        guard let email = self.text else { return false }
+        return email.isEmail()
     }
 }
