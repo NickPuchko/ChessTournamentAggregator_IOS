@@ -10,6 +10,7 @@ protocol AuthModuleInput: class {
 
 protocol AuthModuleOutput: class {
     func didLogin()
+    func setPhoneNumber(phoneNumber: String)
 }
 
 protocol AuthViewInput: class {
