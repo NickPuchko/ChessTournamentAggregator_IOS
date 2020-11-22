@@ -9,8 +9,8 @@ class UserRegistrationPresenter {
     weak var view: UserRegistrationViewInput?
     weak var moduleOutput: UserRegistrationModuleOutput?
 
-    private let interactor: UserRegistrationInteractorInput
-    private let router: UserRegistrationRouterInput
+    private let interactor: UserRegistrationInteractorInput?
+    private let router: UserRegistrationRouterInput?
 
     init(router: UserRegistrationRouterInput, interactor: UserRegistrationInteractorInput) {
         self.interactor = interactor
@@ -31,7 +31,7 @@ extension UserRegistrationPresenter: UserRegistrationViewOutput {
                 ratingELO: ratingELO, email: email, password: password, passwordValidation: passwordValidation,
                 organisationCity: organisationCity, organisationName: organisationName, birthdate: birthdate)
         if isUserValid(with: user) {
-            interactor.addToDataBase(user: user)
+            interactor?.addToDataBase(user: user)
             //TODO: ask how to push appCoordinator here
 //            moduleOutput?.didLogin()
         } else {

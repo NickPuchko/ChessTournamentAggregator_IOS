@@ -10,7 +10,6 @@ class AppCoordinator {
     private let window: UIWindow
     private lazy var tabBarController = UITabBarController()
     private lazy var navigationControllers = AppCoordinator.makeNavigationControllers()
-    private var phoneNumber: String?
 
     init(window: UIWindow) {
         self.window = window
@@ -29,13 +28,6 @@ class AppCoordinator {
         self.setupSearch()
         self.setupProfile()
         self.setupTournament()
-
-        let navigationControllers = NavControllerType.allCases.compactMap {
-            self.navigationControllers[$0]
-        }
-        self.tabBarController.setViewControllers(navigationControllers, animated: true)
-        self.window.rootViewController = tabBarController
-        self.window.makeKeyAndVisible()
     }
 
 }
@@ -43,10 +35,6 @@ class AppCoordinator {
 extension AppCoordinator: AuthModuleOutput {
     func didLogin() {
         start()
-    }
-
-    func setPhoneNumber(phoneNumber: String) {
-        self.phoneNumber = phoneNumber
     }
 }
 
@@ -65,10 +53,10 @@ private extension AppCoordinator {
         guard let navController = self.navigationControllers[.search] else {
             fatalError("wtf no Search")
         }
-        let context = SearchTournamentsContext(moduleOutput: nil, phoneNumber: self.phoneNumber!)
-        let container = SearchTournamentsContainer.assemble(with: context)
-        navController.setViewControllers([container.viewController], animated: false)
-        container.viewController.navigationItem.title = NavControllerType.search.title
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .green
+        navController.setViewControllers([viewController], animated: false)
+        viewController.navigationItem.title = NavControllerType.search.title
     }
     
     func setupProfile() {
@@ -82,28 +70,7 @@ private extension AppCoordinator {
     }
 
     func setupAppearance() {
-        UINavigationBar.appearance().barTintColor = .white
-        UINavigationBar.appearance().tintColor = .black
 
-        if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.backgroundColor = .white
-
-            UINavigationBar.appearance().tintColor = .black
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().compactAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        } else {
-            UINavigationBar.appearance().tintColor = .black
-            UINavigationBar.appearance().barTintColor = .purple
-            UINavigationBar.appearance().isTranslucent = false
-        }
-        UINavigationBar.appearance().shadowImage = UIImage()
-
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-
-        UITabBar.appearance().barTintColor = .white
-        UITabBar.appearance().tintColor = Styles.Color.appGreen
     }
 
     static func makeNavigationControllers() -> [NavControllerType: UINavigationController] {
@@ -120,8 +87,6 @@ private extension AppCoordinator {
         return result
     }
 }
-
-
 
 
 fileprivate enum NavControllerType: Int, CaseIterable {
@@ -141,7 +106,7 @@ fileprivate enum NavControllerType: Int, CaseIterable {
     var image: UIImage? {
         switch self {
         case .currentTournaments:
-            return UIImage(systemName: "house")
+            return UIImage(named: "prize")
         case .search:
             return UIImage(systemName: "magnifyingglass")
         case .profile:
