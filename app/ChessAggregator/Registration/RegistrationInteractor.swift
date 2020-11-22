@@ -1,7 +1,3 @@
-//
-// Created by Иван Лизогуб on 05.11.2020.
-//
-
 import Foundation
 
 class RegistrationInteractor: RegistrationInteractorProtocol {
@@ -17,12 +13,10 @@ class RegistrationInteractor: RegistrationInteractorProtocol {
     func addUserToDataBase(lastName: String?, firstName: String?, patronymicName: String?,
                            ratingELO: String?, email: String?, password: String?, passwordValidation: String?,
                            organisationCity: String?, organisationName: String?, birthdate: Date) {
-//        var user: User
-//        let fullName = buildFullName(lastName: lastName, firstName: firstName, patronymicName: patronymicName)
-//        let eloRating = Int(ratingELO ?? "")
-//        print(birthdate)
-//        user = User(player: Player(fullName: fullName, birthdate: birthdate, rating: eloRating), phone: phoneNumber)
-        //TODO
+        //let fullName = buildFullName(lastName: lastName, firstName: firstName, patronymicName: patronymicName)
+        //let eloRating = Int(ratingELO ?? "")
+        //let user = User(player: Player(fullName: fullName, birthdate: birthdate, rating: eloRating), phone: phoneNumber)
+        //TODO: user constructor
     }
 
 

@@ -207,10 +207,6 @@ This application makes use of the following third party libraries:
    limitations under the License.
 
 
-## FirebaseAnalytics
-
-Copyright 2020 Google
-
 ## FirebaseAuth
 
 
@@ -1035,8 +1031,7 @@ Copyright 2020 Google
    limitations under the License.
 
 
-## FirebaseInstallations
-
+## FlagPhoneNumber
 
                                  Apache License
                            Version 2.0, January 2004
@@ -1218,7 +1213,7 @@ Copyright 2020 Google
    APPENDIX: How to apply the Apache License to your work.
 
       To apply the Apache License to your work, attach the following
-      boilerplate notice, with the fields enclosed by brackets "[]"
+      boilerplate notice, with the fields enclosed by brackets "{}"
       replaced with your own identifying information. (Don't include
       the brackets!)  The text should be enclosed in the appropriate
       comment syntax for the file format. We also recommend that a
@@ -1226,7 +1221,7 @@ Copyright 2020 Google
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright {yyyy} {name of copyright owner}
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1446,10 +1441,6 @@ Copyright 2020 Google
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
-## GoogleAppMeasurement
-
-Copyright 2020 Google
 
 ## GoogleDataTransport
 

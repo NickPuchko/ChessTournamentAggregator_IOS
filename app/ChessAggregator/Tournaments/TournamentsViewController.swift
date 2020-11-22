@@ -1,25 +1,31 @@
-//
-// Created by Administrator on 05.11.2020.
-//
-
-import Foundation
 import UIKit
-import Firebase
+import FirebaseDatabase
 
 class TournamentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TournamentsViewProtocol {
 
     var presenter: TournamentsPresenterProtocol!
-    var configurator: TournamentsConfiguratorProtocol!
+    var configurator = TournamentsConfigurator()
 
     var phone: String
     var ref: DatabaseReference
 
-    private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped)
+    var refreshControl = UIRefreshControl()
+
+    private lazy var tableView: UITableView = {
+        let table = UITableView(frame: .zero, style: .insetGrouped)
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return table
+    }()
+
+
+    var sections: [EventSectionModel] = []
+
 
     required init(ref: DatabaseReference, phone: String) {
         self.ref = ref
         self.phone = phone
-        self.configurator = TournamentsConfigurator()
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -28,14 +34,13 @@ class TournamentsViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
 
-    var sections: [EventSectionModel] = []
-
     override func loadView() {
         view = UIView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
         tableView.pins()
     }
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +49,7 @@ class TournamentsViewController: UIViewController, UITableViewDelegate, UITableV
 
         tableView.dataSource = self
         tableView.delegate = self
+
 
         tableView.sectionHeaderHeight = 0
         title = "Поиск"
@@ -76,7 +82,7 @@ class TournamentsViewController: UIViewController, UITableViewDelegate, UITableV
             config.image = UIImage(systemName: "location")
         case 2:
             let ratingTypeCell = model as! EventRatingCellModel
-            config.text = ratingTypeCell.ratingType
+            config.text = ratingTypeCell.ratingType.rawValue
             config.image = UIImage(systemName: "crown")
         case 3:
             let modeCell = model as! EventModeCellModel
@@ -110,5 +116,15 @@ class TournamentsViewController: UIViewController, UITableViewDelegate, UITableV
 
     func loadEvents(_ sections: [EventSectionModel]) {
         self.sections = sections
+    }
+
+    func updateFeed() {
+        self.tableView.reloadData()
+    }
+
+    @objc
+    func refresh() {
+        presenter.refreshOnline()
+        refreshControl.endRefreshing()
     }
 }

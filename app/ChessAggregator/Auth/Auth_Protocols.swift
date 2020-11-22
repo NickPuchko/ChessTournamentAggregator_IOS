@@ -1,6 +1,3 @@
-//
-// Created by Administrator on 05.11.2020.
-//
 
 protocol Auth_ConfiguratorProtocol: class {
     func configure(with viewController: Auth_ViewController)

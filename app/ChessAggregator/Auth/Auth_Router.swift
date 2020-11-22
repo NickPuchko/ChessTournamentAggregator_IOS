@@ -1,7 +1,3 @@
-//
-// Created by Administrator on 05.11.2020.
-//
-
 import Foundation
 import UIKit
 
@@ -13,8 +9,7 @@ class Auth_Router: Auth_RouterProtocol {
     }
 
     func showTournaments(withId phone: String) {
-        //TODO: dismiss self
-        //let vc = TournamentsViewController(ref: viewController.ref, phone: phone)
+        //TODO: dismiss self - via AppDeleagate
         let vc = TabBarController(ref: viewController.ref, phone: phone)
 
         viewController.navigationController?.pushViewController(vc, animated: true)
@@ -25,9 +20,11 @@ class Auth_Router: Auth_RouterProtocol {
                 NumberRegistrationViewController(ref: viewController.ref),
                 animated: true
         )
+
 //        let alert = UIAlertController(title: "Nope", message: "Регистрация в разработке...", preferredStyle: .alert)
 //        alert.addAction(UIAlertAction(title: "Закрыть", style: .destructive))
 //        viewController.present(alert, animated: true)
+        //TODO: Придумать, что воткнуть в эту кнопку)
 
     }
 

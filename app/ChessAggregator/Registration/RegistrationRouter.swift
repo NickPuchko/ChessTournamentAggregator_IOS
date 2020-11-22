@@ -1,7 +1,3 @@
-//
-// Created by Иван Лизогуб on 05.11.2020.
-//
-
 import Foundation
 
 class RegistrationRouter: RegistrationRouterProtocol {
@@ -15,7 +11,8 @@ class RegistrationRouter: RegistrationRouterProtocol {
 
     func goToTournamentsWindow(withPhoneNumber phoneNumber: String) {
         viewController.navigationController?.pushViewController(
-                TournamentsViewController(ref: viewController.ref, phone: phoneNumber),
+                TabBarController(ref: viewController.ref, phone: phoneNumber),
+                //TournamentsViewController(ref: viewController.ref, phone: phoneNumber),
                 animated: true
         )
     }

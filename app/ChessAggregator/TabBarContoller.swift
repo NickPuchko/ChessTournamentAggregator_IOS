@@ -1,10 +1,5 @@
-//
-// Created by Administrator on 09.11.2020.
-//
-
-import Foundation
-import  UIKit
-import Firebase
+import UIKit
+import FirebaseDatabase
 
 class TabBarController: UITabBarController {
     let ref: DatabaseReference
@@ -25,7 +20,6 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         let profileVC = ProfileViewController(ref: ref, phone: phone)
         let tournamentsVC = TournamentsViewController(ref: ref, phone: phone)
-
         let currentVC = CurrentViewController(ref: ref, phone: phone)
 
         currentVC.tabBarItem = UITabBarItem(title: "Турнир", image: UIImage(systemName: "house"), tag: 0)
@@ -33,6 +27,7 @@ class TabBarController: UITabBarController {
         profileVC.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person"), tag: 2)
 
         viewControllers = [currentVC, tournamentsVC, profileVC]
+        tabBar.barTintColor = .white
     }
 
     var freshLaunch = true

@@ -1,7 +1,3 @@
-//
-// Created by Administrator on 05.11.2020.
-//
-
 import UIKit
 
 class AuthView: AutoLayoutView {
@@ -45,10 +41,14 @@ class AuthView: AutoLayoutView {
         stackView.addArrangedSubview(phoneTextField)
         stackView.addArrangedSubview(passwordTextField)
 
-
         loginButton.setTitle("Войти", for: .normal)
-        loginButton.backgroundColor = .black
-        loginButton.setTitleColor(.white, for: .normal)
+        loginButton.backgroundColor = .white
+        loginButton.setTitleColor(.black, for: .normal)
+        loginButton.layer.borderWidth = 2
+
+
+//        loginButton.backgroundColor = .black
+//        loginButton.setTitleColor(.white, for: .normal)
         loginButton.layer.cornerRadius = 10
         loginButton.clipsToBounds = false
         loginButton.addTarget(self, action: #selector(onTapLogin), for: .touchUpInside)

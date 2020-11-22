@@ -1,10 +1,5 @@
-//
-// Created by Administrator on 05.11.2020.
-//
-
-import Foundation
+import FirebaseDatabase
 import UIKit
-import Firebase
 
 protocol TournamentsConfiguratorProtocol: class {
     func configure(with viewController: TournamentsViewController)
@@ -13,17 +8,18 @@ protocol TournamentsConfiguratorProtocol: class {
 protocol TournamentsViewProtocol: class {
     var ref: DatabaseReference { get }
     var phone: String { get }
+    var refreshControl: UIRefreshControl { get set }
     init(ref: DatabaseReference, phone: String)
     func loadEvents(_ events: [EventSectionModel])
+    func updateFeed()
 }
 
 protocol TournamentsPresenterProtocol: class {
     var router: TournamentsRouterProtocol! { get set }
-    var interactor: TournamentsInteractorProtocol! { get set }
     var sections: [EventSectionModel] { get set }
-    func createEvents() -> [Tournament]
     func configureView()
-    //func loadEvents(_ events: Tournament) -> [Tournament]
+    func updateView()
+    func refreshOnline()
 }
 
 protocol TournamentsInteractorProtocol: class {
@@ -31,9 +27,10 @@ protocol TournamentsInteractorProtocol: class {
     var phone: String { get }
     var events: [Tournament] { get set }
     init(presenter: TournamentsPresenterProtocol, ref: DatabaseReference, phone: String)
-    func count(mode: Mode) -> Int
-    func count() -> Int
-    func loadEventsFromFirebase() -> [Tournament]
+    //func count(mode: Mode) -> Int
+    //func count() -> Int
+    func loadSections() -> [EventSectionModel]
+    func refreshEvents()
 }
 
 protocol TournamentsRouterProtocol: class {

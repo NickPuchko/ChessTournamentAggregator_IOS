@@ -1,8 +1,3 @@
-//
-// Created by Administrator on 07.11.2020.
-//
-
-import UIKit
 
 class EventSectionModel {
     var rows: [CellIdentifiable]
@@ -15,7 +10,6 @@ class EventSectionModel {
         rows.append(EventLocationCellModel(event))
         rows.append(EventRatingCellModel(event))
         rows.append(EventModeCellModel(event))
-        // TODO: add apply button Cell
     }
 }
 

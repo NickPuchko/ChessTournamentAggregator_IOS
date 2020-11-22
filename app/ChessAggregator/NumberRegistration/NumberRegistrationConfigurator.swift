@@ -1,7 +1,3 @@
-//
-// Created by Иван Лизогуб on 09.11.2020.
-//
-
 import Foundation
 
 class NumberRegistrationConfigurator: NumberRegistrationConfiguratorProtocol {

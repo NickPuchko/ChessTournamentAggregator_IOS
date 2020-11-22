@@ -1,7 +1,3 @@
-//
-// Created by Иван Лизогуб on 09.11.2020.
-//
-
 import UIKit
 import FlagPhoneNumber
 import Firebase
@@ -72,7 +68,7 @@ class NumberRegistrationViewController: UIViewController, NumberRegistrationView
         self.numberFPNTextField.keyboardType = .numberPad
         self.numberFPNTextField.borderStyle = .roundedRect
         self.numberFPNTextField.displayMode = .list
-        self.numberFPNTextField.text = defaultNumber
+        self.numberFPNTextField.placeholder = defaultNumber
         self.numberFPNTextField.delegate = self
 
         self.listController.setup(repository: numberFPNTextField.countryRepository)

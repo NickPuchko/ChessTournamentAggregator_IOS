@@ -1,7 +1,3 @@
-//
-// Created by Иван Лизогуб on 05.11.2020.
-//
-
 import Foundation
 import UIKit
 import Firebase
@@ -83,6 +79,7 @@ class RegistrationViewController: UIViewController, RegistrationViewProtocol {
     }
 
     private func setup() {
+
         setupRoundedTextField(textField: lastName, textFieldPlaceholder: "Фамилия")
         self.scrollableStackView.addArrangedSubview(lastName)
 

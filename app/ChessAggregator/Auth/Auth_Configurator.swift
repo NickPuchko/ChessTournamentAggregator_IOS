@@ -1,8 +1,3 @@
-//
-// Created by Administrator on 05.11.2020.
-//
-
-import Foundation
 
 class Auth_Configurator: Auth_ConfiguratorProtocol {
     func configure(with viewController: Auth_ViewController) {
