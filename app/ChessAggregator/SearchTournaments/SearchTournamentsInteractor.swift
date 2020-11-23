@@ -17,16 +17,29 @@ final class SearchTournamentsInteractor {
 	init(phoneNumber: String) {
 		self.phoneNumber = phoneNumber
 		events = []
+
+		FirebaseRef.ref.child("Tournaments").observeSingleEvent(of: .value, with: { [weak self] snapshot in
+			self?.events = EventParser.eventsFromSnapshot(snapshot: snapshot)
+			self?.output?.updateView()
+		})
 	}
 }
 
 extension SearchTournamentsInteractor: SearchTournamentsInteractorInput {
-	func loadEventsFromFirebase() -> [Tournament] {
-		let events: [Tournament] = []
 
+	func refreshEvents() {
+		FirebaseRef.ref.child("Tournaments").observeSingleEvent(of: .value, with: { [weak self] snapshot in
+			self?.events = EventParser.eventsFromSnapshot(snapshot: snapshot)
+			self?.output?.updateView()
+		})
+	}
 
-		// TODO: Написить метод загрузки всех турниров из json (Realtime Database)
-		return events
+	func loadSections() -> [EventSectionModel] {
+		var sections: [EventSectionModel] = []
+		for event in self.events {
+			sections.append(EventSectionModel(event: event))
+		}
+		return sections
 	}
 
 	func count(mode: Mode) -> Int {

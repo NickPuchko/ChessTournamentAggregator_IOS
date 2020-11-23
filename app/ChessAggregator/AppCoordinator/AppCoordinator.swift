@@ -11,6 +11,7 @@ class AppCoordinator {
     private lazy var tabBarController = UITabBarController()
     private lazy var navigationControllers = AppCoordinator.makeNavigationControllers()
     private var phoneNumber: String?
+    private var user: User?
 
     init(window: UIWindow) {
         self.window = window
@@ -75,10 +76,10 @@ private extension AppCoordinator {
         guard let navController = self.navigationControllers[.profile] else {
             fatalError("wtf no Profile")
         }
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .brown
-        navController.setViewControllers([viewController], animated: false)
-        viewController.navigationItem.title = NavControllerType.profile.title
+        let context = UserProfileContext(moduleOutput: nil, phoneNumber: self.phoneNumber!)
+        let container = UserProfileContainer.assemble(with: context)
+        navController.setViewControllers([container.viewController], animated: false)
+        container.viewController.navigationItem.title = NavControllerType.profile.title
     }
 
     func setupAppearance() {

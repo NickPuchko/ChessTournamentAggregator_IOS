@@ -11,7 +11,15 @@ import UIKit
 final class SearchTournamentsViewController: UIViewController {
 	private let output: SearchTournamentsViewOutput
 
-    private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped)
+    var refreshControl = UIRefreshControl()
+
+    private lazy var tableView: UITableView = {
+        let table = UITableView(frame: .zero, style: .insetGrouped)
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return table
+    }()
 
     init(output: SearchTournamentsViewOutput) {
         self.output = output
@@ -48,12 +56,22 @@ final class SearchTournamentsViewController: UIViewController {
         sections.count
     }
 
+    @objc
+    func refresh() {
+        output.refreshOnline()
+        refreshControl.endRefreshing()
+    }
+
 }
 
 extension SearchTournamentsViewController: SearchTournamentsViewInput {
     func loadEvents(_ sections: [EventSectionModel]) {
         self.sections = sections
     }
+    func updateFeed() {
+        self.tableView.reloadData()
+    }
+
 }
 
 extension SearchTournamentsViewController: UITableViewDelegate {
@@ -100,7 +118,7 @@ extension SearchTournamentsViewController: UITableViewDataSource {
             config.image = UIImage(systemName: "location")
         case 2:
             let ratingTypeCell = model as! EventRatingCellModel
-            config.text = ratingTypeCell.ratingType
+            config.text = ratingTypeCell.ratingType.rawValue
             config.image = UIImage(systemName: "crown")
         case 3:
             let modeCell = model as! EventModeCellModel
