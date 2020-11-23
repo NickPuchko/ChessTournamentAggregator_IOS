@@ -15,8 +15,7 @@ extension PhoneNumberRegistrationRouter: PhoneNumberRegistrationRouterInput {
     func showSignUp(phoneNumber: String) {
         let context = UserRegistrationContext(moduleOutput: self, phoneNumber: phoneNumber)
         let container = UserRegistrationContainer.assemble(with: context)
-        let navVC = navigationControllerProvider?()
-        navVC?.pushViewController(container.viewController, animated: true)
+        self.navigationController?.pushViewController(container.viewController, animated: true)
     }
 }
 

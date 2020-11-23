@@ -11,7 +11,7 @@ class AuthContainer {
     private(set) weak var router: AuthRouterInput!
 
     static func assemble(with context: AuthContext) -> AuthContainer {
-        let router = AuthRouter(moduleOutput: context.moduleOutput)
+        let router = AuthRouter()
         let interactor = AuthInteractor()
         let presenter = AuthPresenter(router: router, interactor: interactor)
         let viewController = AuthViewController(output: presenter)
