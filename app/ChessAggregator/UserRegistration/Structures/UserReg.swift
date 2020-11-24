@@ -8,10 +8,12 @@ struct UserReg {
         let lastName: String?
         let firstName: String?
         let patronymicName: String?
-        let ratingELO: String?
+        let FideID: String?
+        let CFRID: String?
         let email: String?
         let password: String?
         let passwordValidation: String?
+        let isOrganizer: Bool
         let organisationCity: String?
         let organisationName: String?
         let birthdate: Date

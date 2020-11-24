@@ -22,6 +22,7 @@ protocol PhoneNumberRegistrationViewInput: class {
 
 protocol PhoneNumberRegistrationViewOutput: class {
 	func onTapNext(withPhoneNumber: String?)
+	func onTapFlag()
 }
 
 protocol PhoneNumberRegistrationInteractorInput: class {
@@ -33,4 +34,5 @@ protocol PhoneNumberRegistrationInteractorOutput: class {
 
 protocol PhoneNumberRegistrationRouterInput: class {
 	func showSignUp(phoneNumber: String)
+	func showCountryList()
 }
