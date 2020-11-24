@@ -30,6 +30,7 @@ class AuthNewView: AutoLayoutView {
         backgroundColor = .systemGray6
 
         stackView.axis = .vertical
+        stackView.distribution = .fill
 
 
         phoneTextField.placeholder = "Введите номер телефона"
@@ -60,38 +61,58 @@ class AuthNewView: AutoLayoutView {
         stackView.layer.shadowRadius = 5
         stackView.layer.shadowOpacity = 0.3
 
+        addSubview(stackView)
+        addSubview(loginButton)
+        addSubview(signupButton)
     }
 
 
     override func setupConstraints() {
         super.setupConstraints()
 
+        let margins = self.layoutMarginsGuide
         NSLayoutConstraint.activate([
             phoneTextField.heightAnchor.constraint(equalToConstant: 50),
             passwordTextField.heightAnchor.constraint(equalToConstant: 50),
-            loginButton.heightAnchor.constraint(equalToConstant: 40),
-            signupButton.heightAnchor.constraint(equalToConstant: 40)
             //loginButton.centerXAnchor.constraint(equalTo: superview!.centerXAnchor),
             //loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10)
+
+            stackView.topAnchor.constraint(equalTo: margins.topAnchor, constant: self.bounds.height/3.5),
+            stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor,constant: 16.0),
+            stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor,constant: -16.0),
+//
+            loginButton.heightAnchor.constraint(equalToConstant: 40.0),
+            loginButton.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
+            loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10.0),
+            loginButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
+
+            signupButton.heightAnchor.constraint(equalToConstant: 40),
+            signupButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 10.0),
+            signupButton.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
+            signupButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor)
+
         ])
 
-        addSubview(stackView)
-        addSubview(loginButton)
-        addSubview(signupButton)
-        stackView.distribution = .equalCentering
+//        addSubview(stackView)
+//        addSubview(loginButton)
+//        addSubview(signupButton)
+//        stackView.distribution = .equalCentering
+//
+//        signupButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 50).isActive = true
+//
+//        loginButton.leading(90)
+//        loginButton.trailing(-90)
+//        loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10).isActive = true
+//
+//        signupButton.leading(90)
+//        signupButton.trailing(-90)
+//
+//        stackView.top(350)
+//        stackView.leading(16)
+//        stackView.trailing(-16)
 
-        signupButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 50).isActive = true
 
-        loginButton.leading(90)
-        loginButton.trailing(-90)
-        loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10).isActive = true
 
-        signupButton.leading(90)
-        signupButton.trailing(-90)
-
-        stackView.top(350)
-        stackView.leading(16)
-        stackView.trailing(-16)
 
 //        stackView.pins(UIEdgeInsets(top: 300.0, left: 16.0, bottom: -350.0, right: -16.0))
     }

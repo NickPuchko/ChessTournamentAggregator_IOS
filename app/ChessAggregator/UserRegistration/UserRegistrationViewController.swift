@@ -28,61 +28,78 @@ class UserRegistrationViewController: UIViewController {
     private func setup() {
         registrationView.onTapRegistrationButton = { [weak self]
             lastName, firstName, patronymicName,
-            ratingELO, emailAddress, password,
-            validatePassword, organisationCity, organisationName, birthdate in
+            FideID, CFRID, emailAddress, password, validatePassword,
+            isOrganizer, organisationCity, organisationName,
+            birthdate in
 
-            self?.output.onTapRegistration(lastName: lastName, firstName: firstName, patronymicName: patronymicName,
-                    ratingELO: ratingELO, email: emailAddress, password: password, passwordValidation: validatePassword,
-                    organisationCity: organisationCity, organisationName: organisationName, birthdate: birthdate)
+            self?.output.onTapRegistration(
+                    lastName: lastName, firstName: firstName, patronymicName: patronymicName, FideID: FideID,
+                    CFRID: CFRID, email: emailAddress, password: password, passwordValidation: validatePassword,
+                    isOrganizer: isOrganizer, organizationCity: organisationCity, organizationName: organisationName,
+                    birthdate: birthdate
+            )
 
         }
-
-
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(UserRegistrationViewController.keyboardWillShow),
+                name: UIResponder.keyboardWillShowNotification,
+                object: nil
+        )
+        NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(UserRegistrationViewController.keyboardWillHide),
+                name: UIResponder.keyboardWillHideNotification,
+                object: nil
+        )
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize: CGRect =
+        (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        let contentInsets = UIEdgeInsets(
+                top: 0.0, left: 0.0,
+                bottom: keyboardSize.height + registrationView.registrationOffset, right: 0.0
+        )
+        registrationView.scrollableStackView.set(contentInset: contentInsets)
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        registrationView.scrollableStackView.set(contentInset: .zero)
+    }
 }
 
 extension UserRegistrationViewController: UserRegistrationViewInput {
-    func hideLastNameWarning() {
-        registrationView.lastNameWarning.isHidden = true
+
+    func showLastNameWarning(isHidden: Bool) {
+        registrationView.lastNameWarning.isHidden = isHidden
     }
 
-    func hideFirstNameWarning() {
-        registrationView.firstNameWarning.isHidden = true
+    func showFirstNameWarning(isHidden: Bool) {
+        registrationView.firstNameWarning.isHidden = isHidden
     }
 
-    func hideEmailWarning() {
-        registrationView.emailAddressWarning.isHidden = true
+    func showEmailWarning(isHidden: Bool) {
+        registrationView.emailAddressWarning.isHidden = isHidden
     }
 
-    func hidePasswordWarning() {
-        registrationView.passwordWarning.isHidden = true
+    func showPasswordWarning(isHidden: Bool) {
+        registrationView.passwordWarning.isHidden = isHidden
     }
 
-    func hideValidatePasswordWarning() {
-        registrationView.validatePasswordWarning.isHidden = true
+    func showValidatePasswordWarning(isHidden: Bool) {
+        registrationView.validatePasswordWarning.isHidden = isHidden
     }
 
-    func showLastNameWarning() {
-        registrationView.lastNameWarning.isHidden = false
+    func showOrganizationNameWarning(isHidden: Bool) {
+        registrationView.organizationNameWarning.isHidden = isHidden
     }
-
-    func showFirstNameWarning() {
-        registrationView.firstNameWarning.isHidden = false
-    }
-
-    func showEmailWarning() {
-        registrationView.emailAddressWarning.isHidden = false
-    }
-
-    func showPasswordWarning() {
-        registrationView.passwordWarning.isHidden = false
-    }
-
-    func showValidatePasswordWarning() {
-        registrationView.validatePasswordWarning.isHidden = false
-    }
-
 
 }
 
@@ -90,4 +107,8 @@ private extension UserRegistrationViewController {
     func animatedView() {
 
     }
+}
+
+extension UserRegistrationViewController: UITextFieldDelegate {
+
 }

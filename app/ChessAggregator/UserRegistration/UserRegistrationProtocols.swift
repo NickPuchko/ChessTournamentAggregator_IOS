@@ -9,26 +9,24 @@ protocol UserRegistrationModuleInput: class {
 }
 
 protocol UserRegistrationModuleOutput: class {
-
+    
 }
 
 protocol UserRegistrationViewInput: class {
-    func showLastNameWarning()
-    func hideLastNameWarning()
-    func showFirstNameWarning()
-    func hideFirstNameWarning()
-    func showEmailWarning()
-    func hideEmailWarning()
-    func showPasswordWarning()
-    func hidePasswordWarning()
-    func showValidatePasswordWarning()
-    func hideValidatePasswordWarning()
+    func showLastNameWarning(isHidden: Bool)
+    func showFirstNameWarning(isHidden: Bool)
+    func showEmailWarning(isHidden: Bool)
+    func showPasswordWarning(isHidden: Bool)
+    func showValidatePasswordWarning(isHidden: Bool)
+    func showOrganizationNameWarning(isHidden: Bool)
 }
 
 protocol UserRegistrationViewOutput: class {
-    func onTapRegistration(lastName: String?, firstName: String?, patronymicName: String?,
-        ratingELO: String?, email: String?, password: String?, passwordValidation: String?,
-        organisationCity: String?, organisationName: String?, birthdate: Date)
+    func onTapRegistration(
+            lastName: String?, firstName: String?, patronymicName: String?,
+            FideID: String?, CFRID: String?, email: String?, password: String?, passwordValidation: String?,
+            isOrganizer: Bool, organizationCity: String?, organizationName: String?, birthdate: Date
+    )
 
 }
 

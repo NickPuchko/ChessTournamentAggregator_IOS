@@ -6,7 +6,7 @@ import Foundation
 import UIKit
 
 class UserRegistrationPlayerView: AutoLayoutView {
-    private let scrollableStackView: ScrollableStackView = {
+    let scrollableStackView: ScrollableStackView = {
         var result: ScrollableStackView
         let config: ScrollableStackView.Config = ScrollableStackView.Config(
                 stack: ScrollableStackView.Config.Stack(axis: .vertical, distribution: .equalCentering,
@@ -19,6 +19,11 @@ class UserRegistrationPlayerView: AutoLayoutView {
     }()
 
     private let textFieldHeight: CGFloat = 40.0
+    private let registrationButtonSpacingToContentView: CGFloat = 20.0
+    private let registrationButtonHeight: CGFloat = 50.0
+    var registrationOffset: CGFloat {
+        registrationButtonSpacingToContentView + registrationButtonHeight
+    }
 
     private var lastNameStackView: UIStackView?
     private let lastName = UITextField()
@@ -29,7 +34,8 @@ class UserRegistrationPlayerView: AutoLayoutView {
     let firstNameWarning = WarningLabel()
 
     private let patronymicName = UITextField()
-    private let ratingELO = UITextField()
+    private let FideID = UITextField()
+    private let CFRID = UITextField()
 
     private var emailAddressStackView: UIStackView?
     private let emailAddress = UITextField()
@@ -51,11 +57,15 @@ class UserRegistrationPlayerView: AutoLayoutView {
     private let switchToOrganizer = UISwitch()
     private let switchToOrganizerLabel = UILabel()
 
-    private let organisationCity = UITextField()
-    private let organisationName = UITextField()
+    private let organizationCity = UITextField()
+
+    private let organizationNameStackView = UIStackView()
+    private let organizationName = UITextField()
+    let organizationNameWarning = WarningLabel()
     
     private let registrationButton = UIButton(type: .system)
-    var onTapRegistrationButton: ((String?, String?, String?, String?, String?, String?, String?, String?, String?, Date) -> Void)?
+    var onTapRegistrationButton: ((String?, String?, String?, String?, String?, String?,
+                                   String?, String?, Bool, String?, String?, Date) -> Void)?
 
     init() {
         super.init(frame: .zero)
@@ -82,23 +92,28 @@ class UserRegistrationPlayerView: AutoLayoutView {
         setupRoundedTextField(textField: patronymicName, textFieldPlaceholder: "Отчество")
         self.scrollableStackView.addArrangedSubview(patronymicName)
 
-        setupRoundedTextField(textField: emailAddress, textFieldPlaceholder: "Введите Ваш email")
+        setupRoundedTextField(
+                textField: emailAddress,
+                textFieldPlaceholder: "Введите Ваш email",
+                textFieldKeyboard: .emailAddress
+        )
         emailAddressWarning.text = "Адрес почты недействителен. Введите его в формате email@example.com"
         self.emailAddressStackView = buildStackView(withTextField: emailAddress, andLabel: emailAddressWarning)
         self.scrollableStackView.addArrangedSubview(emailAddressStackView!)
 
         setupRoundedTextField(
-                textField: ratingELO,
+                textField: FideID,
                 textFieldPlaceholder: "Ваш рейтинг ELO",
                 textFieldKeyboard: UIKeyboardType.numberPad
         )
-        self.scrollableStackView.addArrangedSubview(ratingELO)
+        self.scrollableStackView.addArrangedSubview(FideID)
 
         setupRoundedTextField(textField: password, textFieldPlaceholder: "Пароль")
         self.password.isSecureTextEntry = true
         self.passwordWarning.text = "Пароль недействителен. Он должен содержать 1 Большую букву, 1 маленькую и 1 цифру"
         self.passwordStackView = buildStackView(withTextField: password, andLabel: passwordWarning)
         self.scrollableStackView.addArrangedSubview(passwordStackView!)
+
         setupRoundedTextField(textField: validatePassword, textFieldPlaceholder: "Подтверждение пароля")
         self.validatePassword.isSecureTextEntry = true
         self.validatePasswordWarning.text = "Пароли не совпадают."
@@ -141,15 +156,21 @@ class UserRegistrationPlayerView: AutoLayoutView {
 
         self.scrollableStackView.addSubview(switchToOrganizerStackView)
 
-        setupRoundedTextField(textField: organisationCity, textFieldPlaceholder: "Город")
-        setupRoundedTextField(textField: organisationName, textFieldPlaceholder: "Название организации")
-        self.organisationCity.isHidden = true
-        self.organisationName.isHidden = true
+        setupRoundedTextField(textField: organizationCity, textFieldPlaceholder: "Город")
+        self.organizationCity.isHidden = true
+        self.scrollableStackView.addArrangedSubview(self.organizationCity)
+
+        self.organizationNameStackView.axis = .vertical
+        self.organizationNameStackView.distribution = .fill
+        self.organizationNameStackView.alignment = .fill
+        setupRoundedTextField(textField: organizationName, textFieldPlaceholder: "Название организации")
+        self.organizationNameWarning.text = "Поле названия организации пустое. Пожалуйста, заполните его"
+        self.organizationNameStackView.addArrangedSubview(organizationName)
+        self.organizationNameStackView.addArrangedSubview(organizationNameWarning)
+        self.organizationName.isHidden = true
+        self.scrollableStackView.addArrangedSubview(self.organizationNameStackView)
 
         self.switchToOrganizer.addTarget(self, action: #selector(onTapSwitchToOrganizer), for: .touchUpInside)
-
-        self.scrollableStackView.addArrangedSubview(self.organisationCity)
-        self.scrollableStackView.addArrangedSubview(self.organisationName)
 
     }
 
@@ -170,9 +191,9 @@ class UserRegistrationPlayerView: AutoLayoutView {
 
             registrationButton.topAnchor.constraint(
                     equalTo: scrollableStackView.contentView.bottomAnchor,
-                    constant: 20.0
+                    constant: registrationButtonSpacingToContentView
             ),
-            registrationButton.heightAnchor.constraint(equalToConstant: 50.0),
+            registrationButton.heightAnchor.constraint(equalToConstant: registrationButtonHeight),
             registrationButton.widthAnchor.constraint(equalToConstant: 200.0),
             registrationButton.centerXAnchor.constraint(equalTo: scrollableStackView.contentView.centerXAnchor),
             registrationButton.bottomAnchor.constraint(lessThanOrEqualTo: switchToOrganizerStackView.topAnchor)
@@ -183,8 +204,9 @@ class UserRegistrationPlayerView: AutoLayoutView {
     @objc private func onTapSwitchToOrganizer() {
         UIView.animate(withDuration: 0.5, delay:0.0, options: [],
                 animations: {
-                    self.organisationName.isHidden = !self.switchToOrganizer.isOn
-                    self.organisationCity.isHidden = !self.switchToOrganizer.isOn
+                    self.organizationName.isHidden = !self.switchToOrganizer.isOn
+                    self.organizationCity.isHidden = !self.switchToOrganizer.isOn
+                    self.organizationNameWarning.isHidden = true
                     self.layoutIfNeeded()
                 },
                 completion: nil
@@ -192,9 +214,11 @@ class UserRegistrationPlayerView: AutoLayoutView {
     }
 
     @objc private func onTapRegistration() {
-        self.onTapRegistrationButton?(self.lastName.text, self.firstName.text, self.patronymicName.text,
-                self.ratingELO.text, self.emailAddress.text, self.password.text, self.validatePassword.text,
-                self.organisationCity.text, self.organisationName.text, self.birthdateDatePicker.date)
+        self.onTapRegistrationButton?(
+                self.lastName.text, self.firstName.text, self.patronymicName.text, self.FideID.text,
+                self.CFRID.text, self.emailAddress.text, self.password.text, self.validatePassword.text,
+                self.switchToOrganizer.isOn, self.organizationCity.text, self.organizationName.text,
+                self.birthdateDatePicker.date)
     }
 }
 
