@@ -25,6 +25,10 @@ extension PhoneNumberRegistrationPresenter: PhoneNumberRegistrationModuleInput {
 }
 
 extension PhoneNumberRegistrationPresenter: PhoneNumberRegistrationViewOutput {
+    func onTapFlag() {
+        router.showCountryList()
+    }
+
     func onTapNext(withPhoneNumber phoneNumber: String?) {
         if let number = phoneNumber, interactor.isPhoneNumberValid(phoneNumber: number) {
             view?.hideWarning()

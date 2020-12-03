@@ -42,6 +42,10 @@ final class PhoneNumberRegistrationViewController: UIViewController {
             self?.output.onTapNext(withPhoneNumber: phoneNumber)
         }
     }
+
+    func getListFpnVC() -> FPNCountryListViewController {
+        phoneView.listController
+    }
 }
 
 extension PhoneNumberRegistrationViewController: PhoneNumberRegistrationViewInput {
@@ -68,7 +72,7 @@ extension PhoneNumberRegistrationViewController: FPNTextFieldDelegate {
     }
 
     func fpnDisplayCountryList() {
-
+        output.onTapFlag()
     }
 
 }

@@ -27,6 +27,7 @@ final class PhoneNumberRegistrationContainer {
 		router.navigationControllerProvider = { [weak viewController] in
 			viewController?.navigationController
 		}
+		router.listController = viewController.getListFpnVC()
 
         return PhoneNumberRegistrationContainer(view: viewController, input: presenter, router: router)
 	}
