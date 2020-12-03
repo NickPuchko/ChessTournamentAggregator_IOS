@@ -5,11 +5,13 @@ import UIKit
 struct User: Codable{
     var player: Player
     var phone: String
+    var email: String
     var isAdmin: Bool
     // TODO: phone class
     
-    init(player: Player = Player(fullName: "Doe John", birthdate: Date(), rating: 2100), phone: String = "88005553535", isAdmin: Bool = false) {
+    init(player: Player = Player(fullName: "Doe John", birthdate: Date(), rating: 2100), email: String = "email@example.com", phone: String = "88005553535", isAdmin: Bool = false) {
         self.player = player
+        self.email = email
         self.phone = phone
         self.isAdmin = isAdmin
     }

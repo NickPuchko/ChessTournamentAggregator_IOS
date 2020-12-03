@@ -18,5 +18,7 @@ target 'ChessAggregator' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod "FlagPhoneNumber"
+  pod 'SwiftSoup'
+
 
 end
