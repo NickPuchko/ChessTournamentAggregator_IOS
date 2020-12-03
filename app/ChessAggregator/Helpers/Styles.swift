@@ -7,5 +7,6 @@ import UIKit
 enum Styles {
     enum Color {
         static let appGreen: UIColor = .rgba(50, 160, 97)
+        static let asteriskRed: UIColor = .rgba(240, 52, 52)
     }
 }

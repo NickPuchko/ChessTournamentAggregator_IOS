@@ -22,4 +22,9 @@ class WarningLabel: UILabel {
         self.isHidden = true
         self.numberOfLines = 0
     }
+
+    func animatedAppearance(isHidden: Bool) {
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .transitionFlipFromLeft,
+                animations: {self.isHidden = isHidden}, completion: nil)
+    }
 }
