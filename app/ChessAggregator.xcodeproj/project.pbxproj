@@ -279,7 +279,6 @@
 				6AC97E74D5F0F7CBC1F95D1F /* NumberRegistration */,
 				6AC97CF89410E6EBA53F52ED /* Extensions */,
 				6AC979B946764083C6D9430A /* UserRegistration */,
-				6AC9794B341DA66F26144585 /* AppCoordinator */,
 				6AC979BA01AA657206C37BD3 /* PhoneNumberRegistration */,
 				6AC97D2856ACAF5C14548A60 /* GlobalConstants */,
 				6AC97CAAF1950883DB8BF955 /* SearchTournaments */,
@@ -340,13 +339,6 @@
 				6AC97CE1D483F9F5F0EFA3D9 /* UserReg.swift */,
 			);
 			path = Structures;
-			sourceTree = "<group>";
-		};
-		6AC9794B341DA66F26144585 /* AppCoordinator */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AppCoordinator;
 			sourceTree = "<group>";
 		};
 		6AC979B946764083C6D9430A /* UserRegistration */ = {

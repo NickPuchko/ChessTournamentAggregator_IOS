@@ -57,7 +57,7 @@ private extension AppCoordinator {
             fatalError("wtf no Current")
         }
         let viewController = UIViewController()
-        viewController.view.backgroundColor = .systemYellow
+        viewController.view.backgroundColor = .white
         navController.setViewControllers([viewController], animated: false)
         viewController.navigationItem.title = NavControllerType.currentTournaments.title
     }
@@ -104,7 +104,7 @@ private extension AppCoordinator {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
 
         UITabBar.appearance().barTintColor = .white
-        UITabBar.appearance().tintColor = Styles.Color.appGreen
+//        UITabBar.appearance().tintColor = Styles.Color.appGreen
     }
 
     static func makeNavigationControllers() -> [NavControllerType: UINavigationController] {
@@ -121,8 +121,6 @@ private extension AppCoordinator {
         return result
     }
 }
-
-
 
 
 fileprivate enum NavControllerType: Int, CaseIterable {
