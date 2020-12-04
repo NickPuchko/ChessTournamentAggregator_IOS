@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+# platform :ios, '14.0'
 
 target 'ChessAggregator' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -13,12 +13,13 @@ target 'ChessAggregator' do
   #   end
   # end
   # Pods for ChessAggregator
-  pod 'Firebase/Analytics'
+  
+  #pod 'Firebase/Analytics'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod "FlagPhoneNumber"
-  pod 'SwiftSoup'
+  #pod 'SwiftSoup'
 
 
 end

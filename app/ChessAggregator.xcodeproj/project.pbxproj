@@ -220,9 +220,6 @@
 				D91FC6A4DB8175C9ED293912 /* Entities */,
 				D91FC6AD2BBB9A246B8C066F /* Views */,
 				6AC97CF89410E6EBA53F52ED /* Extensions */,
-
-				6AC979B946764083C6D9430A /* UserRegistration */,
-				6AC979BA01AA657206C37BD3 /* PhoneNumberRegistration */,
 				6AC97D2856ACAF5C14548A60 /* GlobalConstants */,
 				6AC97DB8E2C8845F6C91B91B /* Helpers */,
 				D91FCE32A316ECF050EA578D /* Services */,
@@ -233,12 +230,12 @@
 		24ABA1D2257933BD00B3978D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				6AC979BA01AA657206C37BD3 /* PhoneNumberRegistration */,
+				6AC979B946764083C6D9430A /* UserRegistration */,
 				D91FCB1E82EEDB873508A6D9 /* Current */,
 				D91FC4141781EB5CC1FB93EA /* Creation */,
 				6AC979F80691717F1505998A /* UserProfile */,
 				6AC97CAAF1950883DB8BF955 /* SearchTournaments */,
-				6AC979B946764083C6D9430A /* UserRegistration */,
-				6AC979BA01AA657206C37BD3 /* PhoneNumberRegistration */,
 				24B91091256BCD0E0076A3E1 /* AuthNew */,
 			);
 			path = Modules;
