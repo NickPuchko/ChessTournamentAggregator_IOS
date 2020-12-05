@@ -13,6 +13,7 @@ protocol CreationViewControllerProtocol: class {
 protocol CreationPresenterProtocol: class {
     var router: CreationRouterProtocol! { get set }
     func createEvent()
+    func closeCreation()
 }
 
 protocol CreationInteractorProtocol: class {

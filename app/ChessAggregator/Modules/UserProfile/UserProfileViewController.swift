@@ -80,11 +80,15 @@ final class UserProfileViewController: UIViewController {
         view.addSubview(profileStack)
     }
 
-	override func viewDidLoad() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+
+    override func viewDidLoad() {
 		super.viewDidLoad()
         self.testUser = output.getUserInformation()
 
-        self.navigationController?.isNavigationBarHidden = true
 
         imageView.layer.cornerRadius = 32
         imageView.clipsToBounds = true

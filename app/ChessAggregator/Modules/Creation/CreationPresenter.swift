@@ -11,4 +11,8 @@ class CreationPresenter: CreationPresenterProtocol {
         interactor.saveEvent()
         router.closeCreation()
     }
+
+    func closeCreation() {
+        router.closeCreation()
+    }
 }

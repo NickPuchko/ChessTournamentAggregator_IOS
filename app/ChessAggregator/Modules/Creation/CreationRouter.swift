@@ -9,6 +9,6 @@ class CreationRouter: CreationRouterProtocol {
     }
 
     func closeCreation() {
-        viewController.dismiss(animated: true) { print("Event added!") }
+        viewController.navigationController?.popToRootViewController(animated: true)
     }
 }

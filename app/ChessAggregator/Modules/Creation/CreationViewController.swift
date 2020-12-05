@@ -10,14 +10,6 @@ class CreationViewController: UIViewController, CreationViewControllerProtocol {
 
     var ref: DatabaseReference
     var phone: String
-
-    let createButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = .white
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Создай уже что-нибудь!", for: .normal)
-        return button
-    }()
     
 
     required init(ref: DatabaseReference, phone: String) {
@@ -31,24 +23,33 @@ class CreationViewController: UIViewController, CreationViewControllerProtocol {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func loadView() {
+        super.loadView()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self)
+        navigationController?.isNavigationBarHidden = false
+        view.backgroundColor = .white
 
-        createButton.addTarget(self, action: #selector(createDefault), for: .touchUpInside)
-        view.addSubview(createButton)
+        navigationItem.leftBarButtonItem =
+                UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(endCreation))
+        navigationItem.rightBarButtonItem =
+                UIBarButtonItem(title: "Опубликовать", style: .done, target: self, action: #selector(createDefault))
 
-        setupConstraints()
-    }
-    
-    func setupConstraints() {
-        createButton.pins()
+
+        //setupConstraints()
     }
 
     @objc
-    func createDefault() {
+    private func createDefault() {
         presenter.createEvent()
+    }
+
+    @objc
+    private func endCreation() {
+        presenter.closeCreation()
     }
 }
 
