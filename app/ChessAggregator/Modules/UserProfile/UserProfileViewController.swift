@@ -25,7 +25,6 @@ final class UserProfileViewController: UIViewController {
     init(output: UserProfileViewOutput) {
         self.output = output
         self.imageView = UIImageView(image: userImage)
-
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -85,6 +84,8 @@ final class UserProfileViewController: UIViewController {
 		super.viewDidLoad()
         self.testUser = output.getUserInformation()
 
+        self.navigationController?.isNavigationBarHidden = true
+
         imageView.layer.cornerRadius = 32
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 0.1
@@ -108,7 +109,7 @@ final class UserProfileViewController: UIViewController {
         let editImage = UIImage(systemName: "square.and.pencil")
 
 
-        editButton.setImage(UIImage(cgImage: (editImage?.cgImage)!, scale: 1, orientation: UIImage.Orientation.up), for: .normal)
+        editButton.setImage(UIImage(cgImage: (editImage?.cgImage)!, scale: 1.5, orientation: UIImage.Orientation.up), for: .normal)
         editButton.addTarget(self, action: #selector(tappedEdit), for: .touchUpInside)
 
 

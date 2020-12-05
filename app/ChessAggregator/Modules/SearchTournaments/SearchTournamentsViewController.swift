@@ -1,17 +1,19 @@
-//
-//  SearchTournamentsViewController.swift
-//  app
-//
-//  Created by Иван Лизогуб on 21.11.2020.
-//  
-//
-
 import UIKit
 
 final class SearchTournamentsViewController: UIViewController {
 	private let output: SearchTournamentsViewOutput
+    private var sections: [EventSectionModel] = []
+    private var filteredSections: [EventSectionModel] = []
+    private var refreshControl = UIRefreshControl()
 
-    var refreshControl = UIRefreshControl()
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+
+    private var isFiltered: Bool {
+        searchController.isActive && !searchBarIsEmpty
+    }
 
     private lazy var tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .insetGrouped)
@@ -20,6 +22,8 @@ final class SearchTournamentsViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         return table
     }()
+
+    private let searchController = UISearchController(searchResultsController: nil)
 
     init(output: SearchTournamentsViewOutput) {
         self.output = output
@@ -30,9 +34,6 @@ final class SearchTournamentsViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-
-    var sections: [EventSectionModel] = []
 
     override func loadView() {
         view = UIView()
@@ -49,15 +50,15 @@ final class SearchTournamentsViewController: UIViewController {
         tableView.delegate = self
 
         tableView.sectionHeaderHeight = 0
-        title = "Поиск"
+
+        navigationController?.isNavigationBarHidden = false
+
+        setupSearch()
     }
 
-    internal func numberOfSections(in tableView: UITableView) -> Int {
-        sections.count
-    }
 
     @objc
-    func refresh() {
+    private func refresh() {
         output.refreshOnline()
         refreshControl.endRefreshing()
     }
@@ -77,12 +78,14 @@ extension SearchTournamentsViewController: SearchTournamentsViewInput {
 extension SearchTournamentsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        output.showInfo(section: sections[indexPath.section])
+        isFiltered ? output.showInfo(section: filteredSections[indexPath.section]) :
+                output.showInfo(section: sections[indexPath.section])
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            output.showInfo(section: sections[indexPath.section])
+            isFiltered ? output.showInfo(section: filteredSections[indexPath.section]) :
+                    output.showInfo(section: sections[indexPath.section])
             tableView.deselectRow(at: indexPath, animated: true)
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
@@ -92,12 +95,17 @@ extension SearchTournamentsViewController: UITableViewDelegate {
 }
 
 extension SearchTournamentsViewController: UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        isFiltered ? filteredSections.count : sections.count
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        sections[section].rows.count
+        isFiltered ? filteredSections[section].rows.count : sections[section].rows.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = sections[indexPath.section].rows[indexPath.row]
+        let model = isFiltered ? filteredSections[indexPath.section].rows[indexPath.row]
+                : sections[indexPath.section].rows[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: model.cellId)
                 ?? UITableViewCell(style: .default, reuseIdentifier: model.cellId)
 
@@ -131,6 +139,31 @@ extension SearchTournamentsViewController: UITableViewDataSource {
         cell.contentConfiguration = config
         return cell
     }
+}
 
+extension SearchTournamentsViewController: UISearchResultsUpdating {
 
+    private func setupSearch() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Поиск"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        searchController.searchBar.isHidden = false
+    }
+
+    private func setupFilter() {
+        //navigationController.but
+    }
+
+    private func filterContentForSearchText(searchText: String){
+        filteredSections = sections.filter({ (section: EventSectionModel) -> Bool in
+            section.event.name.lowercased().contains(searchText.lowercased())
+        })
+        tableView.reloadData()
+    }
+
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text ?? "")
+    }
 }

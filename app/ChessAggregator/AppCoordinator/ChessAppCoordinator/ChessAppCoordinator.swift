@@ -41,7 +41,6 @@ private extension ChessAppCoordinator {
             fatalError("wtf no Current")
         }
         let viewController = UIViewController()
-        viewController.view.backgroundColor = .systemYellow
         navController.setViewControllers([viewController], animated: false)
         viewController.navigationItem.title = NavControllerType.currentTournaments.title
     }
@@ -88,7 +87,6 @@ private extension ChessAppCoordinator {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
 
         UITabBar.appearance().barTintColor = .white
-        UITabBar.appearance().tintColor = Styles.Color.appGreen
     }
 
     static func makeNavigationControllers() -> [NavControllerType: UINavigationController] {
@@ -99,8 +97,10 @@ private extension ChessAppCoordinator {
                     image: navControllerKey.image,
                     tag: navControllerKey.rawValue)
             navigationController.tabBarItem = tabBarItem
-            navigationController.navigationBar.prefersLargeTitles = true
+            //navigationController.navigationBar.prefersLargeTitles = true // MARK: Зачем?
             result[navControllerKey] = navigationController
+
+            navigationController.isNavigationBarHidden = true // MARK: делать false при переходах
         }
         return result
     }
@@ -135,6 +135,6 @@ fileprivate enum NavControllerType: Int, CaseIterable {
 
 enum Localization {
     static let currentTournaments = "Текущие турниры"
-    static let search = "Поиск"
+    static let search = "Лента"
     static let profile = "Профиль"
 }
