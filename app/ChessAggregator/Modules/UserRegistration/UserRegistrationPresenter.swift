@@ -23,29 +23,62 @@ extension UserRegistrationPresenter: UserRegistrationModuleInput {
 }
 
 extension UserRegistrationPresenter: UserRegistrationViewOutput {
+
     func onTapRegistration(
             lastName: String?, firstName: String?, patronymicName: String?,
-            FideID: String?, CFRID: String?, email: String?, password: String?, passwordValidation: String?,
+            fideID: String?, frcID: String?, email: String?, password: String?, passwordValidation: String?,
             isOrganizer: Bool, organizationCity: String?, organizationName: String?, birthdate: Date
     ) {
-
+        let lowercasedEmail = email?.lowercased()
         let user = UserReg(
-                lastName: lastName, firstName: firstName, patronymicName: patronymicName,
-                FideID: FideID, CFRID: CFRID, email: email, password: password, passwordValidation: passwordValidation,
+                lastName: lastName ?? "", firstName: firstName ?? "", patronymicName: patronymicName,
+                fideID: fideID ?? "", frcID: frcID ?? "", email: lowercasedEmail ?? "", password: password ?? "", passwordValidation: passwordValidation ?? "",
                 isOrganizer: isOrganizer, organisationCity: organizationCity, organisationName: organizationName,
                 birthdate: birthdate
         )
         if isUserValid(with: user) {
-            interactor.addToDataBase(user: user)
-            moduleOutput?.didRegister()
+            interactor.addToDataBase(userReg: user)
         } else {
             showWarnings(user: user)
         }
     }
+
+    func isFullNameOK(string: String) -> Bool {
+        string.count <= 24
+    }
+
+    func filterID(string: String, maxID: Int) -> (Bool, Int?) {
+        let restrictionsOnID = string.count <= 9 && string.containsOnlyCharactersIn(matchCharacters: "0123456789")
+        guard let number = Int(string.filter {
+            $0.isWholeNumber
+        }) else {
+            return (false, nil)
+        }
+        if number <= maxID {
+            return (false, number)
+        }
+        return (restrictionsOnID, nil)
+    }
+
+    func isLoginDataOK(string: String) -> Bool {
+        string.count <= 60
+    }
+
+    func isOrganizationDataOK(string: String) -> Bool {
+        string.count <= 200
+    }
+
+
 }
 
 extension UserRegistrationPresenter: UserRegistrationInteractorOutput {
+    func didRegister() {
+        moduleOutput?.didRegister()
+    }
 
+    func failedToAddAuthUser(error: String) {
+        self.view?.showEmailWasRegisteredWarning(withWarning: error, isHidden: false)
+    }
 }
 
 private extension UserRegistrationPresenter {

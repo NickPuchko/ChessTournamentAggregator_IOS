@@ -31,14 +31,14 @@ class UserRegistrationViewController: UIViewController {
 
     private func setup() {
         registrationView.onTapRegistrationButton = { [weak self]
-            lastName, firstName, patronymicName,
-            FideID, CFRID, emailAddress, password, validatePassword,
-            isOrganizer, organisationCity, organisationName,
-            birthdate in
+        lastName, firstName, patronymicName,
+        fideID, frcID, emailAddress, password, validatePassword,
+        isOrganizer, organisationCity, organisationName,
+        birthdate in
 
             self?.output.onTapRegistration(
-                    lastName: lastName, firstName: firstName, patronymicName: patronymicName, FideID: FideID,
-                    CFRID: CFRID, email: emailAddress, password: password, passwordValidation: validatePassword,
+                    lastName: lastName, firstName: firstName, patronymicName: patronymicName, fideID: fideID,
+                    frcID: frcID, email: emailAddress, password: password, passwordValidation: validatePassword,
                     isOrganizer: isOrganizer, organizationCity: organisationCity, organizationName: organisationName,
                     birthdate: birthdate
             )
@@ -49,6 +49,7 @@ class UserRegistrationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeHideKeyboard()
+        initializeTextFieldDelegates()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -64,6 +65,11 @@ class UserRegistrationViewController: UIViewController {
 }
 
 extension UserRegistrationViewController: UserRegistrationViewInput {
+    func showEmailWasRegisteredWarning(withWarning warning: String, isHidden: Bool) {
+        registrationView.emailWasRegisteredWarning.text = warning
+        registrationView.emailWasRegisteredWarning.isHidden = isHidden
+    }
+
 
     func showLastNameWarning(isHidden: Bool) {
         registrationView.lastNameWarning.animatedAppearance(isHidden: isHidden)
@@ -92,7 +98,36 @@ extension UserRegistrationViewController: UserRegistrationViewInput {
 }
 
 extension UserRegistrationViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.count == 0 {
+            return true
+        }
 
+        let currentText = textField.text ?? ""
+        let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
+
+        switch textField {
+        case registrationView.lastName, registrationView.firstName, registrationView.patronymicName:
+            return self.output.isFullNameOK(string: prospectiveText)
+        case registrationView.fideID, registrationView.frcID:
+            let (isAllowedToChange, number) = self.output.filterID(string: prospectiveText, maxID: registrationView.maxValueOfId)
+            if let num = number {
+                textField.text = "\(num)"
+            }
+            return isAllowedToChange
+        case registrationView.emailAddress, registrationView.password, registrationView.validatePassword:
+            return self.output.isLoginDataOK(string: prospectiveText)
+        case registrationView.organizationName, registrationView.organizationCity:
+                return self.output.isOrganizationDataOK(string: prospectiveText)
+        default:
+            return true
+        }
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 
@@ -113,4 +148,18 @@ private extension UserRegistrationViewController {
     @objc func keyboardDismiss() {
         self.view.endEditing(true)
     }
+
+    func initializeTextFieldDelegates() {
+        self.registrationView.lastName.delegate = self
+        self.registrationView.firstName.delegate = self
+        self.registrationView.patronymicName.delegate = self
+        self.registrationView.fideID.delegate = self
+        self.registrationView.frcID.delegate = self
+        self.registrationView.emailAddress.delegate = self
+        self.registrationView.password.delegate = self
+        self.registrationView.validatePassword.delegate = self
+        self.registrationView.organizationCity.delegate = self
+        self.registrationView.organizationName.delegate = self
+    }
+
 }

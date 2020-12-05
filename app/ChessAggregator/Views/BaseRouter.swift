@@ -6,9 +6,13 @@ import UIKit
 
 class BaseRouter {
     var navigationControllerProvider: (() -> UINavigationController?)?
+    var viewControllerProvider: (() -> UIViewController?)?
 
     var navigationController: UINavigationController? {
         self.navigationControllerProvider?()
     }
 
+    var viewController: UIViewController? {
+        self.viewControllerProvider?()
+    }
 }

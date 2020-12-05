@@ -11,7 +11,6 @@
 		01FFDCAF253FA091001244D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCAE253FA091001244D1 /* Assets.xcassets */; };
 		01FFDCB2253FA091001244D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCB0253FA091001244D1 /* LaunchScreen.storyboard */; };
 		01FFDCBB253FA140001244D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCBA253FA140001244D1 /* GoogleService-Info.plist */; };
-		24ABA1D0257932D700B3978D /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 730407F82550617C0036E7A6 /* SwiftKeychainWrapper */; };
 		24B9108E256BCC3C0076A3E1 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9108C256BCC3C0076A3E1 /* BaseRouter.swift */; };
 		24B9108F256BCC3C0076A3E1 /* WarningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9108D256BCC3C0076A3E1 /* WarningLabel.swift */; };
 		24B910A9256BCE310076A3E1 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B910A2256BCE300076A3E1 /* AuthRouter.swift */; };
@@ -24,7 +23,9 @@
 		24B910C2256BD1D60076A3E1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B910C1256BD1D60076A3E1 /* AppCoordinator.swift */; };
 		6AC970924287644F1C0BE99F /* KeyboardAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97A3B8254E57567BB3C4E /* KeyboardAdapter.swift */; };
 		6AC970F1F179A3A14A5EB929 /* FideParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97B3EDC69BAEF619236FE /* FideParser.swift */; };
+		6AC9712924EEFC2ED64832D3 /* Organizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9733DFC6E294B9F4E58E9 /* Organizer.swift */; };
 		6AC9716C4E780D25C86575EA /* ScrollableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC979F80F68467B6056BE62 /* ScrollableStackView.swift */; };
+		6AC9728EE1D3D2942A14C036 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9770160358AE7E471E60C /* UserParser.swift */; };
 		6AC97295C76DB96A8F415A46 /* EventRatingCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97E09008424F7A32114C8 /* EventRatingCellModel.swift */; };
 		6AC972CAFCC42E63FA70A89B /* UserProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97938A7D7CF965F65B7F2 /* UserProfileRouter.swift */; };
 		6AC97382D07275AF0B76BE69 /* PhoneNumberRegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97B1861FE999F36D6EEED /* PhoneNumberRegistrationRouter.swift */; };
@@ -48,6 +49,7 @@
 		6AC97815032909668C26DACC /* PhoneNumberRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97751D5D879A37FF46E85 /* PhoneNumberRegistrationViewController.swift */; };
 		6AC9786A42F9E25355673F6A /* EventsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9760F1CFC3AB94947022D /* EventsSectionModel.swift */; };
 		6AC9786A6563B1CCD29C7CDE /* PhoneNumberRegistrationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC972C0F6991BBFE501499A /* PhoneNumberRegistrationContainer.swift */; };
+		6AC9793D65B2AE6D338CBD00 /* CharactersInString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC978757D3A6D0D18B44BFB /* CharactersInString.swift */; };
 		6AC9794BD5A4077E1682DA32 /* ChessAppCoordinatorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97CA9A97812E78E259E39 /* ChessAppCoordinatorProtocols.swift */; };
 		6AC979654688EE71C9F0EDD2 /* UserRegistrationPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97B59A22273CB308E641E /* UserRegistrationPlayerView.swift */; };
 		6AC979CAF6BD9CBF2EF92714 /* SearchTournamentsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC975FF01131FF083F11FF2 /* SearchTournamentsRouter.swift */; };
@@ -115,6 +117,7 @@
 		6AC971D58E0BABEB95F76798 /* SearchTournamentsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTournamentsInteractor.swift; sourceTree = "<group>"; };
 		6AC9725DE11A5E51FC080F0F /* PasswordExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordExtension.swift; sourceTree = "<group>"; };
 		6AC972C0F6991BBFE501499A /* PhoneNumberRegistrationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationContainer.swift; sourceTree = "<group>"; };
+		6AC9733DFC6E294B9F4E58E9 /* Organizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organizer.swift; sourceTree = "<group>"; };
 		6AC973C7797BE513AEB8F51C /* UserProfileContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileContainer.swift; sourceTree = "<group>"; };
 		6AC97409DF0F9644ABC13D85 /* PhoneNumberRegistrationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationInteractor.swift; sourceTree = "<group>"; };
 		6AC9740EF04FAD4ACEDDA578 /* UserRegistrationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationInteractor.swift; sourceTree = "<group>"; };
@@ -127,9 +130,11 @@
 		6AC976628E52A6297193E5F6 /* SearchTournamentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTournamentsViewController.swift; sourceTree = "<group>"; };
 		6AC97698B4FC1FF1E2D74474 /* UserRegistrationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationPresenter.swift; sourceTree = "<group>"; };
 		6AC976FD34911FBA070234AF /* FirebaseRef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseRef.swift; sourceTree = "<group>"; };
+		6AC9770160358AE7E471E60C /* UserParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
 		6AC9772C60CF3315B6800474 /* EventNameCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNameCellModel.swift; sourceTree = "<group>"; };
 		6AC97751D5D879A37FF46E85 /* PhoneNumberRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationViewController.swift; sourceTree = "<group>"; };
 		6AC978288F97CE08873FC9E3 /* UserRegistrationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationContainer.swift; sourceTree = "<group>"; };
+		6AC978757D3A6D0D18B44BFB /* CharactersInString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersInString.swift; sourceTree = "<group>"; };
 		6AC9787CFE0DEFB61421D844 /* SearchTournamentsProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTournamentsProtocols.swift; sourceTree = "<group>"; };
 		6AC97938A7D7CF965F65B7F2 /* UserProfileRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileRouter.swift; sourceTree = "<group>"; };
 		6AC9796F8A297EBFFE1720BF /* PhoneNumberRegistrationProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationProtocols.swift; sourceTree = "<group>"; };
@@ -180,7 +185,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24ABA1D0257932D700B3978D /* SwiftKeychainWrapper in Frameworks */,
 				C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +358,7 @@
 				6AC974BC8D700AAB6B531B67 /* EmailExtension.swift */,
 				6AC9725DE11A5E51FC080F0F /* PasswordExtension.swift */,
 				6AC97C70A2A035E42D8A6F55 /* UIColor.swift */,
+				6AC978757D3A6D0D18B44BFB /* CharactersInString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 				D91FC11574DF8A92DBC0617B /* Player.swift */,
 				D91FC5DE303A4B78E2E40946 /* Tournament.swift */,
 				D91FC2E367191FB43FA9AB37 /* User.swift */,
+				6AC9733DFC6E294B9F4E58E9 /* Organizer.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -482,6 +488,7 @@
 			children = (
 				D91FC559D928F99290FB9443 /* EventParser.swift */,
 				6AC97B3EDC69BAEF619236FE /* FideParser.swift */,
+				6AC9770160358AE7E471E60C /* UserParser.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -505,7 +512,7 @@
 			);
 			name = ChessAggregator;
 			packageProductDependencies = (
-				730407F82550617C0036E7A6 /* SwiftKeychainWrapper */,
+				730407F82550617C0036E7A6,
 			);
 			productName = ChessAggregator;
 			productReference = 01FFDCA2253FA08B001244D1 /* ChessAggregator.app */;
@@ -535,7 +542,7 @@
 			);
 			mainGroup = 01FFDC99253FA08B001244D1;
 			packageReferences = (
-				730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				730407F72550617C0036E7A6,
 			);
 			productRefGroup = 01FFDCA3253FA08B001244D1 /* Products */;
 			projectDirPath = "";
@@ -681,6 +688,9 @@
 				6AC97295C76DB96A8F415A46 /* EventRatingCellModel.swift in Sources */,
 				6AC9759A799DC9E5F9E264C1 /* EventModeCellModel.swift in Sources */,
 				6AC9786A42F9E25355673F6A /* EventsSectionModel.swift in Sources */,
+				6AC9793D65B2AE6D338CBD00 /* CharactersInString.swift in Sources */,
+				6AC9728EE1D3D2942A14C036 /* UserParser.swift in Sources */,
+				6AC9712924EEFC2ED64832D3 /* Organizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,7 +888,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+		730407F72550617C0036E7A6 = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
 			requirement = {
@@ -889,9 +899,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		730407F82550617C0036E7A6 /* SwiftKeychainWrapper */ = {
+		730407F82550617C0036E7A6 = {
 			isa = XCSwiftPackageProductDependency;
-			package = 730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			package = 730407F72550617C0036E7A6;
 			productName = SwiftKeychainWrapper;
 		};
 /* End XCSwiftPackageProductDependency section */
