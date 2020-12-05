@@ -99,7 +99,7 @@ final class UserProfileViewController: UIViewController {
         userName.font = .boldSystemFont(ofSize: 30)
 
         var status = "Игрок"
-        if testUser!.isAdmin {
+        if testUser!.isOrganizer {
             status = "Организатор"
         }
         userStatus.text = status
@@ -107,7 +107,7 @@ final class UserProfileViewController: UIViewController {
         userStatus.font = .boldSystemFont(ofSize: 18)
 
 
-        userRating.text = testUser!.player.rating.description
+        userRating.text = testUser!.player.classicFideRating?.description
         userRating.font = .italicSystemFont(ofSize: 24)
 
         let editImage = UIImage(systemName: "square.and.pencil")

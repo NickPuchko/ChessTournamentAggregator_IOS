@@ -7,48 +7,48 @@ import UIKit
 
 class UserRegistrationPlayerView: AutoLayoutView {
     let scrollableStackView: ScrollableStackView = {
-        var result: ScrollableStackView
         let config: ScrollableStackView.Config = ScrollableStackView.Config(
                 stack: ScrollableStackView.Config.Stack(axis: .vertical, distribution: .fill,
                         alignment: .fill, spacing: 15.0),
                 scroll: .defaultVertical,
                 pinsStackConstraints: UIEdgeInsets(top: 20.0, left: 16.0, bottom: 0.0, right: -16.0)
         )
-        result = ScrollableStackView(config: config)
-        return result
+        return ScrollableStackView(config: config)
     }()
 
     private let textFieldHeight: CGFloat = 40.0
     private let registrationButtonSpacingToContentView: CGFloat = 20.0
     private let registrationButtonHeight: CGFloat = 50.0
     private let switchToOrganizerStackViewHeight: CGFloat = 30.0
+    let maxValueOfId = 999999999
     var registrationOffset: CGFloat {
         registrationButtonSpacingToContentView + registrationButtonHeight + switchToOrganizerStackViewHeight
     }
 
 
     private var lastNameStackView: UIStackView?
-    private let lastName = UITextField()
+    let lastName = UITextField()
     let lastNameWarning = WarningLabel()
 
     private var firstNameStackView: UIStackView?
-    private let firstName = UITextField()
+    let firstName = UITextField()
     let firstNameWarning = WarningLabel()
 
-    private let patronymicName = UITextField()
-    private let FideID = UITextField()
-    private let CFRID = UITextField()
+    let patronymicName = UITextField()
+    let fideID = UITextField()
+    let frcID = UITextField()
 
     private var emailAddressStackView: UIStackView?
-    private let emailAddress = UITextField()
+    let emailAddress = UITextField()
     let emailAddressWarning = WarningLabel()
+    let emailWasRegisteredWarning = WarningLabel()
 
     private var passwordStackView: UIStackView?
-    private let password = UITextField()
+    let password = UITextField()
     let passwordWarning = WarningLabel()
 
     private var validatePasswordStackView: UIStackView?
-    private let validatePassword = UITextField()
+    let validatePassword = UITextField()
     let validatePasswordWarning = WarningLabel()
 
     private let birthdateStackView = UIStackView()
@@ -59,10 +59,10 @@ class UserRegistrationPlayerView: AutoLayoutView {
     private let switchToOrganizer = UISwitch()
     private let switchToOrganizerLabel = UILabel()
 
-    private let organizationCity = UITextField()
+    let organizationCity = UITextField()
 
     private let organizationNameStackView = UIStackView()
-    private let organizationName = UITextField()
+    let organizationName = UITextField()
     let organizationNameWarning = WarningLabel()
     
     private let registrationButton = UIButton(type: .system)
@@ -101,17 +101,19 @@ class UserRegistrationPlayerView: AutoLayoutView {
         )
         emailAddressWarning.text = "Адрес почты недействителен. Введите его в формате email@example.com"
         self.emailAddressStackView = buildStackView(withTextField: emailAddress, andLabel: emailAddressWarning)
+        self.emailAddressStackView?.addArrangedSubview(emailAddressWarning)
+        self.emailAddressStackView?.addArrangedSubview(emailWasRegisteredWarning)
         self.scrollableStackView.addArrangedSubview(emailAddressStackView!)
 
         setupRoundedTextField(
-                textField: FideID,
+                textField: fideID,
                 textFieldPlaceholder: "FideID",
                 textFieldKeyboard: UIKeyboardType.numberPad
         )
-        self.scrollableStackView.addArrangedSubview(FideID)
+        self.scrollableStackView.addArrangedSubview(fideID)
 
-        setupRoundedTextField(textField: CFRID, textFieldPlaceholder: "CFRID", textFieldKeyboard: .numberPad)
-        self.scrollableStackView.addArrangedSubview(CFRID)
+        setupRoundedTextField(textField: frcID, textFieldPlaceholder: "ФШР ID", textFieldKeyboard: .numberPad)
+        self.scrollableStackView.addArrangedSubview(frcID)
 
         setupRoundedTextField(textField: password, textFieldPlaceholder: "Пароль*")
         self.password.isSecureTextEntry = true
@@ -221,8 +223,8 @@ class UserRegistrationPlayerView: AutoLayoutView {
 
     @objc private func onTapRegistration() {
         self.onTapRegistrationButton?(
-                self.lastName.text, self.firstName.text, self.patronymicName.text, self.FideID.text,
-                self.CFRID.text, self.emailAddress.text, self.password.text, self.validatePassword.text,
+                self.lastName.text, self.firstName.text, self.patronymicName.text, self.fideID.text,
+                self.frcID.text, self.emailAddress.text, self.password.text, self.validatePassword.text,
                 self.switchToOrganizer.isOn, self.organizationCity.text, self.organizationName.text,
                 self.birthdateDatePicker.date)
     }
