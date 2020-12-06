@@ -1,4 +1,4 @@
 .DS_Store
-/Pods
+Pods
 xcuserdata
-/.idea/
+.idea/
