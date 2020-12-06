@@ -24,6 +24,9 @@ class AuthContainer {
         router.navigationControllerProvider = { [weak viewController] in
             viewController?.navigationController
         }
+        router.viewControllerProvider = { [weak viewController] in
+            viewController
+        }
 
         return AuthContainer(view: viewController, input: presenter, router: router)
     }
@@ -32,8 +35,8 @@ class AuthContainer {
         self.viewController = view
         self.input = input
         self.router = router
-    }
 
+    }
 }
 
 

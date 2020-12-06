@@ -6,6 +6,7 @@ import Foundation
 import UIKit
 
 class AuthViewController: UIViewController {
+
     private let output: AuthViewOutput?
 
     private var authView: AuthNewView {
@@ -74,4 +75,5 @@ private extension AuthViewController {
             self.view.layoutIfNeeded()
         }
     }
+
 }

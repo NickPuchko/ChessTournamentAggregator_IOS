@@ -7,6 +7,7 @@ struct Player: Codable {
     
     var fideID: Int?
     var frcID: Int?
+    var sex: String?
 
     init(fullName: String = "John Doe", birthdate: Date = Calendar.current.date(from: DateComponents(year: 1953, month: 2, day: 25))!, rating: Int?, fideID: Int? = 24176214, frcID: Int? = 1606) {
         self.fullName = fullName

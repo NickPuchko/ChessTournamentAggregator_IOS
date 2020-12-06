@@ -3,7 +3,7 @@
 //
 
 import Foundation
-
+import Firebase
 
 class UserRegistrationInteractor {
     weak var output: UserRegistrationInteractorOutput?
@@ -25,7 +25,16 @@ extension UserRegistrationInteractor: UserRegistrationInteractorInput {
             patronymicNameWithSpace = ""
         }
         let fullName = user.lastName! + firstNameWithSpace + patronymicNameWithSpace
+        Auth.auth().createUser(withEmail: user.email!, password: user.password!) { (result, error) in
+            if error == nil{
+                if let result = result{
+                    FirebaseRef.ref.child("Users").child(result.user.uid).updateChildValues(
+                    ["fullname": fullName,"FideID": user.FideID!, "CFRID": user.CFRID!,
+                     "email": user.email!, "password": user.password!,"isOrganizer": user.isOrganizer,
+                     "organisationCity": user.organisationCity!, "organisationName": user.organisationName!]
+                    )
+                }
+            }
+        }
     }
-
-
 }

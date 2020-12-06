@@ -15,8 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.appCoordinator = AppCoordinator(window: window)
         self.window = window
         self.appCoordinator?.auth()
-
+        Auth.auth().addStateDidChangeListener{(auth, user) in
+            if user == nil{
+                self.showModalAuth()
+            }
+        }
         return true
     }
+    func showModalAuth(){
+//        let storyboard = UIStoryboard
+//        let newVC = storyboard.instantiateViewController(withIdentifier: "AuthViewControllerc") as! AuthViewController
+//        self.window?.rootViewController?.present(newVC, animated: true, completion: nil)
+    }
+
+
 }
 

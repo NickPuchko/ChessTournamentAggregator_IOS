@@ -3,7 +3,7 @@
 //
 
 import Foundation
-
+import UIKit
 class AuthPresenter {
     weak var view: AuthViewInput?
     weak var moduleOutput: AuthModuleOutput?
@@ -25,8 +25,7 @@ extension AuthPresenter: AuthViewOutput {
     
     func onTapLogin(email: String, password: String) {
         moduleOutput?.setPhoneNumber(phoneNumber: "88005553535")
-        moduleOutput?.didLogin()
-//        interactor.
+        interactor.signIn(withEmail: email, password: password)
     }
 
 
@@ -37,5 +36,10 @@ extension AuthPresenter: AuthViewOutput {
 }
 
 extension AuthPresenter: AuthInteractorOutput {
-
+    func didLogin() {
+        moduleOutput?.didLogin()
+    }
+    func showError(error: String) {
+        router.showAllert(error: error)
+    }
 }

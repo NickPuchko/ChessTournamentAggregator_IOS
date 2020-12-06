@@ -1,7 +1,10 @@
 
 import Foundation
 import UIKit
+struct Admin: Codable{
 
+
+}
 struct User: Codable{
     var player: Player
     var phone: String
