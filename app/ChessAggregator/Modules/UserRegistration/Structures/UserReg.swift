@@ -5,14 +5,14 @@
 import Foundation
 
 struct UserReg {
-        let lastName: String?
-        let firstName: String?
+        let lastName: String
+        let firstName: String
         let patronymicName: String?
-        let FideID: String?
-        let CFRID: String?
-        let email: String?
-        let password: String?
-        let passwordValidation: String?
+        let fideID: String
+        let frcID: String
+        let email: String
+        let password: String
+        let passwordValidation: String
         let isOrganizer: Bool
         let organisationCity: String?
         let organisationName: String?

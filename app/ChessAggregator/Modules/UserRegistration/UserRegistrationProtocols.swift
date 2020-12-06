@@ -19,23 +19,29 @@ protocol UserRegistrationViewInput: class {
     func showPasswordWarning(isHidden: Bool)
     func showValidatePasswordWarning(isHidden: Bool)
     func showOrganizationNameWarning(isHidden: Bool)
+    func showEmailWasRegisteredWarning(withWarning: String, isHidden: Bool)
 }
 
 protocol UserRegistrationViewOutput: class {
     func onTapRegistration(
             lastName: String?, firstName: String?, patronymicName: String?,
-            FideID: String?, CFRID: String?, email: String?, password: String?, passwordValidation: String?,
+            fideID: String?, frcID: String?, email: String?, password: String?, passwordValidation: String?,
             isOrganizer: Bool, organizationCity: String?, organizationName: String?, birthdate: Date
     )
 
+    func isFullNameOK(string: String) -> Bool
+    func filterID(string: String, maxID: Int) -> (Bool, Int?)
+    func isLoginDataOK(string: String) -> Bool
+    func isOrganizationDataOK(string: String) -> Bool
 }
 
 protocol UserRegistrationInteractorInput: class {
-    func addToDataBase(user: UserReg)
+    func addToDataBase(userReg: UserReg)
 }
 
 protocol UserRegistrationInteractorOutput: class {
-
+    func failedToAddAuthUser(error: String)
+    func didRegister()
 }
 
 protocol UserRegistrationRouterInput: class {
