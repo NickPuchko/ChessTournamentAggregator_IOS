@@ -70,6 +70,7 @@
 		D91FC10A105E8F0E4C3161A9 /* CurrentProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC0D61C3FC8908B4A5E18 /* CurrentProtocols.swift */; };
 		D91FC1BCA9CEF5F7417BA0B9 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCEF3B255AD71D488BD6B /* UIView+Layout.swift */; };
 		D91FC26C613F6A01D1DC8398 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC11574DF8A92DBC0617B /* Player.swift */; };
+		D91FC2F4B2B5A31870EA49EC /* LabelStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC02278EFF2C3C14A9553 /* LabelStack.swift */; };
 		D91FC35933ECB277C3D62FEE /* EventCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC3FE855AFF1C3D0A9B3D /* EventCreationViewController.swift */; };
 		D91FC4651A7A4E3AB7671594 /* CurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC76E941C7405ABB51E87 /* CurrentViewController.swift */; };
 		D91FC47433ECB2A20E20B1A0 /* CurrentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC6D760559FE6A779B990 /* CurrentInteractor.swift */; };
@@ -156,6 +157,7 @@
 		BAAF54D7FF0B6F3A13447F17 /* Pods-ChessAggregator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChessAggregator.debug.xcconfig"; path = "Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator.debug.xcconfig"; sourceTree = "<group>"; };
 		C31943B52568C2AC0051C8C0 /* ProfileRaw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRaw.swift; sourceTree = "<group>"; };
 		D91FC01896C1F619D9D5B569 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
+		D91FC02278EFF2C3C14A9553 /* LabelStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelStack.swift; sourceTree = "<group>"; };
 		D91FC033284E01F94CE014B6 /* EventCreationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreationInteractor.swift; sourceTree = "<group>"; };
 		D91FC0D61C3FC8908B4A5E18 /* CurrentProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentProtocols.swift; sourceTree = "<group>"; };
 		D91FC11574DF8A92DBC0617B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 			children = (
 				D91FC58675492BC70A66A7F4 /* MaterialTextField.swift */,
 				D91FC921E2F812AAEAE200DE /* DoubleDate.swift */,
+				D91FC02278EFF2C3C14A9553 /* LabelStack.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -695,6 +698,7 @@
 				D91FC804D6A7A4C2DA922FF2 /* BaseRouter.swift in Sources */,
 				D91FCAB6F86CBB47822069DF /* MaterialTextField.swift in Sources */,
 				D91FC47714C0F5D3D1EB754F /* DoubleDate.swift in Sources */,
+				D91FC2F4B2B5A31870EA49EC /* LabelStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

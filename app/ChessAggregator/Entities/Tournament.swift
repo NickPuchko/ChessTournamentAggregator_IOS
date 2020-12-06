@@ -38,5 +38,5 @@ enum Mode: String, Codable, CaseIterable{
 }
 
 enum RatingType: String, Codable, CaseIterable{
-    case fide = "FIDE", russian = "Russian", without = "Without"
+    case fide = "FIDE", russian = "ФШР", without = "Безрейтинговый"
 }

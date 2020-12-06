@@ -21,6 +21,7 @@ protocol EventCreationViewInput: class {
 protocol EventCreationViewOutput: class {
 	func createEvent()
 	func closeCreation()
+	func showRules()
 }
 
 protocol EventCreationInteractorInput: class {
@@ -32,4 +33,5 @@ protocol EventCreationInteractorOutput: class {
 
 protocol EventCreationRouterInput: class {
 	func closeCreation()
+	func showRules()
 }

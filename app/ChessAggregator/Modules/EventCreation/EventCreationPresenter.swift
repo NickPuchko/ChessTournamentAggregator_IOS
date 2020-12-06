@@ -25,6 +25,10 @@ extension EventCreationPresenter: EventCreationModuleInput {
 }
 
 extension EventCreationPresenter: EventCreationViewOutput {
+    func showRules() {
+        router.showRules()
+    }
+
     func createEvent() {
         interactor.saveEvent()
         router.closeCreation()
