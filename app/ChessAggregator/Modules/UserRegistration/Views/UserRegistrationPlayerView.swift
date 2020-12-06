@@ -7,15 +7,13 @@ import UIKit
 
 class UserRegistrationPlayerView: AutoLayoutView {
     let scrollableStackView: ScrollableStackView = {
-        var result: ScrollableStackView
         let config: ScrollableStackView.Config = ScrollableStackView.Config(
                 stack: ScrollableStackView.Config.Stack(axis: .vertical, distribution: .fill,
                         alignment: .fill, spacing: 15.0),
                 scroll: .defaultVertical,
                 pinsStackConstraints: UIEdgeInsets(top: 20.0, left: 16.0, bottom: 0.0, right: -16.0)
         )
-        result = ScrollableStackView(config: config)
-        return result
+        return ScrollableStackView(config: config)
     }()
 
     private let textFieldHeight: CGFloat = 40.0
