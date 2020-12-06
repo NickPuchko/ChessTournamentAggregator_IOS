@@ -11,6 +11,7 @@
 		01FFDCAF253FA091001244D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCAE253FA091001244D1 /* Assets.xcassets */; };
 		01FFDCB2253FA091001244D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCB0253FA091001244D1 /* LaunchScreen.storyboard */; };
 		01FFDCBB253FA140001244D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCBA253FA140001244D1 /* GoogleService-Info.plist */; };
+		248FF957257D02EC00020CFF /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 730407F82550617C0036E7A6 /* SwiftKeychainWrapper */; };
 		24B9108E256BCC3C0076A3E1 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9108C256BCC3C0076A3E1 /* BaseRouter.swift */; };
 		24B9108F256BCC3C0076A3E1 /* WarningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9108D256BCC3C0076A3E1 /* WarningLabel.swift */; };
 		24B910A9256BCE310076A3E1 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B910A2256BCE300076A3E1 /* AuthRouter.swift */; };
@@ -185,6 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				248FF957257D02EC00020CFF /* SwiftKeychainWrapper in Frameworks */,
 				C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,9 +226,6 @@
 				D91FC6A4DB8175C9ED293912 /* Entities */,
 				D91FC6AD2BBB9A246B8C066F /* Views */,
 				6AC97CF89410E6EBA53F52ED /* Extensions */,
-
-				6AC979B946764083C6D9430A /* UserRegistration */,
-				6AC979BA01AA657206C37BD3 /* PhoneNumberRegistration */,
 				6AC97D2856ACAF5C14548A60 /* GlobalConstants */,
 				6AC97DB8E2C8845F6C91B91B /* Helpers */,
 				D91FCE32A316ECF050EA578D /* Services */,
@@ -237,12 +236,12 @@
 		24ABA1D2257933BD00B3978D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				6AC979BA01AA657206C37BD3 /* PhoneNumberRegistration */,
+				6AC979B946764083C6D9430A /* UserRegistration */,
 				D91FCB1E82EEDB873508A6D9 /* Current */,
 				D91FC4141781EB5CC1FB93EA /* Creation */,
 				6AC979F80691717F1505998A /* UserProfile */,
 				6AC97CAAF1950883DB8BF955 /* SearchTournaments */,
-				6AC979B946764083C6D9430A /* UserRegistration */,
-				6AC979BA01AA657206C37BD3 /* PhoneNumberRegistration */,
 				24B91091256BCD0E0076A3E1 /* AuthNew */,
 			);
 			path = Modules;
@@ -515,7 +514,7 @@
 			);
 			name = ChessAggregator;
 			packageProductDependencies = (
-				730407F82550617C0036E7A6,
+				730407F82550617C0036E7A6 /* SwiftKeychainWrapper */,
 			);
 			productName = ChessAggregator;
 			productReference = 01FFDCA2253FA08B001244D1 /* ChessAggregator.app */;
@@ -545,7 +544,7 @@
 			);
 			mainGroup = 01FFDC99253FA08B001244D1;
 			packageReferences = (
-				730407F72550617C0036E7A6,
+				730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 			);
 			productRefGroup = 01FFDCA3253FA08B001244D1 /* Products */;
 			projectDirPath = "";
@@ -891,7 +890,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		730407F72550617C0036E7A6 = {
+		730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
 			requirement = {
@@ -902,9 +901,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		730407F82550617C0036E7A6 = {
+		730407F82550617C0036E7A6 /* SwiftKeychainWrapper */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 730407F72550617C0036E7A6;
+			package = 730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
 			productName = SwiftKeychainWrapper;
 		};
 /* End XCSwiftPackageProductDependency section */
