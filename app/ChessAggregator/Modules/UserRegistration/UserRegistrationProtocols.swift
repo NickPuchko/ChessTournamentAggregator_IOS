@@ -28,11 +28,14 @@ protocol UserRegistrationViewOutput: class {
             fideID: String?, frcID: String?, email: String?, password: String?, passwordValidation: String?,
             isOrganizer: Bool, organizationCity: String?, organizationName: String?, birthdate: Date
     )
+    func onTapFide()
+    func onTapFrc()
 
     func isFullNameOK(string: String) -> Bool
     func filterID(string: String, maxID: Int) -> (Bool, Int?)
     func isLoginDataOK(string: String) -> Bool
     func isOrganizationDataOK(string: String) -> Bool
+    func isSexOK(string: String) -> Bool
 }
 
 protocol UserRegistrationInteractorInput: class {
@@ -45,5 +48,6 @@ protocol UserRegistrationInteractorOutput: class {
 }
 
 protocol UserRegistrationRouterInput: class {
-
+    func showFide()
+    func showFrc()
 }

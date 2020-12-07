@@ -19,7 +19,7 @@ func saveUser(currentUser: User) {
     UserDefaults.standard.synchronize()
 }
 
-func currentUserPhone() -> String{
+func currentUserPhone() -> String {
     var currentUser: User
     let local = UserDefaults.standard
     if let user = local.object(forKey: "currentUser") as? Data {
