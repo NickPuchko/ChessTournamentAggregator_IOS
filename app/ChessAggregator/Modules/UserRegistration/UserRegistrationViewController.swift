@@ -44,12 +44,22 @@ class UserRegistrationViewController: UIViewController {
             )
 
         }
+
+        registrationView.onTapFideButton = { [weak self] in
+            self?.output.onTapFide()
+        }
+
+        registrationView.onTapFrcButton = { [weak self] in
+            self?.output.onTapFrc()
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeHideKeyboard()
         initializeTextFieldDelegates()
+        self.registrationView.sexPicker.delegate = self
+        self.registrationView.sexPicker.dataSource = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -119,6 +129,8 @@ extension UserRegistrationViewController: UITextFieldDelegate {
             return self.output.isLoginDataOK(string: prospectiveText)
         case registrationView.organizationName, registrationView.organizationCity:
                 return self.output.isOrganizationDataOK(string: prospectiveText)
+        case registrationView.sex:
+            return self.output.isSexOK(string: prospectiveText)
         default:
             return true
         }
@@ -160,6 +172,29 @@ private extension UserRegistrationViewController {
         self.registrationView.validatePassword.delegate = self
         self.registrationView.organizationCity.delegate = self
         self.registrationView.organizationName.delegate = self
+        self.registrationView.sex.delegate = self
     }
 
+}
+
+extension UserRegistrationViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        registrationView.sexList.count
+    }
+}
+
+extension UserRegistrationViewController: UIPickerViewDelegate {
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        registrationView.sexList[row]
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        registrationView.selectedSex = registrationView.sexList[row]
+        registrationView.sex.text = registrationView.selectedSex
+    }
 }
