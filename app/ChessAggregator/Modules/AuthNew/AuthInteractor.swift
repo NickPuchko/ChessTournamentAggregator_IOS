@@ -3,23 +3,33 @@
 //
 
 import FirebaseAuth
-
+import Foundation
 class AuthInteractor {
     weak var output: AuthInteractorOutput?
 
 }
 
 extension AuthInteractor: AuthInteractorInput {
-    func signIn(withEmail email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-            guard let strongSelf = self else { return }
-            if let err = error {
+    func signIn(withEmail email: String, password: String){
+            Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
+                if error != nil {
+                    if let errCode = AuthErrorCode(rawValue: error!._code) {
+                        switch errCode {
+                        case .invalidEmail:
+                            self?.output?.showError(error: "Invalid email")
 
-            } else {
+                        case .wrongPassword:
+                            self?.output?.showError(error: "Invalid password")
+                        default:
+                            self?.output?.showError(error: "Other Error!")
 
+                        }
+                    }
+                }else {
+                    self?.output?.didLogin()
+                }
             }
-        }
+
+
     }
-
-
 }

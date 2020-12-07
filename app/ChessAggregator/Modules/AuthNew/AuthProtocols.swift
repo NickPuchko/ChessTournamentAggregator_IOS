@@ -28,8 +28,10 @@ protocol AuthInteractorInput: class {
 }
 
 protocol AuthInteractorOutput: class {
-
+    func didLogin()
+    func showError(error: String)
 }
 
 protocol AuthRouterInput: class {
+    func showAllert(error: String)
 }
