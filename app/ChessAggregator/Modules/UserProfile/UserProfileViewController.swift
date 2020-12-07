@@ -25,7 +25,6 @@ final class UserProfileViewController: UIViewController {
     init(output: UserProfileViewOutput) {
         self.output = output
         self.imageView = UIImageView(image: userImage)
-
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -81,9 +80,15 @@ final class UserProfileViewController: UIViewController {
         view.addSubview(profileStack)
     }
 
-	override func viewDidLoad() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+
+    override func viewDidLoad() {
 		super.viewDidLoad()
         self.testUser = output.getUserInformation()
+
 
         imageView.layer.cornerRadius = 32
         imageView.clipsToBounds = true
@@ -94,7 +99,7 @@ final class UserProfileViewController: UIViewController {
         userName.font = .boldSystemFont(ofSize: 30)
 
         var status = "Игрок"
-        if testUser!.isAdmin {
+        if testUser!.isOrganizer {
             status = "Организатор"
         }
         userStatus.text = status
@@ -102,13 +107,13 @@ final class UserProfileViewController: UIViewController {
         userStatus.font = .boldSystemFont(ofSize: 18)
 
 
-        userRating.text = testUser!.player.rating.description
+        userRating.text = testUser!.player.classicFideRating?.description
         userRating.font = .italicSystemFont(ofSize: 24)
 
         let editImage = UIImage(systemName: "square.and.pencil")
 
 
-        editButton.setImage(UIImage(cgImage: (editImage?.cgImage)!, scale: 1, orientation: UIImage.Orientation.up), for: .normal)
+        editButton.setImage(UIImage(cgImage: (editImage?.cgImage)!, scale: 1.5, orientation: UIImage.Orientation.up), for: .normal)
         editButton.addTarget(self, action: #selector(tappedEdit), for: .touchUpInside)
 
 

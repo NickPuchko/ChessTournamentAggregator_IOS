@@ -16,11 +16,9 @@ extension UserProfileRouter: UserProfileRouterInput {
     }
 
     func showCreator() {
-        navigationController?.present(CreationViewController(
-                ref: FirebaseRef.ref,
-                phone: phoneNumber),
-                animated: true
-        )
+        let context = EventCreationContext(moduleOutput: nil)
+        let container = EventCreationContainer.assemble(with: context)
+        navigationController?.pushViewController(container.viewController, animated: true)
     }
 
     func showMyEvents() {

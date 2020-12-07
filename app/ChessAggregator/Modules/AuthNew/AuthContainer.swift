@@ -28,6 +28,10 @@ class AuthContainer {
             viewController
         }
 
+        router.viewControllerProvider = { [weak viewController] in
+            viewController
+        }
+
         return AuthContainer(view: viewController, input: presenter, router: router)
     }
 

@@ -1,23 +1,16 @@
 
 import Foundation
 import UIKit
-struct Admin: Codable{
 
-
-}
-struct User: Codable{
-    var player: Player
-    var phone: String
-    var email: String
-    var isAdmin: Bool
+struct User: Codable {
+    var player: Player = Player(fullName: "Doe John", birthdate: Date(), classicFideRating: 2100)
+    var phone: String = "88005553535"
+    var email: String = "email@example.com"
+    var password: String = "Passw0rd"
+    var isOrganizer: Bool = false
+    var organizer: Organizer = Organizer(organizationCity: "Moscow", organizationName: "LUWL")
     // TODO: phone class
-    
-    init(player: Player = Player(fullName: "Doe John", birthdate: Date(), rating: 2100), email: String = "email@example.com", phone: String = "88005553535", isAdmin: Bool = false) {
-        self.player = player
-        self.email = email
-        self.phone = phone
-        self.isAdmin = isAdmin
-    }
+
 }
 
 func saveUser(currentUser: User) {
