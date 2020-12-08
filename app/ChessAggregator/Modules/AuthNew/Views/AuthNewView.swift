@@ -100,15 +100,15 @@ class AuthNewView: AutoLayoutView {
             loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10.0),
             loginButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
 
-            signupButton.heightAnchor.constraint(equalToConstant: 40),
-            signupButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 10.0),
-            signupButton.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
-            signupButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
-
             forgotButton.heightAnchor.constraint(equalToConstant: 40),
-            forgotButton.topAnchor.constraint(equalTo: signupButton.bottomAnchor, constant: 10.0),
+            forgotButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 10.0),
             forgotButton.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
-            forgotButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor)
+            forgotButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
+
+            signupButton.heightAnchor.constraint(equalToConstant: 40),
+            signupButton.topAnchor.constraint(equalTo: forgotButton.bottomAnchor, constant: 10.0),
+            signupButton.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
+            signupButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor)
 
         ].forEach {$0.isActive = true}
 
