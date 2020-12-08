@@ -111,12 +111,18 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
 
     @objc
     private func createDefault() {
+
+        let formatter = DateFormatter()
+        formatter.timeZone = .current
+        formatter.locale = .current
+        formatter.dateFormat = "dd.MM.yyyy"
+
         var event = Tournament()
         event.organizerId = Auth.auth().currentUser!.uid
         event.name = labelTextField.text ?? "default"
         event.location = locationTextField.text ?? "default"
-        event.openDate = dateView.openDate.description // TODO: dateFormatter
-        event.closeDate = dateView.closeDate.description // TODO: dateFormatter
+        event.openDate = formatter.string(from: dateView.openDate.date) // TODO: dateFormatter
+        event.closeDate = formatter.string(from: dateView.closeDate.date) // TODO: dateFormatter
         event.url = URL(string: urlField.text ?? "default") ?? URL(string: "https://ruchess.ru/")!
         event.prizeFund = Int(fundField.text ?? "default") ?? 0
         event.fee = Int(feeField.text ?? "default") ?? 0
@@ -215,7 +221,6 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         }
     }
 }
-
 
 private extension EventCreationViewController {
     func setupStackView() {
@@ -327,6 +332,9 @@ private extension EventCreationViewController {
         urlField.returnKeyType = .continue
         urlField.addTarget(self, action: #selector(editFund), for: .editingDidEndOnExit)
     }
+//    func isChanged() -> Bool{
+//
+//    }
 }
 
 extension EventCreationViewController: UIPickerViewDelegate, UIPickerViewDataSource {

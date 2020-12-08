@@ -35,7 +35,9 @@ extension EventCreationInteractor: EventCreationInteractorInput {
 				 "organizerId" : event.organizerId,
 				 "name" : event.name
 				] as [String: Any]
-
+		if (event.name.isEmpty || event.tours < 1 ||  event.ratingType.rawValue.isEmpty ) {
+			print ("111")
+		}
 
 		let childUpdates = ["/Tournaments/\(key)" : tournament]
 		FirebaseRef.ref.updateChildValues(childUpdates)
