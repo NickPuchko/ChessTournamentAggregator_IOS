@@ -32,6 +32,8 @@ final class ChessAppCoordinator {
         self.tabBarController.setViewControllers(navigationControllers, animated: true)
         self.window.rootViewController = tabBarController
         self.window.makeKeyAndVisible()
+
+        UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromLeft, animations: {})
     }
 }
 
@@ -134,7 +136,7 @@ fileprivate enum NavControllerType: Int, CaseIterable {
 
 
 enum Localization {
-    static let currentTournaments = "Текущие турниры"
+    static let currentTournaments = "Мои турниры"
     static let search = "Лента"
     static let profile = "Профиль"
 }

@@ -20,7 +20,6 @@ protocol UserProfileViewInput: class {
 }
 
 protocol UserProfileViewOutput: class {
-	func getUserInformation() -> User
 	func editProfile()
 	func createEvent()
 	func showMyEvents()
@@ -30,8 +29,6 @@ protocol UserProfileViewOutput: class {
 }
 
 protocol UserProfileInteractorInput: class {
-	func loadUser() -> User
-	func getUserInformation() -> User
 }
 
 protocol UserProfileInteractorOutput: class {

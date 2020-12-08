@@ -8,12 +8,11 @@ final class UserProfilePresenter {
     
 	private let router: UserProfileRouterInput
 	private let interactor: UserProfileInteractorInput
-    private var user: User
+    private var user: User?
     
     init(router: UserProfileRouterInput, interactor: UserProfileInteractorInput) {
         self.router = router
         self.interactor = interactor
-        self.user = interactor.getUserInformation()
     }
 }
 
@@ -21,9 +20,6 @@ extension UserProfilePresenter: UserProfileModuleInput {
 }
 
 extension UserProfilePresenter: UserProfileViewOutput {
-    func getUserInformation() -> User {
-        user
-    }
 
     func editProfile() {
         router.showEditor()
@@ -42,17 +38,25 @@ extension UserProfilePresenter: UserProfileViewOutput {
     }
 
     func showFIDE() {
-        router.showFIDE(user: user)
+        if let userInfo = user {
+            router.showFIDE(user: userInfo)
+        } else {
+
+        }
     }
 
     func showFRC() {
-        router.showFRC(user: user)
+        if let userInfo = user {
+            router.showFRC(user: userInfo)
+        } else {
+
+        }
     }
 }
 
 extension UserProfilePresenter: UserProfileInteractorOutput {
     func updateUser(user: User) {
+        self.user = user
         view!.updateUser(user: user)
     }
-
 }
