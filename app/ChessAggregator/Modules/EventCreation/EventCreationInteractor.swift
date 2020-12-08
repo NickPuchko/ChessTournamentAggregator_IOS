@@ -13,24 +13,30 @@ final class EventCreationInteractor {
 }
 
 extension EventCreationInteractor: EventCreationInteractorInput {
-	func saveEvent() {
-		let event = initEvent()
-		let tournament =
-				["date" : event.date,
-				 "fee" : event.fee,
-				 "location" : event.location,
-				 "mode" : event.mode.rawValue,
-				 "prizeFund" : event.prizeFund,
-				 "ratingType" : event.ratingType.rawValue,
-				 "timeControl" : event.timeControl,
-				 "url" : event.url.description,
-				 "name" : event.name
-				] as [String: Any]
+	func saveEvent(event: Tournament) {
 
 		guard let key = FirebaseRef.ref.child("Tournaments").childByAutoId().key else {
 			print("No auto id!")
 			return
 		}
+		let tournament =
+				["openDate" : event.openDate,
+				 "closeDate" : event.closeDate,
+				 "fee" : event.fee,
+				 "location" : event.location,
+				 "tours" : event.tours,
+				 "minutes" : event.minutes,
+				 "seconds" : event.seconds,
+				 "increment" : event.increment,
+				 "mode" : event.mode.rawValue,
+				 "prizeFund" : event.prizeFund,
+				 "ratingType" : event.ratingType.rawValue,
+				 "url" : event.url.description,
+				 "organizerId" : event.organizerId,
+				 "name" : event.name
+				] as [String: Any]
+
+
 		let childUpdates = ["/Tournaments/\(key)" : tournament]
 		FirebaseRef.ref.updateChildValues(childUpdates)
 	}
@@ -50,11 +56,11 @@ extension EventCreationInteractor: EventCreationInteractorInput {
 	}
 }
 
-extension EventCreationInteractor {
-	private func initEvent() -> Tournament {
-		Tournament(id: "5", name: "Moscow open",
-				date: "10.02.2021", location: "Moscow",
-				ratingType: .fide, prizeFund: 2000000,
-				fee: 5000, url: URL(string: "https://ru.wikipedia.org/wiki/Moscow_Chess_Open")!)
-	}
-}
+//extension EventCreationInteractor {
+//	private func initEvent() -> Tournament {
+//		Tournament(id: "5", name: "Moscow open",
+//				date: "10.02.2021", location: "Moscow",
+//				ratingType: .fide, prizeFund: 2000000,
+//				fee: 5000, url: URL(string: "https://ru.wikipedia.org/wiki/Moscow_Chess_Open")!)
+//	}
+//}

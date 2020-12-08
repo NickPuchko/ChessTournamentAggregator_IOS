@@ -20,7 +20,6 @@ final class SearchTournamentsRouter: BaseRouter {
 extension SearchTournamentsRouter: SearchTournamentsRouterInput {
     func showInfo(section: EventSectionModel) {
         let message = """
-                      Временной контроль: \(section.event.timeControl)
                       Призовой фонд: \(section.event.prizeFund) рублей
                       Взнос: \(section.event.fee) рублей
                       """

@@ -19,14 +19,14 @@ protocol EventCreationViewInput: class {
 }
 
 protocol EventCreationViewOutput: class {
-	func createEvent()
+	func createEvent(event: Tournament)
 	func closeCreation()
 	func showRules()
 	func chooseMode(minutes: Int, seconds: Int, increment: Int) -> Mode
 }
 
 protocol EventCreationInteractorInput: class {
-	func saveEvent()
+	func saveEvent(event: Tournament)
 	func chooseMode(minutes: Int, seconds: Int, increment: Int) -> Mode
 }
 

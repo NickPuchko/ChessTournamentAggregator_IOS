@@ -12,6 +12,6 @@ class EventNameCellModel: CellIdentifiable {
 
     init(_ event: Tournament) {
         name = event.name
-        date = event.date
+        date = event.openDate
     }
 }

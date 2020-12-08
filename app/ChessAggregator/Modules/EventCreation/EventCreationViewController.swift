@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+
 
 final class EventCreationViewController: UIViewController, UIScrollViewDelegate {
 	private let output: EventCreationViewOutput
@@ -109,7 +111,29 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
 
     @objc
     private func createDefault() {
-        output.createEvent()
+        var event = Tournament()
+        event.organizerId = Auth.auth().currentUser!.uid
+        event.name = labelTextField.text ?? "default"
+        event.location = locationTextField.text ?? "default"
+        event.openDate = dateView.openDate.description // TODO: dateFormatter
+        event.closeDate = dateView.closeDate.description // TODO: dateFormatter
+        event.url = URL(string: urlField.text ?? "default") ?? URL(string: "https://ruchess.ru/")!
+        event.prizeFund = Int(fundField.text ?? "default") ?? 0
+        event.fee = Int(feeField.text ?? "default") ?? 0
+        event.tours = Int(toursField.text ?? "default") ?? 9
+        event.ratingType = RatingType(rawValue: ratingTypeField.text ?? "default") ?? .without
+        switch modeSegment.selectedSegmentIndex {
+        case 1:
+            event.mode = Mode(rawValue: modeField.text ?? "default") ?? .classic
+        case 2:
+            event.mode = .chess960
+        default:
+            event.mode = .fide
+        }
+        event.minutes = Int(minutesField.text ?? "default") ?? 90
+        event.seconds = Int(secondsField.text ?? "default") ?? 0
+        event.increment = Int(incrementField.text ?? "default") ?? 30
+        output.createEvent(event: event)
     }
 
     @objc
@@ -173,7 +197,7 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
             modeField.isHidden = false
         case 2:
             modeField.text = "Шахматы Фишера - обсчёт рейтинга не предусмотрен"
-            ratingTypeField.text = "Безрейтинговый"
+            ratingTypeField.text = "Без обсчёта"
             ratingTypePicker.selectRow(2, inComponent: 0, animated: false)
             timeStack.isHidden = false
             labelStack.isHidden = false
@@ -295,19 +319,17 @@ private extension EventCreationViewController {
 
     func setupDescriptionFields() {
         fundField.placeholder = "Призовой фонд, ₽"
-        fundField.keyboardType = .decimalPad
+        fundField.keyboardType = .numberPad
         fundField.returnKeyType = .continue
         labelTextField.addTarget(self, action: #selector(editFee), for: .editingDidEndOnExit)
         feeField.placeholder = "Взнос, ₽"
-        feeField.keyboardType = .decimalPad
+        feeField.keyboardType = .numberPad
         feeField.returnKeyType = .continue
         labelTextField.addTarget(self, action: #selector(editURL), for: .editingDidEndOnExit)
         urlField.placeholder = "Ссылка"
         urlField.keyboardType = .URL
         urlField.returnKeyType = .done
         labelTextField.addTarget(self, action: #selector(resignAll), for: .editingDidEndOnExit)
-
-
     }
 }
 

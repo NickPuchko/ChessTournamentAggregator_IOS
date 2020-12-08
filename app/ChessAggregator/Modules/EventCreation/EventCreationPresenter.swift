@@ -33,8 +33,8 @@ extension EventCreationPresenter: EventCreationViewOutput {
         router.showRules()
     }
 
-    func createEvent() {
-        interactor.saveEvent()
+    func createEvent(event: Tournament) {
+        interactor.saveEvent(event: event)
         router.closeCreation()
     }
 

@@ -3,13 +3,19 @@ import Foundation
 struct Tournament: Identifiable{
     var id: String
 
+    var organizerId: String
     var name: String
     var mode: Mode
-    var date: String
+    var openDate: String
+    var closeDate: String
     var location: String
     var ratingType: RatingType
+    var tours: Int
 
-    var timeControl: String
+    //var timeControl: String
+    var minutes: Int
+    var seconds: Int
+    var increment: Int
     var prizeFund: Int
     var fee: Int
     var url: URL
@@ -17,16 +23,22 @@ struct Tournament: Identifiable{
     // TODO: class Date - DateFormatter!
     // TODO: class Location
 
-    init(id: String = "0", name: String = "Some event", mode: Mode = .classic, date: String = "01.01.1970",
-         location: String = "Moscow", ratingType: RatingType = .without, timeControl: String = "90+30",
+    init(id: String = "0", organizerId: String = "", name: String = "Some event", mode: Mode = .classic, openDate: String = "01.01.1970",
+         closeDate: String = "01.01.1970", location: String = "Moscow", ratingType: RatingType = .without,
+         tours: Int = 9, minutes: Int = 1, seconds: Int = 0, increment: Int = 0,
          prizeFund: Int = 0, fee: Int = 0, url: URL = URL(string: "https://vk.com/oobermensch")!) {
         self.id = id
+        self.organizerId = organizerId
         self.name = name
         self.mode = mode
-        self.date = date
+        self.openDate = openDate
+        self.closeDate = closeDate
         self.location = location
         self.ratingType = ratingType
-        self.timeControl = timeControl
+        self.tours = tours
+        self.minutes = minutes
+        self.seconds = seconds
+        self.increment = increment
         self.prizeFund = prizeFund
         self.fee = fee
         self.url = url
@@ -34,9 +46,9 @@ struct Tournament: Identifiable{
 }
 
 enum Mode: String, Codable, CaseIterable{
-    case classic = "Классика", rapid = "Рапид", blitz = "Блиц", bullet = "Пуля"
+    case classic = "Классика", rapid = "Рапид", blitz = "Блиц", bullet = "Пуля", fide = "fide", chess960 = "chess 960"
 }
 
 enum RatingType: String, Codable, CaseIterable{
-    case fide = "FIDE", russian = "ФШР", without = "Безрейтинговый"
+    case fide = "FIDE", russian = "ФШР", without = "Без обсчёта"
 }
