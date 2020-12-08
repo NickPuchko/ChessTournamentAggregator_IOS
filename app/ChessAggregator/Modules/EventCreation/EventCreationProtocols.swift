@@ -22,10 +22,12 @@ protocol EventCreationViewOutput: class {
 	func createEvent()
 	func closeCreation()
 	func showRules()
+	func chooseMode(minutes: Int, seconds: Int, increment: Int) -> Mode
 }
 
 protocol EventCreationInteractorInput: class {
 	func saveEvent()
+	func chooseMode(minutes: Int, seconds: Int, increment: Int) -> Mode
 }
 
 protocol EventCreationInteractorOutput: class {

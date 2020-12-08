@@ -34,6 +34,20 @@ extension EventCreationInteractor: EventCreationInteractorInput {
 		let childUpdates = ["/Tournaments/\(key)" : tournament]
 		FirebaseRef.ref.updateChildValues(childUpdates)
 	}
+
+	func chooseMode(minutes: Int, seconds: Int, increment: Int) -> Mode {
+		let totalTime = minutes * 60 + seconds + increment * 60
+		switch totalTime {
+		case 60...180:
+			return .bullet
+		case 181...600:
+			return .blitz
+		case 601..<3600:
+			return .rapid
+		default:
+			return .classic
+		}
+	}
 }
 
 extension EventCreationInteractor {

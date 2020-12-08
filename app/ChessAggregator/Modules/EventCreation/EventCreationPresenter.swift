@@ -25,6 +25,10 @@ extension EventCreationPresenter: EventCreationModuleInput {
 }
 
 extension EventCreationPresenter: EventCreationViewOutput {
+    func chooseMode(minutes: Int, seconds: Int, increment: Int) -> Mode {
+        interactor.chooseMode(minutes: minutes, seconds: seconds, increment: increment)
+    }
+
     func showRules() {
         router.showRules()
     }

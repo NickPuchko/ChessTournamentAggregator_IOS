@@ -16,19 +16,20 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
     let scrollableStackView: ScrollableStackView = {
         let config: ScrollableStackView.Config = ScrollableStackView.Config(
                 stack: ScrollableStackView.Config.Stack(axis: .vertical, distribution: .fill,
-                        alignment: .fill, spacing: 15.0),
+                        alignment: .fill, spacing: 10),
                 scroll: .defaultVertical,
                 pinsStackConstraints: UIEdgeInsets(top: 20.0, left: 8.0, bottom: 0.0, right: -8.0)
         )
         return ScrollableStackView(config: config)
     }()
     private let dateView = DoubleDate()
+
     private let pickerStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillEqually
         stack.alignment = .fill
-        stack.spacing = 8
+        stack.spacing = 4
         return stack
     }()
     private let toursField = MaterialTextField()
@@ -45,11 +46,30 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         stack.axis = .vertical
         stack.distribution = .fillProportionally
         stack.alignment = .fill
+        stack.spacing = 6
         return stack
     }()
-
     private let labelStack = LabelStack(first: "Минуты", second: "Секунды", third: "Инкремент")
+    let timeStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        stack.alignment = .fill
+        stack.spacing = 2
+        return stack
+    }()
+    private let modeField: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .light)
+        label.textColor = .lightGray
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
 
+    private let fundField = MaterialTextField()
+    private let feeField = MaterialTextField()
+    private let urlField = MaterialTextField()
 
     init(output: EventCreationViewOutput) {
         self.output = output
@@ -74,6 +94,7 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         setupPickerStack()
         setupToolbar()
         setupSegment()
+        setupDescriptionFields()
         scrollableStackView.scrollView.delegate = self
 
         navigationItem.leftBarButtonItem =
@@ -121,26 +142,54 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
     }
 
     @objc
+    private func editFee() {
+        if feeField.text == "" {
+            feeField.becomeFirstResponder()
+        } else {
+            editURL()
+        }
+    }
+
+    @objc
+    private func editURL() {
+        if urlField.text == "" {
+            urlField.becomeFirstResponder()
+        } else {
+            resignAll()
+        }
+    }
+
+    @objc
     private func tapSegment() {
         switch modeSegment.selectedSegmentIndex {
         case 1:
-            verticalTimeStack.isHidden = false
+            modeField.text = output.chooseMode(
+                    minutes: Int(minutesField.text ?? "1") ?? 1,
+                    seconds: Int(secondsField.text ?? "0") ?? 0,
+                    increment: Int(incrementField.text ?? "0") ?? 0
+            ).rawValue
+            timeStack.isHidden = false
+            labelStack.isHidden = false
+            modeField.isHidden = false
         case 2:
-            verticalTimeStack.isHidden = false
+            modeField.text = "Шахматы Фишера - обсчёт рейтинга не предусмотрен"
+            ratingTypeField.text = "Безрейтинговый"
+            ratingTypePicker.selectRow(2, inComponent: 0, animated: false)
+            timeStack.isHidden = false
+            labelStack.isHidden = false
+            modeField.isHidden = false
         default:
-            UIView.animate(withDuration: 0.5) {
-                self.verticalTimeStack.isHidden = true
-                self.view.endEditing(true)
-                self.scrollableStackView.layoutIfNeeded()
-            }
+            modeField.text = "90 минут на первые 40 ходов, затем 30 минут до окончания партии. Инкремент 30 секунд на ход"
+            timeStack.isHidden = true
+            labelStack.isHidden = true
+            modeField.isHidden = false
+            view.endEditing(true)
         }
 
         UIView.animate(withDuration: 0.5) {
             self.scrollableStackView.layoutIfNeeded()
         }
     }
-
-
 }
 
 
@@ -149,10 +198,15 @@ private extension EventCreationViewController {
         scrollableStackView.addArrangedSubview(labelTextField)
         scrollableStackView.addArrangedSubview(locationTextField)
         scrollableStackView.addArrangedSubview(dateView)
-        scrollableStackView.setCustomSpacing(24, after: dateView)
+        scrollableStackView.setCustomSpacing(30, after: dateView)
+        scrollableStackView.addArrangedSubview(urlField)
+        scrollableStackView.addArrangedSubview(fundField)
+        scrollableStackView.addArrangedSubview(feeField)
+        scrollableStackView.setCustomSpacing(30, after: feeField)
         scrollableStackView.addArrangedSubview(pickerStack)
         scrollableStackView.addArrangedSubview(modeSegment)
         scrollableStackView.addArrangedSubview(verticalTimeStack)
+
         scrollableStackView.pins()
     }
 
@@ -170,6 +224,7 @@ private extension EventCreationViewController {
         toursPicker.dataSource = self
         ratingTypePicker.delegate = self
         ratingTypePicker.dataSource = self
+
 
         toursField.placeholder = "Кол-во туров"
         toursField.inputView = toursPicker
@@ -207,6 +262,11 @@ private extension EventCreationViewController {
         timeControlPicker.delegate = self
         timeControlPicker.dataSource = self
 
+        timeControlPicker.selectRow(89, inComponent: 0, animated: true)
+        timeControlPicker.selectRow(0, inComponent: 1, animated: true)
+        timeControlPicker.selectRow(30, inComponent: 2, animated: true)
+
+
         minutesField.text = String(90)
         minutesField.textAlignment = .center
         secondsField.textAlignment = .center
@@ -217,23 +277,37 @@ private extension EventCreationViewController {
         secondsField.inputView = timeControlPicker
         incrementField.inputView = timeControlPicker
 
-        let timeStack: UIStackView = {
-            let stack = UIStackView()
-            stack.axis = .horizontal
-            stack.distribution = .fillEqually
-            stack.alignment = .fill
-            stack.spacing = 2
-            return stack
-        }()
 
         timeStack.addArrangedSubview(minutesField)
         timeStack.addArrangedSubview(secondsField)
         timeStack.addArrangedSubview(incrementField)
 
+        modeField.isUserInteractionEnabled = false
+        modeField.font = .italicSystemFont(ofSize: 12)
+        modeField.text = Mode.classic.rawValue
+
+        verticalTimeStack.addArrangedSubview(modeField)
         verticalTimeStack.addArrangedSubview(timeStack)
         verticalTimeStack.addArrangedSubview(labelStack)
+        verticalTimeStack.arrangedSubviews.forEach{ $0.isHidden = true }
+        scrollableStackView.setCustomSpacing(verticalTimeStack.spacing, after: modeSegment)
+    }
 
-        verticalTimeStack.isHidden = true
+    func setupDescriptionFields() {
+        fundField.placeholder = "Призовой фонд, ₽"
+        fundField.keyboardType = .decimalPad
+        fundField.returnKeyType = .continue
+        labelTextField.addTarget(self, action: #selector(editFee), for: .editingDidEndOnExit)
+        feeField.placeholder = "Взнос, ₽"
+        feeField.keyboardType = .decimalPad
+        feeField.returnKeyType = .continue
+        labelTextField.addTarget(self, action: #selector(editURL), for: .editingDidEndOnExit)
+        urlField.placeholder = "Ссылка"
+        urlField.keyboardType = .URL
+        urlField.returnKeyType = .done
+        labelTextField.addTarget(self, action: #selector(resignAll), for: .editingDidEndOnExit)
+
+
     }
 }
 
@@ -244,11 +318,11 @@ extension EventCreationViewController: UIPickerViewDelegate, UIPickerViewDataSou
         } else if pickerView == timeControlPicker {
             switch component {
             case 0:
-                return 599
+                return 600
             case 1:
                 return 60
             default:
-                return 600
+                return 601
             }
         } else {
             return RatingType.allCases.count
@@ -294,10 +368,16 @@ extension EventCreationViewController: UIPickerViewDelegate, UIPickerViewDataSou
             default:
                 incrementField.text = String(row)
             }
+            if modeSegment.selectedSegmentIndex == 1 {
+                modeField.text = output.chooseMode(
+                        minutes: Int(minutesField.text ?? "1") ?? 1,
+                        seconds: Int(secondsField.text ?? "0") ?? 0,
+                        increment: Int(incrementField.text ?? "0") ?? 0
+                ).rawValue
+            }
         default:
             ratingTypeField.text = RatingType.allCases[row].rawValue
         }
-
     }
 }
 
