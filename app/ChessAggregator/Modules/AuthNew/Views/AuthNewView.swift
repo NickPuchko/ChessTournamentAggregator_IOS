@@ -40,12 +40,13 @@ class AuthNewView: AutoLayoutView {
         stackView.distribution = .fill
 
 
-        emailTextField.placeholder = "email@example.com"
-        emailTextField.keyboardType = .phonePad
+        emailTextField.placeholder = "email@gmail.com"
+        emailTextField.keyboardType = .emailAddress
         emailTextField.borderStyle = .roundedRect
+        emailTextField.addTarget(self, action: #selector(editPassword), for: .editingDidEndOnExit)
 
 
-        passwordTextField.placeholder = "Введите пароль"
+        passwordTextField.placeholder = "Password1234567890"
         passwordTextField.isSecureTextEntry = true
         passwordTextField.borderStyle = .roundedRect
 
@@ -126,8 +127,18 @@ class AuthNewView: AutoLayoutView {
     private func onTapSignup() -> Void {
         onTapSignupButton?()
     }
+
     @objc
     private func onTapForgot() -> Void {
         onTapForgotButton?()
+    }
+
+    @objc
+    private func editPassword() {
+        if passwordTextField.text == "" {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            resignFirstResponder()
+        }
     }
 }

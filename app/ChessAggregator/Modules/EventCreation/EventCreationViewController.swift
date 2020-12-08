@@ -170,16 +170,16 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         if feeField.text == "" {
             feeField.becomeFirstResponder()
         } else {
-            editURL()
+            resignAll()
         }
     }
 
     @objc
-    private func editURL() {
-        if urlField.text == "" {
-            urlField.becomeFirstResponder()
+    private func editFund() {
+        if fundField.text == "" {
+            fundField.becomeFirstResponder()
         } else {
-            resignAll()
+            editFee()
         }
     }
 
@@ -320,23 +320,19 @@ private extension EventCreationViewController {
     func setupDescriptionFields() {
         fundField.placeholder = "Призовой фонд, ₽"
         fundField.keyboardType = .numberPad
-        fundField.returnKeyType = .continue
-        labelTextField.addTarget(self, action: #selector(editFee), for: .editingDidEndOnExit)
         feeField.placeholder = "Взнос, ₽"
         feeField.keyboardType = .numberPad
-        feeField.returnKeyType = .continue
-        labelTextField.addTarget(self, action: #selector(editURL), for: .editingDidEndOnExit)
         urlField.placeholder = "Ссылка"
         urlField.keyboardType = .URL
-        urlField.returnKeyType = .done
-        labelTextField.addTarget(self, action: #selector(resignAll), for: .editingDidEndOnExit)
+        urlField.returnKeyType = .continue
+        urlField.addTarget(self, action: #selector(editFund), for: .editingDidEndOnExit)
     }
 }
 
 extension EventCreationViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == toursPicker {
-            return 98
+            return 99
         } else if pickerView == timeControlPicker {
             switch component {
             case 0:
