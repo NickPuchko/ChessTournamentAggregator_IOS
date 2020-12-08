@@ -9,7 +9,7 @@ class UserRegistrationPlayerView: AutoLayoutView {
     let scrollableStackView: ScrollableStackView = {
         let config: ScrollableStackView.Config = ScrollableStackView.Config(
                 stack: ScrollableStackView.Config.Stack(axis: .vertical, distribution: .fill,
-                        alignment: .fill, spacing: 15.0),
+                        alignment: .fill, spacing: 20.0),
                 scroll: .defaultVertical,
                 pinsStackConstraints: UIEdgeInsets(top: 20.0, left: 16.0, bottom: 0.0, right: -16.0)
         )
@@ -26,28 +26,39 @@ class UserRegistrationPlayerView: AutoLayoutView {
     }
 
 
-    private var lastNameStackView: UIStackView?
+    private lazy var lastNameStackView = buildStackView(withTextField: lastName, andLabel: lastNameWarning)
     let lastName = UITextField()
     let lastNameWarning = WarningLabel()
 
-    private var firstNameStackView: UIStackView?
+    private lazy var firstNameStackView = buildStackView(withTextField: firstName, andLabel: firstNameWarning)
     let firstName = UITextField()
     let firstNameWarning = WarningLabel()
 
-    let patronymicName = UITextField()
-    let fideID = UITextField()
-    let frcID = UITextField()
+    let sex = UITextField()
+    let sexPicker = UIPickerView()
+    var selectedSex: String?
+    var sexList: [String] = SexTypes.allCases.map{ $0.rawValue }
 
-    private var emailAddressStackView: UIStackView?
+    let patronymicName = UITextField()
+
+    let fideID = UITextField()
+    private let fideIDButton = UIButton(type: .infoLight)
+    var onTapFideButton: (() -> Void)?
+
+    let frcID = UITextField()
+    private let frcIDButton = UIButton(type: .infoLight)
+    var onTapFrcButton: (() -> Void)?
+
+    private lazy var emailAddressStackView = buildStackView(withTextField: emailAddress, andLabel: emailAddressWarning)
     let emailAddress = UITextField()
     let emailAddressWarning = WarningLabel()
     let emailWasRegisteredWarning = WarningLabel()
 
-    private var passwordStackView: UIStackView?
+    private lazy var passwordStackView = buildStackView(withTextField: password, andLabel: passwordWarning)
     let password = UITextField()
     let passwordWarning = WarningLabel()
 
-    private var validatePasswordStackView: UIStackView?
+    private lazy var validatePasswordStackView = buildStackView(withTextField: validatePassword, andLabel: validatePasswordWarning)
     let validatePassword = UITextField()
     let validatePasswordWarning = WarningLabel()
 
@@ -82,17 +93,21 @@ class UserRegistrationPlayerView: AutoLayoutView {
         self.addSubview(scrollableStackView)
 
         setupRoundedTextField(textField: lastName, textFieldPlaceholder: "Фамилия*")
-        lastNameWarning.text = "Пустое поле. Введите свою фамилию"
-        self.lastNameStackView = buildStackView(withTextField: lastName, andLabel: lastNameWarning)
-        self.scrollableStackView.addArrangedSubview(lastNameStackView!)
+        self.lastNameWarning.text = "Пустое поле. Введите свою фамилию"
+        self.scrollableStackView.addArrangedSubview(lastNameStackView)
 
         setupRoundedTextField(textField: firstName, textFieldPlaceholder: "Имя*")
-        firstNameWarning.text = "Пустое поле. Введите свое имя"
-        self.firstNameStackView = buildStackView(withTextField: firstName, andLabel: firstNameWarning)
-        self.scrollableStackView.addArrangedSubview(firstNameStackView!)
+        self.firstNameWarning.text = "Пустое поле. Введите свое имя"
+        self.scrollableStackView.addArrangedSubview(firstNameStackView)
 
         setupRoundedTextField(textField: patronymicName, textFieldPlaceholder: "Отчество")
         self.scrollableStackView.addArrangedSubview(patronymicName)
+
+        setupRoundedTextField(textField: sex, textFieldPlaceholder: "Пол")
+        self.sexPicker.translatesAutoresizingMaskIntoConstraints = false
+        self.sex.inputView = sexPicker
+        self.sex.autocorrectionType = .no
+        self.scrollableStackView.addArrangedSubview(sex)
 
         setupRoundedTextField(
                 textField: emailAddress,
@@ -100,66 +115,74 @@ class UserRegistrationPlayerView: AutoLayoutView {
                 textFieldKeyboard: .emailAddress
         )
         emailAddressWarning.text = "Адрес почты недействителен. Введите его в формате email@example.com"
-        self.emailAddressStackView = buildStackView(withTextField: emailAddress, andLabel: emailAddressWarning)
-        self.emailAddressStackView?.addArrangedSubview(emailAddressWarning)
-        self.emailAddressStackView?.addArrangedSubview(emailWasRegisteredWarning)
-        self.scrollableStackView.addArrangedSubview(emailAddressStackView!)
+        self.emailAddressStackView.addArrangedSubview(emailWasRegisteredWarning)
+        self.scrollableStackView.addArrangedSubview(emailAddressStackView)
 
         setupRoundedTextField(
                 textField: fideID,
                 textFieldPlaceholder: "FideID",
                 textFieldKeyboard: UIKeyboardType.numberPad
         )
+        self.fideID.rightView = fideIDButton
+        self.fideID.rightViewMode = .always
+        self.fideIDButton.addTarget(self, action: #selector(onTapFide), for: .touchUpInside)
         self.scrollableStackView.addArrangedSubview(fideID)
 
         setupRoundedTextField(textField: frcID, textFieldPlaceholder: "ФШР ID", textFieldKeyboard: .numberPad)
+        self.frcID.rightView = frcIDButton
+        self.frcID.rightViewMode = .always
+        self.frcIDButton.addTarget(self, action: #selector(onTapFrc), for: .touchUpInside)
         self.scrollableStackView.addArrangedSubview(frcID)
 
         setupRoundedTextField(textField: password, textFieldPlaceholder: "Пароль*")
         self.password.isSecureTextEntry = true
         self.passwordWarning.text = "Пароль недействителен. Он должен содержать 1 Большую букву, 1 маленькую и 1 цифру"
-        self.passwordStackView = buildStackView(withTextField: password, andLabel: passwordWarning)
-        self.scrollableStackView.addArrangedSubview(passwordStackView!)
+        self.scrollableStackView.addArrangedSubview(passwordStackView)
 
         setupRoundedTextField(textField: validatePassword, textFieldPlaceholder: "Подтверждение пароля*")
         self.validatePassword.isSecureTextEntry = true
         self.validatePasswordWarning.text = "Пароли не совпадают."
-        self.validatePasswordStackView = buildStackView(
-                withTextField: validatePassword,
-                andLabel: validatePasswordWarning
-        )
-        self.scrollableStackView.addArrangedSubview(validatePasswordStackView!)
+        self.scrollableStackView.addArrangedSubview(validatePasswordStackView)
 
-        birthdateStackView.axis = .horizontal
-        birthdateStackView.distribution = .equalSpacing
-        birthdateStackView.alignment = .fill
+        self.birthdateStackView.axis = .horizontal
+        self.birthdateStackView.distribution = .equalSpacing
+        self.birthdateStackView.alignment = .fill
 
-        birthdateLabel.attributedText = buildStringWithColoredAsterisk(string: "Дата рождения*")
+        self.birthdateLabel.attributedText = buildStringWithColoredAsterisk(string: "Дата рождения*")
 
-        birthdateDatePicker.datePickerMode = .date
+        let calendar = Calendar(identifier: .gregorian)
+        var components = DateComponents()
+        components.calendar = calendar
+        components.year = -150
+        let minDate = calendar.date(byAdding: components, to: Date())
+        let maxDate = Date()
+        self.birthdateDatePicker.datePickerMode = .date
+        self.birthdateDatePicker.maximumDate = maxDate
+        self.birthdateDatePicker.minimumDate = minDate
+        self.birthdateDatePicker.locale = Locale(identifier: "ru_RU")
 
-        birthdateStackView.addArrangedSubview(birthdateLabel)
-        birthdateStackView.addArrangedSubview(birthdateDatePicker)
+        self.birthdateStackView.addArrangedSubview(birthdateLabel)
+        self.birthdateStackView.addArrangedSubview(birthdateDatePicker)
 
         self.scrollableStackView.addArrangedSubview(birthdateStackView)
 
-        registrationButton.setTitle("Зарегистрироваться", for: .normal)
-        registrationButton.backgroundColor = .black
-        registrationButton.setTitleColor(.white, for: .normal)
-        registrationButton.layer.cornerRadius = 10.0
-        registrationButton.clipsToBounds = false
-        registrationButton.addTarget(self, action: #selector(onTapRegistration), for: .touchUpInside)
+        self.registrationButton.setTitle("Зарегистрироваться", for: .normal)
+        self.registrationButton.backgroundColor = .black
+        self.registrationButton.setTitleColor(.white, for: .normal)
+        self.registrationButton.layer.cornerRadius = 10.0
+        self.registrationButton.clipsToBounds = false
+        self.registrationButton.addTarget(self, action: #selector(onTapRegistration), for: .touchUpInside)
 
         self.scrollableStackView.addSubview(registrationButton)
 
-        switchToOrganizerStackView.axis = .horizontal
-        switchToOrganizerStackView.distribution = .equalSpacing
-        switchToOrganizerStackView.alignment = .fill
+        self.switchToOrganizerStackView.axis = .horizontal
+        self.switchToOrganizerStackView.distribution = .equalSpacing
+        self.switchToOrganizerStackView.alignment = .fill
 
-        switchToOrganizerLabel.text = "Вы организатор?"
+        self.switchToOrganizerLabel.text = "Вы организатор?"
 
-        switchToOrganizerStackView.addArrangedSubview(switchToOrganizerLabel)
-        switchToOrganizerStackView.addArrangedSubview(switchToOrganizer)
+        self.switchToOrganizerStackView.addArrangedSubview(switchToOrganizerLabel)
+        self.switchToOrganizerStackView.addArrangedSubview(switchToOrganizer)
 
         self.scrollableStackView.addSubview(switchToOrganizerStackView)
 
@@ -228,6 +251,14 @@ class UserRegistrationPlayerView: AutoLayoutView {
                 self.switchToOrganizer.isOn, self.organizationCity.text, self.organizationName.text,
                 self.birthdateDatePicker.date)
     }
+
+    @objc private func onTapFide() {
+        self.onTapFideButton?()
+    }
+
+    @objc private func onTapFrc() {
+        self.onTapFrcButton?()
+    }
 }
 
 private extension UserRegistrationPlayerView {
@@ -261,4 +292,8 @@ private extension UserRegistrationPlayerView {
         return attributedString
     }
 
+}
+
+enum SexTypes: String, CaseIterable {
+    case male, female
 }

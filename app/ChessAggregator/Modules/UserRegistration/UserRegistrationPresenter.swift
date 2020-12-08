@@ -23,6 +23,13 @@ extension UserRegistrationPresenter: UserRegistrationModuleInput {
 }
 
 extension UserRegistrationPresenter: UserRegistrationViewOutput {
+    func onTapFide() {
+        router.showFide()
+    }
+
+    func onTapFrc() {
+        router.showFrc()
+    }
 
     func onTapRegistration(
             lastName: String?, firstName: String?, patronymicName: String?,
@@ -47,6 +54,17 @@ extension UserRegistrationPresenter: UserRegistrationViewOutput {
         string.count <= 24
     }
 
+    func isSexOK(string: String) -> Bool {
+        var sexIsOk = false
+        for sexType in SexTypes.allCases {
+            if(string == sexType.rawValue) {
+                sexIsOk = true
+                break
+            }
+        }
+        return sexIsOk
+    }
+
     func filterID(string: String, maxID: Int) -> (Bool, Int?) {
         let restrictionsOnID = string.count <= 9 && string.containsOnlyCharactersIn(matchCharacters: "0123456789")
         guard let number = Int(string.filter {
@@ -67,7 +85,6 @@ extension UserRegistrationPresenter: UserRegistrationViewOutput {
     func isOrganizationDataOK(string: String) -> Bool {
         string.count <= 200
     }
-
 
 }
 
