@@ -17,6 +17,7 @@ final class UserProfileInteractor {
 }
 
 extension UserProfileInteractor: UserProfileInteractorInput {
+	// TODO: выпилить!
 	func getUserInformation() -> User {
 		guard let checkedUser = user else {
 			fatalError("Database cant get user data")
@@ -25,8 +26,6 @@ extension UserProfileInteractor: UserProfileInteractorInput {
 	}
 
 	func loadUser() -> User {
-		//TODO get user information from Firebase
-
 		let testUser = User(player: Player(
 				fullName: "Пучко Николай",
 				birthdate: Calendar.current.date(from: DateComponents(year: 2000, month: 7, day: 17))!, classicFideRating: 2045),

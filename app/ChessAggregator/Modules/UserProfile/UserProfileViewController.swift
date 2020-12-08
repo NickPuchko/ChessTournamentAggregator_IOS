@@ -213,11 +213,13 @@ final class UserProfileViewController: UIViewController {
 
 extension UserProfileViewController: UserProfileViewInput {
     func updateUser(user: User) {
+        self.loadViewIfNeeded()
+        //self.view.setNeedsLayout()
         let nameParts = user.player.fullName.components(separatedBy: " ")
-        userName.text = nameParts[0] + " " + nameParts[1]
-        userStatus.text = user.isOrganizer ? "Организатор" : "Игрок"
-        userRating.text = String(user.player.classicFideRating!)
-        loadViewIfNeeded()
+        self.userName.text = nameParts[0] + " " + nameParts[1]
+        self.userStatus.text = user.isOrganizer ? "Организатор" : "Игрок"
+        self.userRating.text = String(user.player.classicFideRating!)
+        //self.view.layoutIfNeeded()
 
     }
 

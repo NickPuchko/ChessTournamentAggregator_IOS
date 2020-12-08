@@ -13,7 +13,7 @@ class CurrentViewController: UIViewController, CurrentViewControllerProtocol {
     var eventLabel = UILabel()
 
     override func loadView() {
-        view = UIView()
+        //view = UIView()
         view.backgroundColor = .systemGray6
 
         eventLabel.text = event.name
