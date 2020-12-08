@@ -51,4 +51,8 @@ extension UserProfilePresenter: UserProfileViewOutput {
 }
 
 extension UserProfilePresenter: UserProfileInteractorOutput {
+    func updateUser(user: User) {
+        view!.updateUser(user: user)
+    }
+
 }

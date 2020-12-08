@@ -16,6 +16,7 @@ protocol UserProfileModuleOutput: class {
 }
 
 protocol UserProfileViewInput: class {
+	func updateUser(user: User)
 }
 
 protocol UserProfileViewOutput: class {
@@ -34,6 +35,7 @@ protocol UserProfileInteractorInput: class {
 }
 
 protocol UserProfileInteractorOutput: class {
+	func updateUser(user: User)
 }
 
 protocol UserProfileRouterInput: class {

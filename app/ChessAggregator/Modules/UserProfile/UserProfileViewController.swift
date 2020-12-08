@@ -95,7 +95,9 @@ final class UserProfileViewController: UIViewController {
         imageView.layer.borderWidth = 0.1
         imageView.layer.borderColor = UIColor.black.cgColor
 
-        userName.text = testUser!.player.fullName
+
+        let nameParts = testUser!.player.fullName.components(separatedBy: " ")
+        userName.text = nameParts[0] + " " + nameParts[1]
         userName.font = .boldSystemFont(ofSize: 30)
 
         var status = "Игрок"
@@ -210,4 +212,13 @@ final class UserProfileViewController: UIViewController {
 }
 
 extension UserProfileViewController: UserProfileViewInput {
+    func updateUser(user: User) {
+        let nameParts = user.player.fullName.components(separatedBy: " ")
+        userName.text = nameParts[0] + " " + nameParts[1]
+        userStatus.text = user.isOrganizer ? "Организатор" : "Игрок"
+        userRating.text = String(user.player.classicFideRating!)
+        loadViewIfNeeded()
+
+    }
+
 }

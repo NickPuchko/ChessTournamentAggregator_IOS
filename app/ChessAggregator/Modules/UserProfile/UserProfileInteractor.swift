@@ -1,13 +1,17 @@
 
-
 import Foundation
+import FirebaseAuth
 
 final class UserProfileInteractor {
 	weak var output: UserProfileInteractorOutput?
 	var user: User?
 
 	init() {
-		self.user = loadUser()
+		user = User()
+		FirebaseRef.ref.child("Users").child(Auth.auth().currentUser?.uid ?? "").observeSingleEvent(of: .value) { [weak self] snapshot in
+			self?.user = UserParser.userFromSnapshot(snapshot: snapshot)
+			self?.output!.updateUser(user: self!.user!)
+		}
 	}
 
 }
@@ -22,6 +26,7 @@ extension UserProfileInteractor: UserProfileInteractorInput {
 
 	func loadUser() -> User {
 		//TODO get user information from Firebase
+
 		let testUser = User(player: Player(
 				fullName: "Пучко Николай",
 				birthdate: Calendar.current.date(from: DateComponents(year: 2000, month: 7, day: 17))!, classicFideRating: 2045),
