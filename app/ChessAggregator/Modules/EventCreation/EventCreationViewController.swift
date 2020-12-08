@@ -111,12 +111,18 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
 
     @objc
     private func createDefault() {
+
+        let formatter = DateFormatter()
+        formatter.timeZone = .current
+        formatter.locale = .current
+        formatter.dateFormat = "dd.MM.yyyy"
+
         var event = Tournament()
         event.organizerId = Auth.auth().currentUser!.uid
         event.name = labelTextField.text ?? "default"
         event.location = locationTextField.text ?? "default"
-        event.openDate = dateView.openDate.description // TODO: dateFormatter
-        event.closeDate = dateView.closeDate.description // TODO: dateFormatter
+        event.openDate = formatter.string(from: dateView.openDate.date) // TODO: dateFormatter
+        event.closeDate = formatter.string(from: dateView.closeDate.date) // TODO: dateFormatter
         event.url = URL(string: urlField.text ?? "default") ?? URL(string: "https://ruchess.ru/")!
         event.prizeFund = Int(fundField.text ?? "default") ?? 0
         event.fee = Int(feeField.text ?? "default") ?? 0
@@ -170,16 +176,16 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         if feeField.text == "" {
             feeField.becomeFirstResponder()
         } else {
-            editURL()
+            resignAll()
         }
     }
 
     @objc
-    private func editURL() {
-        if urlField.text == "" {
-            urlField.becomeFirstResponder()
+    private func editFund() {
+        if fundField.text == "" {
+            fundField.becomeFirstResponder()
         } else {
-            resignAll()
+            editFee()
         }
     }
 
@@ -215,7 +221,6 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         }
     }
 }
-
 
 private extension EventCreationViewController {
     func setupStackView() {
@@ -320,23 +325,22 @@ private extension EventCreationViewController {
     func setupDescriptionFields() {
         fundField.placeholder = "Призовой фонд, ₽"
         fundField.keyboardType = .numberPad
-        fundField.returnKeyType = .continue
-        labelTextField.addTarget(self, action: #selector(editFee), for: .editingDidEndOnExit)
         feeField.placeholder = "Взнос, ₽"
         feeField.keyboardType = .numberPad
-        feeField.returnKeyType = .continue
-        labelTextField.addTarget(self, action: #selector(editURL), for: .editingDidEndOnExit)
         urlField.placeholder = "Ссылка"
         urlField.keyboardType = .URL
-        urlField.returnKeyType = .done
-        labelTextField.addTarget(self, action: #selector(resignAll), for: .editingDidEndOnExit)
+        urlField.returnKeyType = .continue
+        urlField.addTarget(self, action: #selector(editFund), for: .editingDidEndOnExit)
     }
+//    func isChanged() -> Bool{
+//
+//    }
 }
 
 extension EventCreationViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == toursPicker {
-            return 98
+            return 99
         } else if pickerView == timeControlPicker {
             switch component {
             case 0:
