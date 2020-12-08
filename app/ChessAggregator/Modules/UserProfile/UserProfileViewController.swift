@@ -5,8 +5,6 @@ import UIKit
 final class UserProfileViewController: UIViewController {
 	private let output: UserProfileViewOutput
 
-    private var testUser: User?
-
     var imageView: UIImageView
     var userImage = UIImage(imageLiteralResourceName: "vaultBoy")
     let userName = UILabel()
@@ -87,29 +85,18 @@ final class UserProfileViewController: UIViewController {
 
     override func viewDidLoad() {
 		super.viewDidLoad()
-        self.testUser = output.getUserInformation()
-
 
         imageView.layer.cornerRadius = 32
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 0.1
         imageView.layer.borderColor = UIColor.black.cgColor
 
-
-        let nameParts = testUser!.player.fullName.components(separatedBy: " ")
-        userName.text = nameParts[0] + " " + nameParts[1]
         userName.font = .boldSystemFont(ofSize: 30)
 
-        var status = "Игрок"
-        if testUser!.isOrganizer {
-            status = "Организатор"
-        }
-        userStatus.text = status
+
         userStatus.textColor = .lightGray
         userStatus.font = .boldSystemFont(ofSize: 18)
 
-
-        userRating.text = testUser!.player.classicFideRating?.description
         userRating.font = .italicSystemFont(ofSize: 24)
 
         let editImage = UIImage(systemName: "square.and.pencil")
@@ -213,14 +200,10 @@ final class UserProfileViewController: UIViewController {
 
 extension UserProfileViewController: UserProfileViewInput {
     func updateUser(user: User) {
-        self.loadViewIfNeeded()
-        //self.view.setNeedsLayout()
         let nameParts = user.player.fullName.components(separatedBy: " ")
         self.userName.text = nameParts[0] + " " + nameParts[1]
         self.userStatus.text = user.isOrganizer ? "Организатор" : "Игрок"
         self.userRating.text = String(user.player.classicFideRating!)
-        //self.view.layoutIfNeeded()
-
     }
 
 }
