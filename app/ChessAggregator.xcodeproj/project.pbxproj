@@ -11,7 +11,6 @@
 		01FFDCAF253FA091001244D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCAE253FA091001244D1 /* Assets.xcassets */; };
 		01FFDCB2253FA091001244D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCB0253FA091001244D1 /* LaunchScreen.storyboard */; };
 		01FFDCBB253FA140001244D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCBA253FA140001244D1 /* GoogleService-Info.plist */; };
-		248FF957257D02EC00020CFF /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 730407F82550617C0036E7A6 /* SwiftKeychainWrapper */; };
 		24B9108F256BCC3C0076A3E1 /* WarningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9108D256BCC3C0076A3E1 /* WarningLabel.swift */; };
 		24B910A9256BCE310076A3E1 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B910A2256BCE300076A3E1 /* AuthRouter.swift */; };
 		24B910AB256BCE310076A3E1 /* AuthProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B910A4256BCE300076A3E1 /* AuthProtocols.swift */; };
@@ -21,6 +20,13 @@
 		24B910AF256BCE310076A3E1 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B910A8256BCE310076A3E1 /* AuthViewController.swift */; };
 		24B910BB256BD12A0076A3E1 /* AuthNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B910BA256BD12A0076A3E1 /* AuthNewView.swift */; };
 		24B910C2256BD1D60076A3E1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B910C1256BD1D60076A3E1 /* AppCoordinator.swift */; };
+		5301606C4A4938AF4C633064 /* ForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530169C8D0F41F26433D22AF /* ForgotPasswordPresenter.swift */; };
+		5301609BC8E54E979B8B14F8 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53016A33EFF42D93AB5DF9C6 /* ForgotPasswordViewController.swift */; };
+		5301614AFF68641F80908236 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530165E0888802D4041F3915 /* ForgotPasswordView.swift */; };
+		530165BA75CED59AAD11EB64 /* ForgotPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53016A234137DFC1A5BB19DD /* ForgotPasswordInteractor.swift */; };
+		530166A7710A091D3A500C40 /* ForgotPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301608819F08A4B01283A58 /* ForgotPasswordRouter.swift */; };
+		53016A372030EB56CF050794 /* ForgotPasswordProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301675ED4A831CE64424902 /* ForgotPasswordProtocol.swift */; };
+		53016F07FB8F3B9AB5B463A6 /* ForgotPasswordContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530168A01F26419DF1C82CD8 /* ForgotPasswordContainer.swift */; };
 		6AC970924287644F1C0BE99F /* KeyboardAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97A3B8254E57567BB3C4E /* KeyboardAdapter.swift */; };
 		6AC970F1F179A3A14A5EB929 /* FideParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97B3EDC69BAEF619236FE /* FideParser.swift */; };
 		6AC9712924EEFC2ED64832D3 /* Organizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9733DFC6E294B9F4E58E9 /* Organizer.swift */; };
@@ -112,6 +118,13 @@
 		24B910A8256BCE310076A3E1 /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		24B910BA256BD12A0076A3E1 /* AuthNewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthNewView.swift; sourceTree = "<group>"; };
 		24B910C1256BD1D60076A3E1 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		5301608819F08A4B01283A58 /* ForgotPasswordRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordRouter.swift; sourceTree = "<group>"; };
+		530165E0888802D4041F3915 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		5301675ED4A831CE64424902 /* ForgotPasswordProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordProtocol.swift; sourceTree = "<group>"; };
+		530168A01F26419DF1C82CD8 /* ForgotPasswordContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordContainer.swift; sourceTree = "<group>"; };
+		530169C8D0F41F26433D22AF /* ForgotPasswordPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPresenter.swift; sourceTree = "<group>"; };
+		53016A234137DFC1A5BB19DD /* ForgotPasswordInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordInteractor.swift; sourceTree = "<group>"; };
+		53016A33EFF42D93AB5DF9C6 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		613E7483DAF7CFE6E33A5A2C /* Pods_ChessAggregator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChessAggregator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AC97065AE42461955EC58DA /* UserProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfilePresenter.swift; sourceTree = "<group>"; };
 		6AC97126F561FF243FFE6646 /* AuthCoordinatorProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthCoordinatorProtocols.swift; sourceTree = "<group>"; };
@@ -192,7 +205,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				248FF957257D02EC00020CFF /* SwiftKeychainWrapper in Frameworks */,
 				C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +261,7 @@
 				6AC97CAAF1950883DB8BF955 /* SearchTournaments */,
 				24B91091256BCD0E0076A3E1 /* AuthNew */,
 				D91FC773EDCB6F4C87F53258 /* EventCreation */,
+				530164B16350644D39A3B7F6 /* ForgotPassword */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -284,6 +297,28 @@
 				6AC97922ECE38E77BA5C7BE8 /* ChessAppCoordinator */,
 			);
 			path = AppCoordinator;
+			sourceTree = "<group>";
+		};
+		530164B16350644D39A3B7F6 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				530168A01F26419DF1C82CD8 /* ForgotPasswordContainer.swift */,
+				53016A234137DFC1A5BB19DD /* ForgotPasswordInteractor.swift */,
+				530169C8D0F41F26433D22AF /* ForgotPasswordPresenter.swift */,
+				5301675ED4A831CE64424902 /* ForgotPasswordProtocol.swift */,
+				5301608819F08A4B01283A58 /* ForgotPasswordRouter.swift */,
+				53016A33EFF42D93AB5DF9C6 /* ForgotPasswordViewController.swift */,
+				53016B40247FFB1A3A04CE15 /* Views */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		53016B40247FFB1A3A04CE15 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				530165E0888802D4041F3915 /* ForgotPasswordView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		6AC9713D544A63FE5C74BBC6 /* Structures */ = {
@@ -531,7 +566,7 @@
 			);
 			name = ChessAggregator;
 			packageProductDependencies = (
-				730407F82550617C0036E7A6 /* SwiftKeychainWrapper */,
+				730407F82550617C0036E7A6,
 			);
 			productName = ChessAggregator;
 			productReference = 01FFDCA2253FA08B001244D1 /* ChessAggregator.app */;
@@ -561,7 +596,7 @@
 			);
 			mainGroup = 01FFDC99253FA08B001244D1;
 			packageReferences = (
-				730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				730407F72550617C0036E7A6,
 			);
 			productRefGroup = 01FFDCA3253FA08B001244D1 /* Products */;
 			projectDirPath = "";
@@ -713,6 +748,13 @@
 				D91FCAB6F86CBB47822069DF /* MaterialTextField.swift in Sources */,
 				D91FC47714C0F5D3D1EB754F /* DoubleDate.swift in Sources */,
 				D91FC2F4B2B5A31870EA49EC /* LabelStack.swift in Sources */,
+				53016F07FB8F3B9AB5B463A6 /* ForgotPasswordContainer.swift in Sources */,
+				530165BA75CED59AAD11EB64 /* ForgotPasswordInteractor.swift in Sources */,
+				5301606C4A4938AF4C633064 /* ForgotPasswordPresenter.swift in Sources */,
+				53016A372030EB56CF050794 /* ForgotPasswordProtocol.swift in Sources */,
+				530166A7710A091D3A500C40 /* ForgotPasswordRouter.swift in Sources */,
+				5301609BC8E54E979B8B14F8 /* ForgotPasswordViewController.swift in Sources */,
+				5301614AFF68641F80908236 /* ForgotPasswordView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -910,7 +952,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+		730407F72550617C0036E7A6 = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
 			requirement = {
@@ -921,9 +963,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		730407F82550617C0036E7A6 /* SwiftKeychainWrapper */ = {
+		730407F82550617C0036E7A6 = {
 			isa = XCSwiftPackageProductDependency;
-			package = 730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			package = 730407F72550617C0036E7A6;
 			productName = SwiftKeychainWrapper;
 		};
 /* End XCSwiftPackageProductDependency section */
