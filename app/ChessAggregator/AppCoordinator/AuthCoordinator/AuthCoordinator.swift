@@ -23,7 +23,11 @@ final class AuthCoordinator {
         self.window.rootViewController = navigationController
         self.window.makeKeyAndVisible()
     }
-
+    func  ForgotPassword() {
+        let context = ForgotPasswordContext(moduleOutput: self)
+        let container = ForgotPasswordContainer.assemble(with: context)
+        self.navigationController.pushViewController(container.viewController, animated: true)
+    }
     func phoneNumberSignUp() {
         let context = PhoneNumberRegistrationContext(moduleOutput: self)
         let container = PhoneNumberRegistrationContainer.assemble(with: context)
@@ -38,6 +42,11 @@ final class AuthCoordinator {
 }
 
 extension AuthCoordinator: AuthModuleOutput {
+
+    func showForgotPassword() {
+        ForgotPassword()
+    }
+
     func showPhoneSignUp() {
         phoneNumberSignUp()
     }
@@ -63,11 +72,13 @@ extension AuthCoordinator: PhoneNumberRegistrationModuleOutput {
         appCoordinator?.setPhoneNumber(phoneNumber: phoneNumber)
     }
 }
+extension AuthCoordinator: ForgotPasswordModuleOutput {
+    func showForgot() {
+    }
+}
 
 extension AuthCoordinator: UserRegistrationModuleOutput {
     func didRegister() {
         appCoordinator?.didLogin()
     }
-
-
 }

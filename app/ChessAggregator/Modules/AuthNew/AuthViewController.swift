@@ -47,6 +47,9 @@ class AuthViewController: UIViewController {
         authView.onTapSignupButton = { [weak self] in
             self?.output?.onTapSignUp()
         }
+        authView.onTapForgotButton = { [weak self] in
+            self?.output?.onTapForgot()
+        }
 
     }
 
