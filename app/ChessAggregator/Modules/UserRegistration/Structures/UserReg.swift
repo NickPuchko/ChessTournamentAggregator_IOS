@@ -18,3 +18,9 @@ struct UserReg {
         let organisationName: String?
         let birthdate: Date
 }
+struct UserForgot {
+
+        let email: String?
+
+}
+

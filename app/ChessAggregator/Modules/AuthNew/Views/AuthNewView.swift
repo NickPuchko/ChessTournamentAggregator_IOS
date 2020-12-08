@@ -10,11 +10,14 @@ class AuthNewView: AutoLayoutView {
 
     let emailTextField = UITextField()
     let passwordTextField = UITextField()
+
     private let loginButton = UIButton(type: .system)
     private let signupButton = UIButton(type: .system)
+    private let forgotButton = UIButton(type: .system)
 
     var onTapLoginButton: (() -> Void)?
     var onTapSignupButton: (() -> Void)?
+    var onTapForgotButton: (() -> Void)?
 
     var stackViewBottomConstraint: NSLayoutConstraint?
     var stackViewBottomConstraintConstant: CGFloat { -self.bounds.height/2.0 }
@@ -58,6 +61,9 @@ class AuthNewView: AutoLayoutView {
         loginButton.clipsToBounds = false
         loginButton.addTarget(self, action: #selector(onTapLogin), for: .touchUpInside)
 
+        forgotButton.setTitle("Забыли пароль?", for: .normal)
+        forgotButton.addTarget(self, action: #selector(onTapForgot), for: .touchUpInside)
+
 
         signupButton.setTitle("Регистрация", for: .normal)
         signupButton.addTarget(self, action: #selector(onTapSignup), for: .touchUpInside)
@@ -68,6 +74,7 @@ class AuthNewView: AutoLayoutView {
         addSubview(stackView)
         addSubview(loginButton)
         addSubview(signupButton)
+        addSubview(forgotButton)
     }
 
 
@@ -95,7 +102,12 @@ class AuthNewView: AutoLayoutView {
             signupButton.heightAnchor.constraint(equalToConstant: 40),
             signupButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 10.0),
             signupButton.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
-            signupButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor)
+            signupButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
+
+            forgotButton.heightAnchor.constraint(equalToConstant: 40),
+            forgotButton.topAnchor.constraint(equalTo: signupButton.bottomAnchor, constant: 10.0),
+            forgotButton.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
+            forgotButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor)
 
         ].forEach {$0.isActive = true}
 
@@ -113,5 +125,9 @@ class AuthNewView: AutoLayoutView {
     @objc
     private func onTapSignup() -> Void {
         onTapSignupButton?()
+    }
+    @objc
+    private func onTapForgot() -> Void {
+        onTapForgotButton?()
     }
 }

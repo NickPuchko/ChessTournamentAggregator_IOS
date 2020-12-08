@@ -12,7 +12,6 @@ extension AuthRouter: AuthRouterInput {
     func showAllert(error: String) {
         let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .default))
-        alert.addAction(UIAlertAction(title: "Forgot password?", style: .default))
         self.viewController?.present(alert, animated: true, completion: nil)
     }
 }

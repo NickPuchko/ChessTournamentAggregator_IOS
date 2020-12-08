@@ -10,6 +10,9 @@ class AuthInteractor {
 }
 
 extension AuthInteractor: AuthInteractorInput {
+    func forgot() {
+
+    }
     func signIn(withEmail email: String, password: String){
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
                 if error != nil {

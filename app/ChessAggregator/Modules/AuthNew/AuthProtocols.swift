@@ -12,6 +12,7 @@ protocol AuthModuleOutput: class {
     func didLogin()
     func setPhoneNumber(phoneNumber: String)
     func showPhoneSignUp()
+    func showForgotPassword()
 }
 
 protocol AuthViewInput: class {
@@ -21,10 +22,12 @@ protocol AuthViewInput: class {
 protocol AuthViewOutput: class {
     func onTapLogin(email: String, password: String)
     func onTapSignUp()
+    func onTapForgot()
 }
 
 protocol AuthInteractorInput: class {
     func signIn(withEmail: String, password: String)
+    func forgot()
 }
 
 protocol AuthInteractorOutput: class {
