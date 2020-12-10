@@ -36,7 +36,7 @@ protocol UserProfileInteractorOutput: class {
 }
 
 protocol UserProfileRouterInput: class {
-	func showEditor()
+	func showEditor(with user: User)
 	func showCreator()
 	func showMyEvents()
 	func showStatistics()

@@ -22,7 +22,9 @@ extension UserProfilePresenter: UserProfileModuleInput {
 extension UserProfilePresenter: UserProfileViewOutput {
 
     func editProfile() {
-        router.showEditor()
+        if let userInfo = user {
+            router.showEditor(with: userInfo)
+        }
     }
 
     func createEvent() {
@@ -40,8 +42,6 @@ extension UserProfilePresenter: UserProfileViewOutput {
     func showFIDE() {
         if let userInfo = user {
             router.showFIDE(user: userInfo)
-        } else {
-
         }
     }
 

@@ -136,7 +136,7 @@ fileprivate enum NavControllerType: Int, CaseIterable {
 
 
 enum Localization {
-    static let currentTournaments = "Мои турниры"
+    static let currentTournaments = "Турниры"
     static let search = "Лента"
     static let profile = "Профиль"
 }

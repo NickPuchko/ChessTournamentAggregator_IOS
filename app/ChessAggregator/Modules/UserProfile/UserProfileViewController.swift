@@ -22,7 +22,7 @@ final class UserProfileViewController: UIViewController {
 
     init(output: UserProfileViewOutput) {
         self.output = output
-        self.imageView = UIImageView(image: userImage)
+        imageView = UIImageView(image: userImage)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -80,7 +80,7 @@ final class UserProfileViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true
     }
 
     override func viewDidLoad() {
@@ -92,7 +92,8 @@ final class UserProfileViewController: UIViewController {
         imageView.layer.borderColor = UIColor.black.cgColor
 
         userName.font = .boldSystemFont(ofSize: 30)
-
+        userName.adjustsFontSizeToFitWidth = true
+        userName.minimumScaleFactor = 0.3
 
         userStatus.textColor = .lightGray
         userStatus.font = .boldSystemFont(ofSize: 18)
@@ -107,13 +108,14 @@ final class UserProfileViewController: UIViewController {
 
 
         profileStack.config.stack.distribution = .fillProportionally
-        profileStack.config.stack.spacing = 0.5
-        profileStack.setCustomSpacing(2, after: createButton)
+        profileStack.config.stack.spacing = 3
+        profileStack.setCustomSpacing(12, after: createButton)
 
-        createButton.backgroundColor = .black
+        createButton.backgroundColor = Styles.Color.tinyGray
         let createButtonAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24),
-                                      NSAttributedString.Key.foregroundColor : UIColor.white]
+                                      NSAttributedString.Key.foregroundColor : UIColor.black]
         createButton.setAttributedTitle(NSAttributedString(string: "Создать турнир", attributes: createButtonAttributes), for: .normal)
+        createButton.layer.cornerRadius = 30
         createButton.addTarget(self, action: #selector(tappedCreate), for: .touchUpInside)
 
         myEventsButton.addTarget(self, action: #selector(tappedMyEvents), for: .touchUpInside)
@@ -201,9 +203,9 @@ final class UserProfileViewController: UIViewController {
 extension UserProfileViewController: UserProfileViewInput {
     func updateUser(user: User) {
         let nameParts = user.player.fullName.components(separatedBy: " ")
-        self.userName.text = nameParts[0] + " " + nameParts[1]
-        self.userStatus.text = user.isOrganizer ? "Организатор" : "Игрок"
-        self.userRating.text = String(user.player.classicFideRating!)
+        userName.text = nameParts[0] + " " + nameParts[1]
+        userStatus.text = user.isOrganizer ? "Организатор" : "Игрок"
+        userRating.text = String(user.player.classicFideRating!)
     }
 
 }

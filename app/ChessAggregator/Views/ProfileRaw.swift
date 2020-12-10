@@ -15,10 +15,10 @@ class ProfileRaw: AutoLayoutView {
     }
     
     private func setup() {
-        
-        mainView.backgroundColor = .black
+        mainView.clipsToBounds = false
+        mainView.layer.cornerRadius = 18
+        mainView.backgroundColor = Styles.Color.tinyGray
         label.font = UIFont.systemFont(ofSize: 24)
-        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         arrow.translatesAutoresizingMaskIntoConstraints = false
         
@@ -44,14 +44,14 @@ class ProfileRaw: AutoLayoutView {
         
         NSLayoutConstraint.activate([
             mainView.heightAnchor.constraint(equalTo: superview!.heightAnchor),
-            mainView.widthAnchor.constraint(equalTo: superview!.widthAnchor),
+            mainView.widthAnchor.constraint(equalTo: superview!.widthAnchor, constant: -8),
             mainView.centerXAnchor.constraint(equalTo: superview!.centerXAnchor),
             mainView.centerYAnchor.constraint(equalTo: superview!.centerYAnchor),
             
-            label.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 8),
+            label.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 12),
             label.centerYAnchor.constraint(equalTo: mainView.centerYAnchor),
             
-            arrow.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -8),
+            arrow.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -12),
             arrow.centerYAnchor.constraint(equalTo: label.centerYAnchor)
         ])
     }

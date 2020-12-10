@@ -11,8 +11,10 @@ final class UserProfileRouter: BaseRouter {
 }
 
 extension UserProfileRouter: UserProfileRouterInput {
-    func showEditor() {
-        print("Edit")
+    func showEditor(with user: User) {
+        let context = EditUserContext(moduleOutput: nil) // TODO: output
+        let container = EditUserContainer.assemble(with: context)
+        navigationController?.pushViewController(container.viewController, animated: true)
     }
 
     func showCreator() {
