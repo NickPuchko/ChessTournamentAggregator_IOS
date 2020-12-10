@@ -36,6 +36,10 @@ final class EditUserViewController: UIViewController, UIScrollViewDelegate {
 
         view.addSubview(stackView)
         stackView.pins()
+        stackView.config.stack.spacing = 4
+        stackView.config.pinsStackConstraints.top = 8
+        stackView.config.pinsStackConstraints.left = 4
+        stackView.config.pinsStackConstraints.right = 4
         view.backgroundColor = .white
         setupFields()
 

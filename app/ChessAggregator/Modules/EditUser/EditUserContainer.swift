@@ -24,6 +24,10 @@ final class EditUserContainer {
 
 		interactor.output = presenter
 
+		router.navigationControllerProvider = { [weak viewController] in
+			viewController?.navigationController
+		}
+
         return EditUserContainer(view: viewController, input: presenter, router: router)
 	}
 
