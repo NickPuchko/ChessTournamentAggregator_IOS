@@ -21,6 +21,7 @@ final class EditUserContainer {
 
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
+		presenter.user = context.user
 
 		interactor.output = presenter
 
@@ -40,4 +41,5 @@ final class EditUserContainer {
 
 struct EditUserContext {
 	weak var moduleOutput: EditUserModuleOutput?
+	var user: User
 }

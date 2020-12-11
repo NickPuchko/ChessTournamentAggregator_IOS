@@ -25,6 +25,7 @@ extension UserProfilePresenter: UserProfileViewOutput {
         if let userInfo = user {
             router.showEditor(with: userInfo)
         }
+
     }
 
     func createEvent() {

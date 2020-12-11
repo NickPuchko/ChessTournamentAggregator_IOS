@@ -7,14 +7,18 @@
 //
 
 import Foundation
+import FirebaseAuth
+import FirebaseDatabase
 
 final class EditUserInteractor {
 	weak var output: EditUserInteractorOutput?
 }
 
 extension EditUserInteractor: EditUserInteractorInput {
-	func saveChanges() {
-		print("Some extremely important changes have deployed")
+	func saveChanges(with user: User) {
+		let realtimeDatabaseUser = UserParser.userToFirebaseUser(user: user)
+		FirebaseRef.ref.child("Users").child(Auth.auth().currentUser!.uid).setValue(realtimeDatabaseUser)
+		print("Some extremely important changes have deployed for \(user.player.fullName)")
 	}
 
 }

@@ -21,11 +21,12 @@ protocol EditUserViewInput: class {
 
 protocol EditUserViewOutput: class {
 	func close()
-	func saveChanges()
+	func editUser(with user: User)
+	func userState() -> User
 }
 
 protocol EditUserInteractorInput: class {
-	func saveChanges()
+	func saveChanges(with user: User)
 }
 
 protocol EditUserInteractorOutput: class {

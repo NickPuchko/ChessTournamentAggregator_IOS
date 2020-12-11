@@ -17,7 +17,6 @@ final class EditUserViewController: UIViewController, UIScrollViewDelegate {
     //private let fideField = MaterialTextField()
     //private let rfcField = MaterialTextField()
 
-
     init(output: EditUserViewOutput) {
         self.output = output
         
@@ -39,7 +38,7 @@ final class EditUserViewController: UIViewController, UIScrollViewDelegate {
         stackView.config.stack.spacing = 4
         stackView.config.pinsStackConstraints.top = 8
         stackView.config.pinsStackConstraints.left = 4
-        stackView.config.pinsStackConstraints.right = 4
+        stackView.config.pinsStackConstraints.right = -4
         view.backgroundColor = .white
         setupFields()
 
@@ -67,7 +66,14 @@ final class EditUserViewController: UIViewController, UIScrollViewDelegate {
 
     @objc
     private func save() {
-        output.saveChanges()
+        var user = output.userState()
+        let nameParts = user.player.fullName.components(separatedBy: " ")
+        // TODO: add check for empty (but not nil) textFields
+        user.player.fullName =
+                (lastNameField.text ?? nameParts[0]) + " " +
+                (firstNameField.text ?? nameParts[1]) + " " +
+                (patronymicNameField.text ?? nameParts[2])
+        output.editUser(with: user)
     }
 }
 
