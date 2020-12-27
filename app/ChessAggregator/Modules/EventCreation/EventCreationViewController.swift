@@ -115,7 +115,8 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         let formatter = DateFormatter()
         formatter.timeZone = .current
         formatter.locale = .current
-        formatter.dateFormat = "dd.MM.yyyy"
+        formatter.dateFormat = "YYYY-MM-DD"
+
 
         var event = Tournament()
         event.organizerId = Auth.auth().currentUser!.uid
@@ -140,6 +141,8 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         event.seconds = Int(secondsField.text ?? "default") ?? 0
         event.increment = Int(incrementField.text ?? "default") ?? 30
         output.createEvent(event: event)
+
+
     }
 
     @objc
