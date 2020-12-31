@@ -50,9 +50,13 @@ final class EditUserViewController: UIViewController, UIScrollViewDelegate {
     }
 
     private func setupFields() {
+        let user = output.userState()
         lastNameField.placeholder = "Фамилия"
+        lastNameField.text = user.player.lastName
         firstNameField.placeholder = "Имя"
+        firstNameField.text = user.player.firstName
         patronymicNameField.placeholder = "Отчество"
+        patronymicNameField.text = user.player.patronomicName
 
         stackView.addArrangedSubview(lastNameField)
         stackView.addArrangedSubview(firstNameField)
@@ -67,12 +71,11 @@ final class EditUserViewController: UIViewController, UIScrollViewDelegate {
     @objc
     private func save() {
         var user = output.userState()
-        let nameParts = user.player.fullName.components(separatedBy: " ")
         // TODO: add check for empty (but not nil) textFields
-        user.player.fullName =
-                (lastNameField.text ?? nameParts[0]) + " " +
-                (firstNameField.text ?? nameParts[1]) + " " +
-                (patronymicNameField.text ?? nameParts[2])
+        user.player.firstName = firstNameField.text ?? user.player.firstName
+        user.player.lastName = lastNameField.text ?? user.player.lastName
+        user.player.patronomicName = patronymicNameField.text
+        
         output.editUser(with: user)
     }
 }

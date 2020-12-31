@@ -81,6 +81,7 @@ final class UserProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+        
     }
 
     override func viewDidLoad() {
@@ -202,8 +203,7 @@ final class UserProfileViewController: UIViewController {
 
 extension UserProfileViewController: UserProfileViewInput {
     func updateUser(user: User) {
-        let nameParts = user.player.fullName.components(separatedBy: " ")
-        userName.text = nameParts[0] + " " + nameParts[1]
+        userName.text = user.player.lastName + " " + user.player.firstName
         userStatus.text = user.isOrganizer ? "Организатор" : "Игрок"
         userRating.text = String(user.player.classicFideRating!)
     }

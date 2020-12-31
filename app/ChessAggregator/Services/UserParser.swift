@@ -13,8 +13,9 @@ class UserParser {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.locale = Locale(identifier: "ru_RU")
-        let rates = RateParser(userUrlString: ("https://ratings.ruchess.ru/people/"+String(user.player.frcID ?? 0)))
-        result = [ "fullName": user.player.fullName,
+        let rates = RateParser(frcID: user.player.frcID ?? 0)
+        result = [ "lastName": user.player.lastName,
+                   "firstName": user.player.firstName,
                    "phone": user.phone,
                    "email": user.email,
                    "password": user.password,
@@ -22,7 +23,8 @@ class UserParser {
                    "birthdate": dateFormatter.string(from: user.player.birthdate)
         ]
         if rates.count != 0 {
-            result = [ "fullName": user.player.fullName,
+            result = [ "lastName": user.player.lastName,
+                       "firstName": user.player.firstName,
                        "phone": user.phone,
                        "email": user.email,
                        "password": user.password,
@@ -37,6 +39,9 @@ class UserParser {
             ]
         }
         
+        if let patronomicName = user.player.patronomicName {
+            result["patronomicName"] = patronomicName
+        }
         
         if let fideID = user.player.fideID {
             result["fideID"] =  fideID
@@ -52,8 +57,9 @@ class UserParser {
         }
         return result
     }
-    static func RateParser(userUrlString: String)->[String]{
-        var result : [String] = []
+    static func RateParser(frcID: Int) -> [Int]{
+        let userUrlString: String = "https://ratings.ruchess.ru/people/" + String(frcID)
+        var result : [Int] = []
         guard let myUrl = URL(string: userUrlString) else{return []}
         do {
             let HTMLString = try String(contentsOf: myUrl, encoding: .utf8)
@@ -65,30 +71,38 @@ class UserParser {
                   do{
                     let fide = try element[16].text()
                     let classic = try element[9].text()
-                    let fast = try element[10].text()
-                    let bliz = try element[11].text()
+                    let rapid = try element[10].text()
+                    let blitz = try element[11].text()
                     
                     let fideResult: [String] =  fide.components(separatedBy: [" ", "\n", "\t"])
                     
                     let frcResultClassic : [String] =  classic.components(separatedBy: [" ", "\n", "\t"])
-                    let frcResultFast : [String] =  fast.components(separatedBy: [" ", "\n", "\t"])
-                    let frcResultBliz : [String] =  bliz.components(separatedBy: [" ", "\n", "\t"])
+                    let frcResultRapid : [String] =  rapid.components(separatedBy: [" ", "\n", "\t"])
+                    let frcResultBliz : [String] =  blitz.components(separatedBy: [" ", "\n", "\t"])
                     
-                    let STDnumberFide = fideResult[1].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-                    let RPDnumberFide = fideResult[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-                    let BLZnumberFide = fideResult[3].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-                    
-                    let STDnumberFRC = frcResultClassic[2].components(separatedBy:CharacterSet.decimalDigits.inverted).joined()
-                    let RPDnumberFRC = frcResultFast[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-                    let BLZnumberFRC = frcResultBliz[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-                    
-                    result.append(STDnumberFide)
-                    result.append(RPDnumberFide)
-                    result.append(BLZnumberFide)
-                    
-                    result.append(STDnumberFRC)
-                    result.append(RPDnumberFRC)
-                    result.append(BLZnumberFRC)
+                    result.append(Int(fideResult[1].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0)
+                    result.append(Int(fideResult[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0)
+                    result.append(Int(fideResult[3].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0)
+
+                    result.append(Int(frcResultClassic[2].components(separatedBy:CharacterSet.decimalDigits.inverted).joined()) ?? 0)
+                    result.append(Int(frcResultRapid[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0)
+                    result.append(Int(frcResultBliz[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0)
+
+//                    let STDnumberFide = fideResult[1].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+//                    let RPDnumberFide = fideResult[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+//                    let BLZnumberFide = fideResult[3].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+//
+//                    let STDnumberFRC = frcResultClassic[2].components(separatedBy:CharacterSet.decimalDigits.inverted).joined()
+//                    let RPDnumberFRC = frcResultFast[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+//                    let BLZnumberFRC = frcResultBliz[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+//
+//                    result.append(STDnumberFide)
+//                    result.append(RPDnumberFide)
+//                    result.append(BLZnumberFide)
+//
+//                    result.append(STDnumberFRC)
+//                    result.append(RPDnumberFRC)
+//                    result.append(BLZnumberFRC)
                     
                    }
                   catch{
@@ -104,6 +118,7 @@ class UserParser {
         }
         return result
     }
+    
     static func userFromSnapshot(snapshot: DataSnapshot) -> User {
         let userDict = snapshot.valueInExportFormat() as! NSDictionary
         var user = User()
@@ -112,14 +127,16 @@ class UserParser {
         user.isOrganizer = userDict["isOrganizer"] as? Bool ?? false
         user.password = userDict["password"] as? String ?? ""
         user.player = Player(
-                fullName: userDict["fullName"] as? String ?? "John Doe",
-                eventsIDs: userDict["eventsIDs"] as? [String] ?? [],
-                classicFideRating: userDict["classicFideRating"] as? Int ?? 2054, // TODO: Parse ratings from FIDE/FRC
-                rapidFideRating: userDict["rapidFideRating"] as? Int ?? 0,
-                blitzFideRating: userDict["blitzFideRating"] as? Int ?? 0,
-                classicFrcRating: userDict["classicFrcRating"] as? Int ?? 0,
-                rapidFrcRating: userDict["rapidFrcRating"] as? Int ?? 0,
-                blitzFrcRating: userDict["blitzFrcRating"] as? Int ?? 0
+            lastName: userDict["lastName"] as? String ?? "Doe",
+            firstName: userDict["firstName"] as? String ?? "John",
+            patronomicName: userDict["patronomicName"] as! String?,
+            eventsIDs: userDict["eventsIDs"] as? [String] ?? [],
+            classicFideRating: userDict["classicFideRating"] as? Int ?? 2100, // TODO: Parse ratings from FIDE/FRC
+            rapidFideRating: userDict["rapidFideRating"] as? Int ?? 0,
+            blitzFideRating: userDict["blitzFideRating"] as? Int ?? 0,
+            classicFrcRating: userDict["classicFrcRating"] as? Int ?? 0,
+            rapidFrcRating: userDict["rapidFrcRating"] as? Int ?? 0,
+            blitzFrcRating: userDict["blitzFrcRating"] as? Int ?? 0
         )
         user.organizer = Organizer(
                 organizationCity: userDict["organizationCity"] as? String ?? "",

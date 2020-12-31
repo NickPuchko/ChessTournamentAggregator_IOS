@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 
 struct User: Codable {
-    var player: Player = Player(fullName: "Doe John", birthdate: Date(), classicFideRating: 2100)
+    var player: Player = Player(lastName: "Doe", firstName: "John", birthdate: Date(), classicFideRating: 2100)
     var phone: String = "88005553535"
     var email: String = "email@example.com"
     var password: String = "Passw0rd"

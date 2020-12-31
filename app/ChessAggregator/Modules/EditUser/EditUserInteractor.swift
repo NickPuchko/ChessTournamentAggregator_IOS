@@ -18,7 +18,7 @@ extension EditUserInteractor: EditUserInteractorInput {
 	func saveChanges(with user: User) {
 		let realtimeDatabaseUser = UserParser.userToFirebaseUser(user: user)
 		FirebaseRef.ref.child("Users").child(Auth.auth().currentUser!.uid).setValue(realtimeDatabaseUser)
-		print("Some extremely important changes have deployed for \(user.player.fullName)")
+        print("Some extremely important changes have deployed for \(user.player.lastName + user.player.firstName + (user.player.patronomicName ?? ""))")
 	}
 
 }

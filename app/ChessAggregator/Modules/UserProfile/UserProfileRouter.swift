@@ -14,7 +14,8 @@ extension UserProfileRouter: UserProfileRouterInput {
     func showEditor(with user: User) {
         let context = EditUserContext(moduleOutput: nil, user: user) // TODO: output
         let container = EditUserContainer.assemble(with: context)
-        navigationController?.pushViewController(container.viewController, animated: true)
+        navigationController?.pushViewController(container.viewController, animated: true) // UPDATE VIEW AFTERWARDS
+        
     }
 
     func showCreator() {

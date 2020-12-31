@@ -29,6 +29,7 @@ protocol UserProfileViewOutput: class {
 }
 
 protocol UserProfileInteractorInput: class {
+    func reloadData()
 }
 
 protocol UserProfileInteractorOutput: class {

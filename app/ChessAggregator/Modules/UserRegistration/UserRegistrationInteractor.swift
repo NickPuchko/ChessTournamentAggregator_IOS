@@ -45,19 +45,10 @@ extension UserRegistrationInteractor: UserRegistrationInteractorInput {
 
 private extension UserRegistrationInteractor {
     func createUserEntity(userReg: UserReg) -> User {
-        let firstNameWithSpace = " " + userReg.firstName
-        var patronymicNameWithSpace = ""
-        if let patName = userReg.patronymicName, patName != "" {
-            patronymicNameWithSpace = " " + patName
-        }
-        else {
-            patronymicNameWithSpace = ""
-        }
-        let fullName = userReg.lastName + firstNameWithSpace + patronymicNameWithSpace
-
         let user = User(
                 player: Player(
-                        fullName: fullName, birthdate: userReg.birthdate, sex: "М",
+                        lastName: userReg.lastName, firstName: userReg.firstName, patronomicName:
+                        userReg.patronymicName, birthdate: userReg.birthdate, sex: "М",
                         fideID: Int(userReg.fideID), frcID: Int(userReg.frcID)
                 ),
                 phone: phoneNumber, email: userReg.email, password: userReg.password, isOrganizer: userReg.isOrganizer,
