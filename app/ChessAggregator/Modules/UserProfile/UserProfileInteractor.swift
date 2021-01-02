@@ -7,7 +7,7 @@ final class UserProfileInteractor {
 	var user: User?
 
 	init() {
-		FirebaseRef.ref.child("Users").child(Auth.auth().currentUser?.uid ?? "").observeSingleEvent(of: .value) { [weak self] snapshot in
+        FirebaseRef.ref.child("Users").child(Auth.auth().currentUser?.uid ?? "").observe(.value) { [weak self] snapshot in
 			self?.user = UserParser.userFromSnapshot(snapshot: snapshot)
             
             let ratings = UserParser.RateParser(frcID: self?.user?.player.frcID ?? 0)
@@ -25,10 +25,10 @@ final class UserProfileInteractor {
 }
 
 extension UserProfileInteractor: UserProfileInteractorInput {
-    func reloadData() {
-        FirebaseRef.ref.child("Users").child(Auth.auth().currentUser?.uid ?? "").observeSingleEvent(of: .value) { [weak self] snapshot in
-            self?.user = UserParser.userFromSnapshot(snapshot: snapshot)
-            self?.output!.updateUser(user: self!.user!)
-        }
-    }
+//    func reloadData() {
+//        FirebaseRef.ref.child("Users").child(Auth.auth().currentUser?.uid ?? "").observeSingleEvent(of: .value) { [weak self] snapshot in
+//            self?.user = UserParser.userFromSnapshot(snapshot: snapshot)
+//            self?.output!.updateUser(user: self!.user!)
+//        }
+//    }
 }

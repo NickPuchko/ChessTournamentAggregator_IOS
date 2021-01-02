@@ -14,7 +14,5 @@ final class EditUserRouter: BaseRouter {
 extension EditUserRouter: EditUserRouterInput {
     func close() {
         navigationController?.popToRootViewController(animated: true)
-        
     }
-
 }

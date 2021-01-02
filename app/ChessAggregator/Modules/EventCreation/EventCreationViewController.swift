@@ -335,9 +335,7 @@ private extension EventCreationViewController {
         urlField.returnKeyType = .continue
         urlField.addTarget(self, action: #selector(editFund), for: .editingDidEndOnExit)
     }
-//    func isChanged() -> Bool{
-//
-//    }
+
 }
 
 extension EventCreationViewController: UIPickerViewDelegate, UIPickerViewDataSource {
