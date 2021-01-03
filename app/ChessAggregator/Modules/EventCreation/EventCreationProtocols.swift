@@ -16,10 +16,17 @@ protocol EventCreationModuleOutput: class {
 }
 
 protocol EventCreationViewInput: class {
+    
+    func showWarningName()
+    func showWarningLocation()
+    func showWarningTours()
+    func showWarningRate()
+    func showWarningSegment()
+    
 }
 
 protocol EventCreationViewOutput: class {
-	func createEvent(event: Tournament)
+    func createEvent(event: Tournament, index: Int, rateType: String?)
 	func closeCreation()
 	func showRules()
 	func chooseMode(minutes: Int, seconds: Int, increment: Int) -> Mode
@@ -31,6 +38,7 @@ protocol EventCreationInteractorInput: class {
 }
 
 protocol EventCreationInteractorOutput: class {
+    
 }
 
 protocol EventCreationRouterInput: class {
