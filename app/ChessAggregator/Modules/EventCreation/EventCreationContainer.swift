@@ -31,7 +31,7 @@ final class EventCreationContainer {
 	}
 
     private init(view: UIViewController, input: EventCreationModuleInput, router: EventCreationRouterInput) {
-		self.viewController = view
+		viewController = view
         self.input = input
 		self.router = router
 	}

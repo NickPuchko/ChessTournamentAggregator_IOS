@@ -36,8 +36,8 @@ class UserRegistrationPlayerView: AutoLayoutView {
 
     let sex = UITextField()
     let sexPicker = UIPickerView()
-    var selectedSex: String?
     var sexList: [String] = Sex.allCases.map{ $0.rawValue }
+
 
     let patronymicName = UITextField()
 
@@ -82,7 +82,7 @@ class UserRegistrationPlayerView: AutoLayoutView {
 
     init() {
         super.init(frame: .zero)
-        self.setup()
+        setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -90,24 +90,24 @@ class UserRegistrationPlayerView: AutoLayoutView {
     }
 
     private func setup() {
-        self.addSubview(scrollableStackView)
+        addSubview(scrollableStackView)
 
         setupRoundedTextField(textField: lastName, textFieldPlaceholder: "Фамилия*")
-        self.lastNameWarning.text = "Пустое поле. Введите свою фамилию"
-        self.scrollableStackView.addArrangedSubview(lastNameStackView)
+        lastNameWarning.text = "Пустое поле. Введите свою фамилию"
+        scrollableStackView.addArrangedSubview(lastNameStackView)
 
         setupRoundedTextField(textField: firstName, textFieldPlaceholder: "Имя*")
-        self.firstNameWarning.text = "Пустое поле. Введите свое имя"
-        self.scrollableStackView.addArrangedSubview(firstNameStackView)
+        firstNameWarning.text = "Пустое поле. Введите свое имя"
+        scrollableStackView.addArrangedSubview(firstNameStackView)
 
         setupRoundedTextField(textField: patronymicName, textFieldPlaceholder: "Отчество")
-        self.scrollableStackView.addArrangedSubview(patronymicName)
+        scrollableStackView.addArrangedSubview(patronymicName)
 
         setupRoundedTextField(textField: sex, textFieldPlaceholder: "Пол")
-        self.sexPicker.translatesAutoresizingMaskIntoConstraints = false
-        self.sex.inputView = sexPicker
-        self.sex.autocorrectionType = .no
-        self.scrollableStackView.addArrangedSubview(sex)
+        sexPicker.translatesAutoresizingMaskIntoConstraints = false
+        sex.inputView = sexPicker
+        sex.autocorrectionType = .no
+        scrollableStackView.addArrangedSubview(sex)
 
         setupRoundedTextField(
                 textField: emailAddress,
@@ -115,40 +115,40 @@ class UserRegistrationPlayerView: AutoLayoutView {
                 textFieldKeyboard: .emailAddress
         )
         emailAddressWarning.text = "Адрес почты недействителен. Введите его в формате email@example.com"
-        self.emailAddressStackView.addArrangedSubview(emailWasRegisteredWarning)
-        self.scrollableStackView.addArrangedSubview(emailAddressStackView)
+        emailAddressStackView.addArrangedSubview(emailWasRegisteredWarning)
+        scrollableStackView.addArrangedSubview(emailAddressStackView)
 
         setupRoundedTextField(
                 textField: fideID,
                 textFieldPlaceholder: "FideID",
                 textFieldKeyboard: UIKeyboardType.numberPad
         )
-        self.fideID.rightView = fideIDButton
-        self.fideID.rightViewMode = .always
-        self.fideIDButton.addTarget(self, action: #selector(onTapFide), for: .touchUpInside)
-        self.scrollableStackView.addArrangedSubview(fideID)
+        fideID.rightView = fideIDButton
+        fideID.rightViewMode = .always
+        fideIDButton.addTarget(self, action: #selector(onTapFide), for: .touchUpInside)
+        scrollableStackView.addArrangedSubview(fideID)
 
         setupRoundedTextField(textField: frcID, textFieldPlaceholder: "ФШР ID", textFieldKeyboard: .numberPad)
-        self.frcID.rightView = frcIDButton
-        self.frcID.rightViewMode = .always
-        self.frcIDButton.addTarget(self, action: #selector(onTapFrc), for: .touchUpInside)
-        self.scrollableStackView.addArrangedSubview(frcID)
+        frcID.rightView = frcIDButton
+        frcID.rightViewMode = .always
+        frcIDButton.addTarget(self, action: #selector(onTapFrc), for: .touchUpInside)
+        scrollableStackView.addArrangedSubview(frcID)
 
         setupRoundedTextField(textField: password, textFieldPlaceholder: "Пароль*")
-        self.password.isSecureTextEntry = true
-        self.passwordWarning.text = "Пароль недействителен. Он должен содержать 1 Большую букву, 1 маленькую и 1 цифру"
-        self.scrollableStackView.addArrangedSubview(passwordStackView)
+        password.isSecureTextEntry = true
+        passwordWarning.text = "Пароль недействителен. Он должен содержать 1 Большую букву, 1 маленькую и 1 цифру"
+        scrollableStackView.addArrangedSubview(passwordStackView)
 
         setupRoundedTextField(textField: validatePassword, textFieldPlaceholder: "Подтверждение пароля*")
-        self.validatePassword.isSecureTextEntry = true
-        self.validatePasswordWarning.text = "Пароли не совпадают."
-        self.scrollableStackView.addArrangedSubview(validatePasswordStackView)
+        validatePassword.isSecureTextEntry = true
+        validatePasswordWarning.text = "Пароли не совпадают."
+        scrollableStackView.addArrangedSubview(validatePasswordStackView)
 
-        self.birthdateStackView.axis = .horizontal
-        self.birthdateStackView.distribution = .equalSpacing
-        self.birthdateStackView.alignment = .fill
+        birthdateStackView.axis = .horizontal
+        birthdateStackView.distribution = .equalSpacing
+        birthdateStackView.alignment = .fill
 
-        self.birthdateLabel.attributedText = buildStringWithColoredAsterisk(string: "Дата рождения*")
+        birthdateLabel.attributedText = buildStringWithColoredAsterisk(string: "Дата рождения*")
 
         let calendar = Calendar(identifier: .gregorian)
         var components = DateComponents()
@@ -156,59 +156,60 @@ class UserRegistrationPlayerView: AutoLayoutView {
         components.year = -150
         let minDate = calendar.date(byAdding: components, to: Date())
         let maxDate = Date()
-        self.birthdateDatePicker.datePickerMode = .date
-        self.birthdateDatePicker.maximumDate = maxDate
-        self.birthdateDatePicker.minimumDate = minDate
-        self.birthdateDatePicker.locale = Locale(identifier: "ru_RU")
+        birthdateDatePicker.datePickerMode = .date
+        birthdateDatePicker.maximumDate = maxDate
+        birthdateDatePicker.minimumDate = minDate
+        birthdateDatePicker.locale = Locale(identifier: "ru_RU")
 
-        self.birthdateStackView.addArrangedSubview(birthdateLabel)
-        self.birthdateStackView.addArrangedSubview(birthdateDatePicker)
+        birthdateStackView.addArrangedSubview(birthdateLabel)
+        birthdateStackView.addArrangedSubview(birthdateDatePicker)
 
-        self.scrollableStackView.addArrangedSubview(birthdateStackView)
+        scrollableStackView.addArrangedSubview(birthdateStackView)
 
-        self.registrationButton.setTitle("Зарегистрироваться", for: .normal)
-        self.registrationButton.backgroundColor = .black
-        self.registrationButton.setTitleColor(.white, for: .normal)
-        self.registrationButton.layer.cornerRadius = 10.0
-        self.registrationButton.clipsToBounds = false
-        self.registrationButton.addTarget(self, action: #selector(onTapRegistration), for: .touchUpInside)
+        registrationButton.setTitle("Зарегистрироваться", for: .normal)
+        registrationButton.backgroundColor = .black
+        registrationButton.setTitleColor(.white, for: .normal)
+        registrationButton.layer.cornerRadius = 10.0
+        registrationButton.clipsToBounds = true
+        registrationButton.addTarget(self, action: #selector(onTapRegistration), for: .touchUpInside)
 
-        self.scrollableStackView.addSubview(registrationButton)
+        scrollableStackView.addSubview(registrationButton)
 
-        self.switchToOrganizerStackView.axis = .horizontal
-        self.switchToOrganizerStackView.distribution = .equalSpacing
-        self.switchToOrganizerStackView.alignment = .fill
+        switchToOrganizerStackView.axis = .horizontal
+        switchToOrganizerStackView.distribution = .equalSpacing
+        switchToOrganizerStackView.alignment = .fill
 
-        self.switchToOrganizerLabel.text = "Вы организатор?"
+        switchToOrganizerLabel.text = "Вы организатор?"
 
-        self.switchToOrganizerStackView.addArrangedSubview(switchToOrganizerLabel)
-        self.switchToOrganizerStackView.addArrangedSubview(switchToOrganizer)
+        switchToOrganizerStackView.addArrangedSubview(switchToOrganizerLabel)
+        switchToOrganizerStackView.addArrangedSubview(switchToOrganizer)
 
-        self.scrollableStackView.addSubview(switchToOrganizerStackView)
+        scrollableStackView.addSubview(switchToOrganizerStackView)
 
         setupRoundedTextField(textField: organizationCity, textFieldPlaceholder: "Город")
-        self.organizationCity.isHidden = true
-        self.scrollableStackView.addArrangedSubview(self.organizationCity)
+        organizationCity.isHidden = true
+        scrollableStackView.addArrangedSubview(organizationCity)
 
-        self.organizationNameStackView.axis = .vertical
-        self.organizationNameStackView.distribution = .fill
-        self.organizationNameStackView.alignment = .fill
+        organizationNameStackView.axis = .vertical
+        organizationNameStackView.distribution = .fill
+        organizationNameStackView.alignment = .fill
         setupRoundedTextField(textField: organizationName, textFieldPlaceholder: "Название организации*")
-        self.organizationNameWarning.text = "Поле названия организации пустое. Пожалуйста, заполните его"
-        self.organizationNameStackView.addArrangedSubview(organizationName)
-        self.organizationNameStackView.addArrangedSubview(organizationNameWarning)
-        self.organizationName.isHidden = true
-        self.scrollableStackView.addArrangedSubview(self.organizationNameStackView)
+        organizationNameWarning.text = "Поле названия организации пустое. Пожалуйста, заполните его"
+        organizationNameStackView.addArrangedSubview(organizationName)
+        organizationNameStackView.addArrangedSubview(organizationNameWarning)
+        organizationName.isHidden = true
+        scrollableStackView.addArrangedSubview(organizationNameStackView)
 
-        self.switchToOrganizer.addTarget(self, action: #selector(onTapSwitchToOrganizer), for: .touchUpInside)
+        switchToOrganizer.addTarget(self, action: #selector(onTapSwitchToOrganizer), for: .touchUpInside)
     }
 
     override func setupConstraints() {
         super.setupConstraints()
 
-        self.scrollableStackView.pins()
+        scrollableStackView.pins()
 
-        let margins = self.layoutMarginsGuide
+        let margins = layoutMarginsGuide
+
         NSLayoutConstraint.activate([
             switchToOrganizerStackView.heightAnchor.constraint(equalToConstant: switchToOrganizerStackViewHeight),
             switchToOrganizerStackView.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
@@ -224,13 +225,13 @@ class UserRegistrationPlayerView: AutoLayoutView {
             registrationButton.centerXAnchor.constraint(equalTo: scrollableStackView.contentView.centerXAnchor),
         ])
 
-        self.scrollableStackView.set(contentInset: UIEdgeInsets(top: 0, left: 0, bottom: registrationOffset, right: 0))
+        scrollableStackView.set(contentInset: UIEdgeInsets(top: 0, left: 0, bottom: registrationOffset, right: 0))
 
     }
 
 
     @objc private func onTapSwitchToOrganizer() {
-        self.scrollableStackView.set(contentInset:
+        scrollableStackView.set(contentInset:
         UIEdgeInsets(top: 0.0, left: 0, bottom: registrationOffset, right: 0)
         )
         UIView.animate(withDuration: 0.5, delay:0.0, options: [],
@@ -245,19 +246,19 @@ class UserRegistrationPlayerView: AutoLayoutView {
     }
 
     @objc private func onTapRegistration() {
-        self.onTapRegistrationButton?(
-                self.lastName.text, self.firstName.text, self.patronymicName.text, self.fideID.text,
-                self.frcID.text, self.emailAddress.text, self.password.text, self.validatePassword.text,
-                self.switchToOrganizer.isOn, self.organizationCity.text, self.organizationName.text,
-            self.birthdateDatePicker.date, self.sex.text)
+        onTapRegistrationButton?(
+                lastName.text, firstName.text, patronymicName.text, fideID.text,
+                frcID.text, emailAddress.text, password.text, validatePassword.text,
+                switchToOrganizer.isOn, organizationCity.text, organizationName.text,
+                birthdateDatePicker.date, sex.text)
     }
 
     @objc private func onTapFide() {
-        self.onTapFideButton?()
+        onTapFideButton?()
     }
 
     @objc private func onTapFrc() {
-        self.onTapFrcButton?()
+        onTapFrcButton?()
     }
 }
 
@@ -293,4 +294,3 @@ private extension UserRegistrationPlayerView {
     }
 
 }
-

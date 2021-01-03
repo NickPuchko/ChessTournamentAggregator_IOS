@@ -26,7 +26,7 @@ final class UserProfileContainer {
 	}
 
     private init(view: UIViewController, input: UserProfileModuleInput, router: UserProfileRouterInput) {
-		self.viewController = view
+		viewController = view
         self.input = input
 		self.router = router
 	}

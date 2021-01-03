@@ -10,7 +10,7 @@ class UserRegistrationViewController: UIViewController {
 
     private let registrationView = UserRegistrationPlayerView()
 
-    private lazy var adapter = KeyboardAdapter(window: self.view.window) { [weak self] offset, duration in
+    private lazy var adapter = KeyboardAdapter(window: view.window) { [weak self] offset, duration in
         self?.keyboardOffsetChanged(offset, duration: duration)
     }
 
@@ -24,9 +24,9 @@ class UserRegistrationViewController: UIViewController {
     }
 
     override func loadView() {
-        self.view = registrationView
-        self.view.backgroundColor = .systemGray6
-        self.setup()
+        view = registrationView
+        view.backgroundColor = .systemGray6
+        setup()
     }
 
     private func setup() {
@@ -59,8 +59,8 @@ class UserRegistrationViewController: UIViewController {
         super.viewDidLoad()
         initializeHideKeyboard()
         initializeTextFieldDelegates()
-        self.registrationView.sexPicker.delegate = self
-        self.registrationView.sexPicker.dataSource = self
+        registrationView.sexPicker.delegate = self
+        registrationView.sexPicker.dataSource = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -119,19 +119,19 @@ extension UserRegistrationViewController: UITextFieldDelegate {
 
         switch textField {
         case registrationView.lastName, registrationView.firstName, registrationView.patronymicName:
-            return self.output.isFullNameOK(string: prospectiveText)
+            return output.isFullNameOK(string: prospectiveText)
         case registrationView.fideID, registrationView.frcID:
-            let (isAllowedToChange, number) = self.output.filterID(string: prospectiveText, maxID: registrationView.maxValueOfId)
+            let (isAllowedToChange, number) = output.filterID(string: prospectiveText, maxID: registrationView.maxValueOfId)
             if let num = number {
                 textField.text = "\(num)"
             }
             return isAllowedToChange
         case registrationView.emailAddress, registrationView.password, registrationView.validatePassword:
-            return self.output.isLoginDataOK(string: prospectiveText)
+            return output.isLoginDataOK(string: prospectiveText)
         case registrationView.organizationName, registrationView.organizationCity:
-                return self.output.isOrganizationDataOK(string: prospectiveText)
+                return output.isOrganizationDataOK(string: prospectiveText)
         case registrationView.sex:
-            return self.output.isSexOK(string: prospectiveText)
+            return output.isSexOK(string: prospectiveText)
         default:
             return true
         }
@@ -159,21 +159,21 @@ private extension UserRegistrationViewController {
     }
 
     @objc func keyboardDismiss() {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 
     func initializeTextFieldDelegates() {
-        self.registrationView.lastName.delegate = self
-        self.registrationView.firstName.delegate = self
-        self.registrationView.patronymicName.delegate = self
-        self.registrationView.fideID.delegate = self
-        self.registrationView.frcID.delegate = self
-        self.registrationView.emailAddress.delegate = self
-        self.registrationView.password.delegate = self
-        self.registrationView.validatePassword.delegate = self
-        self.registrationView.organizationCity.delegate = self
-        self.registrationView.organizationName.delegate = self
-        self.registrationView.sex.delegate = self
+        registrationView.lastName.delegate = self
+        registrationView.firstName.delegate = self
+        registrationView.patronymicName.delegate = self
+        registrationView.fideID.delegate = self
+        registrationView.frcID.delegate = self
+        registrationView.emailAddress.delegate = self
+        registrationView.password.delegate = self
+        registrationView.validatePassword.delegate = self
+        registrationView.organizationCity.delegate = self
+        registrationView.organizationName.delegate = self
+        registrationView.sex.delegate = self
     }
 
 }
@@ -195,7 +195,6 @@ extension UserRegistrationViewController: UIPickerViewDelegate {
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        registrationView.selectedSex = registrationView.sexList[row]
-        registrationView.sex.text = registrationView.selectedSex
+        registrationView.sex.text = registrationView.sexList[row]
     }
 }
