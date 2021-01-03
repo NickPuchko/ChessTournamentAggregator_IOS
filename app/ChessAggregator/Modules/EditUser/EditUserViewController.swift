@@ -75,7 +75,6 @@ final class EditUserViewController: UIViewController {
         toolbar.sizeToFit()
         let closeButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(resignAll))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        //let rulesButton = UIBarButtonItem(title: "Правила FIDE", style: .plain, target: self, action: #selector(tapRules))
         toolbar.setItems([spacer, closeButton], animated: true)
         toolbar.isUserInteractionEnabled = true
         genderTextField.inputView = genderPicker
@@ -83,13 +82,11 @@ final class EditUserViewController: UIViewController {
         genderPicker.delegate = self
         genderPicker.dataSource = self
         
-        if user.player.sex == "male" {
-            genderTextField.placeholder = "Мужчина"
-            genderTextField.text = "Мужчина"
+        genderTextField.text = user.player.sex.rawValue
+        genderTextField.placeholder = user.player.sex.rawValue
+        if user.player.sex == .male {
             genderPicker.selectRow(0, inComponent: 0, animated: false)
         } else {
-            genderTextField.placeholder = "Женщина"
-            genderTextField.text = "Женщина"
             genderPicker.selectRow(1, inComponent: 0, animated: false)
         }
         
@@ -128,49 +125,49 @@ final class EditUserViewController: UIViewController {
     
     @objc
     private func highlight() {
-        //navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.systemBlue], for: .normal)
         let user = output.userState()
         if lastNameTextField.text != user.player.lastName ||
             firstNameTextField.text != user.player.firstName ||
             patronymicNameTextField.text != user.player.patronomicName ||
-            genderTextField.text != user.player.sex {
+            genderTextField.text != user.player.sex.rawValue {
             navigationItem.rightBarButtonItem?.tintColor = .systemBlue
             navigationItem.rightBarButtonItem?.isEnabled = true
             return
         }
+
         
-//        if let idFromField = frcTextField.text {
-//            if let id = Int(idFromField) {
-//                if id != user.player.frcID {
-//                    navigationItem.rightBarButtonItem?.tintColor = .systemBlue
-//                    navigationItem.rightBarButtonItem?.isEnabled = true
-//                    return
-//                }
-//            }
-//        } else {
-//            if user.player.frcID != nil {
-//                navigationItem.rightBarButtonItem?.tintColor = .systemBlue
-//                navigationItem.rightBarButtonItem?.isEnabled = true
-//                return
-//            }
-//        }
-//
-//        if let idFromField = fideTextField.text {
-//            if let id = Int(idFromField) {
-//                if id != user.player.fideID {
-//                    navigationItem.rightBarButtonItem?.tintColor = .systemBlue
-//                    navigationItem.rightBarButtonItem?.isEnabled = true
-//                    return
-//                }
-//            }
-//        } else {
-//            if user.player.fideID != nil {
-//                navigationItem.rightBarButtonItem?.tintColor = .systemBlue
-//                navigationItem.rightBarButtonItem?.isEnabled = true
-//                return
-//            }
-//        }
-//
+        if let idFromField = frcTextField.text {
+            if let id = Int(idFromField) {
+                if id != user.player.frcID {
+                    navigationItem.rightBarButtonItem?.tintColor = .systemBlue
+                    navigationItem.rightBarButtonItem?.isEnabled = true
+                    return
+                }
+            }
+        } else {
+            if user.player.frcID != nil {
+                navigationItem.rightBarButtonItem?.tintColor = .systemBlue
+                navigationItem.rightBarButtonItem?.isEnabled = true
+                return
+            }
+        }
+
+        if let idFromField = fideTextField.text {
+            if let id = Int(idFromField) {
+                if id != user.player.fideID {
+                    navigationItem.rightBarButtonItem?.tintColor = .systemBlue
+                    navigationItem.rightBarButtonItem?.isEnabled = true
+                    return
+                }
+            }
+        } else {
+            if user.player.fideID != nil {
+                navigationItem.rightBarButtonItem?.tintColor = .systemBlue
+                navigationItem.rightBarButtonItem?.isEnabled = true
+                return
+            }
+        }
+
         navigationItem.rightBarButtonItem?.tintColor = .black
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
@@ -182,7 +179,7 @@ final class EditUserViewController: UIViewController {
         user.player.firstName = firstNameTextField.text ?? user.player.firstName
         user.player.lastName = lastNameTextField.text ?? user.player.lastName
         user.player.patronomicName = patronymicNameTextField.text
-        user.player.sex = genderTextField.text ?? user.player.sex
+        user.player.sex = Sex(rawValue: genderTextField.text ?? "") ?? user.player.sex
         if let ID = frcTextField.text {
             if let exactID = Int(ID) {
                 user.player.frcID = Int(exactID)
@@ -224,9 +221,9 @@ extension EditUserViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == genderPicker {
             if row == 0 {
-                return "Мужчина"
+                return Sex.male.rawValue
             } else {
-                return "Женщина"
+                return Sex.female.rawValue
             }
         } else {
             return ""
@@ -236,9 +233,9 @@ extension EditUserViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == genderPicker {
             if row == 0 {
-                genderTextField.text = "Мужчина"
+                genderTextField.text = Sex.male.rawValue
             } else {
-                genderTextField.text = "Женщина"
+                genderTextField.text = Sex.female.rawValue
             }
         }
     }

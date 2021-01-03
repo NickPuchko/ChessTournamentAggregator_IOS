@@ -37,7 +37,6 @@ class AuthViewController: UIViewController {
 
 
         authView.onTapLoginButton = { [weak self] in
-            saveUser(currentUser: User())
             self?.output?.onTapLogin(
                     email: self?.authView.emailTextField.text ?? "",
                     password: self?.authView.passwordTextField.text ?? ""

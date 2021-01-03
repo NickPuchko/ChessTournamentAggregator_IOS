@@ -34,13 +34,14 @@ class UserRegistrationViewController: UIViewController {
         lastName, firstName, patronymicName,
         fideID, frcID, emailAddress, password, validatePassword,
         isOrganizer, organisationCity, organisationName,
-        birthdate in
+        birthdate, sex in
 
             self?.output.onTapRegistration(
                     lastName: lastName, firstName: firstName, patronymicName: patronymicName, fideID: fideID,
                     frcID: frcID, email: emailAddress, password: password, passwordValidation: validatePassword,
                     isOrganizer: isOrganizer, organizationCity: organisationCity, organizationName: organisationName,
-                    birthdate: birthdate
+                    birthdate: birthdate, sex: sex
+                
             )
 
         }

@@ -37,7 +37,7 @@ class UserRegistrationPlayerView: AutoLayoutView {
     let sex = UITextField()
     let sexPicker = UIPickerView()
     var selectedSex: String?
-    var sexList: [String] = SexTypes.allCases.map{ $0.rawValue }
+    var sexList: [String] = Sex.allCases.map{ $0.rawValue }
 
     let patronymicName = UITextField()
 
@@ -78,7 +78,7 @@ class UserRegistrationPlayerView: AutoLayoutView {
     
     private let registrationButton = UIButton(type: .system)
     var onTapRegistrationButton: ((String?, String?, String?, String?, String?, String?,
-                                   String?, String?, Bool, String?, String?, Date) -> Void)?
+                                   String?, String?, Bool, String?, String?, Date, String?) -> Void)?
 
     init() {
         super.init(frame: .zero)
@@ -249,7 +249,7 @@ class UserRegistrationPlayerView: AutoLayoutView {
                 self.lastName.text, self.firstName.text, self.patronymicName.text, self.fideID.text,
                 self.frcID.text, self.emailAddress.text, self.password.text, self.validatePassword.text,
                 self.switchToOrganizer.isOn, self.organizationCity.text, self.organizationName.text,
-                self.birthdateDatePicker.date)
+            self.birthdateDatePicker.date, self.sex.text)
     }
 
     @objc private func onTapFide() {
@@ -294,6 +294,3 @@ private extension UserRegistrationPlayerView {
 
 }
 
-enum SexTypes: String, CaseIterable {
-    case male, female
-}

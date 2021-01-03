@@ -116,10 +116,7 @@ class AuthNewView: AutoLayoutView {
 
     @objc
     private func onTapLogin() {
-
         email = emailTextField.text ?? "email@example.com"
-        let user = User(phone: email)
-        saveUser(currentUser: user)
         onTapLoginButton?()
     }
 

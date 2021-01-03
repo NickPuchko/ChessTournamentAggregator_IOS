@@ -5,10 +5,10 @@ struct Player: Codable {
     var firstName: String = "John"
     var patronomicName: String? = nil
     var birthdate: Date = Calendar.current.date(from: DateComponents(year: 1953, month: 2, day: 25))!
-    var sex: String = "male" // TODO: replace with enum
+    var sex: Sex = .male
 
     var eventsIDs: [String]?
-    var fideID: Int? = 24176214 // TODO: replace with parsed id's only
+    var fideID: Int? = 24176214 
     var classicFideRating: Int?
     var rapidFideRating: Int?
     var blitzFideRating: Int?
@@ -17,4 +17,9 @@ struct Player: Codable {
     var rapidFrcRating: Int?
     var blitzFrcRating: Int?
 
+}
+
+enum Sex: String, Codable, CaseIterable {
+    case male = "Мужчина"
+    case female = "Женщина"
 }

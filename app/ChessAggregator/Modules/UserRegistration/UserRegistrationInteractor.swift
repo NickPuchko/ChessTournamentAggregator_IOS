@@ -26,17 +26,18 @@ extension UserRegistrationInteractor: UserRegistrationInteractorInput {
                 let realtimeDatabaseUser = UserParser.userToFirebaseUser(user: user)
                 FirebaseRef.ref.child("Users").child(firebaseUser.uid).setValue(realtimeDatabaseUser)
                 self?.signIn(withEmail: user.email, password: user.password)
-                self?.output?.didRegister()
             } else {
-                self?.output?.failedToAddAuthUser(error: error!.localizedDescription)
+                self?.output?.failedToAddAuthUser(error: error?.localizedDescription ?? "some error") // TODO: shit
             }
         }
     }
 
     private func signIn(withEmail email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) {[weak self] authResult, error in
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             if let err = error {
                 print(err.localizedDescription)
+            } else {
+                self?.output?.didRegister()
             }
         }
     }
@@ -48,7 +49,7 @@ private extension UserRegistrationInteractor {
         let user = User(
                 player: Player(
                         lastName: userReg.lastName, firstName: userReg.firstName, patronomicName:
-                        userReg.patronymicName, birthdate: userReg.birthdate, sex: "М",
+                            userReg.patronymicName, birthdate: userReg.birthdate, sex: userReg.sex,
                         fideID: Int(userReg.fideID), frcID: Int(userReg.frcID)
                 ),
                 phone: phoneNumber, email: userReg.email, password: userReg.password, isOrganizer: userReg.isOrganizer,

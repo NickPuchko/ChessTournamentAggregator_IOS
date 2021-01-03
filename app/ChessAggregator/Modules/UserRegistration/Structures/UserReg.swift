@@ -8,6 +8,7 @@ struct UserReg {
         let lastName: String
         let firstName: String
         let patronymicName: String?
+        let sex: Sex
         let fideID: String
         let frcID: String
         let email: String

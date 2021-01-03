@@ -16,6 +16,7 @@ class UserParser {
         let rates = RateParser(frcID: user.player.frcID ?? 0)
         result = [ "lastName": user.player.lastName,
                    "firstName": user.player.firstName,
+                   "sex": user.player.sex.rawValue,
                    "phone": user.phone,
                    "email": user.email,
                    "password": user.password,
@@ -25,6 +26,7 @@ class UserParser {
         if rates.count != 0 {
             result = [ "lastName": user.player.lastName,
                        "firstName": user.player.firstName,
+                       "sex": user.player.sex.rawValue,
                        "phone": user.phone,
                        "email": user.email,
                        "password": user.password,
@@ -130,8 +132,9 @@ class UserParser {
             lastName: userDict["lastName"] as? String ?? "Doe",
             firstName: userDict["firstName"] as? String ?? "John",
             patronomicName: userDict["patronomicName"] as! String?,
+            sex: Sex(rawValue: userDict["sex"] as? String ?? "") ?? .male,
             eventsIDs: userDict["eventsIDs"] as? [String] ?? [],
-            classicFideRating: userDict["classicFideRating"] as? Int ?? 2100, // TODO: Parse ratings from FIDE/FRC
+            classicFideRating: userDict["classicFideRating"] as? Int ?? 2100,
             rapidFideRating: userDict["rapidFideRating"] as? Int ?? 0,
             blitzFideRating: userDict["blitzFideRating"] as? Int ?? 0,
             classicFrcRating: userDict["classicFrcRating"] as? Int ?? 0,
