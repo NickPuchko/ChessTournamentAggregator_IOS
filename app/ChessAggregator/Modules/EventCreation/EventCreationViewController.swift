@@ -34,15 +34,15 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         stack.spacing = 4
         return stack
     }()
-    private let toursField = MaterialTextField()
-    private let ratingTypeField = MaterialTextField()
+    private let toursField = PickableTextField()
+    private let ratingTypeField = PickableTextField()
     private let toursPicker = UIPickerView()
     private let ratingTypePicker = UIPickerView()
     private let modeSegment = UISegmentedControl(items: ["Классика FIDE", "Конфигуратор", "Шахматы 960"])
     private let timeControlPicker = UIPickerView()
-    private let minutesField = MaterialTextField()
-    private let secondsField = MaterialTextField()
-    private let incrementField = MaterialTextField()
+    private let minutesField = PickableTextField()
+    private let secondsField = PickableTextField()
+    private let incrementField = PickableTextField()
     private let verticalTimeStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -69,8 +69,8 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         return label
     }()
 
-    private let fundField = MaterialTextField()
-    private let feeField = MaterialTextField()
+    private let fundField = PickableTextField()
+    private let feeField = PickableTextField()
     private let urlField = MaterialTextField()
 
     init(output: EventCreationViewOutput) {

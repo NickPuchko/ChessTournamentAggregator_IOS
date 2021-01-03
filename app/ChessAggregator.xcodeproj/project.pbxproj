@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		014BEFC625A11D020000DFAD /* PickableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014BEFC525A11D020000DFAD /* PickableTextField.swift */; };
+		014BEFCD25A127480000DFAD /* MaterialStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014BEFCC25A127480000DFAD /* MaterialStack.swift */; };
+		014BEFD025A12C930000DFAD /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014BEFCF25A12C930000DFAD /* InsetLabel.swift */; };
 		01EC6BB9259D27200030A277 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 730407F82550617C0036E7A6 /* SwiftKeychainWrapper */; };
 		01FFDCA6253FA08B001244D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FFDCA5253FA08B001244D1 /* AppDelegate.swift */; };
 		01FFDCAF253FA091001244D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCAE253FA091001244D1 /* Assets.xcassets */; };
@@ -109,6 +112,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		014BEFC525A11D020000DFAD /* PickableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickableTextField.swift; sourceTree = "<group>"; };
+		014BEFCC25A127480000DFAD /* MaterialStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialStack.swift; sourceTree = "<group>"; };
+		014BEFCF25A12C930000DFAD /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		01FFDCA2253FA08B001244D1 /* ChessAggregator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessAggregator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01FFDCA5253FA08B001244D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01FFDCAE253FA091001244D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -417,6 +423,7 @@
 				6AC9725DE11A5E51FC080F0F /* PasswordExtension.swift */,
 				6AC97C70A2A035E42D8A6F55 /* UIColor.swift */,
 				6AC978757D3A6D0D18B44BFB /* CharactersInString.swift */,
+				014BEFC525A11D020000DFAD /* PickableTextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -506,11 +513,14 @@
 		D91FC6AD2BBB9A246B8C066F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D91FC58675492BC70A66A7F4 /* MaterialTextField.swift */,
 				24B9108D256BCC3C0076A3E1 /* WarningLabel.swift */,
 				D91FCEF3B255AD71D488BD6B /* UIView+Layout.swift */,
 				D91FC1CB6EBFFFC7483EAC76 /* AutoLayoutView.swift */,
 				6AC979F80F68467B6056BE62 /* ScrollableStackView.swift */,
 				C31943B52568C2AC0051C8C0 /* ProfileRaw.swift */,
+				014BEFCC25A127480000DFAD /* MaterialStack.swift */,
+				014BEFCF25A12C930000DFAD /* InsetLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -545,7 +555,6 @@
 		D91FCDE547FA8F650CA7B696 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D91FC58675492BC70A66A7F4 /* MaterialTextField.swift */,
 				D91FC921E2F812AAEAE200DE /* DoubleDate.swift */,
 				D91FC02278EFF2C3C14A9553 /* LabelStack.swift */,
 			);
@@ -714,6 +723,7 @@
 				6AC973BE56C56D620227BF0B /* UserRegistrationProtocols.swift in Sources */,
 				6AC97C3BAB64ADF9B302A904 /* UserRegistrationPresenter.swift in Sources */,
 				24B910C2256BD1D60076A3E1 /* AppCoordinator.swift in Sources */,
+				014BEFCD25A127480000DFAD /* MaterialStack.swift in Sources */,
 				6AC97B4021820CC7707CD19D /* UserRegistrationViewController.swift in Sources */,
 				24B910AD256BCE310076A3E1 /* AuthContainer.swift in Sources */,
 				24B910AE256BCE310076A3E1 /* AuthInteractor.swift in Sources */,
@@ -745,6 +755,7 @@
 				6AC977A86A632D3796F19002 /* UserRegistrationRouter.swift in Sources */,
 				6AC973A1C7ADDBAD08BF1FD4 /* PhoneNumberRegistrationPresenter.swift in Sources */,
 				6AC97F4FA2B08B2D8F012D07 /* PhoneNumberRegistrationInteractor.swift in Sources */,
+				014BEFC625A11D020000DFAD /* PickableTextField.swift in Sources */,
 				6AC97F480E7A2324F8EF18FA /* UserProfilePresenter.swift in Sources */,
 				6AC972CAFCC42E63FA70A89B /* UserProfileRouter.swift in Sources */,
 				6AC974CFC2C98752A650849C /* UserProfileViewController.swift in Sources */,
@@ -763,6 +774,7 @@
 				6AC97295C76DB96A8F415A46 /* EventRatingCellModel.swift in Sources */,
 				6AC9759A799DC9E5F9E264C1 /* EventModeCellModel.swift in Sources */,
 				6AC9786A42F9E25355673F6A /* EventsSectionModel.swift in Sources */,
+				014BEFD025A12C930000DFAD /* InsetLabel.swift in Sources */,
 				D91FCEBAD4DB42301C940A85 /* EventCreationPresenter.swift in Sources */,
 				D91FC35933ECB277C3D62FEE /* EventCreationViewController.swift in Sources */,
 				D91FC8A2A93203BA226A715F /* EventCreationProtocols.swift in Sources */,
