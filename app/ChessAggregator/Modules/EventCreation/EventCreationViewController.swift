@@ -127,8 +127,15 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         event.url = URL(string: urlField.text ?? "default") ?? URL(string: "https://ruchess.ru/")!
         event.prizeFund = Int(fundField.text ?? "default") ?? 0
         event.fee = Int(feeField.text ?? "default") ?? 0
-        event.tours = Int(toursField.text ?? "default") ?? 9
+        event.tours = Int(toursField.text ?? "default") ?? 0
         event.ratingType = RatingType(rawValue: ratingTypeField.text ?? "default") ?? .without
+        
+        labelTextField.addTarget(self, action: #selector(setDefaultName), for: .editingChanged)
+        locationTextField.addTarget(self, action: #selector(setDefaultLocation), for: .editingChanged)
+        toursField.addTarget(self, action: #selector(setDefaultTours), for: .allEditingEvents)
+        ratingTypeField.addTarget(self, action: #selector(setDefaultRate), for: .allEditingEvents)
+        modeSegment.addTarget(self, action: #selector(setDefaultSegment), for: .valueChanged)
+        
         switch modeSegment.selectedSegmentIndex {
         case 1:
             event.mode = Mode(rawValue: modeField.text ?? "default") ?? .classic
@@ -140,7 +147,7 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         event.minutes = Int(minutesField.text ?? "default") ?? 90
         event.seconds = Int(secondsField.text ?? "default") ?? 0
         event.increment = Int(incrementField.text ?? "default") ?? 30
-        output.createEvent(event: event)
+        output.createEvent(event: event, index: modeSegment.selectedSegmentIndex, rateType: ratingTypeField.text ?? "")
 
 
     }
@@ -409,4 +416,69 @@ extension EventCreationViewController: UIPickerViewDelegate, UIPickerViewDataSou
 }
 
 extension EventCreationViewController: EventCreationViewInput {
+    
+    func showWarningName(){
+        
+        labelTextField.layer.borderWidth = 1.0
+        labelTextField.layer.borderColor = UIColor.red.cgColor
+        
+    }
+    func showWarningLocation(){
+        
+        locationTextField.layer.borderWidth = 1.0
+        locationTextField.layer.borderColor = UIColor.red.cgColor
+        
+    }
+    func showWarningTours(){
+        
+        toursField.layer.borderWidth = 1.0
+        toursField.layer.borderColor = UIColor.red.cgColor
+        
+    }
+    func showWarningRate(){
+        
+        ratingTypeField.layer.borderWidth = 1.0
+        ratingTypeField.layer.borderColor = UIColor.red.cgColor
+        
+    }
+    func showWarningSegment(){
+        
+        modeSegment.layer.borderWidth = 1.0
+        modeSegment.layer.borderColor = UIColor.red.cgColor
+        
+    }
+    
+    @objc func setDefaultName(){
+        labelTextField.layer.borderWidth = 0
+        labelTextField.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    @objc func setDefaultLocation(){
+        locationTextField.layer.borderWidth = 0
+        locationTextField.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    @objc func setDefaultTours(){
+        
+        if toursField.text != ""{
+            toursField.layer.borderWidth = 0
+            toursField.layer.borderColor = UIColor.white.cgColor
+        }
+        
+    }
+    @objc func setDefaultRate(){
+        if ratingTypeField.text != ""{
+            ratingTypeField.layer.borderWidth = 0
+            ratingTypeField.layer.borderColor = UIColor.white.cgColor
+        }
+    }
+    
+    @objc func setDefaultSegment(){
+        if modeSegment.selectedSegmentIndex == 2 {
+            setDefaultRate()
+        }
+        modeSegment.layer.borderWidth = 0
+        modeSegment.layer.borderColor = UIColor.white.cgColor
+    }
+
 }
