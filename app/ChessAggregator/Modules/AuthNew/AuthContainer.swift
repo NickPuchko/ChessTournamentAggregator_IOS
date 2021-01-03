@@ -36,7 +36,7 @@ class AuthContainer {
     }
 
     private init(view: UIViewController, input: AuthModuleInput, router: AuthRouterInput) {
-        self.viewController = view
+        viewController = view
         self.input = input
         self.router = router
 

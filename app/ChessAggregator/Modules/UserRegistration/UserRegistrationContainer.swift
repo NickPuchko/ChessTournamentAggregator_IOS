@@ -31,7 +31,7 @@ class UserRegistrationContainer {
                  input: UserRegistrationModuleInput,
                  router: UserRegistrationRouterInput) {
 
-        self.viewController = view
+        viewController = view
         self.input = input
         self.router = router
     }

@@ -25,25 +25,23 @@ extension SearchTournamentsRouter: SearchTournamentsRouterInput {
                       """
         let alert = UIAlertController(title: section.event.name, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Закрыть", style: .destructive))
+
         alert.addAction(UIAlertAction(title: "Сайт турнира", style: .default) { _ in
             let websiteController = SFSafariViewController(url: section.event.url)
             self.navigationController?.present(websiteController, animated: true)
         })
+
         alert.addAction(UIAlertAction(title: "Подать заявку", style: .cancel) { _ in
-            //TODO: переделать вот это
-//            let currentVC = CurrentViewController(ref: FirebaseRef.ref, phone: self.viewController.phone, event: section.event)
-//            currentVC.tabBarItem = UITabBarItem(title: "Турнир", image: UIImage(systemName: "house"), tag: 0)
-//
-//            navVC?.tabBarController?.viewControllers?[0] = currentVC
-//
-//            self.showApply()
+            let context = EventApplicationContext(moduleOutput: nil, tournament: section.event)
+            let container = EventApplicationContainer.assemble(with: context)
+            self.navigationController?.pushViewController(container.viewController, animated: false)
         })
-        self.navigationController?.present(alert, animated: true)
+        navigationController?.present(alert, animated: true)
     }
 
     func showApply() {
         let applyAlert = UIAlertController(title: "Заявка подана!", message: "Номер телефона: \(phoneNumber)", preferredStyle: .alert)
-        self.navigationController?.present(applyAlert, animated: true) {
+        navigationController?.present(applyAlert, animated: true) {
             applyAlert.view.superview?.isUserInteractionEnabled = true
             applyAlert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(
             self.didTapToDismiss)))
@@ -55,7 +53,7 @@ extension SearchTournamentsRouter: SearchTournamentsRouterInput {
 private extension SearchTournamentsRouter {
     @objc
     func didTapToDismiss() {
-        self.navigationController?.dismiss(animated: true)
-        self.navigationController?.tabBarController?.selectedIndex = 0
+        navigationController?.dismiss(animated: true)
+        navigationController?.tabBarController?.selectedIndex = 0
     }
 }

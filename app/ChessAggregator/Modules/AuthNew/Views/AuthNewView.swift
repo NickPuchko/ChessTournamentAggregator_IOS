@@ -20,7 +20,7 @@ class AuthNewView: AutoLayoutView {
     var onTapForgotButton: (() -> Void)?
 
     var stackViewBottomConstraint: NSLayoutConstraint?
-    var stackViewBottomConstraintConstant: CGFloat { -self.bounds.height/2.0 }
+    var stackViewBottomConstraintConstant: CGFloat { -bounds.height/2.0 }
     lazy var signupButtonMaxY: CGFloat = signupButton.frame.maxY
 
     init() {
@@ -59,7 +59,7 @@ class AuthNewView: AutoLayoutView {
         loginButton.backgroundColor = .black
         loginButton.setTitleColor(.white, for: .normal)
         loginButton.layer.cornerRadius = 10
-        loginButton.clipsToBounds = false
+        loginButton.clipsToBounds = true
         loginButton.addTarget(self, action: #selector(onTapLogin), for: .touchUpInside)
 
         forgotButton.setTitle("Забыли пароль?", for: .normal)
@@ -82,10 +82,10 @@ class AuthNewView: AutoLayoutView {
     override func setupConstraints() {
         super.setupConstraints()
 
-        let margins = self.layoutMarginsGuide
-        self.stackViewBottomConstraint = stackView.bottomAnchor.constraint(
+        let margins = layoutMarginsGuide
+        stackViewBottomConstraint = stackView.bottomAnchor.constraint(
                 equalTo: margins.bottomAnchor,
-                constant: -self.bounds.height/2.0
+                constant: -bounds.height/2.0
         )
         [
             emailTextField.heightAnchor.constraint(equalToConstant: 50),
@@ -96,18 +96,18 @@ class AuthNewView: AutoLayoutView {
             stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor,constant: -16.0),
 
             loginButton.heightAnchor.constraint(equalToConstant: 40.0),
-            loginButton.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
+            loginButton.widthAnchor.constraint(equalToConstant: bounds.width/2),
             loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10.0),
             loginButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
 
             forgotButton.heightAnchor.constraint(equalToConstant: 40),
             forgotButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 10.0),
-            forgotButton.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
+            forgotButton.widthAnchor.constraint(equalToConstant: bounds.width/2),
             forgotButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
 
             signupButton.heightAnchor.constraint(equalToConstant: 40),
             signupButton.topAnchor.constraint(equalTo: forgotButton.bottomAnchor, constant: 10.0),
-            signupButton.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
+            signupButton.widthAnchor.constraint(equalToConstant: bounds.width/2),
             signupButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor)
 
         ].forEach {$0.isActive = true}

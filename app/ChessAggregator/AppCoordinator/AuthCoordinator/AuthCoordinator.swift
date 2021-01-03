@@ -19,25 +19,27 @@ final class AuthCoordinator {
     func auth() {
         let context = AuthContext(moduleOutput: self)
         let container = AuthContainer.assemble(with: context)
-        self.navigationController.setViewControllers([container.viewController], animated: false)
-        self.window.rootViewController = navigationController
-        self.window.makeKeyAndVisible()
+        navigationController.setViewControllers([container.viewController], animated: false)
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
     }
-    func  ForgotPassword() {
+
+    func ForgotPassword() {
         let context = ForgotPasswordContext(moduleOutput: self)
         let container = ForgotPasswordContainer.assemble(with: context)
-        self.navigationController.pushViewController(container.viewController, animated: true)
+        navigationController.pushViewController(container.viewController, animated: true)
     }
+    
     func phoneNumberSignUp() {
         let context = PhoneNumberRegistrationContext(moduleOutput: self)
         let container = PhoneNumberRegistrationContainer.assemble(with: context)
-        self.navigationController.pushViewController(container.viewController, animated: true)
+        navigationController.pushViewController(container.viewController, animated: true)
     }
 
     func userRegistrationSignUp() {
         let context = UserRegistrationContext(moduleOutput: self, phoneNumber: phoneNumber!)
         let container = UserRegistrationContainer.assemble(with: context)
-        self.navigationController.pushViewController(container.viewController, animated: true)
+        navigationController.pushViewController(container.viewController, animated: true)
     }
 }
 

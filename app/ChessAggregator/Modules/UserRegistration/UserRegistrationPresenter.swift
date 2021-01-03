@@ -94,7 +94,7 @@ extension UserRegistrationPresenter: UserRegistrationInteractorOutput {
     }
 
     func failedToAddAuthUser(error: String) {
-        self.view?.showEmailWasRegisteredWarning(withWarning: error, isHidden: false)
+        view?.showEmailWasRegisteredWarning(withWarning: error, isHidden: false)
     }
 }
 
