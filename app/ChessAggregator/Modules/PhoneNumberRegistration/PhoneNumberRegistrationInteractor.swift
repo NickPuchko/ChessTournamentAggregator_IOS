@@ -13,5 +13,4 @@ extension PhoneNumberRegistrationInteractor: PhoneNumberRegistrationInteractorIn
         //implementation
         return true
     }
-
 }

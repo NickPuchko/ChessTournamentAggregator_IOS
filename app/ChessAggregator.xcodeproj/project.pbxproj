@@ -105,6 +105,7 @@
 		D91FCEBAD4DB42301C940A85 /* EventCreationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC3ED30E5C5AC06F6E3A8 /* EventCreationPresenter.swift */; };
 		D91FCF2D156E403FBB4D78C1 /* EditUserProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC26C81D298EDEED02F25 /* EditUserProtocols.swift */; };
 		D91FCF990B45466BC3A78618 /* EditUserContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCA47971CDA900BDF6C53 /* EditUserContainer.swift */; };
+		E66B182D258756DF0098411A /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 730407F82550617C0036E7A6 /* SwiftKeychainWrapper */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -217,6 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E66B182D258756DF0098411A /* SwiftKeychainWrapper in Frameworks */,
 				C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,7 +594,7 @@
 			);
 			name = ChessAggregator;
 			packageProductDependencies = (
-				730407F82550617C0036E7A6,
+				730407F82550617C0036E7A6 /* SwiftKeychainWrapper */,
 			);
 			productName = ChessAggregator;
 			productReference = 01FFDCA2253FA08B001244D1 /* ChessAggregator.app */;
@@ -622,7 +624,7 @@
 			);
 			mainGroup = 01FFDC99253FA08B001244D1;
 			packageReferences = (
-				730407F72550617C0036E7A6,
+				730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 			);
 			productRefGroup = 01FFDCA3253FA08B001244D1 /* Products */;
 			projectDirPath = "";
@@ -984,7 +986,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		730407F72550617C0036E7A6 = {
+		730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
 			requirement = {
@@ -995,9 +997,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		730407F82550617C0036E7A6 = {
+		730407F82550617C0036E7A6 /* SwiftKeychainWrapper */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 730407F72550617C0036E7A6;
+			package = 730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
 			productName = SwiftKeychainWrapper;
 		};
 /* End XCSwiftPackageProductDependency section */
