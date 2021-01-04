@@ -103,7 +103,7 @@ final class UserProfileViewController: UIViewController {
         let editImage = UIImage(systemName: "square.and.pencil")
 
 
-        editButton.setImage(UIImage(cgImage: (editImage?.cgImage)!, scale: 1.5, orientation: UIImage.Orientation.up), for: .normal)
+        editButton.setImage(UIImage(cgImage: (editImage?.cgImage)!, scale: 2, orientation: UIImage.Orientation.up), for: .normal) // scale may vary
         editButton.addTarget(self, action: #selector(tappedEdit), for: .touchUpInside)
 
 
@@ -202,8 +202,7 @@ final class UserProfileViewController: UIViewController {
 
 extension UserProfileViewController: UserProfileViewInput {
     func updateUser(user: User) {
-        let nameParts = user.player.fullName.components(separatedBy: " ")
-        userName.text = nameParts[0] + " " + nameParts[1]
+        userName.text = user.player.lastName + " " + user.player.firstName
         userStatus.text = user.isOrganizer ? "Организатор" : "Игрок"
         userRating.text = String(user.player.classicFideRating!)
     }

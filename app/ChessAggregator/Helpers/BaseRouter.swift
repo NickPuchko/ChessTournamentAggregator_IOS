@@ -8,9 +8,9 @@ class BaseRouter {
     var navigationControllerProvider: (() -> UINavigationController?)?
     var viewControllerProvider: (() -> UIViewController?)?
     var navigationController: UINavigationController? {
-        self.navigationControllerProvider?()
+        navigationControllerProvider?()
     }
     var viewController: UIViewController?{
-        self.viewControllerProvider?()
+        viewControllerProvider?()
     }
 }

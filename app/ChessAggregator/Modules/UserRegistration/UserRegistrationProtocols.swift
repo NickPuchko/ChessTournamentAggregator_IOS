@@ -26,7 +26,7 @@ protocol UserRegistrationViewOutput: class {
     func onTapRegistration(
             lastName: String?, firstName: String?, patronymicName: String?,
             fideID: String?, frcID: String?, email: String?, password: String?, passwordValidation: String?,
-            isOrganizer: Bool, organizationCity: String?, organizationName: String?, birthdate: Date
+        isOrganizer: Bool, organizationCity: String?, organizationName: String?, birthdate: Date, sex: String?
     )
     func onTapFide()
     func onTapFrc()

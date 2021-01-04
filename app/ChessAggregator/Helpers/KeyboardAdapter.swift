@@ -41,6 +41,6 @@ final class KeyboardAdapter {
                 .userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?
                 .doubleValue ?? 0
 
-        self.handler(currentWindow.frame.height - keyboardSize.origin.y, duration)
+        handler(currentWindow.frame.height - keyboardSize.origin.y, duration)
     }
 }

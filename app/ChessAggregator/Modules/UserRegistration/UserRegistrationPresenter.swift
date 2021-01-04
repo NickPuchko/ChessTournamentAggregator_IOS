@@ -34,11 +34,11 @@ extension UserRegistrationPresenter: UserRegistrationViewOutput {
     func onTapRegistration(
             lastName: String?, firstName: String?, patronymicName: String?,
             fideID: String?, frcID: String?, email: String?, password: String?, passwordValidation: String?,
-            isOrganizer: Bool, organizationCity: String?, organizationName: String?, birthdate: Date
+        isOrganizer: Bool, organizationCity: String?, organizationName: String?, birthdate: Date, sex: String?
     ) {
         let lowercasedEmail = email?.lowercased()
         let user = UserReg(
-                lastName: lastName ?? "", firstName: firstName ?? "", patronymicName: patronymicName,
+            lastName: lastName ?? "", firstName: firstName ?? "", patronymicName: patronymicName, sex: Sex(rawValue: sex ?? "") ?? .male,
                 fideID: fideID ?? "", frcID: frcID ?? "", email: lowercasedEmail ?? "", password: password ?? "", passwordValidation: passwordValidation ?? "",
                 isOrganizer: isOrganizer, organisationCity: organizationCity, organisationName: organizationName,
                 birthdate: birthdate
@@ -56,7 +56,7 @@ extension UserRegistrationPresenter: UserRegistrationViewOutput {
 
     func isSexOK(string: String) -> Bool {
         var sexIsOk = false
-        for sexType in SexTypes.allCases {
+        for sexType in Sex.allCases {
             if(string == sexType.rawValue) {
                 sexIsOk = true
                 break
@@ -94,7 +94,7 @@ extension UserRegistrationPresenter: UserRegistrationInteractorOutput {
     }
 
     func failedToAddAuthUser(error: String) {
-        self.view?.showEmailWasRegisteredWarning(withWarning: error, isHidden: false)
+        view?.showEmailWasRegisteredWarning(withWarning: error, isHidden: false)
     }
 }
 

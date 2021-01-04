@@ -34,15 +34,15 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         stack.spacing = 4
         return stack
     }()
-    private let toursField = MaterialTextField()
-    private let ratingTypeField = MaterialTextField()
+    private let toursField = PickableTextField()
+    private let ratingTypeField = PickableTextField()
     private let toursPicker = UIPickerView()
     private let ratingTypePicker = UIPickerView()
     private let modeSegment = UISegmentedControl(items: ["Классика FIDE", "Конфигуратор", "Шахматы 960"])
     private let timeControlPicker = UIPickerView()
-    private let minutesField = MaterialTextField()
-    private let secondsField = MaterialTextField()
-    private let incrementField = MaterialTextField()
+    private let minutesField = PickableTextField()
+    private let secondsField = PickableTextField()
+    private let incrementField = PickableTextField()
     private let verticalTimeStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -69,8 +69,8 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         return label
     }()
 
-    private let fundField = MaterialTextField()
-    private let feeField = MaterialTextField()
+    private let fundField = PickableTextField()
+    private let feeField = PickableTextField()
     private let urlField = MaterialTextField()
 
     init(output: EventCreationViewOutput) {
@@ -115,7 +115,8 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         let formatter = DateFormatter()
         formatter.timeZone = .current
         formatter.locale = .current
-        formatter.dateFormat = "dd.MM.yyyy"
+        formatter.dateFormat = "YYYY-MM-DD"
+
 
         var event = Tournament()
         event.organizerId = Auth.auth().currentUser!.uid
@@ -126,8 +127,15 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         event.url = URL(string: urlField.text ?? "default") ?? URL(string: "https://ruchess.ru/")!
         event.prizeFund = Int(fundField.text ?? "default") ?? 0
         event.fee = Int(feeField.text ?? "default") ?? 0
-        event.tours = Int(toursField.text ?? "default") ?? 9
+        event.tours = Int(toursField.text ?? "default") ?? 0
         event.ratingType = RatingType(rawValue: ratingTypeField.text ?? "default") ?? .without
+        
+        labelTextField.addTarget(self, action: #selector(setDefaultName), for: .editingChanged)
+        locationTextField.addTarget(self, action: #selector(setDefaultLocation), for: .editingChanged)
+        toursField.addTarget(self, action: #selector(setDefaultTours), for: .allEditingEvents)
+        ratingTypeField.addTarget(self, action: #selector(setDefaultRate), for: .allEditingEvents)
+        modeSegment.addTarget(self, action: #selector(setDefaultSegment), for: .valueChanged)
+        
         switch modeSegment.selectedSegmentIndex {
         case 1:
             event.mode = Mode(rawValue: modeField.text ?? "default") ?? .classic
@@ -139,7 +147,9 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         event.minutes = Int(minutesField.text ?? "default") ?? 90
         event.seconds = Int(secondsField.text ?? "default") ?? 0
         event.increment = Int(incrementField.text ?? "default") ?? 30
-        output.createEvent(event: event)
+        output.createEvent(event: event, index: modeSegment.selectedSegmentIndex, rateType: ratingTypeField.text ?? "")
+
+
     }
 
     @objc
@@ -332,9 +342,7 @@ private extension EventCreationViewController {
         urlField.returnKeyType = .continue
         urlField.addTarget(self, action: #selector(editFund), for: .editingDidEndOnExit)
     }
-//    func isChanged() -> Bool{
-//
-//    }
+
 }
 
 extension EventCreationViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -408,4 +416,69 @@ extension EventCreationViewController: UIPickerViewDelegate, UIPickerViewDataSou
 }
 
 extension EventCreationViewController: EventCreationViewInput {
+    
+    func showWarningName(){
+        
+        labelTextField.layer.borderWidth = 1.0
+        labelTextField.layer.borderColor = UIColor.red.cgColor
+        
+    }
+    func showWarningLocation(){
+        
+        locationTextField.layer.borderWidth = 1.0
+        locationTextField.layer.borderColor = UIColor.red.cgColor
+        
+    }
+    func showWarningTours(){
+        
+        toursField.layer.borderWidth = 1.0
+        toursField.layer.borderColor = UIColor.red.cgColor
+        
+    }
+    func showWarningRate(){
+        
+        ratingTypeField.layer.borderWidth = 1.0
+        ratingTypeField.layer.borderColor = UIColor.red.cgColor
+        
+    }
+    func showWarningSegment(){
+        
+        modeSegment.layer.borderWidth = 1.0
+        modeSegment.layer.borderColor = UIColor.red.cgColor
+        
+    }
+    
+    @objc func setDefaultName(){
+        labelTextField.layer.borderWidth = 0
+        labelTextField.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    @objc func setDefaultLocation(){
+        locationTextField.layer.borderWidth = 0
+        locationTextField.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    @objc func setDefaultTours(){
+        
+        if toursField.text != ""{
+            toursField.layer.borderWidth = 0
+            toursField.layer.borderColor = UIColor.white.cgColor
+        }
+        
+    }
+    @objc func setDefaultRate(){
+        if ratingTypeField.text != ""{
+            ratingTypeField.layer.borderWidth = 0
+            ratingTypeField.layer.borderColor = UIColor.white.cgColor
+        }
+    }
+    
+    @objc func setDefaultSegment(){
+        if modeSegment.selectedSegmentIndex == 2 {
+            setDefaultRate()
+        }
+        modeSegment.layer.borderWidth = 0
+        modeSegment.layer.borderColor = UIColor.white.cgColor
+    }
+
 }

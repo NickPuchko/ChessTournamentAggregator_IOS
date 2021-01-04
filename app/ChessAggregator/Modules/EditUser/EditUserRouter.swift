@@ -15,5 +15,4 @@ extension EditUserRouter: EditUserRouterInput {
     func close() {
         navigationController?.popToRootViewController(animated: true)
     }
-
 }

@@ -26,21 +26,23 @@ final class PhoneNumberRegistrationViewController: UIViewController {
     }
 
     override func loadView() {
-        self.view = phoneView
+        view = phoneView
     }
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        self.setup()
+        setup()
 	}
 
     private func setup() {
 
-        self.phoneView.numberFPNTextField.delegate = self
-        self.phoneView.verificationCodeTextField.delegate = self
+
+        phoneView.numberFPNTextField.delegate = self
+        phoneView.verificationCodeTextField.delegate = self
        
 
-        self.phoneView.onTapNextButton = { [weak self]
+
+        phoneView.onTapNextButton = { [weak self]
         phoneNumber in
             self?.output.onTapNext(withPhoneNumber: phoneNumber)
         }
@@ -61,7 +63,7 @@ final class PhoneNumberRegistrationViewController: UIViewController {
 extension PhoneNumberRegistrationViewController: PhoneNumberRegistrationViewInput {
     
     func showWarning(isHidden: Bool) {
-        self.phoneView.numberWasRegisteredLabel.animatedAppearance(isHidden: isHidden)
+        phoneView.numberWasRegisteredLabel.animatedAppearance(isHidden: isHidden)
     }
     func showVerificationField(isHidden: Bool) {
         
@@ -121,6 +123,7 @@ extension PhoneNumberRegistrationViewController: FPNTextFieldDelegate {
 
     func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
         if isValid {
+
             self.phoneView.nextButton.isEnabled = true
             self.phoneView.getCodeButton.alpha = 1
             self.phoneView.getCodeButton.isEnabled = true

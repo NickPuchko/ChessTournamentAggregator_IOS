@@ -33,9 +33,14 @@ extension EventCreationPresenter: EventCreationViewOutput {
         router.showRules()
     }
 
-    func createEvent(event: Tournament) {
-        interactor.saveEvent(event: event)
-        router.closeCreation()
+    func createEvent(event: Tournament,index: Int, rateType: String?) {
+        if (ErrorName(string: event.name) || ErrorLocation(string: event.location) || ErrorTours(count: event.tours) || ErrorRatingType(string: event.ratingType.rawValue) || ErrorSegment(index: index)) {
+           showWarnings(tournament: event, segment: index, rateType: rateType)
+        }
+        else{
+            interactor.saveEvent(event: event)
+            router.closeCreation()
+        }
     }
 
     func closeCreation() {
@@ -45,4 +50,66 @@ extension EventCreationPresenter: EventCreationViewOutput {
 }
 
 extension EventCreationPresenter: EventCreationInteractorOutput {
+}
+
+private extension EventCreationPresenter{
+    func ErrorName(string: String)->Bool{
+        if string == "" {
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    func ErrorLocation(string: String)->Bool{
+        if string == "" {
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    func ErrorTours(count: Int)->Bool{
+        if count < 1{
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    func ErrorRatingType(string: String?)->Bool{
+        if string == "" {
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    func ErrorSegment(index: Int)->Bool{
+        if index == -1 {
+            return true
+        }
+        else{
+            return false
+        }
+    }
+}
+private extension EventCreationPresenter{
+    func showWarnings(tournament: Tournament, segment: Int, rateType: String?){
+        if ErrorName(string: tournament.name){
+            view?.showWarningName()
+        }
+        if ErrorLocation(string: tournament.location){
+            view?.showWarningLocation()
+        }
+        if ErrorTours(count: tournament.tours){
+            view?.showWarningTours()
+        }
+        if ErrorRatingType(string: rateType){
+            view?.showWarningRate()
+        }
+        if ErrorSegment(index: segment){
+            view?.showWarningSegment()
+        }
+    }
 }
