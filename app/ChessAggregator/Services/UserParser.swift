@@ -12,6 +12,7 @@ class UserParser {
         var result: [String: Any] = [:]
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.locale = Locale(identifier: "ru_RU")
         let rates = RateParser(frcID: user.player.frcID ?? 0)
         result = [ "lastName": user.player.lastName,

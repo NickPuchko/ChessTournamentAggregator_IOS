@@ -17,14 +17,14 @@ final class AppCoordinator {
     }
 
     func auth() {
-        self.authCoordinator = AuthCoordinator(window: self.window, appCoordinator: self)
-        self.authCoordinator?.auth()
+        authCoordinator = AuthCoordinator(window: window, appCoordinator: self)
+        authCoordinator?.auth()
     }
 
 
     func startApp() {
-        self.chessAppCoordinator = ChessAppCoordinator(window: self.window, phoneNumber: self.phoneNumber, appCoordinator: self)
-        self.chessAppCoordinator?.startApp()
+        chessAppCoordinator = ChessAppCoordinator(window: window, phoneNumber: phoneNumber, appCoordinator: self)
+        chessAppCoordinator?.startApp()
     }
 
 }

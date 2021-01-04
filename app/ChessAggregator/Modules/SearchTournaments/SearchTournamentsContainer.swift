@@ -32,7 +32,7 @@ final class SearchTournamentsContainer {
 	}
 
     private init(view: UIViewController, input: SearchTournamentsModuleInput, router: SearchTournamentsRouterInput) {
-		self.viewController = view
+		viewController = view
         self.input = input
 		self.router = router
 	}

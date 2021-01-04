@@ -70,7 +70,7 @@ extension SearchTournamentsViewController: SearchTournamentsViewInput {
         self.sections = sections
     }
     func updateFeed() {
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 
 }

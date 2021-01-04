@@ -22,16 +22,16 @@ final class ChessAppCoordinator {
     }
 
     func startApp() {
-        self.setupSearch()
-        self.setupProfile()
-        self.setupTournament()
+        setupSearch()
+        setupProfile()
+        setupTournament()
 
         let navigationControllers = NavControllerType.allCases.compactMap {
             self.navigationControllers[$0]
         }
-        self.tabBarController.setViewControllers(navigationControllers, animated: true)
-        self.window.rootViewController = tabBarController
-        self.window.makeKeyAndVisible()
+        tabBarController.setViewControllers(navigationControllers, animated: true)
+        window.rootViewController = tabBarController
+        window.makeKeyAndVisible()
 
         UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromLeft, animations: {})
     }
@@ -39,29 +39,30 @@ final class ChessAppCoordinator {
 
 private extension ChessAppCoordinator {
     func setupTournament() {
-        guard let navController = self.navigationControllers[.currentTournaments] else {
+        guard let navController = navigationControllers[.currentTournaments] else {
             fatalError("wtf no Current")
         }
-        let viewController = UIViewController()
-        navController.setViewControllers([viewController], animated: false)
-        viewController.navigationItem.title = NavControllerType.currentTournaments.title
+        let context = MyEventsContext(moduleOutput: nil)
+        let container = MyEventsContainer.assemble(with: context)
+        navController.setViewControllers([container.viewController], animated: false)
+        container.viewController.navigationItem.title = NavControllerType.currentTournaments.title
     }
 
     func setupSearch() {
-        guard let navController = self.navigationControllers[.search] else {
+        guard let navController = navigationControllers[.search] else {
             fatalError("wtf no Search")
         }
-        let context = SearchTournamentsContext(moduleOutput: nil, phoneNumber: self.phoneNumber)
+        let context = SearchTournamentsContext(moduleOutput: nil, phoneNumber: phoneNumber)
         let container = SearchTournamentsContainer.assemble(with: context)
         navController.setViewControllers([container.viewController], animated: false)
         container.viewController.navigationItem.title = NavControllerType.search.title
     }
 
     func setupProfile() {
-        guard let navController = self.navigationControllers[.profile] else {
+        guard let navController = navigationControllers[.profile] else {
             fatalError("wtf no Profile")
         }
-        let context = UserProfileContext(moduleOutput: nil, phoneNumber: self.phoneNumber)
+        let context = UserProfileContext(moduleOutput: nil, phoneNumber: phoneNumber)
         let container = UserProfileContainer.assemble(with: context)
         navController.setViewControllers([container.viewController], animated: false)
         container.viewController.navigationItem.title = NavControllerType.profile.title

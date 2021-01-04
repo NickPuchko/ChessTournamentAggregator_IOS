@@ -36,7 +36,7 @@ extension SearchTournamentsInteractor: SearchTournamentsInteractorInput {
 
 	func loadSections() -> [EventSectionModel] {
 		var sections: [EventSectionModel] = []
-		for event in self.events {
+		for event in events {
 			sections.append(EventSectionModel(event: event))
 		}
 		return sections

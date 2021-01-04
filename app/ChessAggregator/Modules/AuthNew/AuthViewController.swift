@@ -13,7 +13,7 @@ class AuthViewController: UIViewController {
         view as! AuthNewView
     }
 
-    private lazy var adapter = KeyboardAdapter(window: self.view.window) { [weak self] offset, duration in
+    private lazy var adapter = KeyboardAdapter(window: view.window) { [weak self] offset, duration in
         self?.keyboardOffsetChanged(offset, duration: duration)
     }
 
@@ -27,7 +27,7 @@ class AuthViewController: UIViewController {
     }
 
     override func loadView() {
-        self.view = AuthNewView()
+        view = AuthNewView()
     }
 
     override func viewDidLoad() {
@@ -54,12 +54,12 @@ class AuthViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.adapter.start()
+        adapter.start()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.adapter.stop()
+        adapter.stop()
     }
 }
 
@@ -69,8 +69,8 @@ extension AuthViewController: AuthViewInput {
 
 private extension AuthViewController {
     func keyboardOffsetChanged(_ offset: CGFloat, duration: TimeInterval) {
-        let keyboardFrame = self.view.window!.frame.height - offset
-        let authOffset = self.authView.signupButtonMaxY - keyboardFrame > 0 ? self.authView.signupButtonMaxY - keyboardFrame : 0
+        let keyboardFrame = view.window!.frame.height - offset
+        let authOffset = authView.signupButtonMaxY - keyboardFrame > 0 ? authView.signupButtonMaxY - keyboardFrame : 0
         UIView.animate(withDuration: duration) {
             self.authView.stackViewBottomConstraint?.constant = self.authView.stackViewBottomConstraintConstant - authOffset
             self.view.setNeedsLayout()

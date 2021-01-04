@@ -22,7 +22,7 @@ class PhoneNumberRegistrationView: AutoLayoutView {
 
     init() {
         super.init(frame: .zero)
-        self.setup()
+        setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -31,56 +31,56 @@ class PhoneNumberRegistrationView: AutoLayoutView {
 
     private func setup() {
 
-        self.backgroundColor = .systemGray6
+        backgroundColor = .systemGray6
 
-        self.nextButton.setTitle("Далее", for: .normal)
-        self.nextButton.backgroundColor = .black
-        self.nextButton.setTitleColor(.white, for: .normal)
-        self.nextButton.layer.cornerRadius = 20.0
-        self.nextButton.clipsToBounds = false
+        nextButton.setTitle("Далее", for: .normal)
+        nextButton.backgroundColor = .black
+        nextButton.setTitleColor(.white, for: .normal)
+        nextButton.layer.cornerRadius = 20.0
+        nextButton.clipsToBounds = false
         nextButton.addTarget(self, action: #selector(onTapNext), for: .touchUpInside)
-        self.addSubview(nextButton)
+        addSubview(nextButton)
 
-        self.numberSectionStack.axis = .vertical
-        self.numberSectionStack.alignment = .fill
-        self.numberSectionStack.distribution = .fill
+        numberSectionStack.axis = .vertical
+        numberSectionStack.alignment = .fill
+        numberSectionStack.distribution = .fill
 
-        self.yourNumberLabel.text = "Какой ваш номер телефона?"
-        self.yourNumberLabel.textColor = .black
-        self.yourNumberLabel.font = .boldSystemFont(ofSize: 20)
+        yourNumberLabel.text = "Какой ваш номер телефона?"
+        yourNumberLabel.textColor = .black
+        yourNumberLabel.font = .boldSystemFont(ofSize: 20)
 
-        self.numberFPNTextField.keyboardType = .numberPad
-        self.numberFPNTextField.borderStyle = .roundedRect
-        self.numberFPNTextField.displayMode = .list
-        self.numberFPNTextField.text = defaultNumber
+        numberFPNTextField.keyboardType = .numberPad
+        numberFPNTextField.borderStyle = .roundedRect
+        numberFPNTextField.displayMode = .list
+        numberFPNTextField.text = defaultNumber
 
-        self.listController.setup(repository: numberFPNTextField.countryRepository)
-        self.listController.didSelect = {[weak self] country in
+        listController.setup(repository: numberFPNTextField.countryRepository)
+        listController.didSelect = {[weak self] country in
             self?.numberFPNTextField.setFlag(countryCode: country.code)
         }
 
-        self.numberWasRegisteredLabel.text = "Этот номер уже используется."
+        numberWasRegisteredLabel.text = "Этот номер уже используется."
 
-        self.numberSectionStack.addArrangedSubview(yourNumberLabel)
-        self.numberSectionStack.addArrangedSubview(numberFPNTextField)
-        self.numberSectionStack.addArrangedSubview(numberWasRegisteredLabel)
+        numberSectionStack.addArrangedSubview(yourNumberLabel)
+        numberSectionStack.addArrangedSubview(numberFPNTextField)
+        numberSectionStack.addArrangedSubview(numberWasRegisteredLabel)
 
-        self.addSubview(numberSectionStack)
+        addSubview(numberSectionStack)
 
-        self.nextButton.setTitle("Далее", for: .normal)
-        self.nextButton.backgroundColor = .black
-        self.nextButton.setTitleColor(.white, for: .normal)
-        self.nextButton.layer.cornerRadius = 20.0
-        self.nextButton.clipsToBounds = false
+        nextButton.setTitle("Далее", for: .normal)
+        nextButton.backgroundColor = .black
+        nextButton.setTitleColor(.white, for: .normal)
+        nextButton.layer.cornerRadius = 20.0
+        nextButton.clipsToBounds = false
         nextButton.addTarget(self, action: #selector(onTapNext), for: .touchUpInside)
-        self.addSubview(nextButton)
+        addSubview(nextButton)
 
     }
 
     override func setupConstraints() {
         super.setupConstraints()
 
-        let margins = self.layoutMarginsGuide
+        let margins = layoutMarginsGuide
         NSLayoutConstraint.activate([
             numberFPNTextField.heightAnchor.constraint(equalToConstant: textFieldHeight),
 
@@ -89,18 +89,18 @@ class PhoneNumberRegistrationView: AutoLayoutView {
             numberSectionStack.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 0.0),
 
             nextButton.topAnchor.constraint(
-                    equalTo: self.numberSectionStack.bottomAnchor,
+                    equalTo: numberSectionStack.bottomAnchor,
                     constant: 20.0
             ),
             nextButton.heightAnchor.constraint(equalToConstant: 50),
             nextButton.widthAnchor.constraint(equalToConstant: 150.0),
-            nextButton.centerXAnchor.constraint(equalTo: self.numberSectionStack.centerXAnchor)
+            nextButton.centerXAnchor.constraint(equalTo: numberSectionStack.centerXAnchor)
         ])
     }
 
     @objc private func onTapNext() {
-        let phoneNumber = self.numberFPNTextField.getFormattedPhoneNumber(format: .International)
-        self.onTapNextButton?(phoneNumber)
+        let phoneNumber = numberFPNTextField.getFormattedPhoneNumber(format: .International)
+        onTapNextButton?(phoneNumber)
     }
 }
 
