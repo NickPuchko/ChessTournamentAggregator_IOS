@@ -17,6 +17,7 @@ final class UserProfileViewController: UIViewController {
     let statisticsButton = UIButton(type: .custom)
     let fideButton = UIButton(type: .custom)
     let frcButton = UIButton(type: .custom)
+    let logout = UIButton(type: .custom)
 
     private lazy var profileStack = ScrollableStackView(config: .defaultVertical)
 
@@ -65,12 +66,16 @@ final class UserProfileViewController: UIViewController {
 
         let frcBackground = ProfileRaw(name: "Профиль ФШР")
         frcButton.addSubview(frcBackground)
-
+        
+        let logoutBackground = ProfileRaw(name: "Выйти")
+        logout.addSubview(logoutBackground)
+        
         profileStack.addArrangedSubview(createButton)
         profileStack.addArrangedSubview(myEventsButton)
         profileStack.addArrangedSubview(statisticsButton)
         profileStack.addArrangedSubview(fideButton)
         profileStack.addArrangedSubview(frcButton)
+        profileStack.addArrangedSubview(logout)
         profileStack.backgroundColor = .white
         profileStack.config.stack.distribution = .equalCentering
 
@@ -126,6 +131,8 @@ final class UserProfileViewController: UIViewController {
         fideButton.addTarget(self, action: #selector(tappedFIDE), for: .touchUpInside)
 
         frcButton.addTarget(self, action: #selector(tappedFRC), for: .touchUpInside)
+        
+        logout.addTarget(self, action: #selector(tappedLogout), for: .touchUpInside)
 
         setupConstraints()
 	}
@@ -198,6 +205,10 @@ final class UserProfileViewController: UIViewController {
     @objc
     func tappedFRC() {
         output.showFRC()
+    }
+    @objc
+    func tappedLogout() {
+        output.signOut()
     }
 }
 

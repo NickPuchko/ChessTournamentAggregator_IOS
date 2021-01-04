@@ -33,7 +33,7 @@ extension PhoneNumberRegistrationPresenter: PhoneNumberRegistrationViewOutput {
         if let number = phoneNumber, interactor.isPhoneNumberValid(phoneNumber: number) {
             view?.showWarning(isHidden: true)
 //            router.showSignUp(phoneNumber: number)
-            moduleOutput?.setRegPhoneNumber(phoneNumber: number)
+            //moduleOutput?.setRegPhoneNumber(phoneNumber: number)
             moduleOutput?.showSignUp()
         } else {
             view?.showWarning(isHidden: false)

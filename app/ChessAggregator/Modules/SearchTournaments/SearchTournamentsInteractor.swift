@@ -11,11 +11,11 @@ import Firebase
 
 final class SearchTournamentsInteractor {
 	weak var output: SearchTournamentsInteractorOutput?
-	private let phoneNumber: String
+	 //TODO: номер телефона
 	var events: [Tournament]
 
-	init(phoneNumber: String) {
-		self.phoneNumber = phoneNumber
+	init() {  //TODO: номер телефона
+		
 		events = []
 
 		FirebaseRef.ref.child("Tournaments").observeSingleEvent(of: .value, with: { [weak self] snapshot in

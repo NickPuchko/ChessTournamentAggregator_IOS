@@ -55,22 +55,24 @@ extension AuthCoordinator: AuthModuleOutput {
         appCoordinator?.didLogin()
     }
 
-    func setPhoneNumber(phoneNumber: String) {
-        self.phoneNumber = phoneNumber
-        appCoordinator?.setPhoneNumber(phoneNumber: phoneNumber)
-    }
+//    func setPhoneNumber(phoneNumber: String) {
+//        self.phoneNumber = phoneNumber
+//        //appCoordinator?.setPhoneNumber(phoneNumber: phoneNumber)
+//    }
 
 }
 
 extension AuthCoordinator: PhoneNumberRegistrationModuleOutput {
+
+    
     func showSignUp() {
         userRegistrationSignUp()
     }
 
-    func setRegPhoneNumber(phoneNumber: String) {
-        self.phoneNumber = phoneNumber
-        appCoordinator?.setPhoneNumber(phoneNumber: phoneNumber)
-    }
+//    func setRegPhoneNumber(phoneNumber: String) {
+//        self.phoneNumber = phoneNumber
+//        //appCoordinator?.setPhoneNumber(phoneNumber: phoneNumber)
+//    }
 }
 extension AuthCoordinator: ForgotPasswordModuleOutput {
     func showForgot() {

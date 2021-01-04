@@ -10,11 +10,8 @@ import UIKit
 import SafariServices
 
 final class SearchTournamentsRouter: BaseRouter {
-    private let phoneNumber: String
+     //TODO: номер телефона
 
-    init(phoneNumber: String) {
-        self.phoneNumber = phoneNumber
-    }
 }
 
 extension SearchTournamentsRouter: SearchTournamentsRouterInput {
@@ -42,7 +39,7 @@ extension SearchTournamentsRouter: SearchTournamentsRouterInput {
     }
 
     func showApply() {
-        let applyAlert = UIAlertController(title: "Заявка подана!", message: "Номер телефона: \(phoneNumber)", preferredStyle: .alert)
+        let applyAlert = UIAlertController(title: "Заявка подана!", message: nil, preferredStyle: .alert)
         self.navigationController?.present(applyAlert, animated: true) {
             applyAlert.view.superview?.isUserInteractionEnabled = true
             applyAlert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(

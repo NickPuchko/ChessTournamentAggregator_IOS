@@ -3,14 +3,14 @@ import UIKit
 import SafariServices
 
 final class UserProfileRouter: BaseRouter {
-    private var phoneNumber: String
+     //TODO: номер телефона
 
-    init(phoneNumber: String) {
-        self.phoneNumber = phoneNumber
-    }
+     //TODO: номер телефона
+    
 }
 
 extension UserProfileRouter: UserProfileRouterInput {
+    
     func showEditor(with user: User) {
         let context = EditUserContext(moduleOutput: nil, user: user) // TODO: output
         let container = EditUserContainer.assemble(with: context)

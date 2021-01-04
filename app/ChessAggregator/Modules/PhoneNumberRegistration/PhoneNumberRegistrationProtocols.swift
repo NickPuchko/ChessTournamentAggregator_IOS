@@ -14,7 +14,7 @@ protocol PhoneNumberRegistrationModuleInput {
 
 protocol PhoneNumberRegistrationModuleOutput: class {
 	func showSignUp()
-	func setRegPhoneNumber(phoneNumber: String)
+	//func setRegPhoneNumber(phoneNumber: String)
 }
 
 protocol PhoneNumberRegistrationViewInput: class {

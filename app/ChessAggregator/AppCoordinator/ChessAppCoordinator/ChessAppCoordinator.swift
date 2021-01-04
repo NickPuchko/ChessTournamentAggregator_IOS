@@ -9,15 +9,15 @@ final class ChessAppCoordinator {
     weak var appCoordinator: ChessAppCoordinatorModuleOutput?
     private lazy var tabBarController = UITabBarController()
     private lazy var navigationControllers = ChessAppCoordinator.makeNavigationControllers()
-    private var phoneNumber: String
+     //TODO: номер телефона
 
-    init(window: UIWindow, phoneNumber: String?, appCoordinator: ChessAppCoordinatorModuleOutput) {
+    init(window: UIWindow,  appCoordinator: ChessAppCoordinatorModuleOutput) {  //TODO: номер телефона
         self.appCoordinator = appCoordinator
         self.window = window
-        guard let number = phoneNumber else {
-            fatalError("PhoneNumber is nil in ChessAppCoordinator init") //that maybe changed
-        }
-        self.phoneNumber = number
+         //TODO: номер телефона
+            //that maybe changed
+        
+        //TODO: номер телефона
         setupAppearance()
     }
 
@@ -51,7 +51,7 @@ private extension ChessAppCoordinator {
         guard let navController = self.navigationControllers[.search] else {
             fatalError("wtf no Search")
         }
-        let context = SearchTournamentsContext(moduleOutput: nil, phoneNumber: self.phoneNumber)
+        let context = SearchTournamentsContext(moduleOutput: nil) //TODO: номер телефона
         let container = SearchTournamentsContainer.assemble(with: context)
         navController.setViewControllers([container.viewController], animated: false)
         container.viewController.navigationItem.title = NavControllerType.search.title
@@ -61,7 +61,7 @@ private extension ChessAppCoordinator {
         guard let navController = self.navigationControllers[.profile] else {
             fatalError("wtf no Profile")
         }
-        let context = UserProfileContext(moduleOutput: nil, phoneNumber: self.phoneNumber)
+        let context = UserProfileContext(moduleOutput: nil)  //TODO: номер телефона
         let container = UserProfileContainer.assemble(with: context)
         navController.setViewControllers([container.viewController], animated: false)
         container.viewController.navigationItem.title = NavControllerType.profile.title

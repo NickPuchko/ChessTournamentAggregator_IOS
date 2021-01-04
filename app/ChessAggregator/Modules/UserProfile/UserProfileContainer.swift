@@ -8,7 +8,7 @@ final class UserProfileContainer {
 	private(set) weak var router: UserProfileRouterInput!
 
 	static func assemble(with context: UserProfileContext) -> UserProfileContainer {
-        let router = UserProfileRouter(phoneNumber: context.phoneNumber)
+        let router = UserProfileRouter()  //TODO: номер телефона
         let interactor = UserProfileInteractor()
         let presenter = UserProfilePresenter(router: router, interactor: interactor)
 		let viewController = UserProfileViewController(output: presenter)
@@ -34,5 +34,5 @@ final class UserProfileContainer {
 
 struct UserProfileContext {
 	weak var moduleOutput: UserProfileModuleOutput?
-	var phoneNumber: String
+	  //TODO: номер телефона
 }
