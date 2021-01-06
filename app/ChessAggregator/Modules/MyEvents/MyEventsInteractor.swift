@@ -15,7 +15,7 @@ final class MyEventsInteractor {
 
 	private var page = Constants.initialPage
 	private var eventCount: Int  {
-		get { page * 15 }
+		get { page * 10 }
 	}
 	private var completedEventsCount = 0
 
@@ -53,7 +53,6 @@ extension MyEventsInteractor: MyEventsInteractorInput {
 				.observeSingleEvent(of: .value) { [weak self] (snapshot) in
 					if let events = EventParser.eventsFromSnapshot(snapshot: snapshot) {
 						let completedEvents = self?.makeCompleted(events: events) ?? []
-						print(completedEvents)
 						self?.output?.didLoadCompleted(
 								with: completedEvents,
 								eventsCountInDB: self?.completedEventsCount ?? 0,

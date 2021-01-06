@@ -48,30 +48,32 @@ final class MyEventsViewController: UIViewController {
         output.viewDidLoad()
 	}
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        output.viewDidAppear()
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-//        output.viewDidDisappear()
-    }
 }
 
 extension MyEventsViewController: MyEventsViewInput {
 
     func updateCurrentView(with viewModels: [MyEventViewModel]) {
         currentViewModels = viewModels
+        if segmentedControl.selectedSegmentIndex == 0 {
+            self.viewModels = currentViewModels
+        }
         collectionView.reloadData()
     }
 
     func updateForthcomingView(with viewModels: [MyEventViewModel]) {
         forthcomingViewModels = viewModels
+        if segmentedControl.selectedSegmentIndex == 1 {
+            self.viewModels = forthcomingViewModels
+        }
+        collectionView.reloadData()
     }
 
     func updateCompletedView(with viewModels: [MyEventViewModel]) {
         completedViewModels = viewModels
+        if segmentedControl.selectedSegmentIndex == 2 {
+            self.viewModels = completedViewModels
+        }
+        collectionView.reloadData()
     }
 
 }

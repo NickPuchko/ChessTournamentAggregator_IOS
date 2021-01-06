@@ -31,11 +31,12 @@ extension MyEventsPresenter: MyEventsModuleInput {
 
 extension MyEventsPresenter: MyEventsViewOutput {
     func willDisplay(at index: Int, segmentIndex: Int) {
-        guard segmentIndex != 2,
+        guard segmentIndex == 2,
               !isReloading,
               !isNextPageLoading,
               (completedEvents.count - index) < 5,
-              completedEvents.count < completedEventsInDatabaseCount else { return }
+              completedEvents.count < completedEventsInDatabaseCount else {
+            return }
         isNextPageLoading = true
         interactor.loadCompleted()
     }
@@ -80,7 +81,8 @@ private extension MyEventsPresenter {
             let openDate = dateFormatter.date(from: event.openDate)
             let closeDate = dateFormatter.date(from: event.closeDate)
             dateFormatter.dateFormat = "dd.MM.yyyy"
-            return MyEventViewModel(name: event.name,
+            return MyEventViewModel(
+                    name: event.name,
                     image: "image",
                     tourType: event.mode.rawValue,
                     prize: String(event.prizeFund),
@@ -88,7 +90,8 @@ private extension MyEventsPresenter {
                     endDate: dateFormatter.string(from: closeDate ?? Date()),
                     location: event.location,
                     averageRating: "200",
-                    participantsCount: "300")
+                    participantsCount: String(event.participantsCount)
+            )
         }
     }
 }
