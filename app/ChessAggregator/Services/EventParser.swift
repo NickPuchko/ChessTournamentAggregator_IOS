@@ -3,12 +3,12 @@ import Firebase
 import Foundation
 
 class EventParser {
-    static func eventsFromSnapshot(snapshot: DataSnapshot) -> [Tournament] {
-        let eventDict = snapshot.valueInExportFormat() as! NSDictionary
+    static func eventsFromSnapshot(snapshot: DataSnapshot) -> [Tournament]? {
+        guard let eventDict = snapshot.valueInExportFormat() as? [String: Any] else { return nil }
         var events: [Tournament] = []
         for (key, value) in eventDict {
             var event = Tournament(id: key as! String)
-            let thisEvent = value as! NSDictionary
+            let thisEvent = value as! [String: Any]
 
             event.openDate = thisEvent["openDate"] as? String ?? "01.01.1970"
             event.closeDate = thisEvent["closeDate"] as? String ?? "01.01.1970"
@@ -22,12 +22,16 @@ class EventParser {
             event.location = thisEvent["location"] as? String ?? "Moscow"
             event.mode = Mode.init(rawValue: (thisEvent["mode"] as? String ?? "classic")) ?? .classic
             event.name = thisEvent["name"] as? String ?? "Some event"
+            event.participantsCount = (thisEvent["participants"] as? [String: Any] ?? [:]).count
             event.prizeFund = thisEvent["prizeFund"] as? Int ?? 0
             event.ratingType = RatingType.init(rawValue: (thisEvent["ratingType"] as? String ?? "Без обсчёта")) ?? .without
             event.url = URL(string: thisEvent["url"] as? String ?? "https://vk.com/oobermensch")!
 
             events.append(event)
+
         }
+
         return events
     }
+
 }

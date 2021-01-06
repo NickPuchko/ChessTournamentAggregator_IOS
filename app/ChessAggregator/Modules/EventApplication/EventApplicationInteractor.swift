@@ -21,7 +21,11 @@ extension EventApplicationInteractor: EventApplicationInteractorInput {
 	func saveTourToDatabase() {
 		//TODO: еще добавить запись в ветку TournamentParticipants
 		let userID = Auth.auth().currentUser!.uid
-		FirebaseRef.ref.child("UserTournaments/\(userID)/\(tournament.id)").setValue(["closeDate": tournament.closeDate])
+//		FirebaseRef.ref.child("UserTournaments/\(userID)/\(tournament.id)").setValue(["closeDate": tournament.closeDate])
+		let childUpdates = ["Users/\(userID)/tournaments/\(tournament.id)": true,
+							"Tournaments/\(tournament.id)/participants/\(userID)": true
+		]
+		FirebaseRef.ref.updateChildValues(childUpdates)
 	}
 
 }
