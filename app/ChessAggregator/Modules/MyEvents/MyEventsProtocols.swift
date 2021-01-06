@@ -21,20 +21,25 @@ protocol MyEventsModuleOutput: class {
 }
 
 protocol MyEventsViewInput: class {
-	func updateView(with viewModels: [MyEventViewModel])
+	func updateCurrentView(with viewModels: [MyEventViewModel])
+	func updateForthcomingView(with viewModels: [MyEventViewModel])
+	func updateCompletedView(with viewModels: [MyEventViewModel])
 }
 
 protocol MyEventsViewOutput: class {
 	func viewDidLoad()
-	func willDisplay()
+	func willDisplay(at index: Int, segmentIndex: Int)
 }
 
 protocol MyEventsInteractorInput: class {
 	func reload()
+	func loadCompleted()
 }
 
 protocol MyEventsInteractorOutput: class {
-	func didLoad(with event: Tournament, loadType: LoadingDataType)
+	func didLoadCurrent(with events: [Tournament], loadType: LoadingDataType)
+	func didLoadForthcoming(with events: [Tournament], loadType: LoadingDataType)
+	func didLoadCompleted(with events: [Tournament], eventsCountInDB: Int, loadType: LoadingDataType)
 }
 
 protocol MyEventsRouterInput: class {

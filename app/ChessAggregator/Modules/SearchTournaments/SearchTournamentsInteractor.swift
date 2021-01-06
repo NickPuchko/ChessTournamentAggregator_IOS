@@ -19,7 +19,7 @@ final class SearchTournamentsInteractor {
 		events = []
 
 		FirebaseRef.ref.child("Tournaments").observeSingleEvent(of: .value, with: { [weak self] snapshot in
-			self?.events = EventParser.eventsFromSnapshot(snapshot: snapshot)
+			self?.events = EventParser.eventsFromSnapshot(snapshot: snapshot) ?? []
 			self?.output?.updateView()
 		})
 	}
@@ -29,7 +29,7 @@ extension SearchTournamentsInteractor: SearchTournamentsInteractorInput {
 
 	func refreshEvents() {
 		FirebaseRef.ref.child("Tournaments").observeSingleEvent(of: .value, with: { [weak self] snapshot in
-			self?.events = EventParser.eventsFromSnapshot(snapshot: snapshot)
+			self?.events = EventParser.eventsFromSnapshot(snapshot: snapshot) ?? []
 			self?.output?.updateView()
 		})
 	}

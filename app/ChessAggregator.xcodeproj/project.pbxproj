@@ -10,7 +10,6 @@
 		014BEFC625A11D020000DFAD /* PickableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014BEFC525A11D020000DFAD /* PickableTextField.swift */; };
 		014BEFCD25A127480000DFAD /* MaterialStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014BEFCC25A127480000DFAD /* MaterialStack.swift */; };
 		014BEFD025A12C930000DFAD /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014BEFCF25A12C930000DFAD /* InsetLabel.swift */; };
-		01EC6BB9259D27200030A277 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 730407F82550617C0036E7A6 /* SwiftKeychainWrapper */; };
 		01FFDCA6253FA08B001244D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FFDCA5253FA08B001244D1 /* AppDelegate.swift */; };
 		01FFDCAF253FA091001244D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCAE253FA091001244D1 /* Assets.xcassets */; };
 		01FFDCB2253FA091001244D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FFDCB0253FA091001244D1 /* LaunchScreen.storyboard */; };
@@ -105,8 +104,7 @@
 		D91FC47714C0F5D3D1EB754F /* DoubleDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC921E2F812AAEAE200DE /* DoubleDate.swift */; };
 		D91FC496AB7E32CBBA945085 /* EventCreationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCBBA95F64B501F0D2AD1 /* EventCreationContainer.swift */; };
 		D91FC4EDA16B110EE195822E /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC170925E147D564D330E /* EditUserViewController.swift */; };
-		D91FC5042F3E661C9F697241 /* CurrentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCB07D9849A89A3645C7B /* CurrentPresenter.swift */; };
-		D91FC580842490D71D586098 /* CurrentConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCD8A8494D611926CCE6F /* CurrentConfigurator.swift */; };
+		D91FC5042F3E661C9F697241 /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = D91FCB07D9849A89A3645C7B /* CurrentPresenter.swift */; };
 		D91FC5E44C4CEC650B839D0D /* EventCreationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC8622E77861924B3ABEC /* EventCreationRouter.swift */; };
 		D91FC76493A71AA245E6D64C /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC5DE303A4B78E2E40946 /* Tournament.swift */; };
 		D91FC804D6A7A4C2DA922FF2 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC01896C1F619D9D5B569 /* BaseRouter.swift */; };
@@ -119,11 +117,9 @@
 		D91FCBEBAF1FE1D414B5D835 /* EventParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC559D928F99290FB9443 /* EventParser.swift */; };
 		D91FCCCB3DE4DB1A0C47A174 /* AutoLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC1CB6EBFFFC7483EAC76 /* AutoLayoutView.swift */; };
 		D91FCE23E7476826F9D3434E /* EditUserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC1BFDE42B2F235FEA716 /* EditUserPresenter.swift */; };
-		D91FCEA20B3CA99049C8CC95 /* CurrentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC4451866279170AE3D36 /* CurrentRouter.swift */; };
 		D91FCEBAD4DB42301C940A85 /* EventCreationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC3ED30E5C5AC06F6E3A8 /* EventCreationPresenter.swift */; };
 		D91FCF2D156E403FBB4D78C1 /* EditUserProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC26C81D298EDEED02F25 /* EditUserProtocols.swift */; };
 		D91FCF990B45466BC3A78618 /* EditUserContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCA47971CDA900BDF6C53 /* EditUserContainer.swift */; };
-		E66B182D258756DF0098411A /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 730407F82550617C0036E7A6 /* SwiftKeychainWrapper */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -253,7 +249,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E66B182D258756DF0098411A /* SwiftKeychainWrapper in Frameworks */,
 				C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -675,7 +670,7 @@
 			);
 			name = ChessAggregator;
 			packageProductDependencies = (
-				730407F82550617C0036E7A6 /* SwiftKeychainWrapper */,
+				730407F82550617C0036E7A6,
 			);
 			productName = ChessAggregator;
 			productReference = 01FFDCA2253FA08B001244D1 /* ChessAggregator.app */;
@@ -705,7 +700,7 @@
 			);
 			mainGroup = 01FFDC99253FA08B001244D1;
 			packageReferences = (
-				730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				730407F72550617C0036E7A6,
 			);
 			productRefGroup = 01FFDCA3253FA08B001244D1 /* Products */;
 			projectDirPath = "";
@@ -1081,7 +1076,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+		730407F72550617C0036E7A6 = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
 			requirement = {
@@ -1092,9 +1087,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		730407F82550617C0036E7A6 /* SwiftKeychainWrapper */ = {
+		730407F82550617C0036E7A6 = {
 			isa = XCSwiftPackageProductDependency;
-			package = 730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			package = 730407F72550617C0036E7A6;
 			productName = SwiftKeychainWrapper;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -11,6 +11,7 @@ struct Tournament: Identifiable{
     var location: String
     var ratingType: RatingType
     var tours: Int
+    var participantsCount: Int = 0
 
     //var timeControl: String
     var minutes: Int

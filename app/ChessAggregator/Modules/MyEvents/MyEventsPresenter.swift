@@ -17,7 +17,8 @@ final class MyEventsPresenter {
 
     private var isReloading = false
     private var isNextPageLoading = false
-    private var tournaments: [Tournament] = []
+    private var completedEvents: [Tournament] = []
+    private var completedEventsInDatabaseCount: Int = 0
     
     init(router: MyEventsRouterInput, interactor: MyEventsInteractorInput) {
         self.router = router
@@ -29,39 +30,65 @@ extension MyEventsPresenter: MyEventsModuleInput {
 }
 
 extension MyEventsPresenter: MyEventsViewOutput {
-    func willDisplay() {
-        //
+    func willDisplay(at index: Int, segmentIndex: Int) {
+        guard segmentIndex != 2,
+              !isReloading,
+              !isNextPageLoading,
+              (completedEvents.count - index) < 5,
+              completedEvents.count < completedEventsInDatabaseCount else { return }
+        isNextPageLoading = true
+        interactor.loadCompleted()
     }
 
     func viewDidLoad() {
         isReloading = true
         interactor.reload()
+        interactor.loadCompleted()
     }
 
 }
 
 extension MyEventsPresenter: MyEventsInteractorOutput {
-    func didLoad(with event: Tournament, loadType: LoadingDataType) {
-        tournaments.append(event)
-        let viewModels = makeViewModels(tournaments)
+
+    func didLoadCurrent(with events: [Tournament], loadType: LoadingDataType) {
+        isReloading = false
+        let viewModels = makeViewModels(events)
+        view?.updateCurrentView(with: viewModels)
+    }
+
+    func didLoadForthcoming(with events: [Tournament], loadType: LoadingDataType) {
+        isReloading = false
+        let viewModels = makeViewModels(events)
+        view?.updateForthcomingView(with: viewModels)
+    }
+
+    func didLoadCompleted(with events: [Tournament], eventsCountInDB: Int, loadType: LoadingDataType) {
+        isNextPageLoading = false
+        completedEventsInDatabaseCount = eventsCountInDB
+        completedEvents = events
+        let viewModels = makeViewModels(events)
+        view?.updateCompletedView(with: viewModels)
     }
 
 }
 
 private extension MyEventsPresenter {
     func makeViewModels(_ events: [Tournament]) -> [MyEventViewModel] {
-        let viewModels: [MyEventViewModel] = []
-        events.map { event in
-            MyEventViewModel(name: event.name,
+        let dateFormatter = DateFormatter()
+        return events.map { event in
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let openDate = dateFormatter.date(from: event.openDate)
+            let closeDate = dateFormatter.date(from: event.closeDate)
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            return MyEventViewModel(name: event.name,
                     image: "image",
                     tourType: event.mode.rawValue,
                     prize: String(event.prizeFund),
-                    startDate: event.openDate,
-                    endDate: event.closeDate,
+                    startDate: dateFormatter.string(from: openDate ?? Date()) + "-",
+                    endDate: dateFormatter.string(from: closeDate ?? Date()),
                     location: event.location,
                     averageRating: "200",
                     participantsCount: "300")
         }
-        return []
     }
 }

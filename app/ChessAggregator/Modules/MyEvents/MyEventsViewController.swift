@@ -18,6 +18,9 @@ final class MyEventsViewController: UIViewController {
     private let collectionView: UICollectionView
 
     private var viewModels = [MyEventViewModel]()
+    private var currentViewModels: [MyEventViewModel] = []
+    private var forthcomingViewModels: [MyEventViewModel] = []
+    private var completedViewModels: [MyEventViewModel] = []
 
     init(output: MyEventsViewOutput) {
         self.output = output
@@ -44,13 +47,33 @@ final class MyEventsViewController: UIViewController {
 		super.viewDidLoad()
         output.viewDidLoad()
 	}
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        output.viewDidAppear()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+//        output.viewDidDisappear()
+    }
 }
 
 extension MyEventsViewController: MyEventsViewInput {
-    func updateView(with viewModels: [MyEventViewModel]) {
-        self.viewModels = viewModels
+
+    func updateCurrentView(with viewModels: [MyEventViewModel]) {
+        currentViewModels = viewModels
         collectionView.reloadData()
     }
+
+    func updateForthcomingView(with viewModels: [MyEventViewModel]) {
+        forthcomingViewModels = viewModels
+    }
+
+    func updateCompletedView(with viewModels: [MyEventViewModel]) {
+        completedViewModels = viewModels
+    }
+
 }
 
 extension MyEventsViewController: UICollectionViewDataSource {
@@ -79,8 +102,14 @@ extension MyEventsViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: height)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         20.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        output.willDisplay(at: indexPath.item, segmentIndex: segmentedControl.selectedSegmentIndex)
     }
 }
 
@@ -89,7 +118,7 @@ private extension MyEventsViewController {
         navigationController?.isNavigationBarHidden = false
         navigationItem.titleView = segmentedControl
         segmentedControl.selectedSegmentIndex = 0
-
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
     }
 
     func setupCollectionView() {
@@ -108,12 +137,21 @@ private extension MyEventsViewController {
 
     }
 
+    @objc func segmentedControlValueChanged() {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            viewModels = currentViewModels
+        case 1:
+            viewModels = forthcomingViewModels
+        case 2:
+            viewModels = completedViewModels
+        default:
+            print("WTF segmented control should have only 3 values MyEventsVC")
+        }
+        collectionView.reloadData()
+    }
 }
 
 enum UserSegments: String, CaseIterable {
     case current = "Текущие", forthcoming = "Предстоящие", completed = "Завершенные"
-}
-
-enum OrganizerSegments: String, CaseIterable {
-    case created = "Созданные", current = "Текущие", forthcoming = "Предстоящие", completed = "Завершенные"
 }
