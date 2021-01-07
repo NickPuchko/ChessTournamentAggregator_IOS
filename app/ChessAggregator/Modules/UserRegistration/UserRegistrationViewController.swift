@@ -24,9 +24,10 @@ class UserRegistrationViewController: UIViewController {
     }
 
     override func loadView() {
-        view = registrationView
-        view.backgroundColor = .systemGray6
-        setup()
+
+        self.view = registrationView
+        self.view.backgroundColor = .white
+        self.setup()
     }
 
     private func setup() {
@@ -57,10 +58,9 @@ class UserRegistrationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Регистрация"
         initializeHideKeyboard()
         initializeTextFieldDelegates()
-        registrationView.sexPicker.delegate = self
-        registrationView.sexPicker.dataSource = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -163,38 +163,18 @@ private extension UserRegistrationViewController {
     }
 
     func initializeTextFieldDelegates() {
-        registrationView.lastName.delegate = self
-        registrationView.firstName.delegate = self
-        registrationView.patronymicName.delegate = self
-        registrationView.fideID.delegate = self
-        registrationView.frcID.delegate = self
-        registrationView.emailAddress.delegate = self
-        registrationView.password.delegate = self
-        registrationView.validatePassword.delegate = self
-        registrationView.organizationCity.delegate = self
-        registrationView.organizationName.delegate = self
-        registrationView.sex.delegate = self
-    }
 
-}
+        self.registrationView.lastName.delegate = self
+        self.registrationView.firstName.delegate = self
+        self.registrationView.patronymicName.delegate = self
+        self.registrationView.fideID.delegate = self
+        self.registrationView.frcID.delegate = self
+        self.registrationView.emailAddress.delegate = self
+        self.registrationView.password.delegate = self
+        self.registrationView.validatePassword.delegate = self
+        self.registrationView.organizationCity.delegate = self
+        self.registrationView.organizationName.delegate = self
 
-extension UserRegistrationViewController: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        registrationView.sexList.count
     }
 }
 
-extension UserRegistrationViewController: UIPickerViewDelegate {
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        registrationView.sexList[row]
-    }
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        registrationView.sex.text = registrationView.sexList[row]
-    }
-}

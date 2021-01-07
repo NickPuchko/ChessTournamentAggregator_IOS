@@ -7,5 +7,5 @@ import Foundation
 
 protocol AuthCoordinatorModuleOutput: class {
     func didLogin()
-    func setPhoneNumber(phoneNumber: String)
+   // func setPhoneNumber(phoneNumber: String)
 }

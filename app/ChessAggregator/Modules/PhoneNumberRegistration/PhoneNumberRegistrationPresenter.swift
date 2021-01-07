@@ -65,7 +65,7 @@ extension PhoneNumberRegistrationPresenter: PhoneNumberRegistrationViewOutput {
             
             view?.checkCode()
             if view?.getCodeStatus() == true {
-                moduleOutput?.setRegPhoneNumber(phoneNumber: number)
+                //moduleOutput?.setRegPhoneNumber(phoneNumber: number)
                 moduleOutput?.showSignUp()
 
             } else {

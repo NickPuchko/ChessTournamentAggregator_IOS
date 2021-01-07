@@ -34,6 +34,7 @@ class PhoneNumberRegistrationView: AutoLayoutView {
     let nextButton = UIButton()
     let getCodeButton = UIButton()
     var onTapNextButton: ((String?) -> Void)?
+
     var onTapGetButton: ((String?) -> Void)?
 
     init() {

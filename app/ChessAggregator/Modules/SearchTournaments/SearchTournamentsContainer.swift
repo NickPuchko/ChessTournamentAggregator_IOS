@@ -14,8 +14,8 @@ final class SearchTournamentsContainer {
 	private(set) weak var router: SearchTournamentsRouterInput!
 
 	static func assemble(with context: SearchTournamentsContext) -> SearchTournamentsContainer {
-        let router = SearchTournamentsRouter(phoneNumber: context.phoneNumber)
-        let interactor = SearchTournamentsInteractor(phoneNumber: context.phoneNumber)
+        let router = SearchTournamentsRouter()  //TODO: номер телефона
+        let interactor = SearchTournamentsInteractor()  //TODO: номер телефона
         let presenter = SearchTournamentsPresenter(router: router, interactor: interactor)
 		let viewController = SearchTournamentsViewController(output: presenter)
 
@@ -40,5 +40,5 @@ final class SearchTournamentsContainer {
 
 struct SearchTournamentsContext {
 	weak var moduleOutput: SearchTournamentsModuleOutput?
-	var phoneNumber: String
+	  //TODO: номер телефона
 }

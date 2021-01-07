@@ -1,7 +1,7 @@
 
 
 import Foundation
-
+import Firebase
 final class UserProfilePresenter {
 	weak var view: UserProfileViewInput?
     weak var moduleOutput: UserProfileModuleOutput?
@@ -20,6 +20,7 @@ extension UserProfilePresenter: UserProfileModuleInput {
 }
 
 extension UserProfilePresenter: UserProfileViewOutput {
+    
 
     func editProfile() {
         if let userInfo = user {
@@ -52,6 +53,14 @@ extension UserProfilePresenter: UserProfileViewOutput {
             router.showFRC(user: userInfo)
         } else {
 
+        }
+    }
+    func signOut() {
+        let auth = Auth.auth()
+        do{
+            try auth.signOut()
+        }catch let signOutError{
+            print("Error: \(signOutError)")
         }
     }
 }

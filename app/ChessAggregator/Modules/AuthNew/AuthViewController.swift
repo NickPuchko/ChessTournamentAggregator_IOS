@@ -33,9 +33,9 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Вход"
-
-
+        //title = "Вход"
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.isNavigationBarHidden = true
         authView.onTapLoginButton = { [weak self] in
             self?.output?.onTapLogin(
                     email: self?.authView.emailTextField.text ?? "",

@@ -26,6 +26,7 @@ protocol UserProfileViewOutput: class {
 	func showStatistics()
 	func showFIDE()
 	func showFRC()
+    func signOut()
 }
 
 protocol UserProfileInteractorInput: class {

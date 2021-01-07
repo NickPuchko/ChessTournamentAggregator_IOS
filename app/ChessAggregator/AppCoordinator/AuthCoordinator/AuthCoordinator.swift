@@ -37,7 +37,7 @@ final class AuthCoordinator {
     }
 
     func userRegistrationSignUp() {
-        let context = UserRegistrationContext(moduleOutput: self, phoneNumber: phoneNumber!)
+        let context = UserRegistrationContext(moduleOutput: self)
         let container = UserRegistrationContainer.assemble(with: context)
         navigationController.pushViewController(container.viewController, animated: true)
     }
@@ -57,22 +57,24 @@ extension AuthCoordinator: AuthModuleOutput {
         appCoordinator?.didLogin()
     }
 
-    func setPhoneNumber(phoneNumber: String) {
-        self.phoneNumber = phoneNumber
-        appCoordinator?.setPhoneNumber(phoneNumber: phoneNumber)
-    }
+//    func setPhoneNumber(phoneNumber: String) {
+//        self.phoneNumber = phoneNumber
+//        //appCoordinator?.setPhoneNumber(phoneNumber: phoneNumber)
+//    }
 
 }
 
 extension AuthCoordinator: PhoneNumberRegistrationModuleOutput {
+
+    
     func showSignUp() {
         userRegistrationSignUp()
     }
 
-    func setRegPhoneNumber(phoneNumber: String) {
-        self.phoneNumber = phoneNumber
-        appCoordinator?.setPhoneNumber(phoneNumber: phoneNumber)
-    }
+//    func setRegPhoneNumber(phoneNumber: String) {
+//        self.phoneNumber = phoneNumber
+//        //appCoordinator?.setPhoneNumber(phoneNumber: phoneNumber)
+//    }
 }
 extension AuthCoordinator: ForgotPasswordModuleOutput {
     func showForgot() {

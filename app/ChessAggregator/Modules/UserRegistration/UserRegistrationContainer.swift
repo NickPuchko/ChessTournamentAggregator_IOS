@@ -11,7 +11,7 @@ class UserRegistrationContainer {
 
     class func assemble(with context: UserRegistrationContext) -> UserRegistrationContainer {
         let router = UserRegistrationRouter()
-        let interactor = UserRegistrationInteractor(phoneNumber: context.phoneNumber)
+        let interactor = UserRegistrationInteractor()
         let presenter = UserRegistrationPresenter(router: router, interactor: interactor)
         let viewController = UserRegistrationViewController(output: presenter)
 
@@ -39,5 +39,5 @@ class UserRegistrationContainer {
 
 struct UserRegistrationContext {
     weak var moduleOutput: UserRegistrationModuleOutput?
-    var phoneNumber: String
+    //var phoneNumber: String
 }

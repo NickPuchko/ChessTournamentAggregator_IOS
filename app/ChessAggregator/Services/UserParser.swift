@@ -123,7 +123,8 @@ class UserParser {
     }
     
     static func userFromSnapshot(snapshot: DataSnapshot) -> User {
-        let userDict = snapshot.valueInExportFormat() as! NSDictionary
+        
+        guard let userDict = snapshot.valueInExportFormat() as? NSDictionary else {return User()}
         var user = User()
         user.phone = userDict["phone"] as? String ?? "88005553535"
         user.email = userDict["email"] as? String ?? "test@gmail.com"
