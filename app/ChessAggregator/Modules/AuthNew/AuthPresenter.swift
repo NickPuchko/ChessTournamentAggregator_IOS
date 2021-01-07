@@ -33,6 +33,7 @@ extension AuthPresenter: AuthViewOutput {
     }
     func onTapSignUp() {
 //        router.showPhoneSignUp()
+        
         moduleOutput?.showPhoneSignUp()
     }
 }

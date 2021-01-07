@@ -25,7 +25,7 @@ class UserRegistrationViewController: UIViewController {
 
     override func loadView() {
         self.view = registrationView
-        self.view.backgroundColor = .systemGray6
+        self.view.backgroundColor = .white
         self.setup()
     }
 
@@ -57,10 +57,11 @@ class UserRegistrationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Регистрация"
         initializeHideKeyboard()
         initializeTextFieldDelegates()
-        self.registrationView.sexPicker.delegate = self
-        self.registrationView.sexPicker.dataSource = self
+//        self.registrationView.sexPicker.delegate = self
+//        self.registrationView.sexPicker.dataSource = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -173,7 +174,7 @@ private extension UserRegistrationViewController {
         self.registrationView.validatePassword.delegate = self
         self.registrationView.organizationCity.delegate = self
         self.registrationView.organizationName.delegate = self
-        self.registrationView.sex.delegate = self
+       // self.registrationView.sex.delegate = self
     }
 
 }
@@ -190,12 +191,12 @@ extension UserRegistrationViewController: UIPickerViewDataSource {
 
 extension UserRegistrationViewController: UIPickerViewDelegate {
 
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        registrationView.sexList[row]
-    }
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        registrationView.selectedSex = registrationView.sexList[row]
-        registrationView.sex.text = registrationView.selectedSex
-    }
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        registrationView.sexList[row]
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        registrationView.selectedSex = registrationView.sexList[row]
+//        registrationView.sex.text = registrationView.selectedSex
+//    }
 }

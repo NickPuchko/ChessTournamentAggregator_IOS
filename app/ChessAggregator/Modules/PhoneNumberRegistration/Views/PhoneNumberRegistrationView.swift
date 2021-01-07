@@ -19,7 +19,7 @@ class PhoneNumberRegistrationView: AutoLayoutView {
 
     let nextButton = UIButton()
     var onTapNextButton: ((String?) -> Void)?
-
+    
     init() {
         super.init(frame: .zero)
         self.setup()

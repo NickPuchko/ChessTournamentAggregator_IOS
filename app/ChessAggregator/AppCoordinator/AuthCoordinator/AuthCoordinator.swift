@@ -35,7 +35,7 @@ final class AuthCoordinator {
     }
 
     func userRegistrationSignUp() {
-        let context = UserRegistrationContext(moduleOutput: self, phoneNumber: phoneNumber!)
+        let context = UserRegistrationContext(moduleOutput: self)
         let container = UserRegistrationContainer.assemble(with: context)
         self.navigationController.pushViewController(container.viewController, animated: true)
     }

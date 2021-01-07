@@ -7,10 +7,10 @@ import Firebase
 
 class UserRegistrationInteractor {
     weak var output: UserRegistrationInteractorOutput?
-    private let phoneNumber: String
+   // private let phoneNumber: String
 
-    init(phoneNumber: String) {
-        self.phoneNumber = phoneNumber
+    init() {
+//        self.phoneNumber = phoneNumber
     }
 
 }
@@ -52,7 +52,7 @@ private extension UserRegistrationInteractor {
                             userReg.patronymicName, birthdate: userReg.birthdate, sex: userReg.sex,
                         fideID: Int(userReg.fideID), frcID: Int(userReg.frcID)
                 ),
-                phone: phoneNumber, email: userReg.email, password: userReg.password, isOrganizer: userReg.isOrganizer,
+                email: userReg.email, password: userReg.password, isOrganizer: userReg.isOrganizer,
         organizer: Organizer(organizationCity: userReg.organisationCity, organizationName: userReg.organisationName)
         )
 

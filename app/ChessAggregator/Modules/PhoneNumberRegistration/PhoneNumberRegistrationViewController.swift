@@ -32,6 +32,10 @@ final class PhoneNumberRegistrationViewController: UIViewController {
 		super.viewDidLoad()
         self.setup()
 	}
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+    }
 
     private func setup() {
 

@@ -5,6 +5,7 @@
 import UIKit
 
 class AuthNewView: AutoLayoutView {
+    
     private lazy var stackView = UIStackView()
     var email: String = "email@example.com"
 
@@ -14,7 +15,9 @@ class AuthNewView: AutoLayoutView {
     private let loginButton = UIButton(type: .system)
     private let signupButton = UIButton(type: .system)
     private let forgotButton = UIButton(type: .system)
-
+    private let label = UILabel()
+    private let textNewUser = UILabel()
+    
     var onTapLoginButton: (() -> Void)?
     var onTapSignupButton: (() -> Void)?
     var onTapForgotButton: (() -> Void)?
@@ -34,48 +37,73 @@ class AuthNewView: AutoLayoutView {
 
 
     private func setup() {
-        backgroundColor = .systemGray6
+        
+        backgroundColor = .white
 
         stackView.axis = .vertical
-        stackView.distribution = .fill
-
-
-        emailTextField.placeholder = "email@gmail.com"
+        //stackView.distribution = .fill
+        
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Почта", attributes: [NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Regular", size: 20) as Any])
         emailTextField.keyboardType = .emailAddress
         emailTextField.borderStyle = .roundedRect
+        emailTextField.layer.cornerRadius = 8.0
         emailTextField.addTarget(self, action: #selector(editPassword), for: .editingDidEndOnExit)
+        emailTextField.backgroundColor = UIColor.rgba(240, 241, 245)
 
-
-        passwordTextField.placeholder = "Password1234567890"
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Пароль", attributes: [NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Regular", size: 20) as Any])
         passwordTextField.isSecureTextEntry = true
         passwordTextField.borderStyle = .roundedRect
+        passwordTextField.layer.cornerRadius = 8.0
+        passwordTextField.backgroundColor = UIColor.rgba(240, 241, 245)
 
-
+        
         stackView.addArrangedSubview(emailTextField)
         stackView.addArrangedSubview(passwordTextField)
-
-
+        stackView.setCustomSpacing(11.0, after: emailTextField)
+        
+        
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .firstBaseline
+        
+        
         loginButton.setTitle("Войти", for: .normal)
-        loginButton.backgroundColor = .black
+        loginButton.backgroundColor = UIColor.rgba(0, 122, 255)
         loginButton.setTitleColor(.white, for: .normal)
-        loginButton.layer.cornerRadius = 10
+        loginButton.layer.cornerRadius = 8
+        loginButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Bold", size: 22)
         loginButton.clipsToBounds = false
         loginButton.addTarget(self, action: #selector(onTapLogin), for: .touchUpInside)
 
         forgotButton.setTitle("Забыли пароль?", for: .normal)
+        forgotButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
         forgotButton.addTarget(self, action: #selector(onTapForgot), for: .touchUpInside)
 
 
-        signupButton.setTitle("Регистрация", for: .normal)
+        signupButton.setTitle("Зарегистрироваться", for: .normal)
+        signupButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
         signupButton.addTarget(self, action: #selector(onTapSignup), for: .touchUpInside)
 
-        stackView.layer.shadowRadius = 5
-        stackView.layer.shadowOpacity = 0.3
+        
 
+        addSubview(label)
         addSubview(stackView)
         addSubview(loginButton)
-        addSubview(signupButton)
         addSubview(forgotButton)
+        addSubview(textNewUser)
+        addSubview(signupButton)
+        
+        
+        textNewUser.text = "У вас нет аккаунта?"
+        textNewUser.textAlignment = .center
+        textNewUser.textColor = .black
+        textNewUser.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+        
+        label.horizontal()
+        label.top(108)
+        label.text = "Авторизация"
+        label.textAlignment = .center
+        label.textColor = .black
+        label.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 28)
     }
 
 
@@ -88,28 +116,35 @@ class AuthNewView: AutoLayoutView {
                 constant: -self.bounds.height/2.0
         )
         [
-            emailTextField.heightAnchor.constraint(equalToConstant: 50),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 50),
-            stackViewBottomConstraint!,
-//            stackView.centerYAnchor.constraint(equalTo: margins.centerYAnchor, constant: -stackView.bounds.height),
+            emailTextField.heightAnchor.constraint(equalToConstant: 53.0),
+            emailTextField.widthAnchor.constraint(equalToConstant: 336.0),
+                        
+            passwordTextField.heightAnchor.constraint(equalToConstant: 53.0),
+            passwordTextField.widthAnchor.constraint(equalToConstant: 336.0),
+            
+            //stackViewBottomConstraint!,
+            
             stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor,constant: 16.0),
+            stackView.topAnchor.constraint(equalTo: margins.bottomAnchor, constant: -117 - self.bounds.height/2.0 - 51),
             stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor,constant: -16.0),
 
-            loginButton.heightAnchor.constraint(equalToConstant: 40.0),
-            loginButton.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
-            loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10.0),
+            loginButton.heightAnchor.constraint(equalToConstant: 68),
+            loginButton.widthAnchor.constraint(equalToConstant: 336.0),
+            loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 51.0),
             loginButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
-
-            forgotButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            forgotButton.heightAnchor.constraint(equalToConstant: 40.0),
             forgotButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 10.0),
             forgotButton.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
             forgotButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
-
-            signupButton.heightAnchor.constraint(equalToConstant: 40),
-            signupButton.topAnchor.constraint(equalTo: forgotButton.bottomAnchor, constant: 10.0),
-            signupButton.widthAnchor.constraint(equalToConstant: self.bounds.width/2),
-            signupButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor)
-
+            
+            textNewUser.leftAnchor.constraint(equalTo: loginButton.leftAnchor),
+            textNewUser.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40),
+            
+            signupButton.heightAnchor.constraint(equalToConstant: 22),
+            signupButton.topAnchor.constraint(equalTo: textNewUser.topAnchor),
+            signupButton.rightAnchor.constraint(equalTo: loginButton.rightAnchor),
+        
         ].forEach {$0.isActive = true}
 
     }

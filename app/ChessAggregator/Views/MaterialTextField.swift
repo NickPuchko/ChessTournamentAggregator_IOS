@@ -16,7 +16,7 @@ class MaterialTextField: UITextField {
 
         font = UIFont.systemFont(ofSize: 24)
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalToConstant: 48).isActive = true
+        heightAnchor.constraint(equalToConstant: 44).isActive = true
     }
 
     var textInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0) {
