@@ -20,10 +20,12 @@ protocol EventApplicationViewInput: class {
 
 protocol EventApplicationViewOutput: class {
 	func onTapApplication()
+	func eventState() -> Tournament
 }
 
 protocol EventApplicationInteractorInput: class {
 	func saveTourToDatabase()
+	func requestEvent() -> Tournament
 }
 
 protocol EventApplicationInteractorOutput: class {

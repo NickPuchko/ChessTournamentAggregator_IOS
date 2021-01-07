@@ -31,7 +31,7 @@ extension SearchTournamentsRouter: SearchTournamentsRouterInput {
         alert.addAction(UIAlertAction(title: "Подать заявку", style: .cancel) { _ in
             let context = EventApplicationContext(moduleOutput: nil, tournament: section.event)
             let container = EventApplicationContainer.assemble(with: context)
-            self.navigationController?.pushViewController(container.viewController, animated: false)
+            self.navigationController?.pushViewController(container.viewController, animated: true)
         })
         navigationController?.present(alert, animated: true)
     }

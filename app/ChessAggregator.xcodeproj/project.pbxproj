@@ -23,6 +23,7 @@
 		24B910AF256BCE310076A3E1 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B910A8256BCE310076A3E1 /* AuthViewController.swift */; };
 		24B910BB256BD12A0076A3E1 /* AuthNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B910BA256BD12A0076A3E1 /* AuthNewView.swift */; };
 		24B910C2256BD1D60076A3E1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B910C1256BD1D60076A3E1 /* AppCoordinator.swift */; };
+		3397643970BAF083A0B446D7 /* HeaderCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339767EB35296FBE112F731D /* HeaderCloudView.swift */; };
 		5301606C4A4938AF4C633064 /* ForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530169C8D0F41F26433D22AF /* ForgotPasswordPresenter.swift */; };
 		5301609BC8E54E979B8B14F8 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53016A33EFF42D93AB5DF9C6 /* ForgotPasswordViewController.swift */; };
 		5301614AFF68641F80908236 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530165E0888802D4041F3915 /* ForgotPasswordView.swift */; };
@@ -142,6 +143,7 @@
 		24B910A8256BCE310076A3E1 /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		24B910BA256BD12A0076A3E1 /* AuthNewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthNewView.swift; sourceTree = "<group>"; };
 		24B910C1256BD1D60076A3E1 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		339767EB35296FBE112F731D /* HeaderCloudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCloudView.swift; sourceTree = "<group>"; };
 		5301608819F08A4B01283A58 /* ForgotPasswordRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordRouter.swift; sourceTree = "<group>"; };
 		530165E0888802D4041F3915 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		5301675ED4A831CE64424902 /* ForgotPasswordProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordProtocol.swift; sourceTree = "<group>"; };
@@ -307,7 +309,7 @@
 				530164B16350644D39A3B7F6 /* ForgotPassword */,
 				D91FCE0D094843AECA6AA90A /* EditUser */,
 				6AC972DAFB9C8441CD69F2B9 /* MyEvents */,
-				6AC976C2716FACB9963DA454 /* EventApplication */,
+				6AC976C2716FACB9963DA454 /* EventApplicaton */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -390,7 +392,7 @@
 			path = MyEvents;
 			sourceTree = "<group>";
 		};
-		6AC976C2716FACB9963DA454 /* EventApplication */ = {
+		6AC976C2716FACB9963DA454 /* EventApplicaton */ = {
 			isa = PBXGroup;
 			children = (
 				6AC971691B5F6E590CA53D5E /* EventApplicationPresenter.swift */,
@@ -401,7 +403,7 @@
 				6AC9794CB4012D73CF459B5F /* EventApplicationContainer.swift */,
 				6AC97A430B387A806431DC26 /* Views */,
 			);
-			path = EventApplication;
+			path = EventApplicaton;
 			sourceTree = "<group>";
 		};
 		6AC97922ECE38E77BA5C7BE8 /* ChessAppCoordinator */ = {
@@ -467,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				6AC97CAD22480B195A70F4E1 /* EventApplicationView.swift */,
+				339767EB35296FBE112F731D /* HeaderCloudView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -879,6 +882,7 @@
 				6AC97089A74610487D7CF044 /* EventApplicationInteractor.swift in Sources */,
 				6AC97774FA75080F148913D0 /* EventApplicationContainer.swift in Sources */,
 				6AC971951ED8D97869475F2C /* EventApplicationView.swift in Sources */,
+				3397643970BAF083A0B446D7 /* HeaderCloudView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

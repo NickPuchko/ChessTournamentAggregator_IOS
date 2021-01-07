@@ -25,6 +25,10 @@ extension EventApplicationPresenter: EventApplicationModuleInput {
 }
 
 extension EventApplicationPresenter: EventApplicationViewOutput {
+    func eventState() -> Tournament {
+        interactor.requestEvent()
+    }
+
     func onTapApplication() {
         interactor.saveTourToDatabase()
     }
