@@ -81,7 +81,7 @@ private extension MyEventsInteractor {
 	}
 
 	func filterCurrent(events: [Tournament]) -> [Tournament] {
-		events.filter { $0.closeDate > dateFormatter.string(from: Date()) && $0.openDate < dateFormatter.string(from: Date()) }
+		events.filter { $0.closeDate >= dateFormatter.string(from: Date()) && $0.openDate <= dateFormatter.string(from: Date()) }
 	}
 
 	func filterForthcoming(events: [Tournament]) -> [Tournament] {
