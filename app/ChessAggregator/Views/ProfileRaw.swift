@@ -26,7 +26,7 @@ class ProfileRaw: AutoLayoutView {
         mainView.addSubview(arrow)
     }
     
-    private var didSetupConstraints: Bool = false
+    //private var didSetupConstraints: Bool = false
 
     override init(frame: CGRect) {
         super.init(frame: frame)

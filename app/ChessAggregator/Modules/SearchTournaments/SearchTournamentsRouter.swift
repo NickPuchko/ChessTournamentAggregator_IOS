@@ -16,24 +16,12 @@ final class SearchTournamentsRouter: BaseRouter {
 
 extension SearchTournamentsRouter: SearchTournamentsRouterInput {
     func showInfo(section: EventSectionModel) {
-        let message = """
-                      Призовой фонд: \(section.event.prizeFund) рублей
-                      Взнос: \(section.event.fee) рублей
-                      """
-        let alert = UIAlertController(title: section.event.name, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Закрыть", style: .destructive))
+        let context = EventApplicationContext(moduleOutput: nil, tournament: section.event)
+        let container = EventApplicationContainer.assemble(with: context)
+        navigationController?.pushViewController(container.viewController, animated: true)
 
-        alert.addAction(UIAlertAction(title: "Сайт турнира", style: .default) { _ in
-            let websiteController = SFSafariViewController(url: section.event.url)
-            self.navigationController?.present(websiteController, animated: true)
-        })
-
-        alert.addAction(UIAlertAction(title: "Подать заявку", style: .cancel) { _ in
-            let context = EventApplicationContext(moduleOutput: nil, tournament: section.event)
-            let container = EventApplicationContainer.assemble(with: context)
-            self.navigationController?.pushViewController(container.viewController, animated: true)
-        })
-        navigationController?.present(alert, animated: true)
+//        let websiteController = SFSafariViewController(url: section.event.url)
+//        navigationController?.present(websiteController, animated: true)
     }
 
     func showApply() {
