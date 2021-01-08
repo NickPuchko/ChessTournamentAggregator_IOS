@@ -176,7 +176,6 @@ class UserRegistrationPlayerView: AutoLayoutView {
         scrollableStackView.addArrangedSubview(validatePasswordStackView)
 
 
-
         self.registrationButton.setTitle("Зарегистрироваться", for: .normal)
         self.registrationButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Bold", size: 22)
         self.registrationButton.backgroundColor = UIColor.rgba(0, 122, 255)
