@@ -37,6 +37,7 @@ extension MyEventsInteractor: MyEventsInteractorInput {
 			FirebaseRef.ref.child("Tournaments")
 					.queryOrdered(byChild: "participants/\(self?.userId ?? "")").queryEqual(toValue: true)
 					.observeSingleEvent(of: .value) { (snapshot) in
+						print(snapshot)
 						if let events = EventParser.eventsFromSnapshot(snapshot: snapshot) {
 							let currentEvents = self?.makeCurrent(events: events) ?? []
 							let forthcomingEvents = self?.makeForthcoming(events: events) ?? []
@@ -81,7 +82,7 @@ private extension MyEventsInteractor {
 	}
 
 	func filterCurrent(events: [Tournament]) -> [Tournament] {
-		events.filter { $0.closeDate > dateFormatter.string(from: Date()) && $0.openDate < dateFormatter.string(from: Date()) }
+		events.filter { $0.closeDate >= dateFormatter.string(from: Date()) && $0.openDate <= dateFormatter.string(from: Date()) }
 	}
 
 	func filterForthcoming(events: [Tournament]) -> [Tournament] {
