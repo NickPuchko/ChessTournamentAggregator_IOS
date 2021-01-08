@@ -25,7 +25,7 @@ final class EventApplicationViewController: UIViewController {
     }
 
     override func loadView() {
-        view = EventApplicationView(event: output.eventState())
+        view = EventApplicationView(event: output.eventState(), onTapSite: output.onTapSite)
     }
     
 	override func viewDidLoad() {

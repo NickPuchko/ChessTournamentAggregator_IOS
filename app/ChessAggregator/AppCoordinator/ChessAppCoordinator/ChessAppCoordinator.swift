@@ -9,15 +9,10 @@ final class ChessAppCoordinator {
     weak var appCoordinator: ChessAppCoordinatorModuleOutput?
     private lazy var tabBarController = UITabBarController()
     private lazy var navigationControllers = ChessAppCoordinator.makeNavigationControllers()
-     //TODO: номер телефона
 
-    init(window: UIWindow,  appCoordinator: ChessAppCoordinatorModuleOutput) {  //TODO: номер телефона
+    init(window: UIWindow,  appCoordinator: ChessAppCoordinatorModuleOutput) {
         self.appCoordinator = appCoordinator
         self.window = window
-         //TODO: номер телефона
-            //that maybe changed
-        
-        //TODO: номер телефона
         setupAppearance()
     }
 
@@ -103,7 +98,6 @@ private extension ChessAppCoordinator {
                     image: navControllerKey.image,
                     tag: navControllerKey.rawValue)
             navigationController.tabBarItem = tabBarItem
-            //navigationController.navigationBar.prefersLargeTitles = true // MARK: Зачем?
             result[navControllerKey] = navigationController
 
             navigationController.isNavigationBarHidden = true // MARK: делать false при переходах

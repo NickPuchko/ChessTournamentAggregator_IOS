@@ -9,11 +9,14 @@ class EventApplicationView: AutoLayoutView {
     private let previewStack = ScrollableStackView(config: .defaultVertical)
     private let applyButton = UIButton(type: .system)
     private let headerCloud: HeaderCloudView
+    private let footerCloud: FooterCloudView
 
     var onTapApplicationButton: (() -> Void)?
 
-    init(event: Tournament) {
+    init(event: Tournament, onTapSite: (() -> Void)?) {
         headerCloud = HeaderCloudView(event: event)
+        footerCloud = FooterCloudView(event: event)
+        footerCloud.siteTapAction = onTapSite
         super.init(frame: .zero)
         backgroundColor = .white
         setupButton()
@@ -31,12 +34,12 @@ class EventApplicationView: AutoLayoutView {
 
         previewStack.addArrangedSubview(topPadding)
         previewStack.addArrangedSubview(headerCloud)
+        previewStack.addArrangedSubview(footerCloud)
         previewStack.addArrangedSubview(applyButton)
 
         previewStack.config.stack.distribution = .fillProportionally
         previewStack.config.stack.alignment = .center
-        previewStack.config.stack.spacing = 16
-
+        previewStack.config.stack.spacing = 24
 
         addSubview(previewStack)
     }
@@ -63,6 +66,9 @@ class EventApplicationView: AutoLayoutView {
         NSLayoutConstraint.activate([
             headerCloud.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             headerCloud.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+
+            footerCloud.leadingAnchor.constraint(equalTo: headerCloud.leadingAnchor),
+            footerCloud.trailingAnchor.constraint(equalTo: headerCloud.trailingAnchor),
 
             applyButton.heightAnchor.constraint(equalToConstant: 50),
             applyButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
