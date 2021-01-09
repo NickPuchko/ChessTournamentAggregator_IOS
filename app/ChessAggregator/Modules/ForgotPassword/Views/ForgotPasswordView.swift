@@ -122,6 +122,8 @@ private extension ForgotPasswordView {
         textField.attributedPlaceholder = attributedString
         textField.borderStyle = .roundedRect
         textField.keyboardType = textFieldKeyboard
+        textField.autocapitalizationType = .none
+
     }
 
     func buildStringWithColoredAsterisk(string: String) -> NSMutableAttributedString {

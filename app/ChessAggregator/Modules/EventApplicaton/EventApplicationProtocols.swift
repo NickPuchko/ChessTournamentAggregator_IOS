@@ -20,14 +20,19 @@ protocol EventApplicationViewInput: class {
 
 protocol EventApplicationViewOutput: class {
 	func onTapApplication()
+	func onTapSite()
+	func eventState() -> Tournament
 }
 
 protocol EventApplicationInteractorInput: class {
-	func saveTourToDatabase()
+	func takePart()
+	func requestEvent() -> Tournament
 }
 
 protocol EventApplicationInteractorOutput: class {
 }
 
 protocol EventApplicationRouterInput: class {
+	func showSite(url: URL)
+	func showApply()
 }

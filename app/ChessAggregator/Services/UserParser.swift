@@ -90,22 +90,6 @@ class UserParser {
                     result.append(Int(frcResultClassic[2].components(separatedBy:CharacterSet.decimalDigits.inverted).joined()) ?? 0)
                     result.append(Int(frcResultRapid[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0)
                     result.append(Int(frcResultBliz[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0)
-
-//                    let STDnumberFide = fideResult[1].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-//                    let RPDnumberFide = fideResult[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-//                    let BLZnumberFide = fideResult[3].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-//
-//                    let STDnumberFRC = frcResultClassic[2].components(separatedBy:CharacterSet.decimalDigits.inverted).joined()
-//                    let RPDnumberFRC = frcResultFast[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-//                    let BLZnumberFRC = frcResultBliz[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-//
-//                    result.append(STDnumberFide)
-//                    result.append(RPDnumberFide)
-//                    result.append(BLZnumberFide)
-//
-//                    result.append(STDnumberFRC)
-//                    result.append(RPDnumberFRC)
-//                    result.append(BLZnumberFRC)
                     
                    }
                   catch{
@@ -150,4 +134,43 @@ class UserParser {
         )
         return user
     }
+
+//    static func usersFromSnapshot(snapshot: DataSnapshot) -> [User]? {
+//        guard let userDict = snapshot.valueInExportFormat() as? [String: Any] else { return nil }
+//        var users: [User] = []
+//        for (key, value) in userDict {
+//            var user = User()
+//            let thisUser = value as! [String: Any]
+//            user.email = thisUser["email"] as? String ?? ""
+//            user.isOrganizer = thisUser["isOrganizer"] as? Bool ?? false
+//            if user.isOrganizer {
+//                user.organizer.organizationName = thisUser["organizationName"] as? String ?? ""
+//                user.organizer.organizationCity = thisUser["organizationCity"] as? Strinf ?? ""
+//                user
+//            }
+//
+//
+//            event.openDate = thisEvent["openDate"] as? String ?? "01.01.1970"
+//            event.closeDate = thisEvent["closeDate"] as? String ?? "01.01.1970"
+//            event.fee = thisEvent["fee"] as? Int ?? 0
+//            event.tours = thisEvent["tours"] as? Int ?? 9
+//
+//            event.minutes = thisEvent["minutes"] as? Int ?? 1
+//            event.seconds = thisEvent["seconds"] as? Int ?? 0
+//            event.increment = thisEvent["increment"] as? Int ?? 0
+//
+//            event.location = thisEvent["location"] as? String ?? "Moscow"
+//            event.mode = Mode.init(rawValue: (thisEvent["mode"] as? String ?? "classic")) ?? .classic
+//            event.name = thisEvent["name"] as? String ?? "Some event"
+//            event.participantsCount = (thisEvent["participants"] as? [String: Any] ?? [:]).count
+//            event.prizeFund = thisEvent["prizeFund"] as? Int ?? 0
+//            event.ratingType = RatingType.init(rawValue: (thisEvent["ratingType"] as? String ?? "Без обсчёта")) ?? .without
+//            event.url = URL(string: thisEvent["url"] as? String ?? "https://vk.com/oobermensch")!
+//
+//            events.append(event)
+//
+//        }
+//
+//        return events
+//    }
 }

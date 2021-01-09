@@ -176,7 +176,6 @@ class UserRegistrationPlayerView: AutoLayoutView {
         scrollableStackView.addArrangedSubview(validatePasswordStackView)
 
 
-
         self.registrationButton.setTitle("Зарегистрироваться", for: .normal)
         self.registrationButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Bold", size: 22)
         self.registrationButton.backgroundColor = UIColor.rgba(0, 122, 255)
@@ -302,9 +301,10 @@ private extension UserRegistrationPlayerView {
                                        textFieldKeyboard: UIKeyboardType = .default) {
         textField.attributedPlaceholder = NSAttributedString(string: textFieldPlaceholder, attributes: [NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Regular", size: 20) as Any])
         textField.backgroundColor = UIColor.rgba(240, 241, 245)
-        //textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 8
         textField.keyboardType = textFieldKeyboard
+        textField.autocapitalizationType = .none
+
         textField.sizeToFit()
         
     }

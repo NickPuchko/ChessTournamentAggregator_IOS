@@ -11,21 +11,28 @@ import Firebase
 final class EventApplicationInteractor {
 	weak var output: EventApplicationInteractorOutput?
 	private let tournament: Tournament
+	private let users: [User]
 
 	init(tournament: Tournament) {
 		self.tournament = tournament
+		users = [] // TODO: parse participants to get average ELO and fulfill table
+
 	}
 }
 
 extension EventApplicationInteractor: EventApplicationInteractorInput {
-	func saveTourToDatabase() {
-		//TODO: еще добавить запись в ветку TournamentParticipants
+	func requestEvent() -> Tournament {
+		tournament
+	}
+
+	func takePart() {
 		let userID = Auth.auth().currentUser!.uid
-//		FirebaseRef.ref.child("UserTournaments/\(userID)/\(tournament.id)").setValue(["closeDate": tournament.closeDate])
 		let childUpdates = ["Users/\(userID)/tournaments/\(tournament.id)": true,
 							"Tournaments/\(tournament.id)/participants/\(userID)": true
 		]
 		FirebaseRef.ref.updateChildValues(childUpdates)
 	}
+
+
 
 }

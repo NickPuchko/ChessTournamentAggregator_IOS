@@ -41,10 +41,10 @@ class AuthNewView: AutoLayoutView {
         backgroundColor = .white
 
         stackView.axis = .vertical
-        //stackView.distribution = .fill
-        
+
         emailTextField.attributedPlaceholder = NSAttributedString(string: "Почта", attributes: [NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Regular", size: 20) as Any])
         emailTextField.keyboardType = .emailAddress
+        emailTextField.autocapitalizationType = .none
         emailTextField.borderStyle = .roundedRect
         emailTextField.layer.cornerRadius = 8.0
         emailTextField.addTarget(self, action: #selector(editPassword), for: .editingDidEndOnExit)

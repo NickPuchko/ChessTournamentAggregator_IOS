@@ -16,29 +16,14 @@ final class SearchTournamentsRouter: BaseRouter {
 
 extension SearchTournamentsRouter: SearchTournamentsRouterInput {
     func showInfo(section: EventSectionModel) {
-        let message = """
-                      Призовой фонд: \(section.event.prizeFund) рублей
-                      Взнос: \(section.event.fee) рублей
-                      """
-        let alert = UIAlertController(title: section.event.name, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Закрыть", style: .destructive))
-
-        alert.addAction(UIAlertAction(title: "Сайт турнира", style: .default) { _ in
-            let websiteController = SFSafariViewController(url: section.event.url)
-            self.navigationController?.present(websiteController, animated: true)
-        })
-
-        alert.addAction(UIAlertAction(title: "Подать заявку", style: .cancel) { _ in
-            let context = EventApplicationContext(moduleOutput: nil, tournament: section.event)
-            let container = EventApplicationContainer.assemble(with: context)
-            self.navigationController?.pushViewController(container.viewController, animated: false)
-        })
-        navigationController?.present(alert, animated: true)
+        let context = EventApplicationContext(moduleOutput: nil, tournament: section.event)
+        let container = EventApplicationContainer.assemble(with: context)
+        navigationController?.pushViewController(container.viewController, animated: true)
     }
 
     func showApply() {
         let applyAlert = UIAlertController(title: "Заявка подана!", message: nil, preferredStyle: .alert)
-        self.navigationController?.present(applyAlert, animated: true) {
+        navigationController?.present(applyAlert, animated: true) {
             applyAlert.view.superview?.isUserInteractionEnabled = true
             applyAlert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(
             self.didTapToDismiss)))

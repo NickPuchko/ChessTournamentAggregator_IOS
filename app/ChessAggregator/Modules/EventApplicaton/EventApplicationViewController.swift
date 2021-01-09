@@ -11,11 +11,12 @@ import UIKit
 final class EventApplicationViewController: UIViewController {
 	private let output: EventApplicationViewOutput
 
-    private let applicationView = EventApplicationView()
+    private var applicationView: EventApplicationView {
+        view as! EventApplicationView
+    }
 
     init(output: EventApplicationViewOutput) {
         self.output = output
-        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -24,16 +25,12 @@ final class EventApplicationViewController: UIViewController {
     }
 
     override func loadView() {
-        let view = UIView()
-        view.addSubview(applicationView)
-        self.view = view
-        view.backgroundColor = .white
-        setup()
-        setupConstraints()
+        view = EventApplicationView(event: output.eventState(), onTapSite: output.onTapSite)
     }
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        setup()
 	}
 
     private func setup() {
@@ -41,13 +38,6 @@ final class EventApplicationViewController: UIViewController {
             self?.output.onTapApplication()
         }
     }
-
-    private func setupConstraints() {
-        applicationView.translatesAutoresizingMaskIntoConstraints = false
-        applicationView.pins()
-    }
-
-
 }
 
 extension EventApplicationViewController: EventApplicationViewInput {

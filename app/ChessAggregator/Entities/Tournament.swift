@@ -47,7 +47,7 @@ struct Tournament: Identifiable{
 }
 
 enum Mode: String, Codable, CaseIterable{
-    case classic = "Классика", rapid = "Рапид", blitz = "Блиц", bullet = "Пуля", fide = "fide", chess960 = "chess 960"
+    case classic = "Классика", rapid = "Рапид", blitz = "Блиц", bullet = "Пуля", fide = "Классика FIDE", chess960 = "Шахматы 960"
 }
 
 enum RatingType: String, Codable, CaseIterable{
