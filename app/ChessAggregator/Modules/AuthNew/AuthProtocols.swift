@@ -10,9 +10,8 @@ protocol AuthModuleInput: class {
 
 protocol AuthModuleOutput: class {
     func didLogin()
-   // func setPhoneNumber(phoneNumber: String)
-    func showPhoneSignUp()
     func showForgotPassword()
+    func showSignUp()
 }
 
 protocol AuthViewInput: class {
@@ -37,4 +36,5 @@ protocol AuthInteractorOutput: class {
 
 protocol AuthRouterInput: class {
     func showAllert(error: String)
+    func showNavigationBar()
 }

@@ -9,6 +9,10 @@ class AuthRouter: BaseRouter {
 }
 
 extension AuthRouter: AuthRouterInput {
+    func showNavigationBar() {
+        navigationController?.isNavigationBarHidden = false
+    }
+
     func showAllert(error: String) {
         let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .default))

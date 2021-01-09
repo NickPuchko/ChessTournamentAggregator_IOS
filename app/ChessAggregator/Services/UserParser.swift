@@ -141,7 +141,14 @@ class UserParser {
 //        for (key, value) in userDict {
 //            var user = User()
 //            let thisUser = value as! [String: Any]
-//            user.///blablabla
+//            user.email = thisUser["email"] as? String ?? ""
+//            user.isOrganizer = thisUser["isOrganizer"] as? Bool ?? false
+//            if user.isOrganizer {
+//                user.organizer.organizationName = thisUser["organizationName"] as? String ?? ""
+//                user.organizer.organizationCity = thisUser["organizationCity"] as? Strinf ?? ""
+//                user
+//            }
+//
 //
 //            event.openDate = thisEvent["openDate"] as? String ?? "01.01.1970"
 //            event.closeDate = thisEvent["closeDate"] as? String ?? "01.01.1970"

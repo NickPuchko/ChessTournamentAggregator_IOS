@@ -24,17 +24,15 @@ extension AuthPresenter: AuthModuleInput {
 extension AuthPresenter: AuthViewOutput {
     
     func onTapLogin(email: String, password: String) {
-        //moduleOutput?.setPhoneNumber(phoneNumber: "88005553535")
         interactor.signIn(withEmail: email, password: password)
     }
     func onTapForgot() {
-
         moduleOutput?.showForgotPassword()
+        router.showNavigationBar()
     }
     func onTapSignUp() {
-//        router.showPhoneSignUp()
-        
-        moduleOutput?.showPhoneSignUp()
+        moduleOutput?.showSignUp()
+        router.showNavigationBar()
     }
 }
 

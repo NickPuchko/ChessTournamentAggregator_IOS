@@ -46,6 +46,11 @@ class UserRegistrationViewController: UIViewController {
             )
 
         }
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+                title: "Назад",
+                style: .done,
+                target: self,
+                action: #selector(backButtonTapped))
 
         registrationView.onTapFideButton = { [weak self] in
             self?.output.onTapFide()
@@ -71,6 +76,12 @@ class UserRegistrationViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         adapter.stop()
+    }
+
+    @objc
+    private func backButtonTapped() {
+        navigationController?.isNavigationBarHidden = true
+        navigationController?.popToRootViewController(animated: true)
     }
 
 }
