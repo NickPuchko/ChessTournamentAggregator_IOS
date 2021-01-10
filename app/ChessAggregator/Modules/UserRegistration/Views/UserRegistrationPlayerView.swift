@@ -41,7 +41,10 @@ class UserRegistrationPlayerView: AutoLayoutView {
 
     let patronymicName = MaterialTextField()
 
-
+    let latinFullname = MaterialTextField()
+    private let fullnameButton = UIButton(type: .infoLight)
+    var onTapLatinFullnameButton: (()->Void)?
+    
     let fideID = MaterialTextField()
     private let fideIDButton = UIButton(type: .infoLight)
     var onTapFideButton: (() -> Void)?
@@ -109,20 +112,20 @@ class UserRegistrationPlayerView: AutoLayoutView {
         self.sex.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Regular", size: 20) as Any ,NSAttributedString.Key.foregroundColor: UIColor.gray as Any], for: .normal)
         self.sex.selectedSegmentIndex = 0
         
-        self.sexLabel.attributedText = buildStringWithColoredAsterisk(string: "Пол")
+        self.sexLabel.textColor = UIColor.rgba(142, 142, 147)
+        self.sexLabel.attributedText = buildStringWithColoredAsterisk(string: "Пол*")
         self.sexLabel.textAlignment = .center
         self.sexLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 20)
-        self.sexLabel.textColor = UIColor.rgba(142, 142, 147)
+
         
         self.sexStackView.addArrangedSubview(sexLabel)
         self.sexStackView.addArrangedSubview(sex)
         self.sexStackView.spacing = 16
         self.scrollableStackView.addArrangedSubview(sexStackView)
 
-
+        self.birthdateLabel.textColor = UIColor.rgba(142, 142, 147)
         self.birthdateLabel.attributedText = buildStringWithColoredAsterisk(string: "Дата рождения*")
         self.birthdateLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 20)
-        self.birthdateLabel.textColor = UIColor.rgba(142, 142, 147)
         
 
         let calendar = Calendar(identifier: .gregorian)
@@ -164,7 +167,15 @@ class UserRegistrationPlayerView: AutoLayoutView {
         frcID.rightViewMode = .always
         frcIDButton.addTarget(self, action: #selector(onTapFrc), for: .touchUpInside)
         scrollableStackView.addArrangedSubview(frcID)
+        
+        setupRoundedTextField(textField: latinFullname, textFieldPlaceholder: "Фамилия и имя (Латиница)", textFieldKeyboard: .default)
+        latinFullname.rightView = fullnameButton
+        latinFullname.rightViewMode = .always
+        fullnameButton.addTarget(self, action: #selector(onTapLatinFullname), for: .touchUpInside)
+        latinFullname.addTarget(self, action: #selector(textFieldFullanmeChanged), for: .editingChanged)
+        scrollableStackView.addArrangedSubview(latinFullname)
 
+        
         setupRoundedTextField(textField: password, textFieldPlaceholder: "Пароль*")
         password.isSecureTextEntry = true
         passwordWarning.text = "Пароль недействителен. Он должен содержать 1 Большую букву, 1 маленькую и 1 цифру"
@@ -283,6 +294,29 @@ class UserRegistrationPlayerView: AutoLayoutView {
     @objc private func onTapFrc() {
         onTapFrcButton?()
     }
+    @objc private func onTapLatinFullname(){
+        
+        onTapLatinFullnameButton?()
+    }
+    @objc private func textFieldFullanmeChanged(){
+
+        if latinFullname.text != ""  {
+            
+            fideID.isEnabled = false
+            fideID.alpha = 0.5
+            
+            frcID.isEnabled = false
+            frcID.alpha = 0.5
+        }
+        else{
+            
+            fideID.alpha = 1
+            fideID.isEnabled = true
+            
+            frcID.alpha = 1
+            frcID.isEnabled = true
+        }
+    }
 }
 
 private extension UserRegistrationPlayerView {
@@ -299,7 +333,10 @@ private extension UserRegistrationPlayerView {
 
     func setupRoundedTextField(textField: MaterialTextField, textFieldPlaceholder: String,
                                        textFieldKeyboard: UIKeyboardType = .default) {
-        textField.attributedPlaceholder = NSAttributedString(string: textFieldPlaceholder, attributes: [NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Regular", size: 20) as Any])
+        
+        let attribudetString = buildStringWithColoredAsterisk(string: textFieldPlaceholder)
+        
+        textField.attributedPlaceholder = attribudetString
         textField.backgroundColor = UIColor.rgba(240, 241, 245)
         textField.layer.cornerRadius = 8
         textField.keyboardType = textFieldKeyboard
@@ -312,11 +349,19 @@ private extension UserRegistrationPlayerView {
     func buildStringWithColoredAsterisk(string: String) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString.init(string: string)
         let range = (string as NSString).range(of: "*")
+        
+        attributedString.addAttribute(NSAttributedString.Key.font, value: UIColor.rgba(0, 122, 255), range: NSRange(location: 0, length: attributedString.length))
+        
+        attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "AppleSDGothicNeo-Regular", size: 20 ) as Any, range: NSRange(location: 0, length: attributedString.length))
+        
         attributedString.addAttribute(
                 NSAttributedString.Key.foregroundColor,
                 value: Styles.Color.asteriskRed,
                 range: range
         )
+        
+            
+       
         return attributedString
     }
 

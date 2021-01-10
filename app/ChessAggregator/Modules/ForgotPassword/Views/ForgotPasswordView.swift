@@ -61,13 +61,14 @@ class ForgotPasswordView: AutoLayoutView {
         self.emailAddressStackView = buildStackView(withTextField: emailAddress, andLabel: emailAddressWarning)
         self.scrollableStackView.addArrangedSubview(emailAddressStackView!)
 
+        emailAddress.backgroundColor = UIColor.rgba(240, 241, 245)
 
-
-
+        
         changeButton.setTitle("Сменить пароль", for: .normal)
-        changeButton.backgroundColor = .black
+        changeButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
+        changeButton.backgroundColor = UIColor.rgba(0, 122, 255)
         changeButton.setTitleColor(.white, for: .normal)
-        changeButton.layer.cornerRadius = 10.0
+        changeButton.layer.cornerRadius = 8.0
         changeButton.clipsToBounds = false
         changeButton.addTarget(self, action: #selector(onTapChange), for: .touchUpInside)
 

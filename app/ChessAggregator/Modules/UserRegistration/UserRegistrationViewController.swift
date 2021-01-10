@@ -59,6 +59,11 @@ class UserRegistrationViewController: UIViewController {
         registrationView.onTapFrcButton = { [weak self] in
             self?.output.onTapFrc()
         }
+        registrationView.onTapLatinFullnameButton = { [weak self] in
+            
+            self?.output.onTapLatinFullname()
+            
+        }
     }
 
     override func viewDidLoad() {

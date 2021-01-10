@@ -28,7 +28,7 @@ class ForgotPasswordViewController: UIViewController {
 
     override func loadView() {
         self.view = registrationView
-        self.view.backgroundColor = .systemGray6
+        self.view.backgroundColor = .white
         self.setup()
     }
 

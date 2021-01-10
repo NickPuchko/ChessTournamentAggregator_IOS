@@ -42,7 +42,7 @@ class AuthNewView: AutoLayoutView {
 
         stackView.axis = .vertical
 
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "Почта", attributes: [NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Regular", size: 20) as Any])
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Regular", size: 20) as Any])
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocapitalizationType = .none
         emailTextField.borderStyle = .roundedRect
