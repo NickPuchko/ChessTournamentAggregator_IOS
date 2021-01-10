@@ -66,7 +66,11 @@ extension EventApplicationInteractor: EventApplicationInteractorInput {
 				}
 			}
 		}
-		output?.reloadData(players: players, elo: eloSum  / ratedPLayersCount, participants: users.count)
+		if ratedPLayersCount == 0 {
+			output?.reloadData(players: players, elo: 0, participants: users.count)
+		} else {
+			output?.reloadData(players: players, elo: eloSum  / ratedPLayersCount, participants: users.count)
+		}
 	}
 
 	func requestEvent() -> Tournament {
