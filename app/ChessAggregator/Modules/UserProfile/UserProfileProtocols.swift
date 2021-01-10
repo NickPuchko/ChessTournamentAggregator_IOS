@@ -16,7 +16,7 @@ protocol UserProfileModuleOutput: class {
 }
 
 protocol UserProfileViewInput: class {
-	func updateUser(user: User)
+	func updateUser(user: UserViewModel)
 }
 
 protocol UserProfileViewOutput: class {

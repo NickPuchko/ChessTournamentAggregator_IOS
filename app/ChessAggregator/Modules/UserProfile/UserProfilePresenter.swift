@@ -68,6 +68,22 @@ extension UserProfilePresenter: UserProfileViewOutput {
 extension UserProfilePresenter: UserProfileInteractorOutput {
     func updateUser(user: User) {
         self.user = user
-        view!.updateUser(user: user)
+        let userViewModel = makeViewModel(user: user)
+        view!.updateUser(user: userViewModel)
+    }
+}
+
+private extension UserProfilePresenter {
+    func makeViewModel(user: User) -> UserViewModel {
+        UserViewModel(
+                userName: user.player.lastName + " " + user.player.firstName,
+                userStatus: user.isOrganizer ? "Организатор" : "Игрок",
+                classicFideRating: String(user.player.classicFideRating ?? 0),
+                rapidFideRating: String(user.player.rapidFideRating ?? 0),
+                blitzFideRating: String(user.player.blitzFideRating ?? 0),
+                classicFrcRating: String(user.player.classicFrcRating ?? 0),
+                rapidFrcRating: String(user.player.rapidFrcRating ?? 0),
+                blitzFrcRating: String(user.player.blitzFrcRating ?? 0),
+                isOrganizer: user.isOrganizer)
     }
 }
