@@ -14,6 +14,7 @@ class UserParser {
         dateFormatter.dateStyle = .short
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.locale = Locale(identifier: "ru_RU")
+        
         let rates = RateParser(frcID: user.player.frcID ?? 0)
         result = [ "lastName": user.player.lastName,
                    "firstName": user.player.firstName,
@@ -24,20 +25,34 @@ class UserParser {
                    "birthdate": dateFormatter.string(from: user.player.birthdate)
         ]
         if rates.count != 0 {
+           
             result = [ "lastName": user.player.lastName,
                        "firstName": user.player.firstName,
                        "latinName": user.player.latinName,
                        "sex": user.player.sex.rawValue,
                        "email": user.email,
                        "isOrganizer": user.isOrganizer,
-                       "birthdate": dateFormatter.string(from: user.player.birthdate),
-                       "fideClassic": rates[3],
-                       "fideRapid": rates[4],
-                       "fideBlitz": rates[5],
-                       "frcClassic": rates[0],
-                       "frcRapid": rates[1],
-                       "frcBlitz": rates[2]
+                       "birthdate": dateFormatter.string(from: user.player.birthdate)
+                       
             ]
+            if let rating = rates[3]{
+                result["fideClassic"] = rating
+            }
+            if let rating = rates[4]{
+                result["fideRapid"] = rating
+            }
+            if let rating = rates[5]{
+                result["fideBlitz"] = rating
+            }
+            if let rating = rates[0]{
+                result["frcClassic"] = rating
+            }
+            if let rating = rates[1]{
+                result["frcRapid"] = rating
+            }
+            if let rating = rates[2]{
+                result["frcBlitz"] = rating
+            }
         }
         
         if let patronomicName = user.player.patronomicName {
@@ -58,44 +73,181 @@ class UserParser {
         }
         return result
     }
-    static func RateParser(frcID: Int) -> [Int]{
-        let userUrlString: String = "https://ratings.ruchess.ru/people/" + String(frcID)
-        var result : [Int] = []
-        guard let myUrl = URL(string: userUrlString) else{return []}
+    static func RateParser(frcID: Int) -> [Int?]{
+
+        var result: [Int?] = []
+        let  arrayRate: [String]?
+        let  arrayRateFide: [String]?
+        var classic: Int?
+        var rapid: Int?
+        var bliz: Int?
+        var fideClassic: Int?
+        var fideRapid: Int?
+        var fideBliz: Int?
+        guard let urlString = try? ("https://ratings.ruchess.ru/people/" + String(frcID)) else {
+            
+            return [nil, nil, nil, nil, nil, nil]
+        }
+        guard let myUrl = URL(string: urlString) else{ return  result}
         do {
-            let HTMLString = try String(contentsOf: myUrl, encoding: .utf8)
+            guard let HTMLString = try? String(contentsOf: myUrl, encoding: .utf8) else {
+                
+                return [nil, nil, nil, nil, nil, nil]
+            }
             let HTMLContent = HTMLString
             do{
                 let doc = try SwiftSoup.parse(HTMLContent)
                 do{
-                    let element = try doc.select("li").array()
+                    guard let element = try? doc.select("ul").array() else{
+                        result.append(classic)
+                        result.append(rapid)
+                        result.append(bliz)
+                        return result
+                    }
                   do{
-                    let fide = try element[16].text()
-                    let classic = try element[9].text()
-                    let rapid = try element[10].text()
-                    let blitz = try element[11].text()
+            
+                    guard let stringRate = try? element[2].text() else{
+                        return [nil, nil, nil, nil, nil, nil]
+                    }
+                    arrayRate = stringRate.words
                     
-                    let fideResult: [String] = fide.components(separatedBy: [" ", "\n", "\t"])
+                    if arrayRate?.count ?? 0 >= 21{
+                        
+                        if arrayRate![0] == "Классические" {
+                            
+                            classic = Int((arrayRate?[2])!)
+                            
+                            if arrayRate![7] == "Быстрые"{
+                                rapid = Int((arrayRate?[9])!)
+                                bliz = Int((arrayRate?[16])!)
+                            }
+                            else if arrayRate![7] == "Блиц"{
+                                
+                                bliz = Int((arrayRate?[7])!)
+                                rapid = Int((arrayRate?[16])!)
+                                
+                            }
+                        }
+                        else if arrayRate![0] == "Быстрые"{
+                            
+                            rapid = Int((arrayRate?[2])!)
+                            if arrayRate![7] == "Классические"{
+                                classic = Int((arrayRate?[9])!)
+                                bliz = Int((arrayRate?[16])!)
+                            }
+                            else if arrayRate![7] == "Блиц"{
+                                
+                                bliz = Int((arrayRate?[7])!)
+                                classic = Int((arrayRate?[16])!)
+                            }
+                            
+                        }
+                        else if arrayRate![0] == "Блиц"{
+                            
+                           bliz = Int((arrayRate?[2])!)
+                            
+                            if arrayRate![7] == "Быстрые"{
+                                rapid = Int((arrayRate?[9])!)
+                                classic = Int((arrayRate?[16])!)
+                            }
+                            else if arrayRate![7] == "Классические"{
+                                
+                                classic = Int((arrayRate?[7])!)
+                                rapid = Int((arrayRate?[16])!)
+                            }
+                            
+                        }
+                    }
+                    else if arrayRate?.count ?? 0 >= 14{
+                        
+                        if arrayRate![0] == "Классические"{
+                            
+                            classic =  Int((arrayRate?[2])!)
+                            
+                            if arrayRate![7] == "Быстрые"{
+                                rapid = Int((arrayRate?[9])!)
+                            }
+                            else if arrayRate![7] == "Блиц"{
+                                bliz = Int((arrayRate?[9])!)
+                            }
+                        }
+                        else if arrayRate![0] == "Быстрые"{
+                            rapid =  Int((arrayRate?[2])!)
+                            
+                            if arrayRate![7] == "Классические"{
+                                classic = Int((arrayRate?[9])!)
+                            }
+                            else if arrayRate![7] == "Блиц"{
+                                bliz = Int((arrayRate?[9])!)
+                            }
+                        }
+                        else if arrayRate![0] == "Блиц"{
+                            bliz =  Int((arrayRate?[2])!)
+                            
+                            if arrayRate![7] == "Классические"{
+                                classic = Int((arrayRate?[9])!)
+                            }
+                            else if arrayRate![7] == "Быстрые"{
+                                rapid = Int((arrayRate?[9])!)
+                            }
+                        }
+                        
+                        
+                    }
+                    else if arrayRate?.count ?? 0 >= 7{
+                        
+                        if arrayRate?[0] == "Классические"{
+                            classic =  Int((arrayRate?[2])!)
+                        }
+                        else if arrayRate?[0] == "Быстрые"{
+                            rapid =  Int((arrayRate?[2])!)
+                        }
+                        else if arrayRate?[0] == "Блиц"{
+                            bliz =  Int((arrayRate?[2])!)
+                        }
+                        
+                    }
+                    else if arrayRate?.count ?? 0 == 0{
+                        print("CANT PARSE")
+                    }
+                    do{
+                        arrayRateFide = (try? element[element.count - 1].text())?.words ?? nil
+                        if (arrayRateFide![arrayRateFide!.count - 1] == "Рейтинги"){
+                            result.append(fideClassic)
+                            result.append(fideRapid)
+                            result.append(fideBliz)
+                        }
+                        else{
+                            guard var index = (arrayRateFide?.firstIndex(of: "Рейтинги")) else{
+                                return [classic, rapid, bliz, nil, nil, nil]
+                            }
+                            
+                            index += 1
+                            while index < arrayRateFide!.count{
+                                if arrayRateFide?[index].first == "s" {
+                                    fideClassic = Int((arrayRateFide?[index].components(separatedBy: CharacterSet.decimalDigits.inverted).joined())!)
+                                }
+                                else if arrayRateFide?[index].first == "r"{
+                                    
+                                    fideRapid = Int((arrayRateFide?[index].components(separatedBy: CharacterSet.decimalDigits.inverted).joined())!)
+                                }
+                                else if arrayRateFide?[index].first == "b"{
+                                    fideBliz = Int((arrayRateFide?[index].components(separatedBy: CharacterSet.decimalDigits.inverted).joined())!)
+                                }
+                                index += 1
+                                
+                            }
+                        }
+                    }
                     
-                    let frcResultClassic : [String] =  classic.components(separatedBy: [" ", "\n", "\t"])
-                    let frcResultRapid : [String] =  rapid.components(separatedBy: [" ", "\n", "\t"])
-                    let frcResultBliz : [String] =  blitz.components(separatedBy: [" ", "\n", "\t"])
-                    
-                    result.append(Int(fideResult[1].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0)
-                    result.append(Int(fideResult[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0)
-                    result.append(Int(fideResult[3].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0)
-
-                    result.append(Int(frcResultClassic[2].components(separatedBy:CharacterSet.decimalDigits.inverted).joined()) ?? 0)
-                    result.append(Int(frcResultRapid[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0)
-                    result.append(Int(frcResultBliz[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0)
+                    result.append(classic)
+                    result.append(rapid)
+                    result.append(bliz)
+                    result.append(fideClassic)
+                    result.append(fideRapid)
+                    result.append(fideBliz)
                     
                    }
-                  catch {
-                      print("parse error")
-                  }
-                }
-                catch {
-                    print("parse error")
                 }
             }
         } catch let error{
@@ -172,5 +324,13 @@ class UserParser {
         }
 
         return users
+    }
+}
+extension String{
+    var words: [String] {
+     return components(separatedBy: .punctuationCharacters)
+      .joined()
+      .components(separatedBy: .whitespaces)
+      .filter{!$0.isEmpty}
     }
 }

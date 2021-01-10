@@ -215,7 +215,7 @@ extension UserProfileViewController: UserProfileViewInput {
     func updateUser(user: User) {
         userName.text = user.player.lastName + " " + user.player.firstName
         userStatus.text = user.isOrganizer ? "Организатор" : "Игрок"
-        userRating.text = String(user.player.classicFideRating!)
+        userRating.text = String(user.player.classicFideRating ?? 0)
     }
 
 }
