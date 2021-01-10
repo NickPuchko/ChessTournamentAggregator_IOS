@@ -30,7 +30,7 @@ protocol UserRegistrationViewOutput: class {
     )
     func onTapFide()
     func onTapFrc()
-
+    func onTapLatinFullname()
     func isFullNameOK(string: String) -> Bool
     func filterID(string: String, maxID: Int) -> (Bool, Int?)
     func isLoginDataOK(string: String) -> Bool
@@ -50,4 +50,5 @@ protocol UserRegistrationInteractorOutput: class {
 protocol UserRegistrationRouterInput: class {
     func showFide()
     func showFrc()
+    func showFullname()
 }

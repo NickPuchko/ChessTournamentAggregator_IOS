@@ -30,7 +30,9 @@ extension UserRegistrationPresenter: UserRegistrationViewOutput {
     func onTapFrc() {
         router.showFrc()
     }
-
+    func onTapLatinFullname() {
+        router.showFullname()
+    }
     func onTapRegistration(
             lastName: String?, firstName: String?, patronymicName: String?,
             fideID: String?, frcID: String?, email: String?, password: String?, passwordValidation: String?,
