@@ -62,8 +62,8 @@ class AuthNewView: AutoLayoutView {
         stackView.setCustomSpacing(11.0, after: emailTextField)
         
         
-        stackView.distribution = .equalSpacing
-        stackView.alignment = .firstBaseline
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
         
         
         loginButton.setTitle("Войти", for: .normal)
@@ -101,7 +101,6 @@ class AuthNewView: AutoLayoutView {
         textNewUser.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
         
         label.horizontal()
-        label.top(108)
         label.text = "Авторизация"
         label.textAlignment = .center
         label.textColor = .black
@@ -112,27 +111,28 @@ class AuthNewView: AutoLayoutView {
     override func setupConstraints() {
         super.setupConstraints()
 
-        let margins = layoutMarginsGuide
-        stackViewBottomConstraint = stackView.bottomAnchor.constraint(
-                equalTo: margins.bottomAnchor,
-                constant: -bounds.height/2.0
-        )
+        let margins = safeAreaLayoutGuide
+//        stackViewBottomConstraint = stackView.bottomAnchor.constraint(
+//                equalTo: margins.bottomAnchor,
+//                constant: -bounds.height/2.0
+//        )
         [
+            label.topAnchor.constraint(equalTo: margins.topAnchor,constant: bounds.height/11),
+
             emailTextField.heightAnchor.constraint(equalToConstant: 53.0),
-            emailTextField.widthAnchor.constraint(equalToConstant: 336.0),
-                        
+
             passwordTextField.heightAnchor.constraint(equalToConstant: 53.0),
-            passwordTextField.widthAnchor.constraint(equalToConstant: 336.0),
             
             //stackViewBottomConstraint!,
             
             stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor,constant: 16.0),
-            stackView.topAnchor.constraint(equalTo: margins.bottomAnchor, constant: -117 - self.bounds.height/2.0 - 51),
-            stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor,constant: -16.0),
+            stackView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: bounds.height/11),
+            stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -16.0),
 
 
             loginButton.heightAnchor.constraint(equalToConstant: 68),
-            loginButton.widthAnchor.constraint(equalToConstant: 336.0),
+            loginButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20.0),
+            loginButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -20.0),
             loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 51.0),
 
             loginButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),

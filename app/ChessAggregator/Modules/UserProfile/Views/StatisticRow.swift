@@ -1,11 +1,14 @@
+//
+// Created by Иван Лизогуб on 10.01.2021.
+//
 
 import UIKit
 
-class ProfileRaw: AutoLayoutView {
-
+class StatisticRow: AutoLayoutView {
     let mainView = UIView()
     let label = UILabel()
     let arrow = UIImageView(image: UIImage(systemName: "chevron.right"))
+    let statisticsImage = UIImageView(image: UIImage(systemName: "chart.bar.xaxis"))
 
     init(name: String) {
         super.init(frame: .zero)
@@ -21,10 +24,18 @@ class ProfileRaw: AutoLayoutView {
         label.font = UIFont.systemFont(ofSize: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
         arrow.translatesAutoresizingMaskIntoConstraints = false
+        statisticsImage.translatesAutoresizingMaskIntoConstraints = false
 
         arrow.tintColor = .black
+        mainView.addSubview(statisticsImage)
         mainView.addSubview(label)
         mainView.addSubview(arrow)
+
+        layer.borderColor = UIColor.gray.cgColor
+        layer.shadowOpacity = 1.0
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowRadius = 5.5
+        layer.shadowColor = UIColor.gray.cgColor
     }
 
     private var didSetupConstraints: Bool = false
@@ -49,7 +60,12 @@ class ProfileRaw: AutoLayoutView {
             mainView.centerXAnchor.constraint(equalTo: superview!.centerXAnchor),
             mainView.centerYAnchor.constraint(equalTo: superview!.centerYAnchor),
 
-            label.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 12),
+            statisticsImage.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 30),
+            statisticsImage.centerYAnchor.constraint(equalTo: mainView.centerYAnchor),
+            statisticsImage.widthAnchor.constraint(equalToConstant: 50.0),
+            statisticsImage.heightAnchor.constraint(equalToConstant: 50.0),
+
+            label.leadingAnchor.constraint(equalTo: statisticsImage.trailingAnchor, constant: 20),
             label.centerYAnchor.constraint(equalTo: mainView.centerYAnchor),
 
             arrow.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -30),

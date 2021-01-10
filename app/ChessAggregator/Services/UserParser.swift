@@ -87,6 +87,7 @@ class UserParser {
         guard let urlString = try? ("https://ratings.ruchess.ru/people/" + String(frcID)) else {
             
             return [nil, nil, nil, nil, nil, nil]
+            
         }
         guard let myUrl = URL(string: urlString) else{ return  result}
         do {
