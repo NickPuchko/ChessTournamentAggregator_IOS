@@ -1,0 +1,12 @@
+//
+// Created by Иван Лизогуб on 10.01.2021.
+//
+
+import Foundation
+
+struct EventViewModel {
+    var name: String
+    var location: String
+    var rating: String
+    var date: String
+}

@@ -43,7 +43,6 @@ final class UserProfileViewController: UIViewController {
         return label
     }()
     private let arrowDown = UIButton(type: .custom)
-//    private let fullRatingStack = UIStackView()
     private let fideRatingSegment: RatingSegment = {
         let segment = RatingSegment(ratingType: "FIDE")
         segment.updateRatings(classic: "0", rapid: "0", blitz: "0")
@@ -163,21 +162,16 @@ final class UserProfileViewController: UIViewController {
         topView.addSubview(userName)
         topView.addSubview(userStatus)
         topView.addSubview(generalStack)
-//        topView.addSubview(fullRatingStack)
-//        topView.addSubview(shortRatingType)
-//        topView.addSubview(shortRatingStack)
         topView.addSubview(arrowDown)
         topView.addSubview(editButton)
 
         //TODO: выяснить что здесь происходит, почему так работает анимация, пока не удалять.
         generalStack.axis = .vertical
         generalStack.distribution = .fill
-        generalStack.alignment = .fill
+        generalStack.alignment = .leading
         generalStack.addArrangedSubview(shortStack)
         generalStack.addArrangedSubview(fideRatingSegment)
         generalStack.addArrangedSubview(frcRatingSegment)
-        generalStack.removeArrangedSubview(fideRatingSegment)
-        generalStack.removeArrangedSubview(frcRatingSegment)
         fideRatingSegment.isHidden = true
         frcRatingSegment.isHidden = true
 
@@ -202,15 +196,6 @@ final class UserProfileViewController: UIViewController {
 
         arrowDown.tintColor = .black
         arrowDown.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-
-//        fullRatingStack.isHidden = true
-//        fideRatingSegment.ratingSegmentSubviews(isHidden: true)
-//        frcRatingSegment.isHidden = true
-//        fullRatingStack.axis = .vertical
-//        fullRatingStack.distribution = .fillProportionally
-//        fullRatingStack.alignment = .trailing
-//        fullRatingStack.addArrangedSubview(fideRatingSegment)
-//        fullRatingStack.addArrangedSubview(frcRatingSegment)
 
         let statisticsBackground = StatisticRow(name: "Статистика")
         statisticsButton.addSubview(statisticsBackground)
@@ -255,7 +240,6 @@ final class UserProfileViewController: UIViewController {
         shortRatingType,
         shortRatingStack,
         arrowDown,
-//        fullRatingStack,
         imageView,
         fideFrcStack,
         userName,
@@ -279,7 +263,6 @@ final class UserProfileViewController: UIViewController {
 
             topView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             topView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-//            topView.bottomAnchor.constraint(equalTo: fullRatingStack.bottomAnchor),
             topView.bottomAnchor.constraint(equalTo: generalStack.bottomAnchor),
 
             editButton.topAnchor.constraint(equalTo: topView.topAnchor, constant: 16),
@@ -299,22 +282,10 @@ final class UserProfileViewController: UIViewController {
             generalStack.topAnchor.constraint(equalTo: userStatus.bottomAnchor, constant: 10.0),
             generalStack.leadingAnchor.constraint(equalTo: userName.leadingAnchor, constant: -40.0),
 
-
-//            shortRatingType.leadingAnchor.constraint(equalTo: userName.leadingAnchor, constant: -30.0),
-//            shortRatingType.topAnchor.constraint(equalTo: userStatus.bottomAnchor, constant: 10.0),
-//
-//            shortRatingStack.leadingAnchor.constraint(equalTo: shortRatingType.trailingAnchor, constant: 15.0),
-//            shortRatingStack.topAnchor.constraint(equalTo: userStatus.bottomAnchor, constant: 10.0),
-
-//            arrowDown.leadingAnchor.constraint(equalTo: shortRatingStack.trailingAnchor, constant: 16.0),
-//            arrowDown.centerYAnchor.constraint(equalTo: shortRatingStack.centerYAnchor),
             arrowDown.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 25.0),
             arrowDown.topAnchor.constraint(equalTo: userStatus.bottomAnchor, constant: 10.0),
             arrowDown.widthAnchor.constraint(equalToConstant: 18.0),
             arrowDown.heightAnchor.constraint(equalToConstant: 23.0),
-
-//            fullRatingStack.topAnchor.constraint(equalTo: userStatus.bottomAnchor, constant: 10.0),
-//            fullRatingStack.leadingAnchor.constraint(equalTo: shortRatingType.leadingAnchor),
 
             createButton.heightAnchor.constraint(equalToConstant: 80.0),
             createButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20.0),
@@ -342,7 +313,6 @@ final class UserProfileViewController: UIViewController {
     }
 
     @objc func onTapStatButton() {
-//        viewSlideInFromTopToBottom(view: fullRatingStack)
         isStatStackFullMode = !isStatStackFullMode
         UIView.animate(withDuration: 0.5) { () -> Void in
             if(self.isStatStackFullMode) {
@@ -356,27 +326,16 @@ final class UserProfileViewController: UIViewController {
         UIView.animate(withDuration: 0.5) { [weak self] in
             guard let strongSelf = self else { return }
             if(strongSelf.isStatStackFullMode) {
-                strongSelf.generalStack.removeArrangedSubview(strongSelf.shortStack)
-                strongSelf.generalStack.addArrangedSubview(strongSelf.fideRatingSegment)
-                strongSelf.generalStack.addArrangedSubview(strongSelf.frcRatingSegment)
                 strongSelf.shortStack.isHidden = true
                 strongSelf.frcRatingSegment.isHidden = false
                 strongSelf.fideRatingSegment.isHidden = false
             } else {
-                strongSelf.generalStack.removeArrangedSubview(strongSelf.frcRatingSegment)
-                strongSelf.generalStack.removeArrangedSubview(strongSelf.fideRatingSegment)
-                strongSelf.generalStack.addArrangedSubview(strongSelf.shortStack)
                 strongSelf.frcRatingSegment.isHidden = true
                 strongSelf.fideRatingSegment.isHidden = true
                 strongSelf.shortStack.isHidden = false
             }
             strongSelf.generalStack.layoutIfNeeded()
         }
-//        shortRatingStack.isHidden = !isStatStackFullMode
-//        shortRatingType.isHidden = !isStatStackFullMode
-//        fullRatingStack.isHidden = isStatStackFullMode
-//        frcRatingSegment.isHidden = isStatStackFullMode
-//        fideRatingSegment.ratingSegmentSubviews(isHidden: isStatStackFullMode)
     }
 
     @objc
@@ -411,15 +370,6 @@ final class UserProfileViewController: UIViewController {
     @objc
     func tappedLogout() {
         output.signOut()
-    }
-
-    func viewSlideInFromTopToBottom(view: UIView) -> Void {
-        let transition:CATransition = CATransition()
-        transition.duration = 0.5
-        transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        transition.type = .reveal
-        transition.subtype = .fromBottom
-        view.layer.add(transition, forKey: kCATransition)
     }
 }
 
