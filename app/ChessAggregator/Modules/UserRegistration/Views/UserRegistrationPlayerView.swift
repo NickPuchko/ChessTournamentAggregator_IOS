@@ -160,19 +160,21 @@ class UserRegistrationPlayerView: AutoLayoutView {
         fideID.rightView = fideIDButton
         fideID.rightViewMode = .always
         fideIDButton.addTarget(self, action: #selector(onTapFide), for: .touchUpInside)
+        fideID.addTarget(self, action: #selector(textFieldFideIDChanged), for: .editingChanged)
         scrollableStackView.addArrangedSubview(fideID)
 
         setupRoundedTextField(textField: frcID, textFieldPlaceholder: "ФШР ID", textFieldKeyboard: .numberPad)
         frcID.rightView = frcIDButton
         frcID.rightViewMode = .always
         frcIDButton.addTarget(self, action: #selector(onTapFrc), for: .touchUpInside)
+        
         scrollableStackView.addArrangedSubview(frcID)
         
         setupRoundedTextField(textField: latinFullname, textFieldPlaceholder: "Фамилия и имя (Латиница)", textFieldKeyboard: .default)
         latinFullname.rightView = fullnameButton
         latinFullname.rightViewMode = .always
         fullnameButton.addTarget(self, action: #selector(onTapLatinFullname), for: .touchUpInside)
-        latinFullname.addTarget(self, action: #selector(textFieldFullanmeChanged), for: .editingChanged)
+        latinFullname.addTarget(self, action: #selector(textFieldFullnameChanged), for: .editingChanged)
         scrollableStackView.addArrangedSubview(latinFullname)
 
         
@@ -299,7 +301,7 @@ class UserRegistrationPlayerView: AutoLayoutView {
         
         onTapLatinFullnameButton?()
     }
-    @objc private func textFieldFullanmeChanged(){
+    @objc private func textFieldFullnameChanged(){
 
         if latinFullname.text != ""  {
             
@@ -316,6 +318,21 @@ class UserRegistrationPlayerView: AutoLayoutView {
             
             frcID.alpha = 1
             frcID.isEnabled = true
+        }
+    }
+    @objc private func textFieldFideIDChanged(){
+        print("aaaaa")
+        if fideID.text != ""  {
+            
+            latinFullname.isEnabled = false
+            latinFullname.alpha = 0.5
+            
+        }
+        else{
+            
+            latinFullname.alpha = 1
+            latinFullname.isEnabled = true
+            
         }
     }
 }
