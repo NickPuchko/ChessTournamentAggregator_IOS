@@ -152,15 +152,10 @@ class UserRegistrationPlayerView: AutoLayoutView {
         emailAddressStackView.addArrangedSubview(emailWasRegisteredWarning)
         scrollableStackView.addArrangedSubview(emailAddressStackView)
 
-        setupRoundedTextField(
-                textField: fideID,
-                textFieldPlaceholder: "FideID",
-                textFieldKeyboard: UIKeyboardType.numberPad
-        )
+        setupRoundedTextField(textField: fideID, textFieldPlaceholder: "FideID", textFieldKeyboard: .numberPad)
         fideID.rightView = fideIDButton
         fideID.rightViewMode = .always
         fideIDButton.addTarget(self, action: #selector(onTapFide), for: .touchUpInside)
-        fideID.addTarget(self, action: #selector(textFieldFideIDChanged), for: .editingChanged)
         scrollableStackView.addArrangedSubview(fideID)
 
         setupRoundedTextField(textField: frcID, textFieldPlaceholder: "ФШР ID", textFieldKeyboard: .numberPad)
@@ -297,42 +292,24 @@ class UserRegistrationPlayerView: AutoLayoutView {
     @objc private func onTapFrc() {
         onTapFrcButton?()
     }
-    @objc private func onTapLatinFullname(){
-        
+
+    @objc private func onTapLatinFullname() {
         onTapLatinFullnameButton?()
     }
     @objc private func textFieldFullnameChanged(){
 
         if latinFullname.text != ""  {
-            
             fideID.isEnabled = false
             fideID.alpha = 0.5
             
             frcID.isEnabled = false
             frcID.alpha = 0.5
-        }
-        else{
-            
+        } else {
             fideID.alpha = 1
             fideID.isEnabled = true
             
             frcID.alpha = 1
             frcID.isEnabled = true
-        }
-    }
-    @objc private func textFieldFideIDChanged(){
-        print("aaaaa")
-        if fideID.text != ""  {
-            
-            latinFullname.isEnabled = false
-            latinFullname.alpha = 0.5
-            
-        }
-        else{
-            
-            latinFullname.alpha = 1
-            latinFullname.isEnabled = true
-            
         }
     }
 }
