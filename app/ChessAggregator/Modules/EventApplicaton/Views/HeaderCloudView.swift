@@ -16,7 +16,7 @@ class HeaderCloudView : AutoLayoutView {
     private let ratingLabel: UILabel
     private let dateLabel: UILabel
 
-    init(event: Tournament) {
+    init() {
         teamImage = UIImageView(image: UIImage(systemName: "checkerboard.rectangle")!) // replace with event admin picture
         teamImage.layer.cornerRadius = 30
         teamImage.clipsToBounds = true
@@ -31,20 +31,20 @@ class HeaderCloudView : AutoLayoutView {
         dateImage.tintColor = .black
 
         nameLabel = UILabel()
-        nameLabel.text = event.name
+        nameLabel.text = "Название турнира"
         nameLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 28)
         nameLabel.numberOfLines = 0
 
         locationLabel = UILabel()
-        locationLabel.text = event.location
+        locationLabel.text = "Место проведения"
         locationLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
 
         ratingLabel = UILabel()
-        ratingLabel.text = event.ratingType.rawValue
+        ratingLabel.text = "0"
         ratingLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
 
         dateLabel = UILabel()
-        dateLabel.text = "\(event.openDate) - \(event.closeDate)"
+        dateLabel.text = ""
         dateLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
 
         super.init(frame: .zero)
@@ -99,6 +99,13 @@ class HeaderCloudView : AutoLayoutView {
         layer.shadowOffset = .zero
         layer.shadowColor = layer.borderColor
     }
+    convenience init(event: Tournament) {
+        self.init()
+        nameLabel.text = event.name
+        locationLabel.text = event.location
+        ratingLabel.text = event.ratingType.rawValue
+        dateLabel.text = "\(event.openDate) - \(event.closeDate)"
+    }
 
     override func setupConstraints() {
         super.setupConstraints()
@@ -142,5 +149,9 @@ class HeaderCloudView : AutoLayoutView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func update(with viewModel: EventViewModel) {
+
     }
 }
