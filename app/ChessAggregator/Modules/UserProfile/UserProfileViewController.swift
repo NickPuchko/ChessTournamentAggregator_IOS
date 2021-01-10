@@ -374,6 +374,7 @@ final class UserProfileViewController: UIViewController {
 }
 
 extension UserProfileViewController: UserProfileViewInput {
+
     func updateUser(user: UserViewModel) {
         userName.text = user.userName
         userStatus.text = user.userStatus

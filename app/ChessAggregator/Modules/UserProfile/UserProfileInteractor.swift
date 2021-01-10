@@ -17,11 +17,13 @@ final class UserProfileInteractor {
             self?.user?.player.classicFrcRating = ratings[3]
             self?.user?.player.rapidFrcRating = ratings[4]
             self?.user?.player.blitzFrcRating = ratings[5]
-
+            
+//            let realtimeDatabaseUser = UserParser.userToFirebaseUser(user: self?.user ?? User())
+//            FirebaseRef.ref.child("Users").child(Auth.auth().currentUser!.uid).setValue(realtimeDatabaseUser)
+//
 			self?.output!.updateUser(user: self!.user!)
 		}
 	}
-
 }
 
 extension UserProfileInteractor: UserProfileInteractorInput {
