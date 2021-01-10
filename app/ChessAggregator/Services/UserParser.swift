@@ -15,6 +15,7 @@ class UserParser {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.locale = Locale(identifier: "ru_RU")
         
+        
         let rates = RateParser(frcID: user.player.frcID ?? 0)
         result = [ "lastName": user.player.lastName,
                    "firstName": user.player.firstName,
@@ -54,13 +55,15 @@ class UserParser {
                 result["frcBlitz"] = rating
             }
         }
-        
+        let fideData = parseFide(frcID: user.player.frcID ?? 0)
+        if let fullname = fideData.0 {
+            result["latinName"] =  fullname
+        }
+        if let fideId = fideData.1 {
+            result["fideID"] =  fideId
+        }
         if let patronomicName = user.player.patronomicName {
             result["patronomicName"] = patronomicName
-        }
-        
-        if let fideID = user.player.fideID {
-            result["fideID"] =  fideID
         }
         if let frcID = user.player.frcID {
             result["frcID"] = frcID
@@ -70,6 +73,43 @@ class UserParser {
         }
         if let organizationCity = user.organizer.organizationCity {
             result["organizationCity"] = organizationCity
+        }
+        return result
+    }
+    static func parseFide(frcID: Int) ->(String?, Int?){
+        var arrayDataFide: [String]?
+        let fideID: Int?
+        let fullname: String?
+        var result: (String?, Int?)
+        guard let urlString = try? ("https://ratings.ruchess.ru/people/" + String(frcID)) else {
+            
+            return (nil,nil)
+            
+        }
+        guard let myUrl = URL(string: urlString) else{ return (nil, nil) }
+        
+        do {
+            guard let HTMLString = try? String(contentsOf: myUrl, encoding: .utf8) else { return (nil, nil) }
+            let HTMLContent = HTMLString
+            do{
+                guard let doc = try? SwiftSoup.parse(HTMLContent) else{ return (nil, nil)}
+                
+                do{
+                    guard let element = try? doc.select("ul").array() else{ return (nil, nil)}
+                    if element.count >= 3{
+                        arrayDataFide = (try? element[3].text())?.words ?? nil
+                        fideID = Int(arrayDataFide![2]) ?? nil
+                        fullname = (arrayDataFide![4] + " " + arrayDataFide![5])
+                        result.0 = fullname
+                        result.1 = fideID
+                       
+                    }
+                    else{
+                        return (nil, nil)
+                    }
+                    
+                }
+            }
         }
         return result
     }
