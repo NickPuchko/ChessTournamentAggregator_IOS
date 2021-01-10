@@ -7,5 +7,4 @@ import Foundation
 struct Organizer: Codable {
     var organizationCity: String?
     var organizationName: String?
-    var eventsIDs: [String]? // TODO: delete
 }

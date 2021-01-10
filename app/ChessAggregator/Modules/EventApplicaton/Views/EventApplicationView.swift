@@ -9,7 +9,8 @@ class EventApplicationView: AutoLayoutView {
     private let previewStack = ScrollableStackView(config: .defaultVertical)
     private let applyButton = UIButton(type: .system)
     private let headerCloud: HeaderCloudView
-    private let footerCloud: FooterCloudView
+    let footerCloud: FooterCloudView
+    let startList: StableTableView // TODO: add shadow and corner radius
 
     var onTapApplicationButton: (() -> Void)?
 
@@ -17,8 +18,10 @@ class EventApplicationView: AutoLayoutView {
         headerCloud = HeaderCloudView(event: event)
         footerCloud = FooterCloudView(event: event)
         footerCloud.siteTapAction = onTapSite
+        startList = StableTableView(frame: .zero, style: .plain)
         super.init(frame: .zero)
         backgroundColor = .white
+        setupList()
         setupButton()
         setupStack()
         setupConstraints()
@@ -27,7 +30,15 @@ class EventApplicationView: AutoLayoutView {
     required init(coder: NSCoder) {
         fatalError("not supported")
     }
-    
+
+    private func setupList() {
+        startList.isScrollEnabled = false
+        startList.backgroundColor = .white
+        startList.allowsSelection = false
+//        startList.rowHeight = UITableView.automaticDimension
+//        startList.estimatedRowHeight = 60
+    }
+
     private func setupStack() {
         let topPadding = UIView()
         topPadding.heightAnchor.constraint(equalToConstant: 8).isActive = true
@@ -36,6 +47,7 @@ class EventApplicationView: AutoLayoutView {
         previewStack.addArrangedSubview(headerCloud)
         previewStack.addArrangedSubview(footerCloud)
         previewStack.addArrangedSubview(applyButton)
+        previewStack.addArrangedSubview(startList)
 
         previewStack.config.stack.distribution = .fillProportionally
         previewStack.config.stack.alignment = .center
@@ -73,6 +85,9 @@ class EventApplicationView: AutoLayoutView {
             applyButton.heightAnchor.constraint(equalToConstant: 50),
             applyButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             applyButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+
+            startList.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            startList.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
 
             previewStack.leadingAnchor.constraint(equalTo: leadingAnchor),
             previewStack.trailingAnchor.constraint(equalTo: trailingAnchor),

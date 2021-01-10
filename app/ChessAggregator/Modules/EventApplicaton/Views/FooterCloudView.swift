@@ -85,13 +85,13 @@ class FooterCloudView: AutoLayoutView {
         return label
     }()
 
-    private let participantsLabel: UILabel = {
+    var participantsLabel: UILabel = {
         var label = UILabel()
         label.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 24)
         return label
     }()
 
-    private let eloLabel: UILabel = {
+    var eloLabel: UILabel = {
         var label = UILabel()
         label.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
         return label
@@ -123,7 +123,7 @@ class FooterCloudView: AutoLayoutView {
         fundLabel.text = "\(event.prizeFund) ₽"
         toursLabel.text = "⚔ \(event.tours)"
         participantsLabel.text = "👤 \(event.participantsCount)"
-        eloLabel.text = "\(2123)" // TODO: replace with rating parsing
+        eloLabel.text = "\(0)"
 
         timeLabel.text = "\(Int(event.minutes + event.seconds/60)) ＋ '\(event.increment)"
         underTimeLabel.text = event.mode.rawValue
