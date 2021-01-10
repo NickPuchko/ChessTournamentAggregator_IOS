@@ -154,7 +154,7 @@ class HeaderCloudView : AutoLayoutView {
     func update(with viewModel: EventViewModel) {
         nameLabel.text = viewModel.name
         locationLabel.text = viewModel.location
-        ratingLabel.text = viewModel.rating
+        ratingLabel.text = viewModel.ratingType
         dateLabel.text = viewModel.date
     }
 }

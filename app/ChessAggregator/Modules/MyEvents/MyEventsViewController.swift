@@ -17,10 +17,10 @@ final class MyEventsViewController: UIViewController {
     private let collectionViewLayout = UICollectionViewFlowLayout()
     private let collectionView: UICollectionView
 
-    private var viewModels = [MyEventViewModel]()
-    private var currentViewModels: [MyEventViewModel] = []
-    private var forthcomingViewModels: [MyEventViewModel] = []
-    private var completedViewModels: [MyEventViewModel] = []
+    private var viewModels = [EventViewModel]()
+    private var currentViewModels: [EventViewModel] = []
+    private var forthcomingViewModels: [EventViewModel] = []
+    private var completedViewModels: [EventViewModel] = []
 
     init(output: MyEventsViewOutput) {
         self.output = output
@@ -52,7 +52,7 @@ final class MyEventsViewController: UIViewController {
 
 extension MyEventsViewController: MyEventsViewInput {
 
-    func updateCurrentView(with viewModels: [MyEventViewModel]) {
+    func updateCurrentView(with viewModels: [EventViewModel]) {
         currentViewModels = viewModels
         if segmentedControl.selectedSegmentIndex == 0 {
             self.viewModels = currentViewModels
@@ -60,7 +60,7 @@ extension MyEventsViewController: MyEventsViewInput {
         collectionView.reloadData()
     }
 
-    func updateForthcomingView(with viewModels: [MyEventViewModel]) {
+    func updateForthcomingView(with viewModels: [EventViewModel]) {
         forthcomingViewModels = viewModels
         if segmentedControl.selectedSegmentIndex == 1 {
             self.viewModels = forthcomingViewModels
@@ -68,7 +68,7 @@ extension MyEventsViewController: MyEventsViewInput {
         collectionView.reloadData()
     }
 
-    func updateCompletedView(with viewModels: [MyEventViewModel]) {
+    func updateCompletedView(with viewModels: [EventViewModel]) {
         completedViewModels = viewModels
         if segmentedControl.selectedSegmentIndex == 2 {
             self.viewModels = completedViewModels
@@ -85,7 +85,7 @@ extension MyEventsViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let viewModel = viewModels[indexPath.item]
-        let cell = self.collectionView.dequeueCell(cellType: MyEventViewCell<MyEventView>.self, for: indexPath)
+        let cell = self.collectionView.dequeueCell(cellType: MyEventViewCell<EventCardView>.self, for: indexPath)
         cell.containerView.update(with: viewModel)
         return cell
     }
@@ -127,7 +127,7 @@ private extension MyEventsViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .secondarySystemBackground
-        collectionView.register(MyEventViewCell<MyEventView>.self)
+        collectionView.register(MyEventViewCell<EventCardView>.self)
         collectionView.contentInset = UIEdgeInsets(top: 20.0, left: 13.0, bottom: 0.0, right: 13.0)
     }
 

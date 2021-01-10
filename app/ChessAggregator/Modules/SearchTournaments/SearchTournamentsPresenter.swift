@@ -15,7 +15,7 @@ final class SearchTournamentsPresenter {
 	private let router: SearchTournamentsRouterInput
 	private let interactor: SearchTournamentsInteractorInput
 
-    private var sections: [EventSectionModel] = []
+    private var sections: [EventViewModel] = []
     
     init(router: SearchTournamentsRouterInput, interactor: SearchTournamentsInteractorInput) {
         self.router = router
@@ -31,8 +31,8 @@ extension SearchTournamentsPresenter: SearchTournamentsViewOutput {
         interactor.refreshEvents()
     }
 
-    func showInfo(section: EventSectionModel) {
-        router.showInfo(section: section)
+    func showInfo(event: EventViewModel) {
+        router.showInfo(event: event)
     }
 
     func showApply() {
@@ -40,14 +40,20 @@ extension SearchTournamentsPresenter: SearchTournamentsViewOutput {
     }
 
     func configureView() {
-        view?.loadEvents(interactor.loadSections())
+        interactor.loadEvents()
     }
     
 }
 
 extension SearchTournamentsPresenter: SearchTournamentsInteractorOutput {
-    func updateView() {
-        configureView()
-        view?.updateFeed()
+    func updateView(with events: [Tournament]) {
+        let viewModels = EventParser.eventsToEventViewModel(events)
+        view?.updateViewModels(with: viewModels)
+    }
+}
+
+private extension SearchTournamentsPresenter {
+    func makeViewModels(_ events: [Tournament]) -> [EventViewModel] {
+        EventParser.eventsToEventViewModel(events)
     }
 }

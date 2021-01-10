@@ -53,13 +53,13 @@ extension MyEventsPresenter: MyEventsInteractorOutput {
 
     func didLoadCurrent(with events: [Tournament], loadType: LoadingDataType) {
         isReloading = false
-        let viewModels = makeViewModels(events)
+        let viewModels = makeEventViewModels(events)
         view?.updateCurrentView(with: viewModels)
     }
 
     func didLoadForthcoming(with events: [Tournament], loadType: LoadingDataType) {
         isReloading = false
-        let viewModels = makeViewModels(events)
+        let viewModels = makeEventViewModels(events)
         view?.updateForthcomingView(with: viewModels)
     }
 
@@ -67,7 +67,7 @@ extension MyEventsPresenter: MyEventsInteractorOutput {
         isNextPageLoading = false
         completedEventsInDatabaseCount = eventsCountInDB
         completedEvents = events
-        let viewModels = makeViewModels(events)
+        let viewModels = makeEventViewModels(events)
         view?.updateCompletedView(with: viewModels)
     }
 
@@ -95,23 +95,9 @@ private extension MyEventsPresenter {
         }
     }
 
-//    func makeEventViewModels(_ events: [Tournament]) -> [EventViewModel] {
-//        let dateFormatter = DateFormatter()
-//        return events.map { event in
-//            dateFormatter.dateFormat = "yyyy-MM-dd"
-//            let openDate = dateFormatter.date(from: event.openDate)
-//            let closeDate = dateFormatter.date(from: event.closeDate)
-//            dateFormatter.dateFormat = "dd.MM.yyyy"
-//            return EventViewModel(
-//                    name: event.name,
-//                    image: "image",
-//                    tourType: event.mode.rawValue,
-//                    prize: String(event.prizeFund),
-//                    startDate: dateFormatter.string(from: openDate ?? Date()) + "-",
-//                    endDate: dateFormatter.string(from: closeDate ?? Date()),
-//                    location: event.location,
-//                    participantsCount: String(event.participantsCount)
-//            )
-//        }
-//    }
+    func makeEventViewModels(_ events: [Tournament]) -> [EventViewModel] {
+        EventParser.eventsToEventViewModel(events)
+    }
+
+
 }

@@ -21,9 +21,9 @@ protocol MyEventsModuleOutput: class {
 }
 
 protocol MyEventsViewInput: class {
-	func updateCurrentView(with viewModels: [MyEventViewModel])
-	func updateForthcomingView(with viewModels: [MyEventViewModel])
-	func updateCompletedView(with viewModels: [MyEventViewModel])
+	func updateCurrentView(with viewModels: [EventViewModel])
+	func updateForthcomingView(with viewModels: [EventViewModel])
+	func updateCompletedView(with viewModels: [EventViewModel])
 }
 
 protocol MyEventsViewOutput: class {

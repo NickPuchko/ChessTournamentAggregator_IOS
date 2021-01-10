@@ -16,33 +16,27 @@ protocol SearchTournamentsModuleOutput: class {
 }
 
 protocol SearchTournamentsViewInput: class {
-	func loadEvents(_ sections: [EventSectionModel])
+	func updateViewModels(with viewModels: [EventViewModel])
 	func updateFeed()
 }
 
 protocol SearchTournamentsViewOutput: class {
 	func configureView()
-	func showInfo(section: EventSectionModel)
+	func showInfo(event: EventViewModel)
 	func showApply()
 	func refreshOnline()
 }
 
 protocol SearchTournamentsInteractorInput: class {
-	func loadSections() -> [EventSectionModel]
-	func count(mode: Mode) -> Int
-	func count() -> Int
+	func loadEvents()
 	func refreshEvents()
 }
 
 protocol SearchTournamentsInteractorOutput: class {
-	func updateView()
+	func updateView(with events: [Tournament])
 }
 
 protocol SearchTournamentsRouterInput: class {
-	func showInfo(section: EventSectionModel)
+	func showInfo(event: EventViewModel)
 	func showApply()
-}
-
-protocol CellIdentifiable {
-	var cellId: String { get }
 }

@@ -34,4 +34,25 @@ class EventParser {
         return events
     }
 
+    static func eventsToEventViewModel(_ events: [Tournament]) -> [EventViewModel] {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateStyle = .medium
+        return events.map { event in
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let open = dateFormatter.date(from: event.openDate)
+            let close = dateFormatter.date(from: event.closeDate)
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            let date = dateFormatter.string(from: open ?? Date()) + "—" + dateFormatter.string(from: close ?? Date())
+            return EventViewModel(
+                    event: event,
+                    eventId: event.id,
+                    name: event.name,
+                    location: event.location,
+                    mode: event.mode.rawValue,
+                    ratingType: event.ratingType.rawValue,
+                    date: date)
+        }
+    }
+
 }
