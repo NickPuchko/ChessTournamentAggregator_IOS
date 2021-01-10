@@ -30,16 +30,21 @@ extension UserRegistrationPresenter: UserRegistrationViewOutput {
     func onTapFrc() {
         router.showFrc()
     }
-
+    func onTapLatinFullname() {
+        router.showFullname()
+    }
     func onTapRegistration(
             lastName: String?, firstName: String?, patronymicName: String?,
             fideID: String?, frcID: String?, email: String?, password: String?, passwordValidation: String?,
-        isOrganizer: Bool, organizationCity: String?, organizationName: String?, birthdate: Date, sex: String?
+            isOrganizer: Bool, organizationCity: String?, organizationName: String?, birthdate: Date, sex: String?,
+            latinName: String?
     ) {
         let lowercasedEmail = email?.lowercased()
         let user = UserReg(
-            lastName: lastName ?? "", firstName: firstName ?? "", patronymicName: patronymicName, sex: Sex(rawValue: sex ?? "") ?? .male,
-                fideID: fideID ?? "", frcID: frcID ?? "", email: lowercasedEmail ?? "", password: password ?? "", passwordValidation: passwordValidation ?? "",
+            lastName: lastName ?? "", firstName: firstName ?? "", patronymicName: patronymicName,
+                sex: Sex(rawValue: sex ?? "") ?? .male, latinName: latinName ?? "",
+                fideID: fideID ?? "", frcID: frcID ?? "", email: lowercasedEmail ?? "", password: password ?? "",
+                passwordValidation: passwordValidation ?? "",
                 isOrganizer: isOrganizer, organisationCity: organizationCity, organisationName: organizationName,
                 birthdate: birthdate
         )

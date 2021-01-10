@@ -8,7 +8,6 @@ import UIKit
 final class AppCoordinator {
 
     private let window: UIWindow
-    //TODO: номер телефона
     private var authCoordinator: AuthCoordinator?
     private var chessAppCoordinator: ChessAppCoordinator?
 
@@ -23,15 +22,14 @@ final class AppCoordinator {
 
 
     func startApp() {
-        self.chessAppCoordinator = ChessAppCoordinator(window: self.window, appCoordinator: self)  //TODO: номер телефона
-        self.chessAppCoordinator?.startApp()
+        chessAppCoordinator = ChessAppCoordinator(window: window, appCoordinator: self)
+        chessAppCoordinator?.startApp()
 
     }
 
 }
 
 extension AppCoordinator: AuthCoordinatorModuleOutput {
-      //TODO: номер телефона
 
     func didLogin() {
         startApp()

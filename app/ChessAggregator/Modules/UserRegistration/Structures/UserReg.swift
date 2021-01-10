@@ -9,6 +9,7 @@ struct UserReg {
         let firstName: String
         let patronymicName: String?
         let sex: Sex
+        let latinName: String
         let fideID: String
         let frcID: String
         let email: String
@@ -20,8 +21,6 @@ struct UserReg {
         let birthdate: Date
 }
 struct UserForgot {
-
         let email: String?
-
 }
 

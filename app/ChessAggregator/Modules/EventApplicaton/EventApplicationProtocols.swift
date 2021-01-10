@@ -16,20 +16,26 @@ protocol EventApplicationModuleOutput: class {
 }
 
 protocol EventApplicationViewInput: class {
+	func reloadView(players: [PlayerModel], elo: Int, participants: Int)
 }
 
 protocol EventApplicationViewOutput: class {
 	func onTapApplication()
+	func onTapSite()
 	func eventState() -> Tournament
 }
 
 protocol EventApplicationInteractorInput: class {
-	func saveTourToDatabase()
+	func takePart()
 	func requestEvent() -> Tournament
+	func reloadData()
 }
 
 protocol EventApplicationInteractorOutput: class {
+	func reloadData(players: [PlayerModel], elo: Int, participants: Int)
 }
 
 protocol EventApplicationRouterInput: class {
+	func showSite(url: URL)
+	func showApply()
 }

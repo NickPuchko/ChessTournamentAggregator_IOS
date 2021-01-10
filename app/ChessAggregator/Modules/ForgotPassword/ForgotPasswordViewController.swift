@@ -28,11 +28,12 @@ class ForgotPasswordViewController: UIViewController {
 
     override func loadView() {
         self.view = registrationView
-        self.view.backgroundColor = .systemGray6
+        self.view.backgroundColor = .white
         self.setup()
     }
 
     private func setup() {
+        title = "Восстановление пароля"
         registrationView.onTapChangeButton = { [weak self]
         emailAddress in
 
@@ -41,6 +42,11 @@ class ForgotPasswordViewController: UIViewController {
             )
 
         }
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+                title: "Назад",
+                style: .done,
+                target: self,
+                action: #selector(backButtonTapped))
     }
 
     override func viewDidLoad() {
@@ -56,6 +62,12 @@ class ForgotPasswordViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         adapter.stop()
+    }
+
+    @objc
+    private func backButtonTapped() {
+        navigationController?.isNavigationBarHidden = true
+        navigationController?.popToRootViewController(animated: true)
     }
 
 }

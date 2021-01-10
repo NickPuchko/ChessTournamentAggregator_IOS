@@ -25,15 +25,28 @@ extension EventApplicationPresenter: EventApplicationModuleInput {
 }
 
 extension EventApplicationPresenter: EventApplicationViewOutput {
+
+    func onTapSite() {
+        router.showSite(url: interactor.requestEvent().url)
+    }
+
     func eventState() -> Tournament {
         interactor.requestEvent()
     }
 
     func onTapApplication() {
-        interactor.saveTourToDatabase()
+        interactor.takePart()
+        router.showApply()
     }
 
 }
 
 extension EventApplicationPresenter: EventApplicationInteractorOutput {
+    func reloadData(players: [PlayerModel], elo: Int, participants: Int) {
+        view?.reloadView(
+                players: players,
+                elo: elo,
+                participants: participants
+        )
+    }
 }

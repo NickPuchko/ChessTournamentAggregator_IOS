@@ -9,15 +9,10 @@ final class ChessAppCoordinator {
     weak var appCoordinator: ChessAppCoordinatorModuleOutput?
     private lazy var tabBarController = UITabBarController()
     private lazy var navigationControllers = ChessAppCoordinator.makeNavigationControllers()
-     //TODO: номер телефона
 
-    init(window: UIWindow,  appCoordinator: ChessAppCoordinatorModuleOutput) {  //TODO: номер телефона
+    init(window: UIWindow,  appCoordinator: ChessAppCoordinatorModuleOutput) {
         self.appCoordinator = appCoordinator
         self.window = window
-         //TODO: номер телефона
-            //that maybe changed
-        
-        //TODO: номер телефона
         setupAppearance()
     }
 
@@ -53,7 +48,7 @@ private extension ChessAppCoordinator {
             fatalError("wtf no Search")
         }
 
-        let context = SearchTournamentsContext(moduleOutput: nil) //TODO: номер телефона
+        let context = SearchTournamentsContext(moduleOutput: nil)
 
         let container = SearchTournamentsContainer.assemble(with: context)
         navController.setViewControllers([container.viewController], animated: false)
@@ -64,7 +59,7 @@ private extension ChessAppCoordinator {
         guard let navController = navigationControllers[.profile] else {
             fatalError("wtf no Profile")
         }
-        let context = UserProfileContext(moduleOutput: nil)  //TODO: номер телефона
+        let context = UserProfileContext(moduleOutput: nil)
 
         let container = UserProfileContainer.assemble(with: context)
         navController.setViewControllers([container.viewController], animated: false)
@@ -85,12 +80,20 @@ private extension ChessAppCoordinator {
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
         } else {
             UINavigationBar.appearance().tintColor = .black
-            UINavigationBar.appearance().barTintColor = .purple
+            UINavigationBar.appearance().barTintColor = .blue
             UINavigationBar.appearance().isTranslucent = false
         }
         UINavigationBar.appearance().shadowImage = UIImage()
 
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font : UIFont(name: "AppleSDGothicNeo-SemiBold", size: 18)
+        ]
+
+        UITabBarItem.appearance().setTitleTextAttributes([
+                NSAttributedString.Key.font : UIFont(name: "AppleSDGothicNeo-SemiBold", size: 12)
+        ], for: .normal)
+
 
         UITabBar.appearance().barTintColor = .white
     }
@@ -103,7 +106,6 @@ private extension ChessAppCoordinator {
                     image: navControllerKey.image,
                     tag: navControllerKey.rawValue)
             navigationController.tabBarItem = tabBarItem
-            //navigationController.navigationBar.prefersLargeTitles = true // MARK: Зачем?
             result[navControllerKey] = navigationController
 
             navigationController.isNavigationBarHidden = true // MARK: делать false при переходах
@@ -129,7 +131,7 @@ fileprivate enum NavControllerType: Int, CaseIterable {
     var image: UIImage? {
         switch self {
         case .currentTournaments:
-            return UIImage(systemName: "house")
+            return UIImage(systemName: "crown")
         case .search:
             return UIImage(systemName: "magnifyingglass")
         case .profile:

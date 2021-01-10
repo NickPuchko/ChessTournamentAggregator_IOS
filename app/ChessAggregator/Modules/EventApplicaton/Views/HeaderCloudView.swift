@@ -25,7 +25,7 @@ class HeaderCloudView : AutoLayoutView {
 
         locationImage = UIImageView(image: UIImage(systemName: "location")!)
         locationImage.tintColor = .black
-        ratingImage = UIImageView(image: UIImage(systemName: "star")!) // chart.bar
+        ratingImage = UIImageView(image: UIImage(systemName: "star")!) // chart.bar - alternative
         ratingImage.tintColor = .black
         dateImage = UIImageView(image: UIImage(systemName: "calendar")!)
         dateImage.tintColor = .black
@@ -48,12 +48,6 @@ class HeaderCloudView : AutoLayoutView {
         dateLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
 
         super.init(frame: .zero)
-
-
-
-        // may improve performance
-//        layer.shouldRasterize = true
-//        layer.rasterizationScale = UIScreen.main.scale
 
         let nameStack = UIStackView(arrangedSubviews: [teamImage, nameLabel])
         nameStack.axis = .horizontal
@@ -82,6 +76,7 @@ class HeaderCloudView : AutoLayoutView {
             ratingStack,
             dateStack
         ])
+
         verticalStack.axis = .vertical
         verticalStack.spacing = 8
         verticalStack.alignment = .leading
@@ -91,6 +86,10 @@ class HeaderCloudView : AutoLayoutView {
         verticalStack.isLayoutMarginsRelativeArrangement = true
         addSubview(verticalStack)
         verticalStack.pins()
+
+        // may improve performance
+//        layer.shouldRasterize = true
+//        layer.rasterizationScale = UIScreen.main.scale
 
         backgroundColor = .white
         layer.borderColor = UIColor.gray.cgColor

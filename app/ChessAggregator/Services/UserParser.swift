@@ -17,20 +17,18 @@ class UserParser {
         let rates = RateParser(frcID: user.player.frcID ?? 0)
         result = [ "lastName": user.player.lastName,
                    "firstName": user.player.firstName,
+                   "latinName": user.player.latinName,
                    "sex": user.player.sex.rawValue,
-                   "phone": user.phone,
                    "email": user.email,
-                   "password": user.password,
                    "isOrganizer": user.isOrganizer,
                    "birthdate": dateFormatter.string(from: user.player.birthdate)
         ]
         if rates.count != 0 {
             result = [ "lastName": user.player.lastName,
                        "firstName": user.player.firstName,
+                       "latinName": user.player.latinName,
                        "sex": user.player.sex.rawValue,
-                       "phone": user.phone,
                        "email": user.email,
-                       "password": user.password,
                        "isOrganizer": user.isOrganizer,
                        "birthdate": dateFormatter.string(from: user.player.birthdate),
                        "fideClassic": rates[3],
@@ -77,7 +75,7 @@ class UserParser {
                     let rapid = try element[10].text()
                     let blitz = try element[11].text()
                     
-                    let fideResult: [String] =  fide.components(separatedBy: [" ", "\n", "\t"])
+                    let fideResult: [String] = fide.components(separatedBy: [" ", "\n", "\t"])
                     
                     let frcResultClassic : [String] =  classic.components(separatedBy: [" ", "\n", "\t"])
                     let frcResultRapid : [String] =  rapid.components(separatedBy: [" ", "\n", "\t"])
@@ -90,30 +88,14 @@ class UserParser {
                     result.append(Int(frcResultClassic[2].components(separatedBy:CharacterSet.decimalDigits.inverted).joined()) ?? 0)
                     result.append(Int(frcResultRapid[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0)
                     result.append(Int(frcResultBliz[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0)
-
-//                    let STDnumberFide = fideResult[1].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-//                    let RPDnumberFide = fideResult[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-//                    let BLZnumberFide = fideResult[3].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-//
-//                    let STDnumberFRC = frcResultClassic[2].components(separatedBy:CharacterSet.decimalDigits.inverted).joined()
-//                    let RPDnumberFRC = frcResultFast[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-//                    let BLZnumberFRC = frcResultBliz[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-//
-//                    result.append(STDnumberFide)
-//                    result.append(RPDnumberFide)
-//                    result.append(BLZnumberFide)
-//
-//                    result.append(STDnumberFRC)
-//                    result.append(RPDnumberFRC)
-//                    result.append(BLZnumberFRC)
                     
                    }
-                  catch{
-
+                  catch {
+                      print("parse error")
                   }
                 }
-                catch{
-                    
+                catch {
+                    print("parse error")
                 }
             }
         } catch let error{
@@ -126,28 +108,69 @@ class UserParser {
         
         guard let userDict = snapshot.valueInExportFormat() as? NSDictionary else {return User()}
         var user = User()
-        user.phone = userDict["phone"] as? String ?? "88005553535"
         user.email = userDict["email"] as? String ?? "test@gmail.com"
         user.isOrganizer = userDict["isOrganizer"] as? Bool ?? false
-        user.password = userDict["password"] as? String ?? ""
         user.player = Player(
-            lastName: userDict["lastName"] as? String ?? "Doe",
-            firstName: userDict["firstName"] as? String ?? "John",
+            lastName: userDict["lastName"] as? String ?? "Доу",
+            firstName: userDict["firstName"] as? String ?? "Джон",
             patronomicName: userDict["patronomicName"] as! String?,
             sex: Sex(rawValue: userDict["sex"] as? String ?? "") ?? .male,
-            eventsIDs: userDict["eventsIDs"] as? [String] ?? [],
-            classicFideRating: userDict["classicFideRating"] as? Int ?? 2100,
-            rapidFideRating: userDict["rapidFideRating"] as? Int ?? 0,
-            blitzFideRating: userDict["blitzFideRating"] as? Int ?? 0,
-            classicFrcRating: userDict["classicFrcRating"] as? Int ?? 0,
-            rapidFrcRating: userDict["rapidFrcRating"] as? Int ?? 0,
-            blitzFrcRating: userDict["blitzFrcRating"] as? Int ?? 0
+            latinName: userDict["latinName"] as? String ?? "Doe John",
+            fideID: userDict["fideID"] as? Int ?? 0,
+            classicFideRating: userDict["fideClassic"] as? Int ?? nil,
+            rapidFideRating: userDict["fideRapid"] as? Int ?? nil,
+            blitzFideRating: userDict["fideBlitz"] as? Int ?? nil,
+            frcID: userDict["frcID"] as? Int ?? 0,
+            classicFrcRating: userDict["frcClassic"] as? Int ?? nil,
+            rapidFrcRating: userDict["frcRapid"] as? Int ?? nil,
+            blitzFrcRating: userDict["frcBlitz"] as? Int ?? nil
         )
-        user.organizer = Organizer(
-                organizationCity: userDict["organizationCity"] as? String ?? "",
-                organizationName: userDict["organizationName"] as? String ?? "",
-                eventsIDs: userDict["eventsIDs"] as? [String] ?? []
-        )
+
+
+        if user.isOrganizer {
+            user.organizer = Organizer(
+                    organizationCity: userDict["organizationCity"] as? String ?? "",
+                    organizationName: userDict["organizationName"] as? String ?? ""
+            )
+        }
         return user
+    }
+
+    static func usersFromSnapshot(snapshot: DataSnapshot) -> [User] {
+        guard let userDict = snapshot.valueInExportFormat() as? [String: Any] else { return [] }
+        var users: [User] = []
+        for (key, value) in userDict {
+            var user = User()
+            let thisUser = value as! [String: Any]
+            user.id = key
+            user.email = thisUser["email"] as? String ?? ""
+            user.isOrganizer = thisUser["isOrganizer"] as? Bool ?? false
+            if user.isOrganizer {
+                user.organizer = Organizer(
+                        organizationCity: thisUser["organizationCity"] as? String ?? "",
+                        organizationName: thisUser["organizationName"] as? String ?? "")
+            }
+
+
+            user.player = Player(
+                    lastName: thisUser["lastName"] as? String ?? "Doe",
+                    firstName: thisUser["firstName"] as? String ?? "John",
+                    patronomicName: thisUser["patronomicName"] as! String?,
+                    sex: Sex(rawValue: thisUser["sex"] as? String ?? "") ?? .male,
+                    fideID: thisUser["fideID"] as? Int ?? 0,
+                    classicFideRating: thisUser["fideClassic"] as? Int ?? nil,
+                    rapidFideRating: thisUser["fideRapid"] as? Int ?? nil,
+                    blitzFideRating: thisUser["fideBlitz"] as? Int ?? nil,
+                    frcID: thisUser["frcID"] as? Int ?? 0,
+                    classicFrcRating: thisUser["fideClassic"] as? Int ?? nil,
+                    rapidFrcRating: thisUser["fideRapid"] as? Int ?? nil,
+                    blitzFrcRating: thisUser["fideBlitz"] as? Int ?? nil
+            )
+
+            users.append(user)
+
+        }
+
+        return users
     }
 }

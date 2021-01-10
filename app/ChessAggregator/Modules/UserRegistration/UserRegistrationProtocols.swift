@@ -23,14 +23,14 @@ protocol UserRegistrationViewInput: class {
 }
 
 protocol UserRegistrationViewOutput: class {
-    func onTapRegistration(
-            lastName: String?, firstName: String?, patronymicName: String?,
-            fideID: String?, frcID: String?, email: String?, password: String?, passwordValidation: String?,
-        isOrganizer: Bool, organizationCity: String?, organizationName: String?, birthdate: Date, sex: String?
+    func onTapRegistration(lastName: String?, firstName: String?, patronymicName: String?, fideID: String?,
+                           frcID: String?, email: String?, password: String?, passwordValidation: String?,
+                           isOrganizer: Bool, organizationCity: String?, organizationName: String?, birthdate: Date,
+                           sex: String?, latinName: String?
     )
     func onTapFide()
     func onTapFrc()
-
+    func onTapLatinFullname()
     func isFullNameOK(string: String) -> Bool
     func filterID(string: String, maxID: Int) -> (Bool, Int?)
     func isLoginDataOK(string: String) -> Bool
@@ -50,4 +50,5 @@ protocol UserRegistrationInteractorOutput: class {
 protocol UserRegistrationRouterInput: class {
     func showFide()
     func showFrc()
+    func showFullname()
 }
