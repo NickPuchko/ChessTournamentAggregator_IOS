@@ -325,15 +325,9 @@ final class UserProfileViewController: UIViewController {
 
         UIView.animate(withDuration: 0.5) { [weak self] in
             guard let strongSelf = self else { return }
-            if(strongSelf.isStatStackFullMode) {
-                strongSelf.shortStack.isHidden = true
-                strongSelf.frcRatingSegment.isHidden = false
-                strongSelf.fideRatingSegment.isHidden = false
-            } else {
-                strongSelf.frcRatingSegment.isHidden = true
-                strongSelf.fideRatingSegment.isHidden = true
-                strongSelf.shortStack.isHidden = false
-            }
+            strongSelf.frcRatingSegment.isHidden = !strongSelf.isStatStackFullMode
+            strongSelf.fideRatingSegment.isHidden = !strongSelf.isStatStackFullMode
+            strongSelf.shortStack.isHidden = strongSelf.isStatStackFullMode
             strongSelf.generalStack.layoutIfNeeded()
         }
     }

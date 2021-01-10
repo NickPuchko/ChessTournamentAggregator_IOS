@@ -94,4 +94,24 @@ private extension MyEventsPresenter {
             )
         }
     }
+
+//    func makeEventViewModels(_ events: [Tournament]) -> [EventViewModel] {
+//        let dateFormatter = DateFormatter()
+//        return events.map { event in
+//            dateFormatter.dateFormat = "yyyy-MM-dd"
+//            let openDate = dateFormatter.date(from: event.openDate)
+//            let closeDate = dateFormatter.date(from: event.closeDate)
+//            dateFormatter.dateFormat = "dd.MM.yyyy"
+//            return EventViewModel(
+//                    name: event.name,
+//                    image: "image",
+//                    tourType: event.mode.rawValue,
+//                    prize: String(event.prizeFund),
+//                    startDate: dateFormatter.string(from: openDate ?? Date()) + "-",
+//                    endDate: dateFormatter.string(from: closeDate ?? Date()),
+//                    location: event.location,
+//                    participantsCount: String(event.participantsCount)
+//            )
+//        }
+//    }
 }
