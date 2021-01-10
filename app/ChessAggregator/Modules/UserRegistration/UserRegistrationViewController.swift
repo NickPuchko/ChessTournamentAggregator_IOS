@@ -24,10 +24,9 @@ class UserRegistrationViewController: UIViewController {
     }
 
     override func loadView() {
-
-        self.view = registrationView
-        self.view.backgroundColor = .white
-        self.setup()
+        view = registrationView
+        view.backgroundColor = .white
+        setup()
     }
 
     private func setup() {
@@ -35,13 +34,13 @@ class UserRegistrationViewController: UIViewController {
         lastName, firstName, patronymicName,
         fideID, frcID, emailAddress, password, validatePassword,
         isOrganizer, organisationCity, organisationName,
-        birthdate, sex in
+        birthdate, sex, latinName in
 
             self?.output.onTapRegistration(
                     lastName: lastName, firstName: firstName, patronymicName: patronymicName, fideID: fideID,
                     frcID: frcID, email: emailAddress, password: password, passwordValidation: validatePassword,
                     isOrganizer: isOrganizer, organizationCity: organisationCity, organizationName: organisationName,
-                    birthdate: birthdate, sex: sex
+                    birthdate: birthdate, sex: sex, latinName: latinName
                 
             )
 

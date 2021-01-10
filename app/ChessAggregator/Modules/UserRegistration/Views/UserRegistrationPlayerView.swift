@@ -82,7 +82,7 @@ class UserRegistrationPlayerView: AutoLayoutView {
     
     private let registrationButton = UIButton(type: .system)
     var onTapRegistrationButton: ((String?, String?, String?, String?, String?, String?,
-                                   String?, String?, Bool, String?, String?, Date, String?) -> Void)?
+                                   String?, String?, Bool, String?, String?, Date, String?, String?) -> Void)?
 
     init() {
         super.init(frame: .zero)
@@ -280,11 +280,12 @@ class UserRegistrationPlayerView: AutoLayoutView {
 
     @objc private func onTapRegistration() {
 
-        self.onTapRegistrationButton?(
-                self.lastName.text, self.firstName.text, self.patronymicName.text, self.fideID.text,
-                self.frcID.text, self.emailAddress.text, self.password.text, self.validatePassword.text,
-                self.switchToOrganizer.isOn, self.organizationCity.text, self.organizationName.text,
-            self.birthdateDatePicker.date, self.sex.titleForSegment(at: self.sex.selectedSegmentIndex))
+        onTapRegistrationButton?(
+                lastName.text, firstName.text, patronymicName.text, fideID.text,
+                frcID.text, emailAddress.text, password.text, validatePassword.text,
+                switchToOrganizer.isOn, organizationCity.text, organizationName.text,
+                birthdateDatePicker.date, sex.titleForSegment(at: sex.selectedSegmentIndex),
+                latinFullname.text)
     }
 
     @objc private func onTapFide() {

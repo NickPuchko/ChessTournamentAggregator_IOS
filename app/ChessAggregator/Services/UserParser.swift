@@ -17,6 +17,7 @@ class UserParser {
         let rates = RateParser(frcID: user.player.frcID ?? 0)
         result = [ "lastName": user.player.lastName,
                    "firstName": user.player.firstName,
+                   "latinName": user.player.latinName,
                    "sex": user.player.sex.rawValue,
                    "email": user.email,
                    "isOrganizer": user.isOrganizer,
@@ -25,6 +26,7 @@ class UserParser {
         if rates.count != 0 {
             result = [ "lastName": user.player.lastName,
                        "firstName": user.player.firstName,
+                       "latinName": user.player.latinName,
                        "sex": user.player.sex.rawValue,
                        "email": user.email,
                        "isOrganizer": user.isOrganizer,
@@ -73,7 +75,7 @@ class UserParser {
                     let rapid = try element[10].text()
                     let blitz = try element[11].text()
                     
-                    let fideResult: [String] =  fide.components(separatedBy: [" ", "\n", "\t"])
+                    let fideResult: [String] = fide.components(separatedBy: [" ", "\n", "\t"])
                     
                     let frcResultClassic : [String] =  classic.components(separatedBy: [" ", "\n", "\t"])
                     let frcResultRapid : [String] =  rapid.components(separatedBy: [" ", "\n", "\t"])
@@ -88,12 +90,12 @@ class UserParser {
                     result.append(Int(frcResultBliz[2].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0)
                     
                    }
-                  catch{
-
+                  catch {
+                      print("parse error")
                   }
                 }
-                catch{
-                    
+                catch {
+                    print("parse error")
                 }
             }
         } catch let error{
@@ -109,18 +111,19 @@ class UserParser {
         user.email = userDict["email"] as? String ?? "test@gmail.com"
         user.isOrganizer = userDict["isOrganizer"] as? Bool ?? false
         user.player = Player(
-            lastName: userDict["lastName"] as? String ?? "Doe",
-            firstName: userDict["firstName"] as? String ?? "John",
+            lastName: userDict["lastName"] as? String ?? "Доу",
+            firstName: userDict["firstName"] as? String ?? "Джон",
             patronomicName: userDict["patronomicName"] as! String?,
             sex: Sex(rawValue: userDict["sex"] as? String ?? "") ?? .male,
+            latinName: userDict["latinName"] as? String ?? "Doe John",
             fideID: userDict["fideID"] as? Int ?? 0,
-            classicFideRating: userDict["fideClassic"] as? Int ?? 0,
-            rapidFideRating: userDict["fideRapid"] as? Int ?? 0,
-            blitzFideRating: userDict["fideBlitz"] as? Int ?? 0,
+            classicFideRating: userDict["fideClassic"] as? Int ?? nil,
+            rapidFideRating: userDict["fideRapid"] as? Int ?? nil,
+            blitzFideRating: userDict["fideBlitz"] as? Int ?? nil,
             frcID: userDict["frcID"] as? Int ?? 0,
-            classicFrcRating: userDict["frcClassic"] as? Int ?? 0,
-            rapidFrcRating: userDict["frcRapid"] as? Int ?? 0,
-            blitzFrcRating: userDict["frcBlitz"] as? Int ?? 0
+            classicFrcRating: userDict["frcClassic"] as? Int ?? nil,
+            rapidFrcRating: userDict["frcRapid"] as? Int ?? nil,
+            blitzFrcRating: userDict["frcBlitz"] as? Int ?? nil
         )
 
 
@@ -155,13 +158,13 @@ class UserParser {
                     patronomicName: thisUser["patronomicName"] as! String?,
                     sex: Sex(rawValue: thisUser["sex"] as? String ?? "") ?? .male,
                     fideID: thisUser["fideID"] as? Int ?? 0,
-                    classicFideRating: thisUser["fideClassic"] as? Int ?? 0,
-                    rapidFideRating: thisUser["fideRapid"] as? Int ?? 0,
-                    blitzFideRating: thisUser["fideBlitz"] as? Int ?? 0,
+                    classicFideRating: thisUser["fideClassic"] as? Int ?? nil,
+                    rapidFideRating: thisUser["fideRapid"] as? Int ?? nil,
+                    blitzFideRating: thisUser["fideBlitz"] as? Int ?? nil,
                     frcID: thisUser["frcID"] as? Int ?? 0,
-                    classicFrcRating: thisUser["fideClassic"] as? Int ?? 0,
-                    rapidFrcRating: thisUser["fideRapid"] as? Int ?? 0,
-                    blitzFrcRating: thisUser["fideBlitz"] as? Int ?? 0
+                    classicFrcRating: thisUser["fideClassic"] as? Int ?? nil,
+                    rapidFrcRating: thisUser["fideRapid"] as? Int ?? nil,
+                    blitzFrcRating: thisUser["fideBlitz"] as? Int ?? nil
             )
 
             users.append(user)

@@ -42,12 +42,12 @@ private extension UserRegistrationInteractor {
     func createUserEntity(userReg: UserReg) -> User {
         let user = User(
                 player: Player(
-                        lastName: userReg.lastName, firstName: userReg.firstName, patronomicName:
-                            userReg.patronymicName, birthdate: userReg.birthdate, sex: userReg.sex,
-                        fideID: Int(userReg.fideID), frcID: Int(userReg.frcID)
+                        lastName: userReg.lastName, firstName: userReg.firstName,
+                        patronomicName: userReg.patronymicName, birthdate: userReg.birthdate, sex: userReg.sex,
+                        latinName: userReg.latinName, fideID: Int(userReg.fideID), frcID: Int(userReg.frcID)
                 ),
                 email: userReg.email, isOrganizer: userReg.isOrganizer,
-        organizer: Organizer(organizationCity: userReg.organisationCity, organizationName: userReg.organisationName))
+                organizer: Organizer(organizationCity: userReg.organisationCity, organizationName: userReg.organisationName))
 
         return user
     }
