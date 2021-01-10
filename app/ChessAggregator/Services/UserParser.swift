@@ -18,9 +18,7 @@ class UserParser {
         result = [ "lastName": user.player.lastName,
                    "firstName": user.player.firstName,
                    "sex": user.player.sex.rawValue,
-                   "phone": user.phone,
                    "email": user.email,
-                   "password": user.password,
                    "isOrganizer": user.isOrganizer,
                    "birthdate": dateFormatter.string(from: user.player.birthdate)
         ]
@@ -28,9 +26,7 @@ class UserParser {
             result = [ "lastName": user.player.lastName,
                        "firstName": user.player.firstName,
                        "sex": user.player.sex.rawValue,
-                       "phone": user.phone,
                        "email": user.email,
-                       "password": user.password,
                        "isOrganizer": user.isOrganizer,
                        "birthdate": dateFormatter.string(from: user.player.birthdate),
                        "fideClassic": rates[3],
@@ -110,67 +106,68 @@ class UserParser {
         
         guard let userDict = snapshot.valueInExportFormat() as? NSDictionary else {return User()}
         var user = User()
-        user.phone = userDict["phone"] as? String ?? "88005553535"
         user.email = userDict["email"] as? String ?? "test@gmail.com"
         user.isOrganizer = userDict["isOrganizer"] as? Bool ?? false
-        user.password = userDict["password"] as? String ?? ""
         user.player = Player(
             lastName: userDict["lastName"] as? String ?? "Doe",
             firstName: userDict["firstName"] as? String ?? "John",
             patronomicName: userDict["patronomicName"] as! String?,
             sex: Sex(rawValue: userDict["sex"] as? String ?? "") ?? .male,
-            eventsIDs: userDict["eventsIDs"] as? [String] ?? [],
-            classicFideRating: userDict["classicFideRating"] as? Int ?? 2100,
-            rapidFideRating: userDict["rapidFideRating"] as? Int ?? 0,
-            blitzFideRating: userDict["blitzFideRating"] as? Int ?? 0,
-            classicFrcRating: userDict["classicFrcRating"] as? Int ?? 0,
-            rapidFrcRating: userDict["rapidFrcRating"] as? Int ?? 0,
-            blitzFrcRating: userDict["blitzFrcRating"] as? Int ?? 0
+            fideID: userDict["fideID"] as? Int ?? 0,
+            classicFideRating: userDict["fideClassic"] as? Int ?? 0,
+            rapidFideRating: userDict["fideRapid"] as? Int ?? 0,
+            blitzFideRating: userDict["fideBlitz"] as? Int ?? 0,
+            frcID: userDict["frcID"] as? Int ?? 0,
+            classicFrcRating: userDict["frcClassic"] as? Int ?? 0,
+            rapidFrcRating: userDict["frcRapid"] as? Int ?? 0,
+            blitzFrcRating: userDict["frcBlitz"] as? Int ?? 0
         )
-        user.organizer = Organizer(
-                organizationCity: userDict["organizationCity"] as? String ?? "",
-                organizationName: userDict["organizationName"] as? String ?? "",
-                eventsIDs: userDict["eventsIDs"] as? [String] ?? []
-        )
+
+
+        if user.isOrganizer {
+            user.organizer = Organizer(
+                    organizationCity: userDict["organizationCity"] as? String ?? "",
+                    organizationName: userDict["organizationName"] as? String ?? ""
+            )
+        }
         return user
     }
 
-//    static func usersFromSnapshot(snapshot: DataSnapshot) -> [User]? {
-//        guard let userDict = snapshot.valueInExportFormat() as? [String: Any] else { return nil }
-//        var users: [User] = []
-//        for (key, value) in userDict {
-//            var user = User()
-//            let thisUser = value as! [String: Any]
-//            user.email = thisUser["email"] as? String ?? ""
-//            user.isOrganizer = thisUser["isOrganizer"] as? Bool ?? false
-//            if user.isOrganizer {
-//                user.organizer.organizationName = thisUser["organizationName"] as? String ?? ""
-//                user.organizer.organizationCity = thisUser["organizationCity"] as? Strinf ?? ""
-//                user
-//            }
-//
-//
-//            event.openDate = thisEvent["openDate"] as? String ?? "01.01.1970"
-//            event.closeDate = thisEvent["closeDate"] as? String ?? "01.01.1970"
-//            event.fee = thisEvent["fee"] as? Int ?? 0
-//            event.tours = thisEvent["tours"] as? Int ?? 9
-//
-//            event.minutes = thisEvent["minutes"] as? Int ?? 1
-//            event.seconds = thisEvent["seconds"] as? Int ?? 0
-//            event.increment = thisEvent["increment"] as? Int ?? 0
-//
-//            event.location = thisEvent["location"] as? String ?? "Moscow"
-//            event.mode = Mode.init(rawValue: (thisEvent["mode"] as? String ?? "classic")) ?? .classic
-//            event.name = thisEvent["name"] as? String ?? "Some event"
-//            event.participantsCount = (thisEvent["participants"] as? [String: Any] ?? [:]).count
-//            event.prizeFund = thisEvent["prizeFund"] as? Int ?? 0
-//            event.ratingType = RatingType.init(rawValue: (thisEvent["ratingType"] as? String ?? "Без обсчёта")) ?? .without
-//            event.url = URL(string: thisEvent["url"] as? String ?? "https://vk.com/oobermensch")!
-//
-//            events.append(event)
-//
-//        }
-//
-//        return events
-//    }
+    static func usersFromSnapshot(snapshot: DataSnapshot) -> [User] {
+        guard let userDict = snapshot.valueInExportFormat() as? [String: Any] else { return [] }
+        var users: [User] = []
+        for (key, value) in userDict {
+            var user = User()
+            let thisUser = value as! [String: Any]
+            user.id = key
+            user.email = thisUser["email"] as? String ?? ""
+            user.isOrganizer = thisUser["isOrganizer"] as? Bool ?? false
+            if user.isOrganizer {
+                user.organizer = Organizer(
+                        organizationCity: thisUser["organizationCity"] as? String ?? "",
+                        organizationName: thisUser["organizationName"] as? String ?? "")
+            }
+
+
+            user.player = Player(
+                    lastName: thisUser["lastName"] as? String ?? "Doe",
+                    firstName: thisUser["firstName"] as? String ?? "John",
+                    patronomicName: thisUser["patronomicName"] as! String?,
+                    sex: Sex(rawValue: thisUser["sex"] as? String ?? "") ?? .male,
+                    fideID: thisUser["fideID"] as? Int ?? 0,
+                    classicFideRating: thisUser["fideClassic"] as? Int ?? 0,
+                    rapidFideRating: thisUser["fideRapid"] as? Int ?? 0,
+                    blitzFideRating: thisUser["fideBlitz"] as? Int ?? 0,
+                    frcID: thisUser["frcID"] as? Int ?? 0,
+                    classicFrcRating: thisUser["fideClassic"] as? Int ?? 0,
+                    rapidFrcRating: thisUser["fideRapid"] as? Int ?? 0,
+                    blitzFrcRating: thisUser["fideBlitz"] as? Int ?? 0
+            )
+
+            users.append(user)
+
+        }
+
+        return users
+    }
 }

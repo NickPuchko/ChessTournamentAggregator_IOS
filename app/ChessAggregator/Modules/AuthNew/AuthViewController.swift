@@ -33,7 +33,6 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //title = "Вход"
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.isNavigationBarHidden = true
         authView.onTapLoginButton = { [weak self] in

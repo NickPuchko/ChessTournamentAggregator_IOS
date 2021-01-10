@@ -25,6 +25,7 @@ extension EventApplicationPresenter: EventApplicationModuleInput {
 }
 
 extension EventApplicationPresenter: EventApplicationViewOutput {
+
     func onTapSite() {
         router.showSite(url: interactor.requestEvent().url)
     }
@@ -41,4 +42,11 @@ extension EventApplicationPresenter: EventApplicationViewOutput {
 }
 
 extension EventApplicationPresenter: EventApplicationInteractorOutput {
+    func reloadData(players: [PlayerModel], elo: Int, participants: Int) {
+        view?.reloadView(
+                players: players,
+                elo: elo,
+                participants: participants
+        )
+    }
 }

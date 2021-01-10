@@ -16,6 +16,7 @@ protocol EventApplicationModuleOutput: class {
 }
 
 protocol EventApplicationViewInput: class {
+	func reloadView(players: [PlayerModel], elo: Int, participants: Int)
 }
 
 protocol EventApplicationViewOutput: class {
@@ -27,9 +28,11 @@ protocol EventApplicationViewOutput: class {
 protocol EventApplicationInteractorInput: class {
 	func takePart()
 	func requestEvent() -> Tournament
+	func reloadData()
 }
 
 protocol EventApplicationInteractorOutput: class {
+	func reloadData(players: [PlayerModel], elo: Int, participants: Int)
 }
 
 protocol EventApplicationRouterInput: class {

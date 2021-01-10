@@ -30,7 +30,7 @@ extension AuthInteractor: AuthInteractorInput {
 
                     }
                 }
-            }else {
+            } else {
                 self?.output?.didLogin()
             }
         }
