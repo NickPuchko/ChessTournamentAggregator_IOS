@@ -112,24 +112,18 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
     @objc
     private func createDefault() {
 
-        let formatter = DateFormatter()
-        formatter.timeZone = .current
-        formatter.locale = .current
-        formatter.dateFormat = "YYYY-MM-DD"
-
-
         var event = Tournament()
         event.organizerId = Auth.auth().currentUser!.uid
         event.name = labelTextField.text ?? "default"
         event.location = locationTextField.text ?? "default"
-        event.openDate = formatter.string(from: dateView.openDate.date) // TODO: dateFormatter
-        event.closeDate = formatter.string(from: dateView.closeDate.date) // TODO: dateFormatter
+        event.openDate = String(dateView.openDate.date.description.prefix(10))
+        event.closeDate = String(dateView.closeDate.date.description.prefix(10))
         event.url = URL(string: urlField.text ?? "default") ?? URL(string: "https://ruchess.ru/")!
         event.prizeFund = Int(fundField.text ?? "default") ?? 0
         event.fee = Int(feeField.text ?? "default") ?? 0
         event.tours = Int(toursField.text ?? "default") ?? 0
         event.ratingType = RatingType(rawValue: ratingTypeField.text ?? "default") ?? .without
-        
+
         labelTextField.addTarget(self, action: #selector(setDefaultName), for: .editingChanged)
         locationTextField.addTarget(self, action: #selector(setDefaultLocation), for: .editingChanged)
         toursField.addTarget(self, action: #selector(setDefaultTours), for: .allEditingEvents)
@@ -148,7 +142,6 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         event.seconds = Int(secondsField.text ?? "default") ?? 0
         event.increment = Int(incrementField.text ?? "default") ?? 30
         output.createEvent(event: event, index: modeSegment.selectedSegmentIndex, rateType: ratingTypeField.text ?? "")
-
 
     }
 
