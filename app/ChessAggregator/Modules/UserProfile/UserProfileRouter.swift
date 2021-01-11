@@ -24,14 +24,6 @@ extension UserProfileRouter: UserProfileRouterInput {
         navigationController?.pushViewController(container.viewController, animated: true)
     }
 
-    func showMyEvents() {
-        print("Edit")
-    }
-
-    func showStatistics() {
-        print("Edit")
-    }
-
     func showFIDE(user: User) {
         guard let id = user.player.fideID else {
             print("У вас не указан FIDE id. Если он существует, укажите его в профиле!")

@@ -25,7 +25,7 @@ final class UserProfileViewController: UIViewController {
     let userStatus: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
-        label.font = .boldSystemFont(ofSize: 18)
+        label.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 18)
         label.text = "Игрок"
         return label
     }()
@@ -65,7 +65,6 @@ final class UserProfileViewController: UIViewController {
         space.isHidden = true
         return space
     }()
-    let statisticsButton = UIButton(type: .custom)
 
     private let fideFrcStack = UIStackView()
     let fideButton = UIButton(type: .custom)
@@ -110,26 +109,23 @@ final class UserProfileViewController: UIViewController {
         imageView.layer.borderWidth = 0.1
         imageView.layer.borderColor = UIColor.black.cgColor
 
-
         let editImage = UIImage(systemName: "square.and.pencil")
 
-
-        editButton.setImage(UIImage(cgImage: (editImage?.cgImage)!, scale: 1.3, orientation: UIImage.Orientation.up), for: .normal) // scale may vary
+        editButton.setImage(editImage, for: .normal)
         editButton.addTarget(self, action: #selector(tappedEdit), for: .touchUpInside)
 
         createButton.backgroundColor = Styles.Color.buttonBlue
-        let createButtonAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24),
+        let createButtonAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Medium", size: 18) as Any,
                                       NSAttributedString.Key.foregroundColor : UIColor.white]
         createButton.setAttributedTitle(NSAttributedString(string: "Создать турнир", attributes: createButtonAttributes), for: .normal)
         createButton.layer.shadowColor = Styles.Color.buttonBlue.cgColor
         createButton.layer.shadowOpacity = 1.0
-        createButton.layer.shadowOffset = CGSize(width: 0, height: 0)
-        createButton.layer.shadowRadius = 5.5
+        createButton.layer.shadowOffset = .zero
+        createButton.layer.shadowRadius = 7
         createButton.layer.cornerRadius = 15
 
-        createButton.addTarget(self, action: #selector(tappedCreate), for: .touchUpInside)
 
-        statisticsButton.addTarget(self, action: #selector(tappedStatistics), for: .touchUpInside)
+        createButton.addTarget(self, action: #selector(tappedCreate), for: .touchUpInside)
 
         fideButton.addTarget(self, action: #selector(tappedFIDE), for: .touchUpInside)
 
@@ -165,7 +161,6 @@ final class UserProfileViewController: UIViewController {
         topView.addSubview(arrowDown)
         topView.addSubview(editButton)
 
-        //TODO: выяснить что здесь происходит, почему так работает анимация, пока не удалять.
         generalStack.axis = .vertical
         generalStack.distribution = .fill
         generalStack.alignment = .leading
@@ -173,8 +168,9 @@ final class UserProfileViewController: UIViewController {
         generalStack.addArrangedSubview(fideRatingSegment)
         generalStack.addArrangedSubview(frcRatingSegment)
         fideRatingSegment.isHidden = true
+        fideRatingSegment.alpha = 0
         frcRatingSegment.isHidden = true
-
+        frcRatingSegment.alpha = 0
 
         shortStack.axis = .horizontal
         shortStack.distribution = .equalSpacing
@@ -197,20 +193,16 @@ final class UserProfileViewController: UIViewController {
         arrowDown.tintColor = .black
         arrowDown.setImage(UIImage(systemName: "chevron.down"), for: .normal)
 
-        let statisticsBackground = StatisticRow(name: "Статистика")
-        statisticsButton.addSubview(statisticsBackground)
-
         profileStack.axis = .vertical
         profileStack.distribution = .fillProportionally
         profileStack.alignment = .center
         profileStack.addArrangedSubview(createButton)
         profileStack.addArrangedSubview(spacingView)
-        profileStack.addArrangedSubview(statisticsButton)
 
-        let fideBackground = ProfileRaw(name: "Профиль FIDE")
+        let fideBackground = StatisticRow(name: "Профиль FIDE", image: UIImage(imageLiteralResourceName: "fide"))
         fideButton.addSubview(fideBackground)
 
-        let frcBackground = ProfileRaw(name: "Профиль ФШР")
+        let frcBackground = StatisticRow(name: "Профиль ФШР", image: UIImage(imageLiteralResourceName: "frc"))
         frcButton.addSubview(frcBackground)
 
         lineFideFrc.backgroundColor = Styles.Color.lightGray
@@ -220,8 +212,13 @@ final class UserProfileViewController: UIViewController {
         fideFrcStack.alignment = .fill
 
         fideFrcStack.backgroundColor = .white
-        fideFrcStack.layer.cornerRadius = 18.0
-        fideFrcStack.clipsToBounds = true
+        fideFrcStack.layer.cornerRadius = 30
+        fideFrcStack.layer.borderColor = UIColor.gray.cgColor
+        fideFrcStack.layer.shadowOffset = .zero
+        fideFrcStack.layer.shadowColor = fideFrcStack.layer.borderColor
+        fideFrcStack.layer.shadowOpacity = 0.7
+        fideFrcStack.layer.shadowRadius = 8
+
         fideFrcStack.addArrangedSubview(fideButton)
         fideFrcStack.addArrangedSubview(lineFideFrc)
         fideFrcStack.addArrangedSubview(frcButton)
@@ -245,7 +242,6 @@ final class UserProfileViewController: UIViewController {
         userName,
         editButton,
         createButton,
-        statisticsButton,
         fideButton,
         lineFideFrc,
         frcButton,
@@ -257,7 +253,6 @@ final class UserProfileViewController: UIViewController {
         contentView.pins()
         topView.top()
         exitButton.bottom(-20)
-        statisticsButton.horizontal()
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
@@ -280,32 +275,38 @@ final class UserProfileViewController: UIViewController {
             userStatus.centerXAnchor.constraint(equalTo: userName.centerXAnchor),
 
             generalStack.topAnchor.constraint(equalTo: userStatus.bottomAnchor, constant: 10.0),
-            generalStack.leadingAnchor.constraint(equalTo: userName.leadingAnchor, constant: -40.0),
+            generalStack.trailingAnchor.constraint(equalTo: arrowDown.leadingAnchor, constant: -20.0),
 
             arrowDown.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 25.0),
             arrowDown.topAnchor.constraint(equalTo: userStatus.bottomAnchor, constant: 10.0),
             arrowDown.widthAnchor.constraint(equalToConstant: 18.0),
             arrowDown.heightAnchor.constraint(equalToConstant: 23.0),
 
-            createButton.heightAnchor.constraint(equalToConstant: 80.0),
+            createButton.heightAnchor.constraint(equalToConstant: 50.0),
             createButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20.0),
             createButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -20.0),
 
-            statisticsButton.heightAnchor.constraint(equalToConstant: 90.0),
-            fideButton.heightAnchor.constraint(equalToConstant: 90),
-            frcButton.heightAnchor.constraint(equalToConstant: 90),
+            fideButton.heightAnchor.constraint(equalToConstant: 80),
+            fideButton.widthAnchor.constraint(equalTo: profileStack.widthAnchor),
+
+            frcButton.heightAnchor.constraint(equalToConstant: 80),
+            frcButton.widthAnchor.constraint(equalTo: profileStack.widthAnchor),
+
             lineFideFrc.heightAnchor.constraint(equalToConstant: 2.0),
+            lineFideFrc.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30),
+            lineFideFrc.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30),
+
             spacingView.heightAnchor.constraint(equalToConstant: 20.0),
 
-            profileStack.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 20.0),
+            profileStack.topAnchor.constraint(equalTo: generalStack.bottomAnchor, constant: 20.0),
             profileStack.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: -5),
             profileStack.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 5),
 
-            fideFrcStack.topAnchor.constraint(equalTo: statisticsButton.bottomAnchor, constant: 20.0),
+            fideFrcStack.topAnchor.constraint(equalTo: createButton.bottomAnchor, constant: 40.0),
             fideFrcStack.leadingAnchor.constraint(equalTo: profileStack.leadingAnchor),
             fideFrcStack.trailingAnchor.constraint(equalTo: profileStack.trailingAnchor),
-            fideFrcStack.bottomAnchor.constraint(equalTo: exitButton.topAnchor, constant: -25),
 
+            exitButton.topAnchor.constraint(equalTo: fideFrcStack.bottomAnchor, constant: 25),
             exitButton.heightAnchor.constraint(equalTo: exitButton.titleLabel!.heightAnchor),
             exitButton.widthAnchor.constraint(equalTo: exitButton.titleLabel!.widthAnchor),
             exitButton.centerXAnchor.constraint(equalTo: margins.centerXAnchor)
@@ -320,16 +321,33 @@ final class UserProfileViewController: UIViewController {
             } else {
                 self.arrowDown.transform = CGAffineTransform(rotationAngle: -2*CGFloat.pi)
             }
-
         }
-
-        UIView.animate(withDuration: 0.5) { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.frcRatingSegment.isHidden = !strongSelf.isStatStackFullMode
-            strongSelf.fideRatingSegment.isHidden = !strongSelf.isStatStackFullMode
-            strongSelf.shortStack.isHidden = strongSelf.isStatStackFullMode
-            strongSelf.generalStack.layoutIfNeeded()
+        if isStatStackFullMode {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.shortStack.alpha = 0
+            }, completion: { _ in
+                self.shortStack.isHidden = true
+                UIView.animate(withDuration: 0.5) {
+                    self.frcRatingSegment.alpha = 1
+                    self.fideRatingSegment.alpha = 1
+                    self.frcRatingSegment.isHidden = false
+                    self.fideRatingSegment.isHidden = false
+                }
+            })
+        } else {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.frcRatingSegment.alpha = 0
+                self.fideRatingSegment.alpha = 0
+            }, completion: { _ in
+                self.shortStack.isHidden = false
+                UIView.animate(withDuration: 0.5) {
+                    self.frcRatingSegment.isHidden = true
+                    self.fideRatingSegment.isHidden = true
+                    self.shortStack.alpha = 1
+                }
+            })
         }
+        generalStack.layoutIfNeeded()
     }
 
     @objc
@@ -342,15 +360,6 @@ final class UserProfileViewController: UIViewController {
         output.createEvent()
     }
 
-    @objc
-    func tappedMyEvents() {
-        output.showMyEvents()
-    }
-
-    @objc
-    func tappedStatistics() {
-        output.showStatistics()
-    }
 
     @objc
     func tappedFIDE() {

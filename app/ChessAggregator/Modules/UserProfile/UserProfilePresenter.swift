@@ -34,13 +34,6 @@ extension UserProfilePresenter: UserProfileViewOutput {
         router.showCreator()
     }
 
-    func showMyEvents() {
-        router.showMyEvents()
-    }
-
-    func showStatistics() {
-        router.showStatistics()
-    }
 
     func showFIDE() {
         if let userInfo = user {

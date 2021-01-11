@@ -8,20 +8,20 @@ class StatisticRow: AutoLayoutView {
     let mainView = UIView()
     let label = UILabel()
     let arrow = UIImageView(image: UIImage(systemName: "chevron.right"))
-    let statisticsImage = UIImageView(image: UIImage(systemName: "chart.bar.xaxis"))
+    let statisticsImage = UIImageView()
 
-    init(name: String) {
+    init(name: String, image: UIImage) {
         super.init(frame: .zero)
 
         label.text = name
+        statisticsImage.image = image
+        statisticsImage.contentMode = .scaleAspectFit
         setup()
     }
 
     private func setup() {
-        mainView.clipsToBounds = false
-        mainView.layer.cornerRadius = 18
-        mainView.backgroundColor = .white
-        label.font = UIFont.systemFont(ofSize: 24)
+
+        label.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
         arrow.translatesAutoresizingMaskIntoConstraints = false
         statisticsImage.translatesAutoresizingMaskIntoConstraints = false
@@ -31,11 +31,6 @@ class StatisticRow: AutoLayoutView {
         mainView.addSubview(label)
         mainView.addSubview(arrow)
 
-        layer.borderColor = UIColor.gray.cgColor
-        layer.shadowOpacity = 1.0
-        layer.shadowOffset = CGSize(width: 0, height: 0)
-        layer.shadowRadius = 5.5
-        layer.shadowColor = UIColor.gray.cgColor
     }
 
     private var didSetupConstraints: Bool = false
