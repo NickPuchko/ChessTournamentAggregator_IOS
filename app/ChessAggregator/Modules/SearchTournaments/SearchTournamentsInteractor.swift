@@ -30,15 +30,27 @@ extension SearchTournamentsInteractor: SearchTournamentsInteractorInput {
 
 	func loadEvents() {
 		let currentDate = dateFormatter.string(from: Date())
-		let userId = Auth.auth().currentUser!
-		FirebaseRef.ref.child("Tournaments").queryOrdered(byChild: "participants\(userId)").queryEqual(toValue: nil).observeSingleEvent(of: .value, with: { [weak self] snapshot in
+		FirebaseRef.ref.child("Tournaments").queryOrdered(byChild: "openDate").queryStarting(atValue: currentDate).observeSingleEvent(of: .value, with: { [weak self] snapshot in
 			let events = EventParser.eventsFromSnapshot(snapshot: snapshot) ?? []
-			let filteredEvents = self?.filterToForthcoming(events) ?? []
-			self?.output?.updateView(with: events)
+			let filteredEvents = self?.makeEvents(events) ?? []
+			self?.output?.updateView(with: filteredEvents)
 		})
 	}
 
+	func makeEvents(_ events: [Tournament]) -> [Tournament] {
+		let filteredEvents = filterToForthcoming(events)
+		return sortByOpenDate(filteredEvents)
+	}
+
 	func filterToForthcoming(_ events: [Tournament]) -> [Tournament] {
-		events.filter { $0.openDate > dateFormatter.string(from: Date()) }
+		events.filter {
+			$0.openDate > dateFormatter.string(from: Date())
+		}
+	}
+
+	func sortByOpenDate(_ events: [Tournament]) -> [Tournament] {
+		events.sorted {
+			$0.openDate < $1.openDate
+		}
 	}
 }

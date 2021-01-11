@@ -61,6 +61,7 @@ final class SearchTournamentsViewController: UIViewController {
 extension SearchTournamentsViewController: SearchTournamentsViewInput {
     func updateViewModels(with viewModels: [EventViewModel]) {
         self.viewModels = viewModels
+        collectionView.reloadData()
     }
     func updateFeed() {
         collectionView.reloadData()
@@ -92,9 +93,8 @@ extension SearchTournamentsViewController: UICollectionViewDataSource {
 extension SearchTournamentsViewController: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                                sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let ratio: CGFloat = 0.6
         let width = collectionView.frame.width - collectionView.contentInset.left - collectionView.contentInset.right
-        let height = width * ratio
+        let height = CGFloat(228)
         return CGSize(width: width, height: height)
     }
 

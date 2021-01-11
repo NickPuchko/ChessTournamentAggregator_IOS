@@ -392,6 +392,14 @@ extension UserProfileViewController: UserProfileViewInput {
                 blitz: user.blitzFrcRating)
         createButton.isHidden = false
         spacingView.isHidden = false
+
+        if user.isOrganizer {
+            createButton.alpha = 1
+            createButton.isEnabled = true
+        } else {
+            createButton.alpha = 0
+            createButton.isEnabled = false
+        }
 //        createButton.isHidden = !user.isOrganizer
 //        spacingView.isHidden = !user.isOrganizer
     }
