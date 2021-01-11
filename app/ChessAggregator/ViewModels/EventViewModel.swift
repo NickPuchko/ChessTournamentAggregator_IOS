@@ -5,8 +5,11 @@
 import Foundation
 
 struct EventViewModel {
+    var event: Tournament
+    var eventId: String
     var name: String
     var location: String
-    var rating: String
+    var mode: String
+    var ratingType: String
     var date: String
 }

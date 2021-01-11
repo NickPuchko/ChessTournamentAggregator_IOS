@@ -18,7 +18,7 @@ class EventCardView : AutoLayoutView {
     private let locationLabel: UILabel
     private let dateLabel: UILabel
 
-    init() {
+    override init(frame: CGRect) {
         teamImage = UIImageView(image: UIImage(systemName: "checkerboard.rectangle")!) // replace with event admin picture
         teamImage.layer.cornerRadius = 30
         teamImage.clipsToBounds = true
@@ -26,6 +26,7 @@ class EventCardView : AutoLayoutView {
         teamImage.layer.borderColor = UIColor.gray.cgColor
 
         timeImage = UIImageView(image: UIImage(systemName: "clock")!)
+        timeImage.tintColor = .black
         locationImage = UIImageView(image: UIImage(systemName: "location")!)
         locationImage.tintColor = .black
         ratingImage = UIImageView(image: UIImage(systemName: "star")!) // chart.bar - alternative
@@ -54,7 +55,7 @@ class EventCardView : AutoLayoutView {
         dateLabel.text = ""
         dateLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
 
-        super.init(frame: .zero)
+        super.init(frame: frame)
 
         let nameStack = UIStackView(arrangedSubviews: [teamImage, nameLabel])
         nameStack.axis = .horizontal
@@ -95,7 +96,7 @@ class EventCardView : AutoLayoutView {
         verticalStack.alignment = .leading
         verticalStack.distribution = .fill
         verticalStack.setCustomSpacing(8, after: nameStack)
-        verticalStack.layoutMargins = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+        verticalStack.layoutMargins = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         verticalStack.isLayoutMarginsRelativeArrangement = true
         addSubview(verticalStack)
         verticalStack.pins()
@@ -112,6 +113,7 @@ class EventCardView : AutoLayoutView {
         layer.shadowOffset = .zero
         layer.shadowColor = layer.borderColor
     }
+
     convenience init(event: Tournament) {
         self.init()
         nameLabel.text = event.name
@@ -174,6 +176,10 @@ class EventCardView : AutoLayoutView {
     }
 
     func update(with viewModel: EventViewModel) {
-
+        nameLabel.text = viewModel.name
+        locationLabel.text = viewModel.location
+        timeLabel.text = viewModel.mode
+        ratingLabel.text = viewModel.ratingType
+        dateLabel.text = viewModel.date
     }
 }

@@ -2,8 +2,8 @@ import UIKit
 
 final class SearchTournamentsViewController: UIViewController {
 	private let output: SearchTournamentsViewOutput
-    private var sections: [EventSectionModel] = []
-    private var filteredSections: [EventSectionModel] = []
+    private var viewModels: [EventViewModel] = []
+    private var filteredSections: [EventViewModel] = []
     private var refreshControl = UIRefreshControl()
 
     private var searchBarIsEmpty: Bool {
@@ -15,19 +15,15 @@ final class SearchTournamentsViewController: UIViewController {
         searchController.isActive && !searchBarIsEmpty
     }
 
-    private lazy var tableView: UITableView = {
-        let table = UITableView(frame: .zero, style: .insetGrouped)
-        table.translatesAutoresizingMaskIntoConstraints = false
-        table.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        return table
-    }()
+    private let collectionViewLayout = UICollectionViewFlowLayout()
+    private let collectionView: UICollectionView
 
     private let searchController = UISearchController(searchResultsController: nil)
 
     init(output: SearchTournamentsViewOutput) {
         self.output = output
-        
+        collectionViewLayout.scrollDirection = .vertical
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,23 +33,18 @@ final class SearchTournamentsViewController: UIViewController {
 
     override func loadView() {
         view = UIView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tableView)
-        tableView.pins()
+        view.addSubview(collectionView)
+        setupCollectionView()
+        setupConstraints()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         output.configureView()
 
-        tableView.dataSource = self
-        tableView.delegate = self
-
-        tableView.sectionHeaderHeight = 0
-
         navigationController?.isNavigationBarHidden = false
 
-        setupSearch()
+//        setupSearch()
     }
 
 
@@ -63,107 +54,97 @@ final class SearchTournamentsViewController: UIViewController {
         refreshControl.endRefreshing()
     }
 
+
+
 }
 
 extension SearchTournamentsViewController: SearchTournamentsViewInput {
-    func loadEvents(_ sections: [EventSectionModel]) {
-        self.sections = sections
+    func updateViewModels(with viewModels: [EventViewModel]) {
+        self.viewModels = viewModels
     }
     func updateFeed() {
-        tableView.reloadData()
+        collectionView.reloadData()
     }
 
 }
 
-extension SearchTournamentsViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        isFiltered ? output.showInfo(section: filteredSections[indexPath.section]) :
-                output.showInfo(section: sections[indexPath.section])
+extension SearchTournamentsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        output.showInfo(event: viewModels[indexPath.item])
     }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            isFiltered ? output.showInfo(section: filteredSections[indexPath.section]) :
-                    output.showInfo(section: sections[indexPath.section])
-            tableView.deselectRow(at: indexPath, animated: true)
-        } else {
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
-    }
-
 }
 
-extension SearchTournamentsViewController: UITableViewDataSource {
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        isFiltered ? filteredSections.count : sections.count
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        isFiltered ? filteredSections[section].rows.count : sections[section].rows.count
+extension SearchTournamentsViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        viewModels.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = isFiltered ? filteredSections[indexPath.section].rows[indexPath.row]
-                : sections[indexPath.section].rows[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: model.cellId)
-                ?? UITableViewCell(style: .default, reuseIdentifier: model.cellId)
-
-        var config = cell.defaultContentConfiguration()
-
-        switch indexPath.row {
-        case 0:
-            let nameCell = model as! EventNameCellModel
-            config.text = nameCell.name
-            config.textProperties.font = UIFont.systemFont(ofSize: 20)
-            config.secondaryText = nameCell.date
-            config.image = UIImage(systemName: "house") // TODO: avatar image
-            cell.accessoryType = .detailButton
-
-        case 1:
-            let locationCell = model as! EventLocationCellModel
-            config.text = locationCell.location
-            config.image = UIImage(systemName: "location")
-        case 2:
-            let ratingTypeCell = model as! EventRatingCellModel
-            config.text = ratingTypeCell.ratingType.rawValue
-            config.image = UIImage(systemName: "crown")
-        case 3:
-            let modeCell = model as! EventModeCellModel
-            config.text = modeCell.mode.rawValue
-            config.image = UIImage(systemName: "clock")
-        default:
-            break
-        }
-
-        cell.contentConfiguration = config
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let viewModel = viewModels[indexPath.item]
+        let cell = collectionView.dequeueCell(cellType: MyEventViewCell<EventCardView>.self, for: indexPath)
+        cell.containerView.update(with: viewModel)
         return cell
     }
+
+
 }
 
-extension SearchTournamentsViewController: UISearchResultsUpdating {
-
-    private func setupSearch() {
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Поиск"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-        searchController.searchBar.isHidden = false
+extension SearchTournamentsViewController: UICollectionViewDelegateFlowLayout {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                               sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let ratio: CGFloat = 0.6
+        let width = collectionView.frame.width - collectionView.contentInset.left - collectionView.contentInset.right
+        let height = width * ratio
+        return CGSize(width: width, height: height)
     }
 
-    private func setupFilter() {
-        //navigationController.but
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        20.0
+    }
+}
+
+//extension SearchTournamentsViewController: UISearchResultsUpdating {
+//
+//    private func setupSearch() {
+//        searchController.searchResultsUpdater = self
+//        searchController.obscuresBackgroundDuringPresentation = false
+//        searchController.searchBar.placeholder = "Поиск"
+//        navigationItem.searchController = searchController
+//        definesPresentationContext = true
+//        searchController.searchBar.isHidden = false
+//    }
+//
+//    private func setupFilter() {
+//        //navigationController.but
+//    }
+//
+//    private func filterContentForSearchText(searchText: String){
+//        filteredSections = sections.filter({ (section: EventSectionModel) -> Bool in
+//            section.event.name.lowercased().contains(searchText.lowercased())
+//        })
+//        collectionView.reloadData()
+//    }
+//
+//    func updateSearchResults(for searchController: UISearchController) {
+//        filterContentForSearchText(searchText: searchController.searchBar.text ?? "")
+//    }
+//}
+
+private extension SearchTournamentsViewController {
+    func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(MyEventViewCell<EventCardView>.self)
+        collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        collectionView.backgroundColor = .white
+        collectionView.contentInset = UIEdgeInsets(top: 20, left: 16, bottom: 0, right: 16)
     }
 
-    private func filterContentForSearchText(searchText: String){
-        filteredSections = sections.filter({ (section: EventSectionModel) -> Bool in
-            section.event.name.lowercased().contains(searchText.lowercased())
-        })
-        tableView.reloadData()
-    }
+    func setupConstraints() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
 
-    func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchText: searchController.searchBar.text ?? "")
+        collectionView.pins()
     }
 }

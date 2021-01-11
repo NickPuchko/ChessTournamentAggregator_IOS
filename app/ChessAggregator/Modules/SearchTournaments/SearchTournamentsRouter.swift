@@ -15,8 +15,8 @@ final class SearchTournamentsRouter: BaseRouter {
 }
 
 extension SearchTournamentsRouter: SearchTournamentsRouterInput {
-    func showInfo(section: EventSectionModel) {
-        let context = EventApplicationContext(moduleOutput: nil, tournament: section.event)
+    func showInfo(event: EventViewModel) {
+        let context = EventApplicationContext(moduleOutput: nil, tournament: event.event)
         let container = EventApplicationContainer.assemble(with: context)
         navigationController?.pushViewController(container.viewController, animated: true)
     }

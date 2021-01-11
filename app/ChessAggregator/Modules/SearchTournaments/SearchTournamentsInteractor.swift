@@ -11,43 +11,34 @@ import Firebase
 
 final class SearchTournamentsInteractor {
 	weak var output: SearchTournamentsInteractorOutput?
-	 //TODO: номер телефона
-	var events: [Tournament]
+	let dateFormatter: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "yyyy-MM-dd"
+		return formatter
+	}()
 
-	init() {  //TODO: номер телефона
-		
-		events = []
-
-		FirebaseRef.ref.child("Tournaments").observeSingleEvent(of: .value, with: { [weak self] snapshot in
-			self?.events = EventParser.eventsFromSnapshot(snapshot: snapshot) ?? []
-			self?.output?.updateView()
-		})
+	init() {
+		loadEvents()
 	}
 }
 
 extension SearchTournamentsInteractor: SearchTournamentsInteractorInput {
 
 	func refreshEvents() {
-		FirebaseRef.ref.child("Tournaments").observeSingleEvent(of: .value, with: { [weak self] snapshot in
-			self?.events = EventParser.eventsFromSnapshot(snapshot: snapshot) ?? []
-			self?.output?.updateView()
+		loadEvents()
+	}
+
+	func loadEvents() {
+		let currentDate = dateFormatter.string(from: Date())
+		let userId = Auth.auth().currentUser!
+		FirebaseRef.ref.child("Tournaments").queryOrdered(byChild: "participants\(userId)").queryEqual(toValue: nil).observeSingleEvent(of: .value, with: { [weak self] snapshot in
+			let events = EventParser.eventsFromSnapshot(snapshot: snapshot) ?? []
+			let filteredEvents = self?.filterToForthcoming(events) ?? []
+			self?.output?.updateView(with: events)
 		})
 	}
 
-	func loadSections() -> [EventSectionModel] {
-		var sections: [EventSectionModel] = []
-		for event in events {
-			sections.append(EventSectionModel(event: event))
-		}
-		return sections
-	}
-
-	func count(mode: Mode) -> Int {
-		let filterEvents = events.filter { $0.mode == mode}
-		return filterEvents.count
-	}
-
-	func count() -> Int {
-		events.count
+	func filterToForthcoming(_ events: [Tournament]) -> [Tournament] {
+		events.filter { $0.openDate > dateFormatter.string(from: Date()) }
 	}
 }

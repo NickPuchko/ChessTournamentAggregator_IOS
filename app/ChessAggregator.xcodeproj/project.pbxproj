@@ -48,14 +48,12 @@
 		6AC972322AFD8C71FBECB3A7 /* MyEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC970A4C41D3E1BAD6C085A /* MyEventViewModel.swift */; };
 		6AC97250CAD1734CAF52ED89 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9765D0213B644869CB6C3 /* EventViewModel.swift */; };
 		6AC9728EE1D3D2942A14C036 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9770160358AE7E471E60C /* UserParser.swift */; };
-		6AC97295C76DB96A8F415A46 /* EventRatingCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97E09008424F7A32114C8 /* EventRatingCellModel.swift */; };
 		6AC972CAFCC42E63FA70A89B /* UserProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97938A7D7CF965F65B7F2 /* UserProfileRouter.swift */; };
 		6AC97382D07275AF0B76BE69 /* PhoneNumberRegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97B1861FE999F36D6EEED /* PhoneNumberRegistrationRouter.swift */; };
 		6AC97396F1C706D218903CE6 /* MyEventsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97608734555A9C81C3CD0 /* MyEventsProtocols.swift */; };
 		6AC973A1C7ADDBAD08BF1FD4 /* PhoneNumberRegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9759E8795BBC54FB662A8 /* PhoneNumberRegistrationPresenter.swift */; };
 		6AC973BE56C56D620227BF0B /* UserRegistrationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97A91E1C7192A8DC8EE92 /* UserRegistrationProtocols.swift */; };
 		6AC97409EC960E566A8ECDE7 /* EventApplicationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97402C4B2F94C23052346 /* EventApplicationProtocols.swift */; };
-		6AC97463FD54F30A0E070698 /* EventLocationCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97CA0FEAC8016CC2D7696 /* EventLocationCellModel.swift */; };
 		6AC97485D8D9FE3128E51957 /* UserProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC975D5AE5FF68BFFD97855 /* UserProfileProtocols.swift */; };
 		6AC974BEF17A0DD0C3D762BC /* AuthCoordinatorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97126F561FF243FFE6646 /* AuthCoordinatorProtocols.swift */; };
 		6AC974CBB9ACC5AFDA04DCEE /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97C9F012C685ADEE94F0D /* Styles.swift */; };
@@ -64,7 +62,6 @@
 		6AC97506A5AA095E4789662E /* SearchTournamentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC976628E52A6297193E5F6 /* SearchTournamentsViewController.swift */; };
 		6AC97521E41A0991FEAD00E1 /* RatingSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC977C3058B924AFD205F7D /* RatingSegment.swift */; };
 		6AC97557716897180F2EDEA8 /* PhoneNumberRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC979A442FEE9214A769A82 /* PhoneNumberRegistrationView.swift */; };
-		6AC9759A799DC9E5F9E264C1 /* EventModeCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97CFE24226B5B4DF6E972 /* EventModeCellModel.swift */; };
 		6AC975A9573102D2C49D4216 /* UserProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97D08ABC13012727393FD /* UserProfileInteractor.swift */; };
 		6AC975AE26E8151CBE5C0C0B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97C70A2A035E42D8A6F55 /* UIColor.swift */; };
 		6AC975EADAE932EC6AF38770 /* UserRegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9740EF04FAD4ACEDDA578 /* UserRegistrationInteractor.swift */; };
@@ -77,7 +74,6 @@
 		6AC9778AD1D31F3E02D980CA /* MyEventViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97270BB59D14AA051C2BB /* MyEventViewCell.swift */; };
 		6AC977A86A632D3796F19002 /* UserRegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97DDC426E3F6DEC4AC478 /* UserRegistrationRouter.swift */; };
 		6AC97815032909668C26DACC /* PhoneNumberRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97751D5D879A37FF46E85 /* PhoneNumberRegistrationViewController.swift */; };
-		6AC9786A42F9E25355673F6A /* EventsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9760F1CFC3AB94947022D /* EventsSectionModel.swift */; };
 		6AC9786A6563B1CCD29C7CDE /* PhoneNumberRegistrationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC972C0F6991BBFE501499A /* PhoneNumberRegistrationContainer.swift */; };
 		6AC978A83F55F586CA4F64B1 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97494364A8A41211D1FC3 /* PaddedLabel.swift */; };
 		6AC9793D65B2AE6D338CBD00 /* CharactersInString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC978757D3A6D0D18B44BFB /* CharactersInString.swift */; };
@@ -96,7 +92,6 @@
 		6AC97C3BAB64ADF9B302A904 /* UserRegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97698B4FC1FF1E2D74474 /* UserRegistrationPresenter.swift */; };
 		6AC97D06E2B8C805B3BD91B6 /* SearchTournamentsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9787CFE0DEFB61421D844 /* SearchTournamentsProtocols.swift */; };
 		6AC97D70F4E8224D191CED9D /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97B1F3A1E841C46E318B1 /* AuthCoordinator.swift */; };
-		6AC97E760DFAF5E50B49D71B /* EventNameCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9772C60CF3315B6800474 /* EventNameCellModel.swift */; };
 		6AC97E8B693764A2E4ADDDD4 /* EmailExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC974BC8D700AAB6B531B67 /* EmailExtension.swift */; };
 		6AC97EB8C89EE1E509806955 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97794272947143F1A49B8 /* UserViewModel.swift */; };
 		6AC97EFEA3F0BB9D41305BD1 /* MyEventsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9787457AE562FB98F58E3 /* MyEventsInteractor.swift */; };
@@ -191,13 +186,11 @@
 		6AC975FF01131FF083F11FF2 /* SearchTournamentsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTournamentsRouter.swift; sourceTree = "<group>"; };
 		6AC976062406B961C4B5800B /* AuthWarningLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthWarningLabel.swift; sourceTree = "<group>"; };
 		6AC97608734555A9C81C3CD0 /* MyEventsProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsProtocols.swift; sourceTree = "<group>"; };
-		6AC9760F1CFC3AB94947022D /* EventsSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsSectionModel.swift; sourceTree = "<group>"; };
 		6AC9765D0213B644869CB6C3 /* EventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		6AC976628E52A6297193E5F6 /* SearchTournamentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTournamentsViewController.swift; sourceTree = "<group>"; };
 		6AC97698B4FC1FF1E2D74474 /* UserRegistrationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationPresenter.swift; sourceTree = "<group>"; };
 		6AC976FD34911FBA070234AF /* FirebaseRef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseRef.swift; sourceTree = "<group>"; };
 		6AC9770160358AE7E471E60C /* UserParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
-		6AC9772C60CF3315B6800474 /* EventNameCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNameCellModel.swift; sourceTree = "<group>"; };
 		6AC9773A1EE089845093072F /* StatisticRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticRow.swift; sourceTree = "<group>"; };
 		6AC977490ECDCBBE50A5FCC4 /* EventApplicationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventApplicationViewController.swift; sourceTree = "<group>"; };
 		6AC97751D5D879A37FF46E85 /* PhoneNumberRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationViewController.swift; sourceTree = "<group>"; };
@@ -223,15 +216,12 @@
 		6AC97C70A2A035E42D8A6F55 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		6AC97C9F012C685ADEE94F0D /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		6AC97CA0693D8C33772E3C4B /* SearchTournamentsContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTournamentsContainer.swift; sourceTree = "<group>"; };
-		6AC97CA0FEAC8016CC2D7696 /* EventLocationCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLocationCellModel.swift; sourceTree = "<group>"; };
 		6AC97CA9A97812E78E259E39 /* ChessAppCoordinatorProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessAppCoordinatorProtocols.swift; sourceTree = "<group>"; };
 		6AC97CAD22480B195A70F4E1 /* EventApplicationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventApplicationView.swift; sourceTree = "<group>"; };
 		6AC97CC690C3D5B114D75728 /* ChessAppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessAppCoordinator.swift; sourceTree = "<group>"; };
 		6AC97CE1D483F9F5F0EFA3D9 /* UserReg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReg.swift; sourceTree = "<group>"; };
-		6AC97CFE24226B5B4DF6E972 /* EventModeCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModeCellModel.swift; sourceTree = "<group>"; };
 		6AC97D08ABC13012727393FD /* UserProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileInteractor.swift; sourceTree = "<group>"; };
 		6AC97DDC426E3F6DEC4AC478 /* UserRegistrationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationRouter.swift; sourceTree = "<group>"; };
-		6AC97E09008424F7A32114C8 /* EventRatingCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRatingCellModel.swift; sourceTree = "<group>"; };
 		6AC97EFFFD3CE5C638699A5F /* EventApplicationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventApplicationInteractor.swift; sourceTree = "<group>"; };
 		BAAF54D7FF0B6F3A13447F17 /* Pods-ChessAggregator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChessAggregator.debug.xcconfig"; path = "Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator.debug.xcconfig"; sourceTree = "<group>"; };
 		C31943B52568C2AC0051C8C0 /* ProfileRaw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRaw.swift; sourceTree = "<group>"; };
@@ -539,8 +529,6 @@
 				6AC9787CFE0DEFB61421D844 /* SearchTournamentsProtocols.swift */,
 				6AC971D58E0BABEB95F76798 /* SearchTournamentsInteractor.swift */,
 				6AC97CA0693D8C33772E3C4B /* SearchTournamentsContainer.swift */,
-				6AC97E80175B255148271316 /* CellModels */,
-				6AC9760F1CFC3AB94947022D /* EventsSectionModel.swift */,
 			);
 			path = SearchTournaments;
 			sourceTree = "<group>";
@@ -599,17 +587,6 @@
 				6AC97126F561FF243FFE6646 /* AuthCoordinatorProtocols.swift */,
 			);
 			path = AuthCoordinator;
-			sourceTree = "<group>";
-		};
-		6AC97E80175B255148271316 /* CellModels */ = {
-			isa = PBXGroup;
-			children = (
-				6AC9772C60CF3315B6800474 /* EventNameCellModel.swift */,
-				6AC97CA0FEAC8016CC2D7696 /* EventLocationCellModel.swift */,
-				6AC97E09008424F7A32114C8 /* EventRatingCellModel.swift */,
-				6AC97CFE24226B5B4DF6E972 /* EventModeCellModel.swift */,
-			);
-			path = CellModels;
 			sourceTree = "<group>";
 		};
 		B79ADC37DD382A392135B108 /* Pods */ = {
@@ -880,11 +857,6 @@
 				6AC9794BD5A4077E1682DA32 /* ChessAppCoordinatorProtocols.swift in Sources */,
 				6AC970924287644F1C0BE99F /* KeyboardAdapter.swift in Sources */,
 				6AC97C19F7932EEA83A29D56 /* AuthWarningLabel.swift in Sources */,
-				6AC97E760DFAF5E50B49D71B /* EventNameCellModel.swift in Sources */,
-				6AC97463FD54F30A0E070698 /* EventLocationCellModel.swift in Sources */,
-				6AC97295C76DB96A8F415A46 /* EventRatingCellModel.swift in Sources */,
-				6AC9759A799DC9E5F9E264C1 /* EventModeCellModel.swift in Sources */,
-				6AC9786A42F9E25355673F6A /* EventsSectionModel.swift in Sources */,
 				014BEFD025A12C930000DFAD /* InsetLabel.swift in Sources */,
 				D91FCEBAD4DB42301C940A85 /* EventCreationPresenter.swift in Sources */,
 				D91FC35933ECB277C3D62FEE /* EventCreationViewController.swift in Sources */,

@@ -53,13 +53,13 @@ extension MyEventsPresenter: MyEventsInteractorOutput {
 
     func didLoadCurrent(with events: [Tournament], loadType: LoadingDataType) {
         isReloading = false
-        let viewModels = makeViewModels(events)
+        let viewModels = makeEventViewModels(events)
         view?.updateCurrentView(with: viewModels)
     }
 
     func didLoadForthcoming(with events: [Tournament], loadType: LoadingDataType) {
         isReloading = false
-        let viewModels = makeViewModels(events)
+        let viewModels = makeEventViewModels(events)
         view?.updateForthcomingView(with: viewModels)
     }
 
@@ -67,7 +67,7 @@ extension MyEventsPresenter: MyEventsInteractorOutput {
         isNextPageLoading = false
         completedEventsInDatabaseCount = eventsCountInDB
         completedEvents = events
-        let viewModels = makeViewModels(events)
+        let viewModels = makeEventViewModels(events)
         view?.updateCompletedView(with: viewModels)
     }
 
@@ -94,4 +94,10 @@ private extension MyEventsPresenter {
             )
         }
     }
+
+    func makeEventViewModels(_ events: [Tournament]) -> [EventViewModel] {
+        EventParser.eventsToEventViewModel(events)
+    }
+
+
 }
