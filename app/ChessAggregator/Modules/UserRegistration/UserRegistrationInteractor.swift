@@ -11,13 +11,24 @@ class UserRegistrationInteractor {
 
 extension UserRegistrationInteractor: UserRegistrationInteractorInput {
     func addToDataBase(userReg: UserReg) {
-        let user = createUserEntity(userReg: userReg)
+        var user = createUserEntity(userReg: userReg)
         Auth.auth().createUser(
                 withEmail: user.email,
                 password: userReg.password
         ) { [weak self] authResult, error in
             if let firebaseUser = authResult?.user, error == nil {
+
+                let ratings = UserParser.RateParser(frcID: user.player.frcID ?? 0)
+                user.player.classicFideRating = ratings[3]
+                user.player.rapidFideRating = ratings[4]
+                user.player.blitzFideRating = ratings[5]
+                user.player.classicFrcRating = ratings[0]
+                user.player.rapidFrcRating = ratings[1]
+                user.player.blitzFrcRating = ratings[2]
+
                 let realtimeDatabaseUser = UserParser.userToFirebaseUser(user: user)
+
+
                 FirebaseRef.ref.child("Users").child(firebaseUser.uid).setValue(realtimeDatabaseUser)
                 self?.signIn(withEmail: user.email, password: userReg.password)
             } else {
