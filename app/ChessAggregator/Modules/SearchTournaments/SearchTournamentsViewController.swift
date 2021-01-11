@@ -69,7 +69,7 @@ extension SearchTournamentsViewController: SearchTournamentsViewInput {
 }
 
 extension SearchTournamentsViewController: UICollectionViewDelegate {
-    public func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         output.showInfo(event: viewModels[indexPath.item])
     }
 }
@@ -92,7 +92,7 @@ extension SearchTournamentsViewController: UICollectionViewDataSource {
 extension SearchTournamentsViewController: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                                sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let ratio: CGFloat = 0.7
+        let ratio: CGFloat = 0.6
         let width = collectionView.frame.width - collectionView.contentInset.left - collectionView.contentInset.right
         let height = width * ratio
         return CGSize(width: width, height: height)
@@ -136,6 +136,8 @@ private extension SearchTournamentsViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MyEventViewCell<EventCardView>.self)
+        collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         collectionView.backgroundColor = .white
         collectionView.contentInset = UIEdgeInsets(top: 20, left: 16, bottom: 0, right: 16)
     }

@@ -96,7 +96,7 @@ class EventCardView : AutoLayoutView {
         verticalStack.alignment = .leading
         verticalStack.distribution = .fill
         verticalStack.setCustomSpacing(8, after: nameStack)
-        verticalStack.layoutMargins = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+        verticalStack.layoutMargins = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         verticalStack.isLayoutMarginsRelativeArrangement = true
         addSubview(verticalStack)
         verticalStack.pins()
