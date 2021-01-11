@@ -22,8 +22,6 @@ protocol UserProfileViewInput: class {
 protocol UserProfileViewOutput: class {
 	func editProfile()
 	func createEvent()
-	func showMyEvents()
-	func showStatistics()
 	func showFIDE()
 	func showFRC()
     func signOut()
@@ -41,8 +39,6 @@ protocol UserProfileInteractorOutput: class {
 protocol UserProfileRouterInput: class {
 	func showEditor(with user: User)
 	func showCreator()
-	func showMyEvents()
-	func showStatistics()
 	func showFIDE(user: User)
 	func showFRC(user: User)
 }

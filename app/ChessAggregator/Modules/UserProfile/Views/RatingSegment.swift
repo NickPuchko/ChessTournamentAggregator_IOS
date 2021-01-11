@@ -63,7 +63,7 @@ class RatingSegment: AutoLayoutView {
         ratingStack.addArrangedSubview(blitzRating)
 
         ratingSegmentStack.axis = .horizontal
-        ratingSegmentStack.distribution = .fillEqually
+        ratingSegmentStack.distribution = .fillProportionally
         ratingSegmentStack.alignment = .fill
         ratingSegmentStack.addArrangedSubview(labelStack)
         ratingSegmentStack.addArrangedSubview(ratingStack)
@@ -75,7 +75,7 @@ class RatingSegment: AutoLayoutView {
         super.setupConstraints()
 
         ratingSegmentStack.topAnchor.constraint(equalTo: ratingType.bottomAnchor, constant: -5.0).isActive = true
-        ratingSegmentStack.leadingAnchor.constraint(equalTo: ratingType.trailingAnchor,constant: 15.0).isActive = true
+        ratingSegmentStack.leadingAnchor.constraint(equalTo: ratingType.trailingAnchor, constant: 15.0).isActive = true
         translatesAutoresizingMaskIntoConstraints = false
         bottomAnchor.constraint(equalTo: ratingSegmentStack.bottomAnchor).isActive = true
         topAnchor.constraint(equalTo: ratingType.topAnchor).isActive = true

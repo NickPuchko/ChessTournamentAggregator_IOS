@@ -8,13 +8,18 @@ import FirebaseDatabase
 import SwiftSoup
 
 class UserParser {
-    static func userToFirebaseUser(user: User) -> [String: Any] {
-        var result: [String: Any] = [:]
-        let dateFormatter = DateFormatter()
+    static let dateFormatter: DateFormatter = {
+        var dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.locale = Locale(identifier: "ru_RU")
-        
+        return dateFormatter
+    }()
+
+
+    static func userToFirebaseUser(user: User) -> [String: Any] {
+        var result: [String: Any] = [:]
+
         
         let rates = RateParser(frcID: user.player.frcID ?? 0)
         result = [ "lastName": user.player.lastName,
@@ -23,7 +28,7 @@ class UserParser {
                    "sex": user.player.sex.rawValue,
                    "email": user.email,
                    "isOrganizer": user.isOrganizer,
-                   "birthdate": dateFormatter.string(from: user.player.birthdate)
+                   "birthdate": UserParser.dateFormatter.string(from: user.player.birthdate)
         ]
         if rates.count != 0 {
            
@@ -33,7 +38,7 @@ class UserParser {
                        "sex": user.player.sex.rawValue,
                        "email": user.email,
                        "isOrganizer": user.isOrganizer,
-                       "birthdate": dateFormatter.string(from: user.player.birthdate)
+                       "birthdate": UserParser.dateFormatter.string(from: user.player.birthdate)
                        
             ]
             if let rating = rates[3]{
@@ -307,6 +312,7 @@ class UserParser {
             lastName: userDict["lastName"] as? String ?? "Доу",
             firstName: userDict["firstName"] as? String ?? "Джон",
             patronomicName: userDict["patronomicName"] as! String?,
+            birthdate: UserParser.dateFormatter.date(from: userDict["birthdate"] as? String ?? "1970-01-01") ?? Date(),
             sex: Sex(rawValue: userDict["sex"] as? String ?? "") ?? .male,
             latinName: userDict["latinName"] as? String ?? "Doe John",
             fideID: userDict["fideID"] as? Int ?? 0,
@@ -349,6 +355,7 @@ class UserParser {
                     lastName: thisUser["lastName"] as? String ?? "Doe",
                     firstName: thisUser["firstName"] as? String ?? "John",
                     patronomicName: thisUser["patronomicName"] as! String?,
+                    birthdate: UserParser.dateFormatter.date(from: thisUser["birthdate"] as? String ?? "1970-01-01") ?? Date(),
                     sex: Sex(rawValue: thisUser["sex"] as? String ?? "") ?? .male,
                     fideID: thisUser["fideID"] as? Int ?? 0,
                     classicFideRating: thisUser["fideClassic"] as? Int ?? nil,
@@ -369,9 +376,9 @@ class UserParser {
 }
 extension String{
     var words: [String] {
-     return components(separatedBy: .punctuationCharacters)
-      .joined()
-      .components(separatedBy: .whitespaces)
-      .filter{!$0.isEmpty}
+        components(separatedBy: .punctuationCharacters)
+                .joined()
+                .components(separatedBy: .whitespaces)
+                .filter{!$0.isEmpty}
     }
 }

@@ -28,7 +28,7 @@ final class ChessAppCoordinator {
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
 
-        UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromLeft, animations: {})
+        UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: {})
     }
 }
 
