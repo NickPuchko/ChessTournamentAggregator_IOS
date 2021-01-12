@@ -61,7 +61,7 @@ class EventCardView : AutoLayoutView {
         nameStack.axis = .horizontal
         nameStack.spacing = 4
         nameStack.alignment = .center
-        nameStack.distribution = .fillProportionally
+        nameStack.distribution = .fill
 
         let timeStack = UIStackView(arrangedSubviews: [timeImage, timeLabel])
         timeStack.axis = .horizontal
@@ -83,12 +83,23 @@ class EventCardView : AutoLayoutView {
         dateStack.spacing = 4
         dateStack.alignment = .center
 
-        let verticalStack = UIStackView(arrangedSubviews: [
-            nameStack,
+        let mainContentStack = UIStackView(arrangedSubviews: [
             timeStack,
             ratingStack,
             locationStack,
             dateStack
+        ])
+
+        mainContentStack.axis = .vertical
+        mainContentStack.alignment = .leading
+        mainContentStack.distribution = .fill
+        mainContentStack.spacing = 8
+        mainContentStack.layoutMargins = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
+        mainContentStack.isLayoutMarginsRelativeArrangement = true
+
+        let verticalStack = UIStackView(arrangedSubviews: [
+            nameStack,
+            mainContentStack
         ])
 
         verticalStack.axis = .vertical
@@ -96,8 +107,9 @@ class EventCardView : AutoLayoutView {
         verticalStack.alignment = .leading
         verticalStack.distribution = .fill
         verticalStack.setCustomSpacing(8, after: nameStack)
-        verticalStack.layoutMargins = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        verticalStack.layoutMargins = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 0)
         verticalStack.isLayoutMarginsRelativeArrangement = true
+
         addSubview(verticalStack)
         verticalStack.pins()
 
@@ -132,38 +144,32 @@ class EventCardView : AutoLayoutView {
         }
 
         NSLayoutConstraint.activate([
-            teamImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             teamImage.heightAnchor.constraint(equalToConstant: 60),
             teamImage.widthAnchor.constraint(equalToConstant: 60),
 
             nameLabel.heightAnchor.constraint(equalToConstant: 40),
-            nameLabel.leadingAnchor.constraint(equalTo: teamImage.trailingAnchor, constant: 16),
             nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             locationImage.heightAnchor.constraint(equalToConstant: 30),
             locationImage.widthAnchor.constraint(equalToConstant: 30),
-            locationImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 76),
 
             locationLabel.heightAnchor.constraint(equalTo: locationImage.heightAnchor),
             locationLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             timeImage.heightAnchor.constraint(equalTo: locationImage.heightAnchor),
             timeImage.widthAnchor.constraint(equalTo: locationImage.widthAnchor),
-            timeImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 76),
 
             timeLabel.heightAnchor.constraint(equalTo: ratingImage.heightAnchor),
             timeLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             ratingImage.heightAnchor.constraint(equalTo: locationImage.heightAnchor),
             ratingImage.widthAnchor.constraint(equalTo: locationImage.widthAnchor),
-            ratingImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 76),
 
             ratingLabel.heightAnchor.constraint(equalTo: ratingImage.heightAnchor),
             ratingLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             dateImage.heightAnchor.constraint(equalTo: ratingImage.heightAnchor),
             dateImage.widthAnchor.constraint(equalTo: ratingImage.widthAnchor),
-            dateImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 76),
 
             dateLabel.heightAnchor.constraint(equalTo: ratingLabel.heightAnchor),
             dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor)

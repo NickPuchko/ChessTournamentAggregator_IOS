@@ -98,10 +98,10 @@ extension MyEventsViewController: UICollectionViewDelegate {
 extension MyEventsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let ratio: CGFloat = 0.7
+//        let ratio: CGFloat = 0.7
         let width = collectionView.frame.width - collectionView.contentInset.left - collectionView.contentInset.right
-        let height = width * ratio
-        return CGSize(width: width, height: height)
+//        let height = width * ratio
+        return CGSize(width: width, height: 228)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
