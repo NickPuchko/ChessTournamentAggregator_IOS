@@ -57,7 +57,6 @@ final class SearchTournamentsViewController: UIViewController {
         setupSearch()
     }
 
-
     @objc
     private func refresh() {
         output.refreshOnline()
@@ -69,9 +68,9 @@ final class SearchTournamentsViewController: UIViewController {
 extension SearchTournamentsViewController: SearchTournamentsViewInput {
     func updateFilteredViewModels(with viewModels: [EventViewModel]) {
         filteredViewModels = viewModels
-        if(isFiltered) {
-            collectionView.reloadData()
-        }
+//        if(isFiltered) {
+//            collectionView.reloadData()
+//        }
     }
 
     func updateViewModels(with viewModels: [EventViewModel]) {
@@ -120,6 +119,7 @@ extension SearchTournamentsViewController: UISearchResultsUpdating {
 
     private func setupSearch() {
         searchController.searchResultsUpdater = self
+        searchController.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Поиск"
         definesPresentationContext = true
@@ -133,6 +133,14 @@ extension SearchTournamentsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchText: searchController.searchBar.text ?? "")
     }
+}
+
+extension SearchTournamentsViewController: UISearchControllerDelegate {
+//    func willPresentSearchController(_ searchController: UISearchController) {
+//        DispatchQueue.main.async {
+//            searchController.searchBar.becomeFirstResponder()
+//        }
+//    }
 }
 
 private extension SearchTournamentsViewController {
@@ -158,7 +166,7 @@ private extension SearchTournamentsViewController {
         } else {
             navigationItem.searchController = searchController
             navigationItem.hidesSearchBarWhenScrolling = false
-            searchController.searchBar.isHidden = false
+//            searchController.isActive = true
         }
         isSearchVisible = !isSearchVisible
     }
