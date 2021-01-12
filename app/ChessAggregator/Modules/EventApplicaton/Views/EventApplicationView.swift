@@ -58,7 +58,7 @@ class EventApplicationView: AutoLayoutView {
 
     private func setupButton() {
         let applyAttribute: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.font : UIFont(name: "AppleSDGothicNeo-Medium", size: 18),
+            NSAttributedString.Key.font : UIFont(name: "AppleSDGothicNeo-Medium", size: 18)!,
             NSAttributedString.Key.foregroundColor : UIColor.white
         ]
         applyButton.setAttributedTitle(NSAttributedString(string: "Подать заявку", attributes: applyAttribute), for: .normal)

@@ -38,22 +38,27 @@ class EventCardView : AutoLayoutView {
         nameLabel.text = "Название турнира"
         nameLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 28)
         nameLabel.numberOfLines = 0
+        nameLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         timeLabel = UILabel()
         timeLabel.text = "Контроль"
         timeLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
+        timeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         locationLabel = UILabel()
         locationLabel.text = "Место проведения"
         locationLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
+        locationLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         ratingLabel = UILabel()
         ratingLabel.text = "0"
         ratingLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
+        ratingLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         dateLabel = UILabel()
         dateLabel.text = ""
         dateLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
+        dateLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         super.init(frame: frame)
 
@@ -148,31 +153,26 @@ class EventCardView : AutoLayoutView {
             teamImage.widthAnchor.constraint(equalToConstant: 60),
 
             nameLabel.heightAnchor.constraint(equalToConstant: 40),
-            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             locationImage.heightAnchor.constraint(equalToConstant: 30),
             locationImage.widthAnchor.constraint(equalToConstant: 30),
 
             locationLabel.heightAnchor.constraint(equalTo: locationImage.heightAnchor),
-            locationLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             timeImage.heightAnchor.constraint(equalTo: locationImage.heightAnchor),
             timeImage.widthAnchor.constraint(equalTo: locationImage.widthAnchor),
 
             timeLabel.heightAnchor.constraint(equalTo: ratingImage.heightAnchor),
-            timeLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             ratingImage.heightAnchor.constraint(equalTo: locationImage.heightAnchor),
             ratingImage.widthAnchor.constraint(equalTo: locationImage.widthAnchor),
 
             ratingLabel.heightAnchor.constraint(equalTo: ratingImage.heightAnchor),
-            ratingLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             dateImage.heightAnchor.constraint(equalTo: ratingImage.heightAnchor),
             dateImage.widthAnchor.constraint(equalTo: ratingImage.widthAnchor),
 
-            dateLabel.heightAnchor.constraint(equalTo: ratingLabel.heightAnchor),
-            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+            dateLabel.heightAnchor.constraint(equalTo: ratingLabel.heightAnchor)
 
         ])
     }
