@@ -198,6 +198,7 @@ final class UserProfileViewController: UIViewController {
         profileStack.alignment = .center
         profileStack.addArrangedSubview(createButton)
         profileStack.addArrangedSubview(spacingView)
+//        profileStack.backgroundColor = .red
 
         let fideBackground = StatisticRow(name: "Профиль FIDE", image: UIImage(imageLiteralResourceName: "fide"))
         fideButton.addSubview(fideBackground)
@@ -209,7 +210,7 @@ final class UserProfileViewController: UIViewController {
 
         fideFrcStack.axis = .vertical
         fideFrcStack.distribution = .fill
-        fideFrcStack.alignment = .fill
+        fideFrcStack.alignment = .center
 
         fideFrcStack.backgroundColor = .white
         fideFrcStack.layer.cornerRadius = 30
@@ -302,7 +303,7 @@ final class UserProfileViewController: UIViewController {
             profileStack.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: -5),
             profileStack.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 5),
 
-            fideFrcStack.topAnchor.constraint(equalTo: createButton.bottomAnchor, constant: 40.0),
+            fideFrcStack.topAnchor.constraint(equalTo: profileStack.bottomAnchor, constant: 20.0),
             fideFrcStack.leadingAnchor.constraint(equalTo: profileStack.leadingAnchor),
             fideFrcStack.trailingAnchor.constraint(equalTo: profileStack.trailingAnchor),
 
@@ -390,16 +391,9 @@ extension UserProfileViewController: UserProfileViewInput {
                 classic: user.classicFrcRating,
                 rapid: user.rapidFrcRating,
                 blitz: user.blitzFrcRating)
+
         createButton.isHidden = false
         spacingView.isHidden = false
-
-        if user.isOrganizer {
-            createButton.alpha = 1
-            createButton.isEnabled = true
-        } else {
-            createButton.alpha = 0
-            createButton.isEnabled = false
-        }
 //        createButton.isHidden = !user.isOrganizer
 //        spacingView.isHidden = !user.isOrganizer
     }

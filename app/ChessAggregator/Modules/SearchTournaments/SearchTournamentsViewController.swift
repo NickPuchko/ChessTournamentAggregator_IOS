@@ -54,6 +54,12 @@ final class SearchTournamentsViewController: UIViewController {
         navigationController?.isNavigationBarHidden = false
         navigationItem.rightBarButtonItem = magGlass
 
+        navigationItem.searchController = searchController
+        searchController.searchBar.isHidden = true
+
+        navigationItem.hidesSearchBarWhenScrolling = true
+
+
         setupSearch()
     }
 
@@ -121,6 +127,7 @@ extension SearchTournamentsViewController: UISearchResultsUpdating {
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
+//        navigationItem.searchController = searchController
         searchController.searchBar.placeholder = "Поиск"
         definesPresentationContext = true
     }
@@ -136,11 +143,11 @@ extension SearchTournamentsViewController: UISearchResultsUpdating {
 }
 
 extension SearchTournamentsViewController: UISearchControllerDelegate {
-//    func willPresentSearchController(_ searchController: UISearchController) {
-//        DispatchQueue.main.async {
-//            searchController.searchBar.becomeFirstResponder()
-//        }
-//    }
+    func didPresentSearchController(_ searchController: UISearchController) {
+        DispatchQueue.main.async {
+            searchController.searchBar.becomeFirstResponder()
+        }
+    }
 }
 
 private extension SearchTournamentsViewController {
@@ -162,11 +169,14 @@ private extension SearchTournamentsViewController {
 
     @objc func onTapMagGlass() {
         if(isSearchVisible) {
-            navigationItem.searchController = nil
+            navigationItem.hidesSearchBarWhenScrolling = true
+            searchController.searchBar.isHidden = true
+//            navigationItem.searchController = nil
         } else {
-            navigationItem.searchController = searchController
+//            navigationItem.searchController = searchController
             navigationItem.hidesSearchBarWhenScrolling = false
-//            searchController.isActive = true
+            searchController.searchBar.isHidden = false
+            searchController.isActive = true
         }
         isSearchVisible = !isSearchVisible
     }
