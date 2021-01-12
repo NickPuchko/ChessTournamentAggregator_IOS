@@ -34,18 +34,22 @@ class HeaderCloudView : AutoLayoutView {
         nameLabel.text = "Название турнира"
         nameLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 28)
         nameLabel.numberOfLines = 0
+        nameLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         locationLabel = UILabel()
         locationLabel.text = "Место проведения"
         locationLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
+        locationLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         ratingLabel = UILabel()
         ratingLabel.text = "0"
         ratingLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
+        ratingLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         dateLabel = UILabel()
         dateLabel.text = ""
         dateLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
+        dateLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         super.init(frame: .zero)
 
@@ -70,11 +74,22 @@ class HeaderCloudView : AutoLayoutView {
         dateStack.spacing = 4
         dateStack.alignment = .center
 
-        let verticalStack = UIStackView(arrangedSubviews: [
-            nameStack,
+        let mainContentStack = UIStackView(arrangedSubviews: [
             locationStack,
             ratingStack,
             dateStack
+        ])
+
+        mainContentStack.axis = .vertical
+        mainContentStack.distribution = .fill
+        mainContentStack.alignment = .leading
+        mainContentStack.spacing = 8
+        mainContentStack.layoutMargins = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
+        mainContentStack.isLayoutMarginsRelativeArrangement = true
+
+        let verticalStack = UIStackView(arrangedSubviews: [
+            nameStack,
+            mainContentStack
         ])
 
         verticalStack.axis = .vertical
@@ -82,7 +97,7 @@ class HeaderCloudView : AutoLayoutView {
         verticalStack.alignment = .leading
         verticalStack.distribution = .fill
         verticalStack.setCustomSpacing(8, after: nameStack)
-        verticalStack.layoutMargins = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+        verticalStack.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
         verticalStack.isLayoutMarginsRelativeArrangement = true
         addSubview(verticalStack)
         verticalStack.pins()
@@ -115,34 +130,34 @@ class HeaderCloudView : AutoLayoutView {
         }
 
         NSLayoutConstraint.activate([
-            teamImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+//            teamImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             teamImage.heightAnchor.constraint(equalToConstant: 60),
             teamImage.widthAnchor.constraint(equalToConstant: 60),
 
             nameLabel.heightAnchor.constraint(equalToConstant: 40),
-            nameLabel.leadingAnchor.constraint(equalTo: teamImage.trailingAnchor, constant: 16),
-            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            nameLabel.leadingAnchor.constraint(equalTo: teamImage.trailingAnchor, constant: 16),
+//            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             locationImage.heightAnchor.constraint(equalToConstant: 30),
             locationImage.widthAnchor.constraint(equalToConstant: 30),
-            locationImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 76),
+//            locationImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 76),
 
             locationLabel.heightAnchor.constraint(equalTo: locationImage.heightAnchor),
-            locationLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            locationLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             ratingImage.heightAnchor.constraint(equalTo: locationImage.heightAnchor),
             ratingImage.widthAnchor.constraint(equalTo: locationImage.widthAnchor),
-            ratingImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 76),
+//            ratingImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 76),
 
             ratingLabel.heightAnchor.constraint(equalTo: ratingImage.heightAnchor),
-            ratingLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            ratingLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             dateImage.heightAnchor.constraint(equalTo: ratingImage.heightAnchor),
             dateImage.widthAnchor.constraint(equalTo: ratingImage.widthAnchor),
-            dateImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 76),
+//            dateImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 76),
 
             dateLabel.heightAnchor.constraint(equalTo: ratingLabel.heightAnchor),
-            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+//            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
 
         ])
     }

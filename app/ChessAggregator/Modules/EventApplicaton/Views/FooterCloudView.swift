@@ -11,20 +11,22 @@ class FooterCloudView: AutoLayoutView {
         var stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .center
-        stack.distribution = .fillProportionally
+        stack.distribution = .fill
         return stack
     }()
+
     private let rightStack: UIStackView = {
         var stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .center
-        stack.distribution = .fillProportionally
+        stack.distribution = .fill
         return stack
     }()
     private let horizontalStack: UIStackView = {
         var stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillEqually
+        stack.alignment = .center
         return stack
     }()
     private let verticalStack: UIStackView = {
@@ -38,7 +40,7 @@ class FooterCloudView: AutoLayoutView {
     private let siteButton: UIButton = {
         var button = UIButton(type: .system)
         let attribute: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.font : UIFont(name: "AppleSDGothicNeo-Medium", size: 18),
+            NSAttributedString.Key.font : UIFont(name: "AppleSDGothicNeo-Medium", size: 18)!,
             NSAttributedString.Key.foregroundColor : UIColor.white
         ]
         button.setAttributedTitle(NSAttributedString(string: "Положение", attributes: attribute), for: .normal)
@@ -56,6 +58,7 @@ class FooterCloudView: AutoLayoutView {
     private let feeLabel: UILabel = {
         var label = UILabel()
         label.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
 
@@ -63,12 +66,14 @@ class FooterCloudView: AutoLayoutView {
         var label = UILabel()
         label.text = "Взнос"
         label.font = UIFont(name: "AppleSDGothicNeo-Light", size: 12)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
 
     private let fundLabel: UILabel = {
         var label = UILabel()
         label.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
 
@@ -76,30 +81,35 @@ class FooterCloudView: AutoLayoutView {
         var label = UILabel()
         label.text = "Призовой фонд"
         label.font = UIFont(name: "AppleSDGothicNeo-Light", size: 12)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
 
     private let toursLabel: UILabel = {
         var label = UILabel()
         label.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 24)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
 
     var participantsLabel: UILabel = {
         var label = UILabel()
         label.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 24)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
 
     var eloLabel: UILabel = {
         var label = UILabel()
         label.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
 
     private let underEloLabel: UILabel = {
         var label = UILabel()
         label.font = UIFont(name: "AppleSDGothicNeo-Light", size: 12)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.text = "Средний ЭЛО"
         return label
     }()
@@ -107,12 +117,14 @@ class FooterCloudView: AutoLayoutView {
     private let timeLabel: UILabel = {
         var label = UILabel()
         label.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
 
     private let underTimeLabel: UILabel = {
         var label = UILabel()
         label.font = UIFont(name: "AppleSDGothicNeo-Light", size: 12)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
 
@@ -148,18 +160,6 @@ class FooterCloudView: AutoLayoutView {
             siteButton.heightAnchor.constraint(equalToConstant: 30),
 
             horizontalStack.widthAnchor.constraint(equalTo: widthAnchor, constant: -32),
-
-            participantsLabel.heightAnchor.constraint(equalToConstant: 24),
-            participantsLabel.heightAnchor.constraint(equalTo: toursLabel.heightAnchor),
-            feeLabel.heightAnchor.constraint(equalToConstant: 18),
-            feeLabel.heightAnchor.constraint(equalTo: eloLabel.heightAnchor),
-            underFeeLabel.heightAnchor.constraint(equalToConstant: 12),
-            underFeeLabel.heightAnchor.constraint(equalTo: underEloLabel.heightAnchor),
-            fundLabel.heightAnchor.constraint(equalToConstant: 18),
-            fundLabel.heightAnchor.constraint(equalTo: timeLabel.heightAnchor),
-            underFundLabel.heightAnchor.constraint(equalToConstant: 18),
-            underFundLabel.heightAnchor.constraint(equalTo: underEloLabel.heightAnchor)
-
         ])
 
     }
@@ -172,9 +172,9 @@ class FooterCloudView: AutoLayoutView {
         leftStack.addArrangedSubview(underFundLabel)
 
         leftStack.setCustomSpacing(16, after: participantsLabel)
-        leftStack.setCustomSpacing(2, after: feeLabel)
+//        leftStack.setCustomSpacing(10, after: feeLabel)
         leftStack.setCustomSpacing(16, after: underFeeLabel)
-        leftStack.setCustomSpacing(2, after: fundLabel)
+//        leftStack.setCustomSpacing(10, after: fundLabel)
 
         rightStack.addArrangedSubview(toursLabel)
         rightStack.addArrangedSubview(eloLabel)
@@ -183,9 +183,9 @@ class FooterCloudView: AutoLayoutView {
         rightStack.addArrangedSubview(underTimeLabel)
 
         rightStack.setCustomSpacing(16, after: toursLabel)
-        rightStack.setCustomSpacing(2, after: eloLabel)
+//        rightStack.setCustomSpacing(10, after: eloLabel)
         rightStack.setCustomSpacing(16, after: underEloLabel)
-        rightStack.setCustomSpacing(2, after: timeLabel)
+//        rightStack.setCustomSpacing(10, after: timeLabel)
 
         horizontalStack.addArrangedSubview(leftStack)
         horizontalStack.addArrangedSubview(rightStack)
