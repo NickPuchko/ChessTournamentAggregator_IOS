@@ -16,10 +16,6 @@ final class SearchTournamentsInteractor {
 		formatter.dateFormat = "yyyy-MM-dd"
 		return formatter
 	}()
-
-	init() {
-		loadEvents()
-	}
 }
 
 extension SearchTournamentsInteractor: SearchTournamentsInteractorInput {

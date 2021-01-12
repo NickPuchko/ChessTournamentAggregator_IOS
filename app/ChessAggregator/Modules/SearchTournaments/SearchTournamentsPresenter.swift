@@ -27,6 +27,19 @@ extension SearchTournamentsPresenter: SearchTournamentsModuleInput {
 }
 
 extension SearchTournamentsPresenter: SearchTournamentsViewOutput {
+    func filter(events: [EventViewModel], with text: String) {
+        var filteredEvents: [EventViewModel] = []
+        filteredEvents = events.filter { model in
+            model.mode.lowercased().contains(text) ||
+                    model.ratingType.lowercased().contains(text) ||
+                    model.location.lowercased().contains(text) ||
+                    model.date.lowercased().contains(text) ||
+                    model.name.lowercased().contains(text)
+        }
+        view?.updateFilteredViewModels(with: filteredEvents)
+    }
+
+
     func refreshOnline() {
         interactor.refreshEvents()
     }

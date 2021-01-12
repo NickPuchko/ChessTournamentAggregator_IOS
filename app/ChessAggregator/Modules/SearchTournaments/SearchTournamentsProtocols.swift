@@ -17,10 +17,11 @@ protocol SearchTournamentsModuleOutput: class {
 
 protocol SearchTournamentsViewInput: class {
 	func updateViewModels(with viewModels: [EventViewModel])
-	func updateFeed()
+	func updateFilteredViewModels(with viewModels: [EventViewModel])
 }
 
 protocol SearchTournamentsViewOutput: class {
+	func filter(events: [EventViewModel], with text: String)
 	func configureView()
 	func showInfo(event: EventViewModel)
 	func showApply()
