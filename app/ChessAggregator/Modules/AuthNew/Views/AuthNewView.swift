@@ -71,8 +71,12 @@ class AuthNewView: AutoLayoutView {
         loginButton.setTitleColor(.white, for: .normal)
 
         loginButton.layer.cornerRadius = 8
-        loginButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Bold", size: 22)
+        loginButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 22)
         loginButton.clipsToBounds = false
+        loginButton.layer.shadowColor = Styles.Color.buttonBlue.cgColor
+        loginButton.layer.shadowOpacity = 1
+        loginButton.layer.shadowOffset = .zero
+        loginButton.layer.shadowRadius = 7
 
         loginButton.addTarget(self, action: #selector(onTapLogin), for: .touchUpInside)
 

@@ -2,6 +2,9 @@
 // Created by Иван Лизогуб on 10.12.2020.
 //
 
+
+// MARK: DEPRECATED
+
 import UIKit
 
 class MyEventView: UIView {

@@ -126,7 +126,7 @@ private extension MyEventsViewController {
     func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .secondarySystemBackground
+        collectionView.backgroundColor = .white
         collectionView.register(MyEventViewCell<EventCardView>.self)
         collectionView.contentInset = UIEdgeInsets(top: 20.0, left: 13.0, bottom: 0.0, right: 13.0)
     }
