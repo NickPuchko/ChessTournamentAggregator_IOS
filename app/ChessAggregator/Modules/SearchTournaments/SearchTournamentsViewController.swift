@@ -28,6 +28,7 @@ final class SearchTournamentsViewController: UIViewController {
     private let collectionView: UICollectionView
 
     private let searchController = UISearchController(searchResultsController: nil)
+    private lazy var searchBar = searchController.searchBar
 
     init(output: SearchTournamentsViewOutput) {
         self.output = output
@@ -58,7 +59,6 @@ final class SearchTournamentsViewController: UIViewController {
         searchController.searchBar.isHidden = true
 
         navigationItem.hidesSearchBarWhenScrolling = true
-
 
         setupSearch()
     }
@@ -128,8 +128,12 @@ extension SearchTournamentsViewController: UISearchResultsUpdating {
         searchController.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
 //        navigationItem.searchController = searchController
-        searchController.searchBar.placeholder = "Поиск"
         definesPresentationContext = true
+
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Поиск"
+        searchController.searchBar.showsCancelButton = true
+        searchController.automaticallyShowsCancelButton = true
     }
 
     private func filterContentForSearchText(searchText: String){
@@ -147,6 +151,13 @@ extension SearchTournamentsViewController: UISearchControllerDelegate {
         DispatchQueue.main.async {
             searchController.searchBar.becomeFirstResponder()
         }
+    }
+}
+
+extension SearchTournamentsViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        print("Here")
+        searchBar.isHidden = true
     }
 }
 
@@ -170,7 +181,7 @@ private extension SearchTournamentsViewController {
     @objc func onTapMagGlass() {
         if(isSearchVisible) {
             navigationItem.hidesSearchBarWhenScrolling = true
-            searchController.searchBar.isHidden = true
+//            searchController.searchBar.isHidden = true
 //            navigationItem.searchController = nil
         } else {
 //            navigationItem.searchController = searchController

@@ -54,6 +54,8 @@ final class UserProfileViewController: UIViewController {
         return segment
     }()
 
+    private lazy var profileStackConstraint: NSLayoutConstraint =
+            profileStack.topAnchor.constraint(equalTo: generalStack.bottomAnchor, constant: 20.0)
     private let profileStack = UIStackView()
     private let createButton: UIButton = {
         let button = UIButton(type: .system)
@@ -115,6 +117,7 @@ final class UserProfileViewController: UIViewController {
         editButton.addTarget(self, action: #selector(tappedEdit), for: .touchUpInside)
 
         createButton.backgroundColor = Styles.Color.buttonBlue
+
         let createButtonAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Medium", size: 18) as Any,
                                       NSAttributedString.Key.foregroundColor : UIColor.white]
         createButton.setAttributedTitle(NSAttributedString(string: "Создать турнир", attributes: createButtonAttributes), for: .normal)
@@ -299,7 +302,7 @@ final class UserProfileViewController: UIViewController {
 
             spacingView.heightAnchor.constraint(equalToConstant: 20.0),
 
-            profileStack.topAnchor.constraint(equalTo: generalStack.bottomAnchor, constant: 20.0),
+            profileStackConstraint,
             profileStack.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: -5),
             profileStack.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 5),
 
@@ -392,10 +395,12 @@ extension UserProfileViewController: UserProfileViewInput {
                 rapid: user.rapidFrcRating,
                 blitz: user.blitzFrcRating)
 
-        createButton.isHidden = false
-        spacingView.isHidden = false
-//        createButton.isHidden = !user.isOrganizer
-//        spacingView.isHidden = !user.isOrganizer
+        createButton.isHidden = !user.isOrganizer
+        spacingView.isHidden = !user.isOrganizer
+
+        if(!user.isOrganizer) {
+            profileStackConstraint.constant = 2
+        }
     }
 
 }

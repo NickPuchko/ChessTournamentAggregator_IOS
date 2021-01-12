@@ -38,6 +38,7 @@ class EventCardView : AutoLayoutView {
         nameLabel.text = "Название турнира"
         nameLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 28)
         nameLabel.numberOfLines = 0
+        nameLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         timeLabel = UILabel()
         timeLabel.text = "Контроль"
