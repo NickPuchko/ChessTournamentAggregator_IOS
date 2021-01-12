@@ -109,6 +109,7 @@ private extension UserRegistrationPresenter {
                 isEmailValid(with: user.email) &&
                 isFirstNameValid(with: user.firstName) &&
                 isPasswordValid(with: user.password) &&
+                isValidationPasswordValid(with: user.password, validationPassword: user.passwordValidation) &&
                 isOrganizerValid(with: user.isOrganizer, user.organisationName, user.organisationCity)
     }
 
