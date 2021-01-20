@@ -3,7 +3,6 @@
 //
 
 import UIKit
-import FlagPhoneNumber
 
 
 class ForgotPasswordView: AutoLayoutView {

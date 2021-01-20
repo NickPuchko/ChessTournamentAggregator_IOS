@@ -13,7 +13,6 @@ struct Tournament: Identifiable{
     var tours: Int
     var participantsCount: Int = 0
 
-    //var timeControl: String
     var minutes: Int
     var seconds: Int
     var increment: Int
@@ -21,7 +20,6 @@ struct Tournament: Identifiable{
     var fee: Int
     var url: URL
 
-    // TODO: class Date - DateFormatter!
     // TODO: class Location
 
     init(id: String = "0", organizerId: String = "", name: String = "Some event", mode: Mode = .classic, openDate: String = "01.01.1970",

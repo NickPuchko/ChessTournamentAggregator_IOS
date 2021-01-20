@@ -20,14 +20,12 @@ extension AuthInteractor: AuthInteractorInput {
             if error != nil {
                 if let errCode = AuthErrorCode(rawValue: error!._code) {
                     switch errCode {
-                    case .invalidEmail:
-                        self?.output?.showError(error: "Invalid email")
-
                     case .wrongPassword:
-                        self?.output?.showError(error: "Invalid password")
+                        self?.output?.showError(error: "Неверный логин или пароль")
+                    case .invalidEmail:
+                        self?.output?.showError(error: "Неправильный формат адреса электронной почты")
                     default:
-                        self?.output?.showError(error: "Other Error!")
-
+                        self?.output?.showError(error: "")
                     }
                 }
             } else {

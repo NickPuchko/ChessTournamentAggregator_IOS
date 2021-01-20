@@ -49,9 +49,7 @@
 		6AC97250CAD1734CAF52ED89 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9765D0213B644869CB6C3 /* EventViewModel.swift */; };
 		6AC9728EE1D3D2942A14C036 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9770160358AE7E471E60C /* UserParser.swift */; };
 		6AC972CAFCC42E63FA70A89B /* UserProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97938A7D7CF965F65B7F2 /* UserProfileRouter.swift */; };
-		6AC97382D07275AF0B76BE69 /* PhoneNumberRegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97B1861FE999F36D6EEED /* PhoneNumberRegistrationRouter.swift */; };
 		6AC97396F1C706D218903CE6 /* MyEventsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97608734555A9C81C3CD0 /* MyEventsProtocols.swift */; };
-		6AC973A1C7ADDBAD08BF1FD4 /* PhoneNumberRegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9759E8795BBC54FB662A8 /* PhoneNumberRegistrationPresenter.swift */; };
 		6AC973BE56C56D620227BF0B /* UserRegistrationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97A91E1C7192A8DC8EE92 /* UserRegistrationProtocols.swift */; };
 		6AC97409EC960E566A8ECDE7 /* EventApplicationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97402C4B2F94C23052346 /* EventApplicationProtocols.swift */; };
 		6AC97485D8D9FE3128E51957 /* UserProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC975D5AE5FF68BFFD97855 /* UserProfileProtocols.swift */; };
@@ -61,20 +59,16 @@
 		6AC974DBDEE19C56EC671F51 /* UserRegistrationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC978288F97CE08873FC9E3 /* UserRegistrationContainer.swift */; };
 		6AC97506A5AA095E4789662E /* SearchTournamentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC976628E52A6297193E5F6 /* SearchTournamentsViewController.swift */; };
 		6AC97521E41A0991FEAD00E1 /* RatingSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC977C3058B924AFD205F7D /* RatingSegment.swift */; };
-		6AC97557716897180F2EDEA8 /* PhoneNumberRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC979A442FEE9214A769A82 /* PhoneNumberRegistrationView.swift */; };
 		6AC975A9573102D2C49D4216 /* UserProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97D08ABC13012727393FD /* UserProfileInteractor.swift */; };
 		6AC975AE26E8151CBE5C0C0B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97C70A2A035E42D8A6F55 /* UIColor.swift */; };
 		6AC975EADAE932EC6AF38770 /* UserRegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9740EF04FAD4ACEDDA578 /* UserRegistrationInteractor.swift */; };
 		6AC9769697E0E1A59FB6CE53 /* EventApplicationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC971DB2C542A07469410A3 /* EventApplicationRouter.swift */; };
 		6AC976A0C0E95C6FC2CA7101 /* ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97B6815BBD75139200594 /* ReuseIdentifier.swift */; };
-		6AC976C5CE19F0BD7DE38A7C /* PhoneNumberRegistrationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9796F8A297EBFFE1720BF /* PhoneNumberRegistrationProtocols.swift */; };
 		6AC977217F72B2F75DF1164E /* EventApplicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC977490ECDCBBE50A5FCC4 /* EventApplicationViewController.swift */; };
 		6AC9773C9765BD57D49A64CC /* UserProfileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC973C7797BE513AEB8F51C /* UserProfileContainer.swift */; };
 		6AC97774FA75080F148913D0 /* EventApplicationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9794CB4012D73CF459B5F /* EventApplicationContainer.swift */; };
 		6AC9778AD1D31F3E02D980CA /* MyEventViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97270BB59D14AA051C2BB /* MyEventViewCell.swift */; };
 		6AC977A86A632D3796F19002 /* UserRegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97DDC426E3F6DEC4AC478 /* UserRegistrationRouter.swift */; };
-		6AC97815032909668C26DACC /* PhoneNumberRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97751D5D879A37FF46E85 /* PhoneNumberRegistrationViewController.swift */; };
-		6AC9786A6563B1CCD29C7CDE /* PhoneNumberRegistrationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC972C0F6991BBFE501499A /* PhoneNumberRegistrationContainer.swift */; };
 		6AC978A83F55F586CA4F64B1 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97494364A8A41211D1FC3 /* PaddedLabel.swift */; };
 		6AC9793D65B2AE6D338CBD00 /* CharactersInString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC978757D3A6D0D18B44BFB /* CharactersInString.swift */; };
 		6AC9794BD5A4077E1682DA32 /* ChessAppCoordinatorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97CA9A97812E78E259E39 /* ChessAppCoordinatorProtocols.swift */; };
@@ -97,9 +91,9 @@
 		6AC97EFEA3F0BB9D41305BD1 /* MyEventsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9787457AE562FB98F58E3 /* MyEventsInteractor.swift */; };
 		6AC97F3474E1187790EC0D95 /* SearchTournamentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9797CA3B3EFCDCCECAC24 /* SearchTournamentsPresenter.swift */; };
 		6AC97F480E7A2324F8EF18FA /* UserProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97065AE42461955EC58DA /* UserProfilePresenter.swift */; };
-		6AC97F4FA2B08B2D8F012D07 /* PhoneNumberRegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97409DF0F9644ABC13D85 /* PhoneNumberRegistrationInteractor.swift */; };
 		6AC97F9EF2C368E3597B040E /* SearchTournamentsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC971D58E0BABEB95F76798 /* SearchTournamentsInteractor.swift */; };
 		C31943B62568C2AC0051C8C0 /* ProfileRaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31943B52568C2AC0051C8C0 /* ProfileRaw.swift */; };
+		C375F3A325B5DFBE00152832 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 730407F82550617C0036E7A6 /* SwiftKeychainWrapper */; };
 		C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613E7483DAF7CFE6E33A5A2C /* Pods_ChessAggregator.framework */; };
 		D91FC1BCA9CEF5F7417BA0B9 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCEF3B255AD71D488BD6B /* UIView+Layout.swift */; };
 		D91FC26C613F6A01D1DC8398 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC11574DF8A92DBC0617B /* Player.swift */; };
@@ -108,7 +102,6 @@
 		D91FC47714C0F5D3D1EB754F /* DoubleDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC921E2F812AAEAE200DE /* DoubleDate.swift */; };
 		D91FC496AB7E32CBBA945085 /* EventCreationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCBBA95F64B501F0D2AD1 /* EventCreationContainer.swift */; };
 		D91FC4EDA16B110EE195822E /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC170925E147D564D330E /* EditUserViewController.swift */; };
-		D91FC5042F3E661C9F697241 /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = D91FCB07D9849A89A3645C7B /* CurrentPresenter.swift */; };
 		D91FC5E44C4CEC650B839D0D /* EventCreationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC8622E77861924B3ABEC /* EventCreationRouter.swift */; };
 		D91FC76493A71AA245E6D64C /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC5DE303A4B78E2E40946 /* Tournament.swift */; };
 		D91FC804D6A7A4C2DA922FF2 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC01896C1F619D9D5B569 /* BaseRouter.swift */; };
@@ -171,17 +164,14 @@
 		6AC971DB2C542A07469410A3 /* EventApplicationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventApplicationRouter.swift; sourceTree = "<group>"; };
 		6AC9725DE11A5E51FC080F0F /* PasswordExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordExtension.swift; sourceTree = "<group>"; };
 		6AC97270BB59D14AA051C2BB /* MyEventViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventViewCell.swift; sourceTree = "<group>"; };
-		6AC972C0F6991BBFE501499A /* PhoneNumberRegistrationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationContainer.swift; sourceTree = "<group>"; };
 		6AC9733DFC6E294B9F4E58E9 /* Organizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organizer.swift; sourceTree = "<group>"; };
 		6AC973C7797BE513AEB8F51C /* UserProfileContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileContainer.swift; sourceTree = "<group>"; };
 		6AC973D5F7FD81BAD358C669 /* MyEventsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsPresenter.swift; sourceTree = "<group>"; };
 		6AC973FDD45299ECDC210C97 /* MyEventsContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsContainer.swift; sourceTree = "<group>"; };
 		6AC97402C4B2F94C23052346 /* EventApplicationProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventApplicationProtocols.swift; sourceTree = "<group>"; };
-		6AC97409DF0F9644ABC13D85 /* PhoneNumberRegistrationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationInteractor.swift; sourceTree = "<group>"; };
 		6AC9740EF04FAD4ACEDDA578 /* UserRegistrationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationInteractor.swift; sourceTree = "<group>"; };
 		6AC97494364A8A41211D1FC3 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		6AC974BC8D700AAB6B531B67 /* EmailExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailExtension.swift; sourceTree = "<group>"; };
-		6AC9759E8795BBC54FB662A8 /* PhoneNumberRegistrationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationPresenter.swift; sourceTree = "<group>"; };
 		6AC975D5AE5FF68BFFD97855 /* UserProfileProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileProtocols.swift; sourceTree = "<group>"; };
 		6AC975FF01131FF083F11FF2 /* SearchTournamentsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTournamentsRouter.swift; sourceTree = "<group>"; };
 		6AC976062406B961C4B5800B /* AuthWarningLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthWarningLabel.swift; sourceTree = "<group>"; };
@@ -193,7 +183,6 @@
 		6AC9770160358AE7E471E60C /* UserParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
 		6AC9773A1EE089845093072F /* StatisticRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticRow.swift; sourceTree = "<group>"; };
 		6AC977490ECDCBBE50A5FCC4 /* EventApplicationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventApplicationViewController.swift; sourceTree = "<group>"; };
-		6AC97751D5D879A37FF46E85 /* PhoneNumberRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationViewController.swift; sourceTree = "<group>"; };
 		6AC97794272947143F1A49B8 /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		6AC977C3058B924AFD205F7D /* RatingSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingSegment.swift; sourceTree = "<group>"; };
 		6AC978288F97CE08873FC9E3 /* UserRegistrationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationContainer.swift; sourceTree = "<group>"; };
@@ -203,13 +192,10 @@
 		6AC97920F2C4A7DC793AAFC0 /* MyEventsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsRouter.swift; sourceTree = "<group>"; };
 		6AC97938A7D7CF965F65B7F2 /* UserProfileRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileRouter.swift; sourceTree = "<group>"; };
 		6AC9794CB4012D73CF459B5F /* EventApplicationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventApplicationContainer.swift; sourceTree = "<group>"; };
-		6AC9796F8A297EBFFE1720BF /* PhoneNumberRegistrationProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationProtocols.swift; sourceTree = "<group>"; };
 		6AC9797CA3B3EFCDCCECAC24 /* SearchTournamentsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTournamentsPresenter.swift; sourceTree = "<group>"; };
-		6AC979A442FEE9214A769A82 /* PhoneNumberRegistrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationView.swift; sourceTree = "<group>"; };
 		6AC979F80F68467B6056BE62 /* ScrollableStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableStackView.swift; sourceTree = "<group>"; };
 		6AC97A3B8254E57567BB3C4E /* KeyboardAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAdapter.swift; sourceTree = "<group>"; };
 		6AC97A91E1C7192A8DC8EE92 /* UserRegistrationProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationProtocols.swift; sourceTree = "<group>"; };
-		6AC97B1861FE999F36D6EEED /* PhoneNumberRegistrationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationRouter.swift; sourceTree = "<group>"; };
 		6AC97B1F3A1E841C46E318B1 /* AuthCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		6AC97B59A22273CB308E641E /* UserRegistrationPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationPlayerView.swift; sourceTree = "<group>"; };
 		6AC97B6815BBD75139200594 /* ReuseIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuseIdentifier.swift; sourceTree = "<group>"; };
@@ -240,14 +226,11 @@
 		D91FC559D928F99290FB9443 /* EventParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventParser.swift; sourceTree = "<group>"; };
 		D91FC58675492BC70A66A7F4 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
 		D91FC5DE303A4B78E2E40946 /* Tournament.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
-		D91FC6D760559FE6A779B990 /* CurrentInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentInteractor.swift; sourceTree = "<group>"; };
-		D91FC76E941C7405ABB51E87 /* CurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentViewController.swift; sourceTree = "<group>"; };
 		D91FC84666F7D30CDBA1A2CE /* EditUserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserRouter.swift; sourceTree = "<group>"; };
 		D91FC8622E77861924B3ABEC /* EventCreationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreationRouter.swift; sourceTree = "<group>"; };
 		D91FC921E2F812AAEAE200DE /* DoubleDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleDate.swift; sourceTree = "<group>"; };
 		D91FC978B214EFC2EA79024F /* EditUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserInteractor.swift; sourceTree = "<group>"; };
 		D91FCA47971CDA900BDF6C53 /* EditUserContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserContainer.swift; sourceTree = "<group>"; };
-		D91FCB07D9849A89A3645C7B /* CurrentPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentPresenter.swift; sourceTree = "<group>"; };
 		D91FCBBA95F64B501F0D2AD1 /* EventCreationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreationContainer.swift; sourceTree = "<group>"; };
 		D91FCEF3B255AD71D488BD6B /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -257,6 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C375F3A325B5DFBE00152832 /* SwiftKeychainWrapper in Frameworks */,
 				C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,7 +291,6 @@
 		24ABA1D2257933BD00B3978D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				6AC979BA01AA657206C37BD3 /* PhoneNumberRegistration */,
 				6AC979B946764083C6D9430A /* UserRegistration */,
 				6AC979F80691717F1505998A /* UserProfile */,
 				6AC97CAAF1950883DB8BF955 /* SearchTournaments */,
@@ -463,20 +446,6 @@
 			path = UserRegistration;
 			sourceTree = "<group>";
 		};
-		6AC979BA01AA657206C37BD3 /* PhoneNumberRegistration */ = {
-			isa = PBXGroup;
-			children = (
-				6AC97B1861FE999F36D6EEED /* PhoneNumberRegistrationRouter.swift */,
-				6AC97751D5D879A37FF46E85 /* PhoneNumberRegistrationViewController.swift */,
-				6AC9796F8A297EBFFE1720BF /* PhoneNumberRegistrationProtocols.swift */,
-				6AC972C0F6991BBFE501499A /* PhoneNumberRegistrationContainer.swift */,
-				6AC97E46AFC6F3FD64EBAFC9 /* Views */,
-				6AC9759E8795BBC54FB662A8 /* PhoneNumberRegistrationPresenter.swift */,
-				6AC97409DF0F9644ABC13D85 /* PhoneNumberRegistrationInteractor.swift */,
-			);
-			path = PhoneNumberRegistration;
-			sourceTree = "<group>";
-		};
 		6AC979BE758A4D1BBDE319AE /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -570,14 +539,6 @@
 				6AC97B6815BBD75139200594 /* ReuseIdentifier.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		6AC97E46AFC6F3FD64EBAFC9 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				6AC979A442FEE9214A769A82 /* PhoneNumberRegistrationView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		6AC97E4BDADFB2E0A4A4ED61 /* AuthCoordinator */ = {
@@ -698,7 +659,7 @@
 			);
 			name = ChessAggregator;
 			packageProductDependencies = (
-				730407F82550617C0036E7A6,
+				730407F82550617C0036E7A6 /* SwiftKeychainWrapper */,
 			);
 			productName = ChessAggregator;
 			productReference = 01FFDCA2253FA08B001244D1 /* ChessAggregator.app */;
@@ -728,7 +689,7 @@
 			);
 			mainGroup = 01FFDC99253FA08B001244D1;
 			packageReferences = (
-				730407F72550617C0036E7A6,
+				730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 			);
 			productRefGroup = 01FFDCA3253FA08B001244D1 /* Products */;
 			projectDirPath = "";
@@ -822,14 +783,9 @@
 				24B910A9256BCE310076A3E1 /* AuthRouter.swift in Sources */,
 				24B910AF256BCE310076A3E1 /* AuthViewController.swift in Sources */,
 				24B9108F256BCC3C0076A3E1 /* WarningLabel.swift in Sources */,
-				6AC97382D07275AF0B76BE69 /* PhoneNumberRegistrationRouter.swift in Sources */,
-				6AC97815032909668C26DACC /* PhoneNumberRegistrationViewController.swift in Sources */,
-				6AC976C5CE19F0BD7DE38A7C /* PhoneNumberRegistrationProtocols.swift in Sources */,
-				6AC9786A6563B1CCD29C7CDE /* PhoneNumberRegistrationContainer.swift in Sources */,
 				6AC97C11BC4E6B1FA977BFB6 /* UserReg.swift in Sources */,
 				6AC97A7F1E9C1F5D7BE81FEA /* PasswordExtension.swift in Sources */,
 				6AC97A0C115FFA98AC8D5C4B /* FirebaseRef.swift in Sources */,
-				6AC97557716897180F2EDEA8 /* PhoneNumberRegistrationView.swift in Sources */,
 				6AC97F3474E1187790EC0D95 /* SearchTournamentsPresenter.swift in Sources */,
 				6AC979CAF6BD9CBF2EF92714 /* SearchTournamentsRouter.swift in Sources */,
 				6AC97506A5AA095E4789662E /* SearchTournamentsViewController.swift in Sources */,
@@ -842,8 +798,6 @@
 				6AC979654688EE71C9F0EDD2 /* UserRegistrationPlayerView.swift in Sources */,
 				6AC975EADAE932EC6AF38770 /* UserRegistrationInteractor.swift in Sources */,
 				6AC977A86A632D3796F19002 /* UserRegistrationRouter.swift in Sources */,
-				6AC973A1C7ADDBAD08BF1FD4 /* PhoneNumberRegistrationPresenter.swift in Sources */,
-				6AC97F4FA2B08B2D8F012D07 /* PhoneNumberRegistrationInteractor.swift in Sources */,
 				014BEFC625A11D020000DFAD /* PickableTextField.swift in Sources */,
 				6AC97F480E7A2324F8EF18FA /* UserProfilePresenter.swift in Sources */,
 				6AC972CAFCC42E63FA70A89B /* UserProfileRouter.swift in Sources */,
@@ -1108,7 +1062,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		730407F72550617C0036E7A6 = {
+		730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
 			requirement = {
@@ -1119,9 +1073,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		730407F82550617C0036E7A6 = {
+		730407F82550617C0036E7A6 /* SwiftKeychainWrapper */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 730407F72550617C0036E7A6;
+			package = 730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
 			productName = SwiftKeychainWrapper;
 		};
 /* End XCSwiftPackageProductDependency section */

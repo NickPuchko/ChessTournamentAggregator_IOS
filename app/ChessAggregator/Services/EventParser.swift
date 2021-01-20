@@ -7,7 +7,7 @@ class EventParser {
         guard let eventDict = snapshot.valueInExportFormat() as? [String: Any] else { return nil }
         var events: [Tournament] = []
         for (key, value) in eventDict {
-            var event = Tournament(id: key as! String)
+            var event = Tournament(id: key )
             let thisEvent = value as! [String: Any]
 
             event.openDate = thisEvent["openDate"] as? String ?? "01.01.1970"

@@ -14,8 +14,8 @@ extension AuthRouter: AuthRouterInput {
     }
 
     func showAllert(error: String) {
-        let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
+        let alert = UIAlertController(title: "Ошибка авторизации", message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Отменить", style: .default))
         viewController?.present(alert, animated: true, completion: nil)
     }
 }
