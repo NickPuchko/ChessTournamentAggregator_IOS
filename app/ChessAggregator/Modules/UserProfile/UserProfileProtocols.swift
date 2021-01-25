@@ -28,7 +28,6 @@ protocol UserProfileViewOutput: class {
 }
 
 protocol UserProfileInteractorInput: class {
-    //func reloadData()
 }
 
 protocol UserProfileInteractorOutput: class {
@@ -41,4 +40,8 @@ protocol UserProfileRouterInput: class {
 	func showCreator()
 	func showFIDE(user: User)
 	func showFRC(user: User)
+}
+
+protocol EditUserDelegate: class {
+	func updateUser(user: User)
 }

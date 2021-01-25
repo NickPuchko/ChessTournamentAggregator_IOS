@@ -16,6 +16,25 @@ class UserParser {
         return dateFormatter
     }()
 
+    static func updateUserInfo(user: User) {
+        if let fideId = user.player.fideID {
+            FirebaseRef.ref.child("Users").child(user.id).child("fideID").setValue(fideId)
+        }
+        if let patronomicName = user.player.patronomicName {
+            FirebaseRef.ref.child("Users").child(user.id).child("patronomicName").setValue(patronomicName)
+        }
+        if let frcID = user.player.frcID {
+            FirebaseRef.ref.child("Users").child(user.id).child("frcID").setValue(frcID)
+        }
+
+        FirebaseRef.ref.child("Users").child(user.id).updateChildValues([
+            "lastName": user.player.lastName,
+            "firstName": user.player.firstName,
+            "latinName": user.player.latinName,
+            "sex": user.player.sex.rawValue
+        ])
+    }
+
 
     static func userToFirebaseUser(user: User) -> [String: Any] {
         var result: [String: Any] = [:]
@@ -79,17 +98,24 @@ class UserParser {
         if let organizationCity = user.organizer.organizationCity {
             result["organizationCity"] = organizationCity
         }
+
+        if user.player.tournaments != [] {
+            var tournaments: [String : Bool] = [:]
+            for eventId in user.player.tournaments {
+                tournaments[eventId] = true
+            }
+            result["tournaments"] = tournaments
+        }
         return result
     }
-    static func parseFide(frcID: Int) ->(String?, Int?){
+
+    static func parseFide(frcID: Int) -> (String?, Int?){
         var arrayDataFide: [String]?
         let fideID: Int?
         let fullname: String?
         var result: (String?, Int?)
         guard let urlString = try? ("https://ratings.ruchess.ru/people/" + String(frcID)) else {
-            
             return (nil,nil)
-            
         }
         guard let myUrl = URL(string: urlString) else{ return (nil, nil) }
         
@@ -302,10 +328,11 @@ class UserParser {
         return result
     }
     
-    static func userFromSnapshot(snapshot: DataSnapshot) -> User {
+    static func userFromSnapshot(snapshot: DataSnapshot, uid: String) -> User {
         
         guard let userDict = snapshot.valueInExportFormat() as? NSDictionary else {return User()}
         var user = User()
+        user.id = uid
         user.email = userDict["email"] as? String ?? "test@gmail.com"
         user.isOrganizer = userDict["isOrganizer"] as? Bool ?? false
         user.player = Player(
@@ -324,7 +351,13 @@ class UserParser {
             rapidFrcRating: userDict["frcRapid"] as? Int ?? nil,
             blitzFrcRating: userDict["frcBlitz"] as? Int ?? nil
         )
-
+        if let tournaments = userDict["tournaments"] as? [String : Any] {
+            for (eventId, isAccepted) in tournaments {
+                if isAccepted as! Bool {
+                    user.player.tournaments.append(eventId)
+                }
+            }
+        }
 
         if user.isOrganizer {
             user.organizer = Organizer(
@@ -366,6 +399,14 @@ class UserParser {
                     rapidFrcRating: thisUser["fideRapid"] as? Int ?? nil,
                     blitzFrcRating: thisUser["fideBlitz"] as? Int ?? nil
             )
+
+            if let tournaments = thisUser["tournaments"] as? [String : Bool] {
+                for (eventId, isAccepted) in tournaments {
+                    if isAccepted {
+                        user.player.tournaments.append(eventId)
+                    }
+                }
+            }
 
             users.append(user)
 

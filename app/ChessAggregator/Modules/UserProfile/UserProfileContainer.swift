@@ -8,7 +8,7 @@ final class UserProfileContainer {
 	private(set) weak var router: UserProfileRouterInput!
 
 	static func assemble(with context: UserProfileContext) -> UserProfileContainer {
-        let router = UserProfileRouter()  //TODO: номер телефона
+        let router = UserProfileRouter()
         let interactor = UserProfileInteractor()
         let presenter = UserProfilePresenter(router: router, interactor: interactor)
 		let viewController = UserProfileViewController(output: presenter)
@@ -21,6 +21,7 @@ final class UserProfileContainer {
 		router.navigationControllerProvider = {[weak viewController] in
 			viewController?.navigationController
 		}
+		router.presenter = presenter
 
         return UserProfileContainer(view: viewController, input: presenter, router: router)
 	}

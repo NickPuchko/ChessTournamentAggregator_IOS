@@ -3,16 +3,13 @@ import UIKit
 import SafariServices
 
 final class UserProfileRouter: BaseRouter {
-     //TODO: номер телефона
-
-     //TODO: номер телефона
-    
+    var presenter: UserProfilePresenter!
 }
 
 extension UserProfileRouter: UserProfileRouterInput {
     
     func showEditor(with user: User) {
-        let context = EditUserContext(moduleOutput: nil, user: user) // TODO: output
+        let context = EditUserContext(moduleOutput: nil, user: user, delegate: presenter)
         let container = EditUserContainer.assemble(with: context)
         navigationController?.pushViewController(container.viewController, animated: true) // UPDATE VIEW AFTERWARDS
         

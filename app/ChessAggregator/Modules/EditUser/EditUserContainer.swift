@@ -24,6 +24,7 @@ final class EditUserContainer {
 		presenter.user = context.user
 
 		interactor.output = presenter
+		interactor.editUserDelegate = context.delegate
 
 		router.navigationControllerProvider = { [weak viewController] in
 			viewController?.navigationController
@@ -42,4 +43,5 @@ final class EditUserContainer {
 struct EditUserContext {
 	weak var moduleOutput: EditUserModuleOutput?
 	var user: User
+	var delegate: EditUserDelegate
 }

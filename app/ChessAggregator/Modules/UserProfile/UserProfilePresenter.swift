@@ -58,7 +58,7 @@ extension UserProfilePresenter: UserProfileViewOutput {
     }
 }
 
-extension UserProfilePresenter: UserProfileInteractorOutput {
+extension UserProfilePresenter: UserProfileInteractorOutput, EditUserDelegate {
     func updateUser(user: User) {
         self.user = user
         let userViewModel = makeViewModel(user: user)

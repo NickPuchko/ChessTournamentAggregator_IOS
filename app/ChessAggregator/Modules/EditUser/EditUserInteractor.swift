@@ -12,13 +12,16 @@ import FirebaseDatabase
 
 final class EditUserInteractor {
 	weak var output: EditUserInteractorOutput?
+	var editUserDelegate: EditUserDelegate!
 }
 
 extension EditUserInteractor: EditUserInteractorInput {
 	func saveChanges(with user: User) {
-		let realtimeDatabaseUser = UserParser.userToFirebaseUser(user: user)
-		FirebaseRef.ref.child("Users").child(Auth.auth().currentUser!.uid).setValue(realtimeDatabaseUser)
-        print("Some extremely important changes have deployed for \(user.player.firstName)")
+		editUserDelegate.updateUser(user: user)
+		DispatchQueue.global().async(qos: .background) {
+			UserParser.updateUserInfo(user: user)
+//			let realtimeDatabaseUser = UserParser.userToFirebaseUser(user: user)
+//			FirebaseRef.ref.child("Users").child(Auth.auth().currentUser!.uid).setValue(realtimeDatabaseUser)
+		}
 	}
-
 }

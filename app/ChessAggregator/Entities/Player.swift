@@ -16,6 +16,7 @@ struct Player: Codable {
     var classicFrcRating: Int?
     var rapidFrcRating: Int?
     var blitzFrcRating: Int?
+    var tournaments: [String] = []
 
 }
 
