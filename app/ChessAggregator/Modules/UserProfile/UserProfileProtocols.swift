@@ -20,6 +20,7 @@ protocol UserProfileViewInput: class {
 }
 
 protocol UserProfileViewOutput: class {
+	var userViewModel: UserViewModel? { get }
 	func editProfile()
 	func createEvent()
 	func showFIDE()

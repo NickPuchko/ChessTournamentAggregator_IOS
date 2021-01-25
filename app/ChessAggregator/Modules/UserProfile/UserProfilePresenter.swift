@@ -9,6 +9,7 @@ final class UserProfilePresenter {
 	private let router: UserProfileRouterInput
 	private let interactor: UserProfileInteractorInput
     private var user: User?
+    var userViewModel: UserViewModel?
     
     init(router: UserProfileRouterInput, interactor: UserProfileInteractorInput) {
         self.router = router
@@ -61,8 +62,10 @@ extension UserProfilePresenter: UserProfileViewOutput {
 extension UserProfilePresenter: UserProfileInteractorOutput, EditUserDelegate {
     func updateUser(user: User) {
         self.user = user
-        let userViewModel = makeViewModel(user: user)
-        view!.updateUser(user: userViewModel)
+        userViewModel = makeViewModel(user: user)
+        if let view = view {
+            view.updateUser(user: userViewModel!)
+        }
     }
 }
 

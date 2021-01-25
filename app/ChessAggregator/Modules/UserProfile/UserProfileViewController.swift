@@ -103,6 +103,9 @@ final class UserProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let viewModel = output.userViewModel {
+            updateUser(user: viewModel)
+        }
 
         imageView.layer.cornerRadius = imageCornerRadius
         imageView.clipsToBounds = true
