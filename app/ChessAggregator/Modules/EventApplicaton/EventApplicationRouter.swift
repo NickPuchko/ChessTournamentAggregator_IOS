@@ -13,8 +13,21 @@ final class EventApplicationRouter: BaseRouter {
 }
 
 extension EventApplicationRouter: EventApplicationRouterInput {
+    func showCancel() {
+        showResult(message: "Заявка успешно отменена")
+    }
+
     func showApply() {
-        navigationController?.popToRootViewController(animated: true)
+        showResult(message: "Заявка успешно подана")
+    }
+
+    func showResult(message: String) {
+        let alert = UIAlertController(title: message, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Отлично!", style: .cancel, handler: {
+            action in
+            alert.dismiss(animated: true)
+        }))
+        navigationController?.present(alert, animated: true)
     }
 
     func showSite(url: URL) {
@@ -31,5 +44,4 @@ extension EventApplicationRouter: EventApplicationRouterInput {
             navigationController?.present(alert, animated: true)
         }
     }
-
 }

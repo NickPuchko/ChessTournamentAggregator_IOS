@@ -13,6 +13,7 @@ class EventApplicationView: AutoLayoutView {
     let startList: StableTableView // TODO: add shadow and corner radius
 
     var onTapApplicationButton: (() -> Void)?
+    var onTapCancelButton: (() -> Void)?
 
     init(event: Tournament, onTapSite: (() -> Void)?) {
         headerCloud = HeaderCloudView(event: event)
@@ -56,20 +57,43 @@ class EventApplicationView: AutoLayoutView {
         addSubview(previewStack)
     }
 
-    private func setupButton() {
-        let applyAttribute: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.font : UIFont(name: "AppleSDGothicNeo-Medium", size: 18)!,
-            NSAttributedString.Key.foregroundColor : UIColor.white
-        ]
-        applyButton.setAttributedTitle(NSAttributedString(string: "Подать заявку", attributes: applyAttribute), for: .normal)
+    func setupButton() {
+//        let applyAttribute: [NSAttributedString.Key: Any] = [
+//            NSAttributedString.Key.font : UIFont(name: "AppleSDGothicNeo-Medium", size: 18)!,
+//            NSAttributedString.Key.foregroundColor : UIColor.white
+//        ]
+//        if isApplied {
+//            applyButton.alpha = 0.8
+//            applyButton.setAttributedTitle(NSAttributedString(string: "Отменить заявку", attributes: applyAttribute), for: .normal)
+//            applyButton.addTarget(self, action: #selector(onTapCancel), for: .touchUpInside)
+//        } else {
+//            applyButton.setAttributedTitle(NSAttributedString(string: "Подать заявку", attributes: applyAttribute), for: .normal)
+//            applyButton.addTarget(self, action: #selector(onTapApplication), for: .touchUpInside)
+//            applyButton.alpha = 1
+//        }
+
         applyButton.backgroundColor = Styles.Color.buttonBlue
         applyButton.layer.cornerRadius = 15
         applyButton.layer.shadowRadius = 7
         applyButton.layer.shadowOffset = .zero
-        applyButton.layer.shadowColor = Styles.Color.buttonBlue.cgColor
+        applyButton.layer.shadowColor = applyButton.backgroundColor!.cgColor
         applyButton.layer.shadowOpacity = 1
+    }
 
-        applyButton.addTarget(self, action: #selector(onTapApplication), for: .touchUpInside)
+    func updateButton(isApplied: Bool) {
+        let applyAttribute: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.font : UIFont(name: "AppleSDGothicNeo-Medium", size: 18)!,
+            NSAttributedString.Key.foregroundColor : UIColor.white
+        ]
+        if isApplied {
+            applyButton.alpha = 0.8
+            applyButton.setAttributedTitle(NSAttributedString(string: "Отменить заявку", attributes: applyAttribute), for: .normal)
+            applyButton.addTarget(self, action: #selector(onTapCancel), for: .touchUpInside)
+        } else {
+            applyButton.setAttributedTitle(NSAttributedString(string: "Подать заявку", attributes: applyAttribute), for: .normal)
+            applyButton.addTarget(self, action: #selector(onTapApplication), for: .touchUpInside)
+            applyButton.alpha = 1
+        }
     }
 
     override func setupConstraints() {
@@ -99,5 +123,9 @@ class EventApplicationView: AutoLayoutView {
 
     @objc private func onTapApplication() {
         onTapApplicationButton?()
+    }
+
+    @objc private func onTapCancel() {
+        onTapCancelButton?()
     }
 }

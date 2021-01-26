@@ -38,6 +38,9 @@ final class EventApplicationViewController: UIViewController {
         applicationView.onTapApplicationButton = {[weak self] in
             self?.output.onTapApplication()
         }
+        applicationView.onTapCancelButton = {[weak self] in
+            self?.output.onTapCancel()
+        }
         applicationView.startList.dataSource = self
     }
 }
@@ -48,6 +51,7 @@ extension EventApplicationViewController: EventApplicationViewInput {
         applicationView.footerCloud.participantsLabel.text = "👤 \(participants)"
         playerViewModels = players
         applicationView.startList.reloadData()
+        applicationView.updateButton(isApplied: output.isApplied)
     }
 }
 

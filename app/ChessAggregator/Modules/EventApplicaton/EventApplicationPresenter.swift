@@ -25,6 +25,11 @@ extension EventApplicationPresenter: EventApplicationModuleInput {
 }
 
 extension EventApplicationPresenter: EventApplicationViewOutput {
+    var isApplied: Bool {
+        get {
+            interactor.checkAppliance()
+        }
+    }
 
     func onTapSite() {
         router.showSite(url: interactor.requestEvent().url)
@@ -37,6 +42,11 @@ extension EventApplicationPresenter: EventApplicationViewOutput {
     func onTapApplication() {
         interactor.takePart()
         router.showApply()
+    }
+
+    func onTapCancel() {
+        interactor.cancelAppliance()
+        router.showCancel()
     }
 
 }

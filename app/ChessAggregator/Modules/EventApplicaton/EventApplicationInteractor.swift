@@ -7,11 +7,13 @@
 //
 
 import Firebase
+import FirebaseAuth
 
 final class EventApplicationInteractor {
 	weak var output: EventApplicationInteractorOutput?
 	private let tournament: Tournament
 	private var users: [User]
+	private lazy var uid = Auth.auth().currentUser!.uid
 
 	init(tournament: Tournament) {
 		self.tournament = tournament
@@ -27,6 +29,9 @@ final class EventApplicationInteractor {
 }
 
 extension EventApplicationInteractor: EventApplicationInteractorInput {
+
+	func checkAppliance() -> Bool { (users.map{ $0.id }).contains(uid) }
+
 	func reloadData() {
 		var players: [PlayerModel] = []
 		var eloSum = 0
@@ -78,12 +83,26 @@ extension EventApplicationInteractor: EventApplicationInteractorInput {
 	}
 
 	func takePart() {
-		let userID = Auth.auth().currentUser!.uid
-		let childUpdates = ["Users/\(userID)/tournaments/\(tournament.id)": true,
-							"Tournaments/\(tournament.id)/participants/\(userID)": true
-		]
+		let childUpdates = ["Users/\(uid)/tournaments/\(tournament.id)": true,
+							"Tournaments/\(tournament.id)/participants/\(uid)": true]
 		FirebaseRef.ref.updateChildValues(childUpdates)
+		FirebaseRef.ref.child("Users").child(uid).observeSingleEvent(of: .value, with: { [weak self] snapshot in
+			self?.users.append(UserParser.userFromSnapshot(snapshot: snapshot, uid: self!.uid))
+			self?.reloadData()
+		})
 	}
+
+	func cancelAppliance() {
+		let childUpdates: [String: Bool?] = ["Users/\(uid)/tournaments/\(tournament.id)": nil,
+											 "Tournaments/\(tournament.id)/participants/\(uid)": nil]
+		FirebaseRef.ref.updateChildValues(childUpdates as [AnyHashable: Any])
+		FirebaseRef.ref.child("Users").child(uid).observeSingleEvent(of: .value, with: { [weak self] snapshot in
+			self?.users = self?.users.filter { $0.id != self?.uid } ?? []
+			self?.reloadData()
+		})
+
+	}
+
 
 
 	private func getCurrentRating(player: Player, ratingType: RatingType, mode: Mode) -> Int? {

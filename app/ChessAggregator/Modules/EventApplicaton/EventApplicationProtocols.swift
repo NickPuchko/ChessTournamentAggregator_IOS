@@ -21,14 +21,18 @@ protocol EventApplicationViewInput: class {
 
 protocol EventApplicationViewOutput: class {
 	func onTapApplication()
+	func onTapCancel()
 	func onTapSite()
 	func eventState() -> Tournament
+	var isApplied: Bool { get }
 }
 
 protocol EventApplicationInteractorInput: class {
 	func takePart()
+	func cancelAppliance()
 	func requestEvent() -> Tournament
 	func reloadData()
+	func checkAppliance() -> Bool
 }
 
 protocol EventApplicationInteractorOutput: class {
@@ -38,4 +42,5 @@ protocol EventApplicationInteractorOutput: class {
 protocol EventApplicationRouterInput: class {
 	func showSite(url: URL)
 	func showApply()
+	func showCancel()
 }

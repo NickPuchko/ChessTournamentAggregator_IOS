@@ -395,10 +395,10 @@ extension UserProfileViewController: UserProfileViewInput {
                 rapid: user.rapidFrcRating,
                 blitz: user.blitzFrcRating)
 
-        createButton.isHidden = false
-        spacingView.isHidden = false
-//        createButton.isHidden = !user.isOrganizer
-//        spacingView.isHidden = !user.isOrganizer
+//        createButton.isHidden = false
+//        spacingView.isHidden = false
+        createButton.isHidden = !user.isOrganizer
+        spacingView.isHidden = !user.isOrganizer
     }
 
 }

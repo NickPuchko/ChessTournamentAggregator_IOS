@@ -10,12 +10,11 @@ import UIKit
 import SafariServices
 
 final class SearchTournamentsRouter: BaseRouter {
-     //TODO: номер телефона
-
 }
 
 extension SearchTournamentsRouter: SearchTournamentsRouterInput {
     func showInfo(event: EventViewModel) {
+
         let context = EventApplicationContext(moduleOutput: nil, tournament: event.event)
         let container = EventApplicationContainer.assemble(with: context)
         navigationController?.pushViewController(container.viewController, animated: true)
