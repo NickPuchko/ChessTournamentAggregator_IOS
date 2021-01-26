@@ -12,7 +12,7 @@ import FirebaseDatabase
 
 final class EditUserInteractor {
 	weak var output: EditUserInteractorOutput?
-	var editUserDelegate: EditUserDelegate!
+	weak var editUserDelegate: EditUserDelegate!
 }
 
 extension EditUserInteractor: EditUserInteractorInput {

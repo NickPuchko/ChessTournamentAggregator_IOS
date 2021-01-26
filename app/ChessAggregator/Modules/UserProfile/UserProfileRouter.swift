@@ -3,7 +3,7 @@ import UIKit
 import SafariServices
 
 final class UserProfileRouter: BaseRouter {
-    var presenter: UserProfilePresenter!
+    weak var presenter: UserProfilePresenter!
 }
 
 extension UserProfileRouter: UserProfileRouterInput {
