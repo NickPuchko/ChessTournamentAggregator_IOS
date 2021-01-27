@@ -97,7 +97,7 @@ class HeaderCloudView : AutoLayoutView {
         verticalStack.spacing = 8
         verticalStack.alignment = .leading
         verticalStack.distribution = .fill
-        verticalStack.setCustomSpacing(8, after: nameStack)
+        verticalStack.setCustomSpacing(0, after: nameStack)
         verticalStack.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 0) // TODO: pins - fix warnings
         verticalStack.isLayoutMarginsRelativeArrangement = true
         addSubview(verticalStack)
@@ -137,27 +137,20 @@ class HeaderCloudView : AutoLayoutView {
 
             nameStack.widthAnchor.constraint(equalTo: widthAnchor),
 
-
             locationImage.heightAnchor.constraint(equalToConstant: 30),
             locationImage.widthAnchor.constraint(equalToConstant: 30),
-//            locationImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 76),
 
             locationLabel.heightAnchor.constraint(equalTo: locationImage.heightAnchor),
-//            locationLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             ratingImage.heightAnchor.constraint(equalTo: locationImage.heightAnchor),
             ratingImage.widthAnchor.constraint(equalTo: locationImage.widthAnchor),
-//            ratingImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 76),
 
             ratingLabel.heightAnchor.constraint(equalTo: ratingImage.heightAnchor),
-//            ratingLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             dateImage.heightAnchor.constraint(equalTo: ratingImage.heightAnchor),
             dateImage.widthAnchor.constraint(equalTo: ratingImage.widthAnchor),
-//            dateImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 76),
 
             dateLabel.heightAnchor.constraint(equalTo: ratingLabel.heightAnchor),
-//            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
 
         ])
 

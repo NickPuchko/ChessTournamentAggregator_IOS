@@ -12,6 +12,8 @@ class EventCardView : AutoLayoutView {
     private let locationImage: UIImageView
     private let dateImage: UIImageView
 
+    private var verticalStack = UIStackView()
+    private var nameStack = UIStackView()
     private let nameLabel: UILabel
     private let timeLabel: UILabel
     private let ratingLabel: UILabel
@@ -38,7 +40,7 @@ class EventCardView : AutoLayoutView {
         nameLabel.text = "Название турнира"
         nameLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 28)
         nameLabel.numberOfLines = 0
-        nameLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        nameLabel.setContentCompressionResistancePriority(.fittingSizeLevel, for: .horizontal)
 
         timeLabel = UILabel()
         timeLabel.text = "Контроль"
@@ -62,7 +64,8 @@ class EventCardView : AutoLayoutView {
 
         super.init(frame: frame)
 
-        let nameStack = UIStackView(arrangedSubviews: [teamImage, nameLabel])
+        nameStack.addArrangedSubview(teamImage)
+        nameStack.addArrangedSubview(nameLabel)
         nameStack.axis = .horizontal
         nameStack.spacing = 4
         nameStack.alignment = .center
@@ -102,17 +105,15 @@ class EventCardView : AutoLayoutView {
         mainContentStack.layoutMargins = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
         mainContentStack.isLayoutMarginsRelativeArrangement = true
 
-        let verticalStack = UIStackView(arrangedSubviews: [
-            nameStack,
-            mainContentStack
-        ])
+        verticalStack.addArrangedSubview(nameStack)
+        verticalStack.addArrangedSubview(mainContentStack)
 
         verticalStack.axis = .vertical
         verticalStack.spacing = 8
         verticalStack.alignment = .leading
         verticalStack.distribution = .fill
-        verticalStack.setCustomSpacing(8, after: nameStack)
-        verticalStack.layoutMargins = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 0)
+        verticalStack.setCustomSpacing(0, after: nameStack)
+        verticalStack.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 0) // TODO: pins - fix warnings
         verticalStack.isLayoutMarginsRelativeArrangement = true
 
         addSubview(verticalStack)
@@ -143,26 +144,26 @@ class EventCardView : AutoLayoutView {
     override func setupConstraints() {
         super.setupConstraints()
 
-        [teamImage, timeImage, locationImage, ratingImage, dateImage,
-         nameLabel, timeLabel, locationLabel, ratingLabel, dateLabel].forEach {
-            view in view.translatesAutoresizingMaskIntoConstraints = false
+        [teamImage, locationImage, timeImage, ratingImage, dateImage,
+         nameLabel, timeLabel, locationLabel, ratingLabel, dateLabel].forEach { view in
+            view.translatesAutoresizingMaskIntoConstraints = false
         }
 
         NSLayoutConstraint.activate([
             teamImage.heightAnchor.constraint(equalToConstant: 60),
             teamImage.widthAnchor.constraint(equalToConstant: 60),
 
-            nameLabel.heightAnchor.constraint(equalToConstant: 40),
-
-            locationImage.heightAnchor.constraint(equalToConstant: 30),
-            locationImage.widthAnchor.constraint(equalToConstant: 30),
-
-            locationLabel.heightAnchor.constraint(equalTo: locationImage.heightAnchor),
+            nameStack.widthAnchor.constraint(equalTo: widthAnchor),
 
             timeImage.heightAnchor.constraint(equalTo: locationImage.heightAnchor),
             timeImage.widthAnchor.constraint(equalTo: locationImage.widthAnchor),
 
             timeLabel.heightAnchor.constraint(equalTo: ratingImage.heightAnchor),
+
+            locationImage.heightAnchor.constraint(equalToConstant: 30),
+            locationImage.widthAnchor.constraint(equalToConstant: 30),
+
+            locationLabel.heightAnchor.constraint(equalTo: locationImage.heightAnchor),
 
             ratingImage.heightAnchor.constraint(equalTo: locationImage.heightAnchor),
             ratingImage.widthAnchor.constraint(equalTo: locationImage.widthAnchor),
@@ -173,7 +174,6 @@ class EventCardView : AutoLayoutView {
             dateImage.widthAnchor.constraint(equalTo: ratingImage.widthAnchor),
 
             dateLabel.heightAnchor.constraint(equalTo: ratingLabel.heightAnchor)
-
         ])
     }
 

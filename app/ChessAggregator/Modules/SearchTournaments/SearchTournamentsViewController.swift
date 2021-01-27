@@ -101,6 +101,7 @@ extension SearchTournamentsViewController: UICollectionViewDataSource {
         let viewModel = isFiltered ? filteredViewModels[indexPath.item] : viewModels[indexPath.item]
         let cell = collectionView.dequeueCell(cellType: MyEventViewCell<EventCardView>.self, for: indexPath)
         cell.containerView.update(with: viewModel)
+
         return cell
     }
 
@@ -111,7 +112,17 @@ extension SearchTournamentsViewController: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                                sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width - collectionView.contentInset.left - collectionView.contentInset.right
-        let height = CGFloat(228)
+
+        let viewModel = isFiltered ? filteredViewModels[indexPath.item] : viewModels[indexPath.item]
+
+        let textFontAttributes = [
+            NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Bold", size: 28)!
+        ] as [NSAttributedString.Key : Any]
+
+        let size = (viewModel.name as NSString).size(withAttributes: textFontAttributes)
+        let height = 220 + CGFloat(Int( size.width / width)) * (size.height)
+        print(width, height)
+
         return CGSize(width: width, height: height)
     }
 
@@ -158,7 +169,7 @@ private extension SearchTournamentsViewController {
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         collectionView.backgroundColor = .white
-        collectionView.contentInset = UIEdgeInsets(top: 20, left: 16, bottom: 0, right: 16)
+        collectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
     }
 
     func setupConstraints() {
