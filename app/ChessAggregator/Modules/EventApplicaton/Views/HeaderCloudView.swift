@@ -6,6 +6,8 @@ import UIKit
 
 class HeaderCloudView : AutoLayoutView {
 
+    private var verticalStack = UIStackView()
+    private var nameStack = UIStackView()
     private let teamImage: UIImageView
     private let locationImage: UIImageView
     private let ratingImage: UIImageView
@@ -34,7 +36,7 @@ class HeaderCloudView : AutoLayoutView {
         nameLabel.text = "Название турнира"
         nameLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 28)
         nameLabel.numberOfLines = 0
-        nameLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        nameLabel.setContentCompressionResistancePriority(.fittingSizeLevel, for: .horizontal)
 
         locationLabel = UILabel()
         locationLabel.text = "Место проведения"
@@ -53,11 +55,12 @@ class HeaderCloudView : AutoLayoutView {
 
         super.init(frame: .zero)
 
-        let nameStack = UIStackView(arrangedSubviews: [teamImage, nameLabel])
+        nameStack.addArrangedSubview(teamImage)
+        nameStack.addArrangedSubview(nameLabel)
         nameStack.axis = .horizontal
         nameStack.spacing = 4
         nameStack.alignment = .center
-        nameStack.distribution = .fillProportionally
+        nameStack.distribution = .fill
 
         let locationStack = UIStackView(arrangedSubviews: [locationImage, locationLabel])
         locationStack.axis = .horizontal
@@ -87,17 +90,15 @@ class HeaderCloudView : AutoLayoutView {
         mainContentStack.layoutMargins = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
         mainContentStack.isLayoutMarginsRelativeArrangement = true
 
-        let verticalStack = UIStackView(arrangedSubviews: [
-            nameStack,
-            mainContentStack
-        ])
+        verticalStack.addArrangedSubview(nameStack)
+        verticalStack.addArrangedSubview(mainContentStack)
 
         verticalStack.axis = .vertical
         verticalStack.spacing = 8
         verticalStack.alignment = .leading
         verticalStack.distribution = .fill
         verticalStack.setCustomSpacing(8, after: nameStack)
-        verticalStack.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
+        verticalStack.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 0) // TODO: pins - fix warnings
         verticalStack.isLayoutMarginsRelativeArrangement = true
         addSubview(verticalStack)
         verticalStack.pins()
@@ -129,14 +130,13 @@ class HeaderCloudView : AutoLayoutView {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
 
+
         NSLayoutConstraint.activate([
-//            teamImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             teamImage.heightAnchor.constraint(equalToConstant: 60),
             teamImage.widthAnchor.constraint(equalToConstant: 60),
 
-            nameLabel.heightAnchor.constraint(equalToConstant: 40),
-//            nameLabel.leadingAnchor.constraint(equalTo: teamImage.trailingAnchor, constant: 16),
-//            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            nameStack.widthAnchor.constraint(equalTo: widthAnchor),
+
 
             locationImage.heightAnchor.constraint(equalToConstant: 30),
             locationImage.widthAnchor.constraint(equalToConstant: 30),
@@ -160,6 +160,7 @@ class HeaderCloudView : AutoLayoutView {
 //            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
 
         ])
+
     }
 
     required init?(coder: NSCoder) {

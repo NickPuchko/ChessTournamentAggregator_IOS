@@ -15,4 +15,37 @@ enum Styles {
         static let lightGray: UIColor = .rgba(199, 199, 204)
         static let backgroundGray: UIColor = .rgba(229, 229, 229)
     }
+
+    static func numberToImage(drawText text: String) -> UIImage {
+        let textColor = UIColor.systemBlue
+        let textFont = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 20)!
+        let scale = UIScreen.main.scale
+        let textFontAttributes = [
+            NSAttributedString.Key.font: textFont,
+            NSAttributedString.Key.foregroundColor: textColor,
+        ] as [NSAttributedString.Key : Any]
+        let size = (text as NSString).size(withAttributes: textFontAttributes)
+        let image = UIColor.white.image(CGSize(width: size.width, height: size.height))
+
+        UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
+
+        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
+
+        let rect = CGRect(origin: .zero, size: image.size)
+        text.draw(in: rect, withAttributes: textFontAttributes)
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return newImage!
+    }
+}
+
+extension UIColor {
+    func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+        UIGraphicsImageRenderer(size: size).image { rendererContext in
+            setFill()
+            rendererContext.fill(CGRect(origin: .zero, size: size))
+        }
+    }
 }

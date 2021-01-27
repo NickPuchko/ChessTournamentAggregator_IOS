@@ -36,13 +36,12 @@ class EventApplicationView: AutoLayoutView {
         startList.isScrollEnabled = false
         startList.backgroundColor = .white
         startList.allowsSelection = false
-//        startList.rowHeight = UITableView.automaticDimension
-//        startList.estimatedRowHeight = 60
+
     }
 
     private func setupStack() {
         let topPadding = UIView()
-        topPadding.heightAnchor.constraint(equalToConstant: 8).isActive = true
+        topPadding.heightAnchor.constraint(equalToConstant: 16).isActive = true
 
         previewStack.addArrangedSubview(topPadding)
         previewStack.addArrangedSubview(headerCloud)
@@ -50,27 +49,16 @@ class EventApplicationView: AutoLayoutView {
         previewStack.addArrangedSubview(applyButton)
         previewStack.addArrangedSubview(startList)
 
-        previewStack.config.stack.distribution = .fillProportionally
+        previewStack.config.stack.distribution = .fill
         previewStack.config.stack.alignment = .center
         previewStack.config.stack.spacing = 24
+        previewStack.setCustomSpacing(0, after: topPadding)
+
 
         addSubview(previewStack)
     }
 
     func setupButton() {
-//        let applyAttribute: [NSAttributedString.Key: Any] = [
-//            NSAttributedString.Key.font : UIFont(name: "AppleSDGothicNeo-Medium", size: 18)!,
-//            NSAttributedString.Key.foregroundColor : UIColor.white
-//        ]
-//        if isApplied {
-//            applyButton.alpha = 0.8
-//            applyButton.setAttributedTitle(NSAttributedString(string: "Отменить заявку", attributes: applyAttribute), for: .normal)
-//            applyButton.addTarget(self, action: #selector(onTapCancel), for: .touchUpInside)
-//        } else {
-//            applyButton.setAttributedTitle(NSAttributedString(string: "Подать заявку", attributes: applyAttribute), for: .normal)
-//            applyButton.addTarget(self, action: #selector(onTapApplication), for: .touchUpInside)
-//            applyButton.alpha = 1
-//        }
 
         applyButton.backgroundColor = Styles.Color.buttonBlue
         applyButton.layer.cornerRadius = 15
@@ -110,8 +98,8 @@ class EventApplicationView: AutoLayoutView {
             applyButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             applyButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
 
-            startList.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            startList.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            startList.leadingAnchor.constraint(equalTo: previewStack.leadingAnchor),
+            startList.trailingAnchor.constraint(equalTo: previewStack.trailingAnchor),
 
             previewStack.leadingAnchor.constraint(equalTo: leadingAnchor),
             previewStack.trailingAnchor.constraint(equalTo: trailingAnchor),

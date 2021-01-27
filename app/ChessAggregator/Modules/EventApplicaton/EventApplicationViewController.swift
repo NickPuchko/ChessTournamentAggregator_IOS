@@ -69,9 +69,11 @@ extension EventApplicationViewController: UITableViewDataSource {
         } else {
             cell.detailTextLabel?.text = ""
         }
-        cell.imageView?.image = UIImage(systemName: "\(indexPath.row + 1).circle")
-        cell.heightAnchor.constraint(equalToConstant: 50).isActive = true
-
+        if indexPath.row < 50 {
+            cell.imageView?.image = UIImage(systemName: "\(indexPath.row + 1).circle") // Numbers in circles
+        } else {
+            cell.imageView?.image = Styles.numberToImage(drawText: "\(indexPath.row + 1)") // Numbers
+        }
         return cell
     }
 
