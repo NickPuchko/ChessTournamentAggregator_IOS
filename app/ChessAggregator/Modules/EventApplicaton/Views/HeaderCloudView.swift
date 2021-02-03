@@ -120,7 +120,22 @@ class HeaderCloudView : AutoLayoutView {
         nameLabel.text = event.name
         locationLabel.text = event.location
         ratingLabel.text = event.ratingType.rawValue
-        dateLabel.text = "\(event.openDate) - \(event.closeDate)"
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+
+        let intervalFormatter = DateIntervalFormatter()
+        intervalFormatter.locale = dateFormatter.locale
+        intervalFormatter.dateStyle = .short
+        intervalFormatter.timeStyle = .none
+
+        let open = dateFormatter.date(from: event.openDate) ?? Date()
+        let close = dateFormatter.date(from: event.closeDate) ?? Date()
+
+        dateLabel.text = intervalFormatter.string(from: open, to: close)
     }
 
     override func setupConstraints() {

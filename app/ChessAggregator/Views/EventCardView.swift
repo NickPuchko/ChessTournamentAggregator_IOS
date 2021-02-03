@@ -138,7 +138,23 @@ class EventCardView : AutoLayoutView {
         timeLabel.text = event.mode.rawValue
         ratingLabel.text = event.ratingType.rawValue
         locationLabel.text = event.location
-        dateLabel.text = "\(event.openDate) - \(event.closeDate)"
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+
+        let intervalFormatter = DateIntervalFormatter()
+        intervalFormatter.dateStyle = .short
+        intervalFormatter.timeStyle = .none
+        intervalFormatter.locale = dateFormatter.locale
+
+
+        let open = dateFormatter.date(from: event.openDate) ?? Date()
+        let close = dateFormatter.date(from: event.closeDate) ?? Date()
+
+        dateLabel.text = intervalFormatter.string(from: open, to: close)
     }
 
     override func setupConstraints() {

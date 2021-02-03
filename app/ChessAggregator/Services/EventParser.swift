@@ -38,12 +38,17 @@ class EventParser {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_RU")
         dateFormatter.dateStyle = .medium
+
+        let intervalFormatter = DateIntervalFormatter()
+        intervalFormatter.locale = dateFormatter.locale
+        intervalFormatter.dateStyle = .short
+        intervalFormatter.timeStyle = .none
+
         return events.map { event in
             dateFormatter.dateFormat = "yyyy-MM-dd"
-            let open = dateFormatter.date(from: event.openDate)
-            let close = dateFormatter.date(from: event.closeDate)
-            dateFormatter.dateFormat = "dd.MM.yyyy"
-            let date = dateFormatter.string(from: open ?? Date()) + "—" + dateFormatter.string(from: close ?? Date())
+            let open = dateFormatter.date(from: event.openDate) ?? Date()
+            let close = dateFormatter.date(from: event.closeDate) ?? Date()
+            let date = intervalFormatter.string(from: open, to: close)
             return EventViewModel(
                     event: event,
                     eventId: event.id,
