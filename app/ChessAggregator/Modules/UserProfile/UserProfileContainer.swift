@@ -35,5 +35,4 @@ final class UserProfileContainer {
 
 struct UserProfileContext {
 	weak var moduleOutput: UserProfileModuleOutput?
-	  //TODO: номер телефона
 }

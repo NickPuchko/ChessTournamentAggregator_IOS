@@ -40,7 +40,6 @@ final class EditUserViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.scrollView.delegate = self
         navigationController?.isNavigationBarHidden = false
 
         view.addSubview(stackView)

@@ -8,7 +8,7 @@ final class SearchTournamentsViewController: UIViewController {
 
     private lazy var magGlass: UIBarButtonItem = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        button.setImage(UIImage(systemName: "slider.vertical.3"), for: .normal)
         button.addTarget(self, action: #selector(onTapMagGlass), for: .touchUpInside)
         return UIBarButtonItem(customView: button)
     }()
@@ -55,10 +55,8 @@ final class SearchTournamentsViewController: UIViewController {
         navigationItem.rightBarButtonItem = magGlass
 
         navigationItem.searchController = searchController
-        searchController.searchBar.isHidden = true
 
         navigationItem.hidesSearchBarWhenScrolling = true
-
 
         setupSearch()
     }
@@ -112,16 +110,13 @@ extension SearchTournamentsViewController: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                                sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width - collectionView.contentInset.left - collectionView.contentInset.right
-
         let viewModel = isFiltered ? filteredViewModels[indexPath.item] : viewModels[indexPath.item]
-
         let textFontAttributes = [
             NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Bold", size: 28)!
         ] as [NSAttributedString.Key : Any]
 
         let size = (viewModel.name as NSString).size(withAttributes: textFontAttributes)
         let height = 220 + CGFloat(Int( size.width / width)) * (size.height)
-        print(width, height)
 
         return CGSize(width: width, height: height)
     }
@@ -179,16 +174,17 @@ private extension SearchTournamentsViewController {
     }
 
     @objc func onTapMagGlass() {
-        if(isSearchVisible) {
-            navigationItem.hidesSearchBarWhenScrolling = true
-            searchController.searchBar.isHidden = true
-//            navigationItem.searchController = nil
-        } else {
-//            navigationItem.searchController = searchController
-            navigationItem.hidesSearchBarWhenScrolling = false
-            searchController.searchBar.isHidden = false
-            searchController.isActive = true
-        }
-        isSearchVisible = !isSearchVisible
+        print("// TODO: Present filters")
+//        if(isSearchVisible) {
+//            navigationItem.hidesSearchBarWhenScrolling = true
+//            searchController.searchBar.isHidden = true
+////            navigationItem.searchController = nil
+//        } else {
+////            navigationItem.searchController = searchController
+//            navigationItem.hidesSearchBarWhenScrolling = false
+//            searchController.searchBar.isHidden = false
+//            searchController.isActive = true
+//        }
+//        isSearchVisible = !isSearchVisible
     }
 }

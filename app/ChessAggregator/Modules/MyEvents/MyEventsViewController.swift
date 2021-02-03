@@ -98,10 +98,16 @@ extension MyEventsViewController: UICollectionViewDelegate {
 extension MyEventsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let ratio: CGFloat = 0.7
         let width = collectionView.frame.width - collectionView.contentInset.left - collectionView.contentInset.right
-//        let height = width * ratio
-        return CGSize(width: width, height: 228)
+        let textFontAttributes = [
+            NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Bold", size: 28)!
+        ] as [NSAttributedString.Key : Any]
+
+        let viewModel = viewModels[indexPath.item]
+
+        let size = (viewModel.name as NSString).size(withAttributes: textFontAttributes)
+        let height = 220 + CGFloat(Int( size.width / width)) * (size.height)
+        return CGSize(width: width, height: height)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

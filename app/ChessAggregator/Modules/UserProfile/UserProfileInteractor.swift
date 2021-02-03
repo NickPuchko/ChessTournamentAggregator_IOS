@@ -5,6 +5,7 @@ import FirebaseAuth
 final class UserProfileInteractor {
 	weak var output: UserProfileInteractorOutput?
 	var user: User?
+    //let apiClient = APIClient()
 
 	init() {
         let uid = Auth.auth().currentUser?.uid ?? ""
@@ -26,7 +27,7 @@ final class UserProfileInteractor {
                 FirebaseRef.ref.child("Users").child(Auth.auth().currentUser!.uid).setValue(realtimeDatabaseUser)
             }
 		})
-	}
+    }
 }
 
 extension UserProfileInteractor: UserProfileInteractorInput {

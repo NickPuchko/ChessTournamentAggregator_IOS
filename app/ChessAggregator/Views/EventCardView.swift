@@ -120,8 +120,8 @@ class EventCardView : AutoLayoutView {
         verticalStack.pins()
 
         // may improve performance
-//        layer.shouldRasterize = true
-//        layer.rasterizationScale = UIScreen.main.scale
+        layer.shouldRasterize = true
+        layer.rasterizationScale = UIScreen.main.scale
 
         backgroundColor = .white
         layer.borderColor = UIColor.gray.cgColor
@@ -145,7 +145,7 @@ class EventCardView : AutoLayoutView {
         super.setupConstraints()
 
         [teamImage, locationImage, timeImage, ratingImage, dateImage,
-         nameLabel, timeLabel, locationLabel, ratingLabel, dateLabel].forEach { view in
+         nameLabel, timeLabel, locationLabel, ratingLabel, dateLabel, nameStack].forEach { view in
             view.translatesAutoresizingMaskIntoConstraints = false
         }
 
