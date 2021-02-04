@@ -14,6 +14,9 @@ final class ManagerInteractor {
 	var event: Tournament
 	private var users: [User]
 	private lazy var uid = Auth.auth().currentUser!.uid
+	private var averageRating = 0
+	private var participantsCount = 0
+	private var usersSorted: [PlayerModel] = []
 
 
 	init(tournament: Tournament) {
@@ -73,10 +76,13 @@ extension ManagerInteractor: ManagerInteractorInput {
 				}
 			}
 		}
+		usersSorted = players
+		participantsCount = users.count
 		if ratedPLayersCount == 0 {
-			output?.reloadData(players: players, elo: 0, participants: users.count)
+			output?.reloadData(players: players, elo: 0, participants: participantsCount)
 		} else {
-			output?.reloadData(players: players, elo: eloSum  / ratedPLayersCount, participants: users.count)
+			averageRating = eloSum  / ratedPLayersCount
+			output?.reloadData(players: players, elo: averageRating, participants: users.count)
 		}
 	}
 
@@ -110,6 +116,12 @@ extension ManagerInteractor: ManagerInteractorInput {
 extension ManagerInteractor: EventCreationDelegate {
 	func updateEvent(event: Tournament) {
 		self.event = event
-		output?.reloadEvent(event: event)
+		let item = DispatchWorkItem { [weak self] in
+			self?.output?.reloadEvent(event: event)
+		}
+		item.notify(queue: DispatchQueue.main) { [weak self] in
+			self?.output?.reloadData(players: self!.usersSorted, elo: self!.averageRating, participants: self!.participantsCount)
+		}
+		DispatchQueue.main.async(execute: item)
 	}
 }
