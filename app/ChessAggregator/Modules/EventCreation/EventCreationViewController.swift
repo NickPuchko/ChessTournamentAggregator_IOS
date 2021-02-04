@@ -279,9 +279,7 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         dateFormatter.locale = Locale(identifier: "ru_RU")
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
-//        dateFormatter.timeZone = TimeZone(abbreviation: "MSK")
         dateFormatter.dateFormat = "yyyy-MM-dd"
-
 
 
         newEvent!.openDate    = dateFormatter.string(from: dateView.openDate.date)
@@ -422,7 +420,9 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         UIView.animate(withDuration: 0.5) {
             self.scrollableStackView.layoutIfNeeded()
         }
-        highlight()
+        if initialEvent != nil {
+            highlight()
+        }
     }
 }
 

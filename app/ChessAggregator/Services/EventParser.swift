@@ -20,6 +20,7 @@ class EventParser {
             event.increment = thisEvent["increment"] as? Int ?? 0
 
             event.location = thisEvent["location"] as? String ?? "Moscow"
+            event.organizerId = thisEvent["organizerId"] as? String ?? ""
             event.mode = Mode.init(rawValue: (thisEvent["mode"] as? String ?? "classic")) ?? .classic
             event.name = thisEvent["name"] as? String ?? "Some event"
             event.participantsCount = (thisEvent["participants"] as? [String: Any] ?? [:]).count
