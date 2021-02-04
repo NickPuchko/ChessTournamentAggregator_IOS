@@ -73,14 +73,82 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
     private let feeField = PickableTextField()
     private let urlField = MaterialTextField()
 
+    var initialEvent: Tournament?
+    private var newEvent: Tournament?
+
     init(output: EventCreationViewOutput) {
         self.output = output
         
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func loadExiting(event: Tournament) {
+        labelTextField.text = event.name
+        labelTextField.placeholder = event.name
+
+        locationTextField.text = event.location
+        locationTextField.placeholder = event.location
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        dateFormatter.timeZone = TimeZone(abbreviation: "MSK")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        dateView.openDate.setDate(dateFormatter.date(from: event.openDate) ?? Date(), animated: true)
+        dateView.closeDate.setDate(dateFormatter.date(from: event.closeDate) ?? Date(), animated: true)
+
+        urlField.text = event.url.absoluteString
+        urlField.placeholder = event.url.absoluteString
+
+        fundField.text = String(event.prizeFund)
+        fundField.placeholder = String(event.prizeFund)
+
+        feeField.text = String(event.fee)
+        feeField.placeholder = String(event.fee)
+
+        toursField.text = String(event.tours)
+
+        minutesField.text = String(event.minutes)
+
+        secondsField.text = String(event.seconds)
+
+        incrementField.text = String(event.increment)
+
+        timeControlPicker.selectRow(event.minutes - 1, inComponent: 0, animated: true)
+        timeControlPicker.selectRow(event.seconds, inComponent: 1, animated: true)
+        timeControlPicker.selectRow(event.increment, inComponent: 2, animated: true)
+
+        ratingTypeField.text = event.ratingType.rawValue
+
+
+        switch event.ratingType {
+        case .fide:
+            ratingTypePicker.selectRow(0, inComponent: 0, animated: true)
+        case .russian:
+            ratingTypePicker.selectRow(1, inComponent: 0, animated: true)
+        case .without:
+            ratingTypePicker.selectRow(2, inComponent: 0, animated: true)
+        }
+
+        switch event.mode {
+        case .fide:
+            modeSegment.selectedSegmentIndex = 0
+            timeControlPicker.selectRow(89, inComponent: 0, animated: true)
+            timeControlPicker.selectRow(0, inComponent: 1, animated: true)
+            timeControlPicker.selectRow(30, inComponent: 2, animated: true)
+        case .chess960:
+            modeSegment.selectedSegmentIndex = 2
+        default:
+            modeSegment.selectedSegmentIndex = 1
+        }
+
+        tapSegment()
     }
     
 	override func viewDidLoad() {
@@ -101,32 +169,144 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
 
         navigationItem.leftBarButtonItem =
                 UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(endCreation))
-        navigationItem.rightBarButtonItem =
-                UIBarButtonItem(title: "Опубликовать", style: .done, target: self, action: #selector(createDefault))
+
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-	}
+
+        if let event = initialEvent {
+            loadExiting(event: event)
+            newEvent = initialEvent
+            navigationItem.rightBarButtonItem =
+                    UIBarButtonItem(title: "Изменить", style: .done, target: self, action: #selector(change))
+            navigationItem.rightBarButtonItem?.isEnabled = false
+            labelTextField.addTarget(self, action: #selector(highlight), for: .allEditingEvents)
+            locationTextField.addTarget(self, action: #selector(highlight), for: .allEditingEvents)
+            dateView.openDate.addTarget(self, action: #selector(highlight), for: .allEditingEvents)
+            dateView.closeDate.addTarget(self, action: #selector(highlight), for: .allEditingEvents)
+            urlField.addTarget(self, action: #selector(highlight), for: .allEditingEvents)
+            fundField.addTarget(self, action: #selector(highlight), for: .allEditingEvents)
+            feeField.addTarget(self, action: #selector(highlight), for: .allEditingEvents)
+            toursField.addTarget(self, action: #selector(highlight), for: .allEditingEvents)
+            ratingTypeField.addTarget(self, action: #selector(highlight), for: .allEditingEvents)
+            modeSegment.addTarget(self, action: #selector(highlight), for: .allEditingEvents)
+            ratingTypeField.addTarget(self, action: #selector(highlight), for: .allEditingEvents)
+        } else {
+            navigationItem.rightBarButtonItem =
+                    UIBarButtonItem(title: "Опубликовать", style: .done, target: self, action: #selector(createDefault))
+//            navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
          view.endEditing(true)
     }
 
-    @objc func keyboardWillShow(notification:NSNotification) {
+
+    @objc func keyboardWillShow(notification: NSNotification) {
 
         guard let userInfo = notification.userInfo else { return }
         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        keyboardFrame = view.convert(keyboardFrame, from: nil)
 
         var contentInset:UIEdgeInsets = scrollableStackView.scrollView.contentInset
         contentInset.bottom = keyboardFrame.size.height + 20
         scrollableStackView.scrollView.contentInset = contentInset
     }
 
-    @objc func keyboardWillHide(notification:NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
 
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         scrollableStackView.scrollView.contentInset = contentInset
+    }
+
+    @objc
+    private func highlight() {
+//        print(initialEvent!)
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        dateFormatter.timeZone = TimeZone(abbreviation: "MSK")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+//        print(dateFormatter.date(from: initialEvent!.openDate) == dateView.openDate.date)
+//        print(timeControlPicker.selectedRow(inComponent: 0))
+//        print(timeControlPicker.selectedRow(inComponent: 1))
+//        print(timeControlPicker.selectedRow(inComponent: 2))
+        if (initialEvent!.name        == labelTextField.text ?? "default"),
+           (initialEvent!.location    == locationTextField.text ?? "default"),
+           (dateFormatter.date(from: initialEvent!.openDate) == dateView.openDate.date),
+           (dateFormatter.date(from: initialEvent!.closeDate) == dateView.closeDate.date),
+           (initialEvent!.url         == URL(string: urlField.text ?? "default") ?? URL(string: "https://ruchess.ru/")!),
+           (initialEvent!.prizeFund   == Int(fundField.text ?? "default") ?? 0),
+           (initialEvent!.fee         == Int(feeField.text ?? "default") ?? 0),
+           (initialEvent!.tours       == Int(toursField.text ?? "default") ?? 0),
+           (initialEvent!.minutes     == timeControlPicker.selectedRow(inComponent: 0) + 1),
+           (initialEvent!.seconds     == timeControlPicker.selectedRow(inComponent: 1)),
+           (initialEvent!.increment   == timeControlPicker.selectedRow(inComponent: 2)),
+           (initialEvent!.tours       == Int(toursField.text ?? "default") ?? 0),
+           (initialEvent!.ratingType  == RatingType(rawValue: ratingTypeField.text ?? "default") ?? .without),
+           checkSegment(initialEvent!.mode)
+        {
+            navigationItem.rightBarButtonItem?.tintColor = .black
+            navigationItem.rightBarButtonItem?.isEnabled = false
+            // TODO: time control check + date check
+        } else {
+            navigationItem.rightBarButtonItem?.tintColor = .systemBlue
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        }
+    }
+
+    private func checkSegment(_ type: Mode) -> Bool {
+        switch type{
+        case .fide:
+            return modeSegment.selectedSegmentIndex == 0
+        case .chess960:
+            return modeSegment.selectedSegmentIndex == 2
+        default:
+            return modeSegment.selectedSegmentIndex == 1
+        }
+    }
+
+
+    @objc
+    private func change(){
+        newEvent!.name        = labelTextField.text ?? newEvent!.name
+        newEvent!.location    = locationTextField.text ?? newEvent!.location
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+//        dateFormatter.timeZone = TimeZone(abbreviation: "MSK")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+
+
+        newEvent!.openDate    = dateFormatter.string(from: dateView.openDate.date)
+        newEvent!.closeDate   = dateFormatter.string(from: dateView.closeDate.date)
+
+
+        newEvent!.url         = URL(string: urlField.text ?? "default") ?? newEvent!.url
+        newEvent!.prizeFund   = Int(fundField.text ?? "default") ?? newEvent!.prizeFund
+        newEvent!.fee         = Int(feeField.text ?? "default") ?? newEvent!.fee
+        newEvent!.tours       = Int(toursField.text ?? "default") ?? newEvent!.tours
+        newEvent!.ratingType  = RatingType(rawValue: ratingTypeField.text ?? "default") ?? initialEvent!.ratingType
+
+        switch modeSegment.selectedSegmentIndex {
+        case 1:
+            newEvent!.mode = Mode(rawValue: modeField.text ?? "default") ?? initialEvent!.mode
+        case 2:
+            newEvent!.mode = .chess960
+        default:
+            newEvent!.mode = .fide
+        }
+        newEvent!.minutes = Int(minutesField.text ?? "default") ?? initialEvent!.minutes
+        newEvent!.seconds = Int(secondsField.text ?? "default") ?? initialEvent!.seconds
+        newEvent!.increment = Int(incrementField.text ?? "default") ?? initialEvent!.increment
+
+        output.updateEvent(event: newEvent!, index: modeSegment.selectedSegmentIndex, rateType: ratingTypeField.text ?? "")
     }
 
     @objc
@@ -134,15 +314,15 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
 
         var event = Tournament()
         event.organizerId = Auth.auth().currentUser!.uid
-        event.name = labelTextField.text ?? "default"
-        event.location = locationTextField.text ?? "default"
-        event.openDate = String(dateView.openDate.date.description.prefix(10))
-        event.closeDate = String(dateView.closeDate.date.description.prefix(10))
-        event.url = URL(string: urlField.text ?? "default") ?? URL(string: "https://ruchess.ru/")!
-        event.prizeFund = Int(fundField.text ?? "default") ?? 0
-        event.fee = Int(feeField.text ?? "default") ?? 0
-        event.tours = Int(toursField.text ?? "default") ?? 0
-        event.ratingType = RatingType(rawValue: ratingTypeField.text ?? "default") ?? .without
+        event.name        = labelTextField.text ?? "default"
+        event.location    = locationTextField.text ?? "default"
+        event.openDate    = String(dateView.openDate.date.description.prefix(10))
+        event.closeDate   = String(dateView.closeDate.date.description.prefix(10))
+        event.url         = URL(string: urlField.text ?? "default") ?? URL(string: "https://ruchess.ru/")!
+        event.prizeFund   = Int(fundField.text ?? "default") ?? 0
+        event.fee         = Int(feeField.text ?? "default") ?? 0
+        event.tours       = Int(toursField.text ?? "default") ?? 0
+        event.ratingType  = RatingType(rawValue: ratingTypeField.text ?? "default") ?? .without
 
         labelTextField.addTarget(self, action: #selector(setDefaultName), for: .editingChanged)
         locationTextField.addTarget(self, action: #selector(setDefaultLocation), for: .editingChanged)
@@ -242,6 +422,7 @@ final class EventCreationViewController: UIViewController, UIScrollViewDelegate 
         UIView.animate(withDuration: 0.5) {
             self.scrollableStackView.layoutIfNeeded()
         }
+        highlight()
     }
 }
 
@@ -424,6 +605,9 @@ extension EventCreationViewController: UIPickerViewDelegate, UIPickerViewDataSou
             }
         default:
             ratingTypeField.text = RatingType.allCases[row].rawValue
+        }
+        if initialEvent != nil {
+            highlight()
         }
     }
 }

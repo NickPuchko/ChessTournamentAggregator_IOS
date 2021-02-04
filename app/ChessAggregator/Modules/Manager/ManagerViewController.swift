@@ -1,22 +1,22 @@
 //
-//  EventApplicationViewController.swift
-//  app
+//  ManagerViewController.swift
+//  ChessAggregator
 //
-//  Created by Иван Лизогуб on 28.12.2020.
+//  Created by Administrator on 03.02.2021.
 //  
 //
 
 import UIKit
 
-final class EventApplicationViewController: UIViewController {
-	private let output: EventApplicationViewOutput
-    private var playerViewModels: [PlayerModel] = []
+final class ManagerViewController: UIViewController {
+	private let output: ManagerViewOutput
 
-    private var applicationView: EventApplicationView {
-        view as! EventApplicationView
+    private var playerViewModels: [PlayerModel] = []
+    private var managerView: ManagerView {
+        view as! ManagerView
     }
 
-    init(output: EventApplicationViewOutput) {
+    init(output: ManagerViewOutput) {
         self.output = output
         super.init(nibName: nil, bundle: nil)
     }
@@ -26,36 +26,38 @@ final class EventApplicationViewController: UIViewController {
     }
 
     override func loadView() {
-        view = EventApplicationView(event: output.eventState(), onTapSite: output.onTapSite)
+        view = ManagerView(event: output.eventState(), onTapSite: output.onTapSite)
     }
-    
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
         setup()
 	}
 
     private func setup() {
-        applicationView.onTapApplicationButton = {[weak self] in
-            self?.output.onTapApplication()
+        navigationController?.isNavigationBarHidden = false
+
+        managerView.onTapManageButton = {[weak self] in
+            self?.output.onTapManage()
         }
-        applicationView.onTapCancelButton = {[weak self] in
-            self?.output.onTapCancel()
-        }
-        applicationView.startList.dataSource = self
+        managerView.startList.dataSource = self
     }
 }
 
-extension EventApplicationViewController: EventApplicationViewInput {
+extension ManagerViewController: ManagerViewInput {
     func reloadView(players: [PlayerModel], elo: Int, participants: Int) {
-        applicationView.footerCloud.eloLabel.text = String(elo)
-        applicationView.footerCloud.participantsLabel.text = "👤 \(participants)"
+        managerView.footerCloud.eloLabel.text = String(elo)
+        managerView.footerCloud.participantsLabel.text = "👤 \(participants)"
         playerViewModels = players
-        applicationView.startList.reloadData()
-        applicationView.updateButton(isApplied: output.isApplied)
+        managerView.startList.reloadData()
+    }
+
+    func reloadEvent(event: Tournament) {
+        managerView.updateView(event: event)
     }
 }
 
-extension EventApplicationViewController: UITableViewDataSource {
+extension ManagerViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { playerViewModels.count }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,4 +82,3 @@ extension EventApplicationViewController: UITableViewDataSource {
 
     public func numberOfSections(in tableView: UITableView) -> Int { 1 }
 }
-

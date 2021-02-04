@@ -17,7 +17,7 @@ final class EventCreationContainer {
         let router = EventCreationRouter()
         let interactor = EventCreationInteractor()
         let presenter = EventCreationPresenter(router: router, interactor: interactor)
-		let viewController = EventCreationViewController(output: presenter)
+		var viewController = EventCreationViewController(output: presenter)
 
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
@@ -26,7 +26,11 @@ final class EventCreationContainer {
 		}
 
 		interactor.output = presenter
+		interactor.eventCreationDelegate = context.delegate
 
+		if let event = context.event {
+			viewController.initialEvent = event
+		}
         return EventCreationContainer(view: viewController, input: presenter, router: router)
 	}
 
@@ -39,4 +43,6 @@ final class EventCreationContainer {
 
 struct EventCreationContext {
 	weak var moduleOutput: EventCreationModuleOutput?
+	var event: Tournament?
+	var delegate: EventCreationDelegate?
 }

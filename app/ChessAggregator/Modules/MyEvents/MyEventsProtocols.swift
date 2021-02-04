@@ -29,6 +29,7 @@ protocol MyEventsViewInput: class {
 protocol MyEventsViewOutput: class {
 	func viewDidLoad()
 	func willDisplay(at index: Int, segmentIndex: Int)
+	func openManager(at index: Int)
 }
 
 protocol MyEventsInteractorInput: class {
@@ -43,4 +44,5 @@ protocol MyEventsInteractorOutput: class {
 }
 
 protocol MyEventsRouterInput: class {
+	func showManager(with event: Tournament)
 }

@@ -10,11 +10,31 @@ import Foundation
 
 final class EventCreationInteractor {
 	weak var output: EventCreationInteractorOutput?
+	weak var eventCreationDelegate: EventCreationDelegate?
 }
 
 extension EventCreationInteractor: EventCreationInteractorInput {
-	func saveEvent(event: Tournament) {
+	func updateEvent(event: Tournament) {
+		let key = event.id
+		FirebaseRef.ref.child("Tournaments").child(key).updateChildValues([
+			"openDate" : event.openDate,
+			"closeDate" : event.closeDate,
+			"fee" : event.fee,
+			"location" : event.location,
+			"tours" : event.tours,
+			"minutes" : event.minutes,
+			"seconds" : event.seconds,
+			"increment" : event.increment,
+			"mode" : event.mode.rawValue,
+			"prizeFund" : event.prizeFund,
+			"ratingType" : event.ratingType.rawValue,
+			"url" : event.url.description,
+			"name" : event.name
+		])
+		eventCreationDelegate?.updateEvent(event: event)
+	}
 
+	func saveEvent(event: Tournament) {
 		guard let key = FirebaseRef.ref.child("Tournaments").childByAutoId().key else {
 			print("No auto id!")
 			return

@@ -21,6 +21,6 @@ extension EventCreationRouter: EventCreationRouterInput {
     }
 
     func closeCreation() {
-        navigationController?.popToRootViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }

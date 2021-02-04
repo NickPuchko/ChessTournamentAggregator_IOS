@@ -25,6 +25,15 @@ extension EventCreationPresenter: EventCreationModuleInput {
 }
 
 extension EventCreationPresenter: EventCreationViewOutput {
+    func updateEvent(event: Tournament, index: Int, rateType: String?) {
+        if (ErrorName(string: event.name) || ErrorLocation(string: event.location) || ErrorTours(count: event.tours) || ErrorRatingType(string: event.ratingType.rawValue) || ErrorSegment(index: index)) {
+            showWarnings(tournament: event, segment: index, rateType: rateType)
+        } else {
+            interactor.updateEvent(event: event)
+            router.closeCreation()
+        }
+    }
+
     func chooseMode(minutes: Int, seconds: Int, increment: Int) -> Mode {
         interactor.chooseMode(minutes: minutes, seconds: seconds, increment: increment)
     }

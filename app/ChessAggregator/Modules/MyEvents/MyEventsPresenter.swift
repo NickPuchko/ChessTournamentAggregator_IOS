@@ -18,6 +18,8 @@ final class MyEventsPresenter {
     private var isReloading = false
     private var isNextPageLoading = false
     private var completedEvents: [Tournament] = []
+    private var currentEvents: [Tournament] = []
+    private var forthcomingEvents: [Tournament] = []
     private var completedEventsInDatabaseCount: Int = 0
     
     init(router: MyEventsRouterInput, interactor: MyEventsInteractorInput) {
@@ -30,6 +32,10 @@ extension MyEventsPresenter: MyEventsModuleInput {
 }
 
 extension MyEventsPresenter: MyEventsViewOutput {
+    func openManager(at index: Int) {
+        router.showManager(with: forthcomingEvents[index])
+    }
+
     func willDisplay(at index: Int, segmentIndex: Int) {
         guard segmentIndex == 2,
               !isReloading,
@@ -53,12 +59,14 @@ extension MyEventsPresenter: MyEventsInteractorOutput {
 
     func didLoadCurrent(with events: [Tournament], loadType: LoadingDataType) {
         isReloading = false
+        currentEvents = events
         let viewModels = makeEventViewModels(events)
         view?.updateCurrentView(with: viewModels)
     }
 
     func didLoadForthcoming(with events: [Tournament], loadType: LoadingDataType) {
         isReloading = false
+        forthcomingEvents = events
         let viewModels = makeEventViewModels(events)
         view?.updateForthcomingView(with: viewModels)
     }

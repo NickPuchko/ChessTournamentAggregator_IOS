@@ -101,21 +101,28 @@
 		D91FC47714C0F5D3D1EB754F /* DoubleDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC921E2F812AAEAE200DE /* DoubleDate.swift */; };
 		D91FC496AB7E32CBBA945085 /* EventCreationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCBBA95F64B501F0D2AD1 /* EventCreationContainer.swift */; };
 		D91FC4EDA16B110EE195822E /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC170925E147D564D330E /* EditUserViewController.swift */; };
+		D91FC59B11965469347AFC50 /* ManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC32A806338CF7E9822F1 /* ManagerViewController.swift */; };
 		D91FC5E44C4CEC650B839D0D /* EventCreationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC8622E77861924B3ABEC /* EventCreationRouter.swift */; };
 		D91FC76493A71AA245E6D64C /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC5DE303A4B78E2E40946 /* Tournament.swift */; };
 		D91FC804D6A7A4C2DA922FF2 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC01896C1F619D9D5B569 /* BaseRouter.swift */; };
+		D91FC843C962F3A9342F1C7F /* ManagerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC165B11AAA53F274F142 /* ManagerProtocols.swift */; };
 		D91FC8A2A93203BA226A715F /* EventCreationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC4C7BC84F45D8FB6A69E /* EventCreationProtocols.swift */; };
 		D91FC93483EB23BEB45F5085 /* EventCreationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC033284E01F94CE014B6 /* EventCreationInteractor.swift */; };
 		D91FCA230504155423B9560F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC2E367191FB43FA9AB37 /* User.swift */; };
 		D91FCAB6F86CBB47822069DF /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC58675492BC70A66A7F4 /* MaterialTextField.swift */; };
 		D91FCADB68A11000C0C3339F /* EditUserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC84666F7D30CDBA1A2CE /* EditUserRouter.swift */; };
+		D91FCB71622F5A7DD42F939F /* ManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCA64AB8D7BC86789B1DA /* ManagerView.swift */; };
 		D91FCB9CDD4CA08613F1269A /* EditUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC978B214EFC2EA79024F /* EditUserInteractor.swift */; };
 		D91FCBEBAF1FE1D414B5D835 /* EventParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC559D928F99290FB9443 /* EventParser.swift */; };
 		D91FCCCB3DE4DB1A0C47A174 /* AutoLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC1CB6EBFFFC7483EAC76 /* AutoLayoutView.swift */; };
+		D91FCCEF1AA8592C43D59447 /* ManagerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC54F37D8DD36AF43EB95 /* ManagerPresenter.swift */; };
+		D91FCE1447F5ECF9AF00998A /* ManagerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC76016A8C61240717116 /* ManagerRouter.swift */; };
 		D91FCE23E7476826F9D3434E /* EditUserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC1BFDE42B2F235FEA716 /* EditUserPresenter.swift */; };
+		D91FCE85A331E34EC3A69F45 /* ManagerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC841110BAA2C3A60724F /* ManagerInteractor.swift */; };
 		D91FCEBAD4DB42301C940A85 /* EventCreationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC3ED30E5C5AC06F6E3A8 /* EventCreationPresenter.swift */; };
 		D91FCF2D156E403FBB4D78C1 /* EditUserProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC26C81D298EDEED02F25 /* EditUserProtocols.swift */; };
 		D91FCF990B45466BC3A78618 /* EditUserContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCA47971CDA900BDF6C53 /* EditUserContainer.swift */; };
+		D91FCFB98102805DE3AB1A12 /* ManagerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCDA0C11F8BCD6532A40B /* ManagerContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -213,24 +220,31 @@
 		D91FC02278EFF2C3C14A9553 /* LabelStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelStack.swift; sourceTree = "<group>"; };
 		D91FC033284E01F94CE014B6 /* EventCreationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreationInteractor.swift; sourceTree = "<group>"; };
 		D91FC11574DF8A92DBC0617B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		D91FC165B11AAA53F274F142 /* ManagerProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerProtocols.swift; sourceTree = "<group>"; };
 		D91FC170925E147D564D330E /* EditUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
 		D91FC1BFDE42B2F235FEA716 /* EditUserPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserPresenter.swift; sourceTree = "<group>"; };
 		D91FC1CB6EBFFFC7483EAC76 /* AutoLayoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutView.swift; sourceTree = "<group>"; };
 		D91FC26C81D298EDEED02F25 /* EditUserProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserProtocols.swift; sourceTree = "<group>"; };
 		D91FC2E367191FB43FA9AB37 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D91FC32A806338CF7E9822F1 /* ManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerViewController.swift; sourceTree = "<group>"; };
 		D91FC3ED30E5C5AC06F6E3A8 /* EventCreationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreationPresenter.swift; sourceTree = "<group>"; };
 		D91FC3FE855AFF1C3D0A9B3D /* EventCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreationViewController.swift; sourceTree = "<group>"; };
 		D91FC4C7BC84F45D8FB6A69E /* EventCreationProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreationProtocols.swift; sourceTree = "<group>"; };
+		D91FC54F37D8DD36AF43EB95 /* ManagerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerPresenter.swift; sourceTree = "<group>"; };
 		D91FC559D928F99290FB9443 /* EventParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventParser.swift; sourceTree = "<group>"; };
 		D91FC58675492BC70A66A7F4 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
 		D91FC5DE303A4B78E2E40946 /* Tournament.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		D91FC601A60B37A11EC38E64 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		D91FC76016A8C61240717116 /* ManagerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerRouter.swift; sourceTree = "<group>"; };
+		D91FC841110BAA2C3A60724F /* ManagerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerInteractor.swift; sourceTree = "<group>"; };
 		D91FC84666F7D30CDBA1A2CE /* EditUserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserRouter.swift; sourceTree = "<group>"; };
 		D91FC8622E77861924B3ABEC /* EventCreationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreationRouter.swift; sourceTree = "<group>"; };
 		D91FC921E2F812AAEAE200DE /* DoubleDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleDate.swift; sourceTree = "<group>"; };
 		D91FC978B214EFC2EA79024F /* EditUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserInteractor.swift; sourceTree = "<group>"; };
 		D91FCA47971CDA900BDF6C53 /* EditUserContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserContainer.swift; sourceTree = "<group>"; };
+		D91FCA64AB8D7BC86789B1DA /* ManagerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerView.swift; sourceTree = "<group>"; };
 		D91FCBBA95F64B501F0D2AD1 /* EventCreationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreationContainer.swift; sourceTree = "<group>"; };
+		D91FCDA0C11F8BCD6532A40B /* ManagerContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerContainer.swift; sourceTree = "<group>"; };
 		D91FCEF3B255AD71D488BD6B /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -298,6 +312,7 @@
 				D91FCE0D094843AECA6AA90A /* EditUser */,
 				6AC972DAFB9C8441CD69F2B9 /* MyEvents */,
 				6AC976C2716FACB9963DA454 /* EventApplicaton */,
+				D91FC279B53EF6808C25AF78 /* Manager */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -562,6 +577,28 @@
 				613E7483DAF7CFE6E33A5A2C /* Pods_ChessAggregator.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D91FC04EF85462EF24579B53 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D91FCA64AB8D7BC86789B1DA /* ManagerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D91FC279B53EF6808C25AF78 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				D91FC54F37D8DD36AF43EB95 /* ManagerPresenter.swift */,
+				D91FC76016A8C61240717116 /* ManagerRouter.swift */,
+				D91FC32A806338CF7E9822F1 /* ManagerViewController.swift */,
+				D91FC165B11AAA53F274F142 /* ManagerProtocols.swift */,
+				D91FC841110BAA2C3A60724F /* ManagerInteractor.swift */,
+				D91FCDA0C11F8BCD6532A40B /* ManagerContainer.swift */,
+				D91FC04EF85462EF24579B53 /* Views */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		D91FC6A4DB8175C9ED293912 /* Entities */ = {
@@ -863,6 +900,13 @@
 				6AC97250CAD1734CAF52ED89 /* EventViewModel.swift in Sources */,
 				33976DCE21593941DD76E08F /* EventCardView.swift in Sources */,
 				D91FC138B62A003F0976BE0C /* APIClient.swift in Sources */,
+				D91FCCEF1AA8592C43D59447 /* ManagerPresenter.swift in Sources */,
+				D91FCE1447F5ECF9AF00998A /* ManagerRouter.swift in Sources */,
+				D91FC59B11965469347AFC50 /* ManagerViewController.swift in Sources */,
+				D91FC843C962F3A9342F1C7F /* ManagerProtocols.swift in Sources */,
+				D91FCE85A331E34EC3A69F45 /* ManagerInteractor.swift in Sources */,
+				D91FCFB98102805DE3AB1A12 /* ManagerContainer.swift in Sources */,
+				D91FCB71622F5A7DD42F939F /* ManagerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

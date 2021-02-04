@@ -27,6 +27,8 @@ protocol EventCreationViewInput: class {
 
 protocol EventCreationViewOutput: class {
     func createEvent(event: Tournament, index: Int, rateType: String?)
+    func updateEvent(event: Tournament, index: Int, rateType: String?)
+
 	func closeCreation()
 	func showRules()
 	func chooseMode(minutes: Int, seconds: Int, increment: Int) -> Mode
@@ -34,6 +36,7 @@ protocol EventCreationViewOutput: class {
 
 protocol EventCreationInteractorInput: class {
 	func saveEvent(event: Tournament)
+	func updateEvent(event: Tournament)
 	func chooseMode(minutes: Int, seconds: Int, increment: Int) -> Mode
 }
 

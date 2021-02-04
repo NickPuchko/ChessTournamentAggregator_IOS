@@ -8,8 +8,14 @@
 
 import UIKit
 
-final class MyEventsRouter {
+final class MyEventsRouter: BaseRouter {
 }
 
 extension MyEventsRouter: MyEventsRouterInput {
+    func showManager(with event: Tournament) {
+        let context = ManagerContext(moduleOutput: nil, event: event)
+        let container = ManagerContainer.assemble(with: context)
+        navigationController?.pushViewController(container.viewController, animated: true)
+    }
+
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-struct Tournament: Identifiable{
+struct Tournament: Identifiable, Equatable {
     var id: String
 
     var organizerId: String
@@ -19,6 +19,8 @@ struct Tournament: Identifiable{
     var prizeFund: Int
     var fee: Int
     var url: URL
+
+//    var participants: [Int: ParticipantStatus]
 
     // TODO: class Location
 
@@ -50,4 +52,8 @@ enum Mode: String, Codable, CaseIterable{
 
 enum RatingType: String, Codable, CaseIterable{
     case fide = "FIDE", russian = "ФШР", without = "Без обсчёта"
+}
+
+enum ParticipantStatus: String, Codable, CaseIterable {
+    case waiting, declined, accepted
 }

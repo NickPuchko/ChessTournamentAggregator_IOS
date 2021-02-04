@@ -92,7 +92,11 @@ extension MyEventsViewController: UICollectionViewDataSource {
 }
 
 extension MyEventsViewController: UICollectionViewDelegate {
-
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if segmentedControl.selectedSegmentIndex == 1 {
+            output.openManager(at: indexPath.row)
+        }
+    }
 }
 
 extension MyEventsViewController: UICollectionViewDelegateFlowLayout {

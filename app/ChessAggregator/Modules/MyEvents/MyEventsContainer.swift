@@ -25,6 +25,10 @@ final class MyEventsContainer {
 
 		interactor.output = presenter
 
+		router.navigationControllerProvider = { [weak viewController] in
+			viewController?.navigationController
+		}
+
         return MyEventsContainer(view: viewController, input: presenter, router: router)
 	}
 
