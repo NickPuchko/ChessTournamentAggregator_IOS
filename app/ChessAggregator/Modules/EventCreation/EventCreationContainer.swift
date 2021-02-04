@@ -44,5 +44,5 @@ final class EventCreationContainer {
 struct EventCreationContext {
 	weak var moduleOutput: EventCreationModuleOutput?
 	var event: Tournament?
-	var delegate: EventCreationDelegate?
+	weak var delegate: EventCreationDelegate?
 }

@@ -43,5 +43,5 @@ final class EditUserContainer {
 struct EditUserContext {
 	weak var moduleOutput: EditUserModuleOutput?
 	var user: User
-	var delegate: EditUserDelegate
+	weak var delegate: EditUserDelegate?
 }
