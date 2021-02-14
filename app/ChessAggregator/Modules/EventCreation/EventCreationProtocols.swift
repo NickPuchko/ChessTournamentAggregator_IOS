@@ -32,6 +32,7 @@ protocol EventCreationViewOutput: class {
 	func closeCreation()
 	func showRules()
 	func chooseMode(minutes: Int, seconds: Int, increment: Int) -> Mode
+    func showLocationSearch()
 }
 
 protocol EventCreationInteractorInput: class {
@@ -47,4 +48,8 @@ protocol EventCreationInteractorOutput: class {
 protocol EventCreationRouterInput: class {
 	func closeCreation()
 	func showRules()
+    func showLocationSearch()
+}
+protocol LocationDelegate: class {
+    func updateLocation(location: String)
 }

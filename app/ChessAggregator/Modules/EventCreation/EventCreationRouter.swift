@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 
 final class EventCreationRouter: BaseRouter {
-
+    
 }
 
 extension EventCreationRouter: EventCreationRouterInput {
@@ -22,5 +22,10 @@ extension EventCreationRouter: EventCreationRouterInput {
 
     func closeCreation() {
         navigationController?.popViewController(animated: true)
+    }
+    func showLocationSearch(){
+        let context = LocationContext(moduleOutput: nil, delegate: viewController as! EventCreationViewController)
+        let container = LocationContainer.assemble(with: context)
+        navigationController?.present(container.viewController, animated: true)
     }
 }

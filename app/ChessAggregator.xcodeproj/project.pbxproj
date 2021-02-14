@@ -91,6 +91,13 @@
 		6AC97F3474E1187790EC0D95 /* SearchTournamentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9797CA3B3EFCDCCECAC24 /* SearchTournamentsPresenter.swift */; };
 		6AC97F480E7A2324F8EF18FA /* UserProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97065AE42461955EC58DA /* UserProfilePresenter.swift */; };
 		6AC97F9EF2C368E3597B040E /* SearchTournamentsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC971D58E0BABEB95F76798 /* SearchTournamentsInteractor.swift */; };
+		733487AB25D9750400ECDDDF /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 730407F82550617C0036E7A6 /* SwiftKeychainWrapper */; };
+		733487B425D9757200ECDDDF /* LocationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487AE25D9757200ECDDDF /* LocationPresenter.swift */; };
+		733487B525D9757200ECDDDF /* LocationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487AF25D9757200ECDDDF /* LocationRouter.swift */; };
+		733487B625D9757200ECDDDF /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487B025D9757200ECDDDF /* LocationViewController.swift */; };
+		733487B725D9757200ECDDDF /* LocationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487B125D9757200ECDDDF /* LocationProtocols.swift */; };
+		733487B825D9757200ECDDDF /* LocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487B225D9757200ECDDDF /* LocationInteractor.swift */; };
+		733487B925D9757200ECDDDF /* LocationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487B325D9757200ECDDDF /* LocationContainer.swift */; };
 		C31943B62568C2AC0051C8C0 /* ProfileRaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31943B52568C2AC0051C8C0 /* ProfileRaw.swift */; };
 		C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613E7483DAF7CFE6E33A5A2C /* Pods_ChessAggregator.framework */; };
 		D91FC138B62A003F0976BE0C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC601A60B37A11EC38E64 /* APIClient.swift */; };
@@ -214,6 +221,12 @@
 		6AC97D08ABC13012727393FD /* UserProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileInteractor.swift; sourceTree = "<group>"; };
 		6AC97DDC426E3F6DEC4AC478 /* UserRegistrationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationRouter.swift; sourceTree = "<group>"; };
 		6AC97EFFFD3CE5C638699A5F /* EventApplicationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventApplicationInteractor.swift; sourceTree = "<group>"; };
+		733487AE25D9757200ECDDDF /* LocationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPresenter.swift; sourceTree = "<group>"; };
+		733487AF25D9757200ECDDDF /* LocationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRouter.swift; sourceTree = "<group>"; };
+		733487B025D9757200ECDDDF /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		733487B125D9757200ECDDDF /* LocationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProtocols.swift; sourceTree = "<group>"; };
+		733487B225D9757200ECDDDF /* LocationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInteractor.swift; sourceTree = "<group>"; };
+		733487B325D9757200ECDDDF /* LocationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationContainer.swift; sourceTree = "<group>"; };
 		BAAF54D7FF0B6F3A13447F17 /* Pods-ChessAggregator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChessAggregator.debug.xcconfig"; path = "Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator.debug.xcconfig"; sourceTree = "<group>"; };
 		C31943B52568C2AC0051C8C0 /* ProfileRaw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRaw.swift; sourceTree = "<group>"; };
 		D91FC01896C1F619D9D5B569 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
@@ -253,6 +266,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				733487AB25D9750400ECDDDF /* SwiftKeychainWrapper in Frameworks */,
 				C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +317,7 @@
 		24ABA1D2257933BD00B3978D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				733487AD25D9755700ECDDDF /* Location */,
 				6AC979B946764083C6D9430A /* UserRegistration */,
 				6AC979F80691717F1505998A /* UserProfile */,
 				6AC97CAAF1950883DB8BF955 /* SearchTournaments */,
@@ -562,6 +577,19 @@
 			path = AuthCoordinator;
 			sourceTree = "<group>";
 		};
+		733487AD25D9755700ECDDDF /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				733487AE25D9757200ECDDDF /* LocationPresenter.swift */,
+				733487AF25D9757200ECDDDF /* LocationRouter.swift */,
+				733487B025D9757200ECDDDF /* LocationViewController.swift */,
+				733487B125D9757200ECDDDF /* LocationProtocols.swift */,
+				733487B225D9757200ECDDDF /* LocationInteractor.swift */,
+				733487B325D9757200ECDDDF /* LocationContainer.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		B79ADC37DD382A392135B108 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -694,7 +722,7 @@
 			);
 			name = ChessAggregator;
 			packageProductDependencies = (
-				730407F82550617C0036E7A6,
+				730407F82550617C0036E7A6 /* SwiftKeychainWrapper */,
 			);
 			productName = ChessAggregator;
 			productReference = 01FFDCA2253FA08B001244D1 /* ChessAggregator.app */;
@@ -724,7 +752,7 @@
 			);
 			mainGroup = 01FFDC99253FA08B001244D1;
 			packageReferences = (
-				730407F72550617C0036E7A6,
+				730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 			);
 			productRefGroup = 01FFDCA3253FA08B001244D1 /* Products */;
 			projectDirPath = "";
@@ -830,12 +858,16 @@
 				6AC975AE26E8151CBE5C0C0B /* UIColor.swift in Sources */,
 				6AC974CBB9ACC5AFDA04DCEE /* Styles.swift in Sources */,
 				D91FCBEBAF1FE1D414B5D835 /* EventParser.swift in Sources */,
+				733487B625D9757200ECDDDF /* LocationViewController.swift in Sources */,
 				6AC979654688EE71C9F0EDD2 /* UserRegistrationPlayerView.swift in Sources */,
 				6AC975EADAE932EC6AF38770 /* UserRegistrationInteractor.swift in Sources */,
 				6AC977A86A632D3796F19002 /* UserRegistrationRouter.swift in Sources */,
 				014BEFC625A11D020000DFAD /* PickableTextField.swift in Sources */,
+				733487B725D9757200ECDDDF /* LocationProtocols.swift in Sources */,
 				6AC97F480E7A2324F8EF18FA /* UserProfilePresenter.swift in Sources */,
 				6AC972CAFCC42E63FA70A89B /* UserProfileRouter.swift in Sources */,
+				733487B525D9757200ECDDDF /* LocationRouter.swift in Sources */,
+				733487B825D9757200ECDDDF /* LocationInteractor.swift in Sources */,
 				6AC974CFC2C98752A650849C /* UserProfileViewController.swift in Sources */,
 				6AC97485D8D9FE3128E51957 /* UserProfileProtocols.swift in Sources */,
 				6AC975A9573102D2C49D4216 /* UserProfileInteractor.swift in Sources */,
@@ -865,6 +897,7 @@
 				5301606C4A4938AF4C633064 /* ForgotPasswordPresenter.swift in Sources */,
 				53016A372030EB56CF050794 /* ForgotPasswordProtocol.swift in Sources */,
 				530166A7710A091D3A500C40 /* ForgotPasswordRouter.swift in Sources */,
+				733487B925D9757200ECDDDF /* LocationContainer.swift in Sources */,
 				5301609BC8E54E979B8B14F8 /* ForgotPasswordViewController.swift in Sources */,
 				5301614AFF68641F80908236 /* ForgotPasswordView.swift in Sources */,
 				D91FCE23E7476826F9D3434E /* EditUserPresenter.swift in Sources */,
@@ -876,6 +909,7 @@
 				6AC9701BC2CE493DD390BACB /* MyEventsPresenter.swift in Sources */,
 				6AC97C3375E8A6C8FE643148 /* MyEventsRouter.swift in Sources */,
 				6AC970B8D27054C1C2A64EEB /* MyEventsViewController.swift in Sources */,
+				733487B425D9757200ECDDDF /* LocationPresenter.swift in Sources */,
 				6AC97396F1C706D218903CE6 /* MyEventsProtocols.swift in Sources */,
 				6AC97EFEA3F0BB9D41305BD1 /* MyEventsInteractor.swift in Sources */,
 				6AC970B7EFA51600927E0990 /* MyEventsContainer.swift in Sources */,
@@ -1104,7 +1138,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		730407F72550617C0036E7A6 = {
+		730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
 			requirement = {
@@ -1115,9 +1149,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		730407F82550617C0036E7A6 = {
+		730407F82550617C0036E7A6 /* SwiftKeychainWrapper */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 730407F72550617C0036E7A6;
+			package = 730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
 			productName = SwiftKeychainWrapper;
 		};
 /* End XCSwiftPackageProductDependency section */
