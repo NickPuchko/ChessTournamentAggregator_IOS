@@ -55,6 +55,9 @@ extension EventCreationPresenter: EventCreationViewOutput {
     func closeCreation() {
         router.closeCreation()
     }
+    func showLocationSearch() {
+        router.showLocationSearch()
+    }
 
 }
 
@@ -122,3 +125,5 @@ private extension EventCreationPresenter{
         }
     }
 }
+
+

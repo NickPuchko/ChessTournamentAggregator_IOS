@@ -449,7 +449,8 @@ private extension EventCreationViewController {
         labelTextField.addTarget(self, action: #selector(editLocation), for: .editingDidEndOnExit)
         locationTextField.placeholder = "Место проведения"
         locationTextField.returnKeyType = .continue
-        locationTextField.addTarget(self, action: #selector(editOpenDate), for: .editingDidEndOnExit)
+        //locationTextField.addTarget(self, action: #selector(editOpenDate), for: .editingDidEndOnExit)
+        locationTextField.addTarget(self, action: #selector(showSearchBarLocation), for: .editingDidBegin)
     }
 
     func setupPickerStack() {
@@ -614,6 +615,7 @@ extension EventCreationViewController: UIPickerViewDelegate, UIPickerViewDataSou
 
 extension EventCreationViewController: EventCreationViewInput {
     
+    
     func showWarningName(){
         
         labelTextField.layer.borderWidth = 1.0
@@ -676,6 +678,16 @@ extension EventCreationViewController: EventCreationViewInput {
         }
         modeSegment.layer.borderWidth = 0
         modeSegment.layer.borderColor = UIColor.white.cgColor
+    }
+    @objc func showSearchBarLocation(){
+        locationTextField.resignFirstResponder()
+        output.showLocationSearch()
+    }
+
+}
+extension EventCreationViewController: LocationDelegate{
+    func updateLocation(location: String) {
+        locationTextField.text = location
     }
 
 }

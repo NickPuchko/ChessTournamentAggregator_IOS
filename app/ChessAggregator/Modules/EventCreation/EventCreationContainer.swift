@@ -18,13 +18,14 @@ final class EventCreationContainer {
         let interactor = EventCreationInteractor()
         let presenter = EventCreationPresenter(router: router, interactor: interactor)
 		var viewController = EventCreationViewController(output: presenter)
-
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
 		router.navigationControllerProvider = { [weak viewController] in
 			viewController?.navigationController
 		}
-
+        router.viewControllerProvider = { [weak viewController] in
+            viewController
+        }
 		interactor.output = presenter
 		interactor.eventCreationDelegate = context.delegate
 
