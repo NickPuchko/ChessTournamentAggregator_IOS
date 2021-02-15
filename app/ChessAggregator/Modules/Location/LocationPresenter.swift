@@ -25,6 +25,9 @@ extension LocationPresenter: LocationModuleInput {
 }
 
 extension LocationPresenter: LocationViewOutput {
+    func searchErrorOccurred() {
+        router.showSearchError()
+    }
 }
 
 extension LocationPresenter: LocationInteractorOutput {

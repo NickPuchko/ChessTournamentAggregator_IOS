@@ -19,6 +19,7 @@ protocol LocationViewInput: class {
 }
 
 protocol LocationViewOutput: class {
+	func searchErrorOccurred()
 }
 
 protocol LocationInteractorInput: class {
@@ -28,4 +29,5 @@ protocol LocationInteractorOutput: class {
 }
 
 protocol LocationRouterInput: class {
+	func showSearchError()
 }
