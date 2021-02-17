@@ -126,4 +126,3 @@ private extension EventCreationPresenter{
     }
 }
 
-

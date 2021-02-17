@@ -23,6 +23,7 @@ extension UserRegistrationPresenter: UserRegistrationModuleInput {
 }
 
 extension UserRegistrationPresenter: UserRegistrationViewOutput {
+
     func onTapFide() {
         router.showFide()
     }
@@ -36,7 +37,7 @@ extension UserRegistrationPresenter: UserRegistrationViewOutput {
     func onTapRegistration(
             lastName: String?, firstName: String?, patronymicName: String?,
             fideID: String?, frcID: String?, email: String?, password: String?, passwordValidation: String?,
-            isOrganizer: Bool, organizationCity: String?, organizationName: String?, birthdate: Date, sex: String?,
+            isOrganizer: Bool,  birthdate: Date, sex: String?,
             latinName: String?
     ) {
         let lowercasedEmail = email?.lowercased()
@@ -45,7 +46,7 @@ extension UserRegistrationPresenter: UserRegistrationViewOutput {
                 sex: Sex(rawValue: sex ?? "") ?? .male, latinName: latinName ?? "",
                 fideID: fideID ?? "", frcID: frcID ?? "", email: lowercasedEmail ?? "", password: password ?? "",
                 passwordValidation: passwordValidation ?? "",
-                isOrganizer: isOrganizer, organisationCity: organizationCity, organisationName: organizationName,
+                isOrganizer: isOrganizer,
                 birthdate: birthdate
         )
         if isUserValid(with: user) {
@@ -109,8 +110,8 @@ private extension UserRegistrationPresenter {
                 isEmailValid(with: user.email) &&
                 isFirstNameValid(with: user.firstName) &&
                 isPasswordValid(with: user.password) &&
-                isValidationPasswordValid(with: user.password, validationPassword: user.passwordValidation) &&
-                isOrganizerValid(with: user.isOrganizer, user.organisationName, user.organisationCity)
+                isValidationPasswordValid(with: user.password, validationPassword: user.passwordValidation) //&&
+                //isOrganizerValid(with: user.isOrganizer, user.organisationName, user.organisationCity)
     }
 
     func isEmailValid(with emailAddress: String?) -> Bool {
@@ -187,11 +188,11 @@ private extension UserRegistrationPresenter {
         } else {
             view?.showValidatePasswordWarning(isHidden: false)
         }
-        if isOrganizerValid(with: user.isOrganizer, user.organisationName, user.organisationCity) {
-            view?.showOrganizationNameWarning(isHidden: true)
-        } else {
-            view?.showOrganizationNameWarning(isHidden: false)
-        }
+//        if isOrganizerValid(with: user.isOrganizer, user.organisationName, user.organisationCity) {
+//            view?.showOrganizationNameWarning(isHidden: true)
+//        } else {
+//            view?.showOrganizationNameWarning(isHidden: false)
+//        }
     }
 }
 

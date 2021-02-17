@@ -7,6 +7,6 @@ struct User: Codable {
     var id: String = ""
     var email: String = "email@example.com"
     var isOrganizer: Bool = false
-    var organizer: Organizer = Organizer(organizationCity: "Moscow", organizationName: "LUWL")
+    //var organizer: Organizer = Organizer(organizationCity: "Moscow", organizationName: "LUWL")
 }
 

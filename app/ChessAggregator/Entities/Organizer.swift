@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct Organizer: Codable {
-    var organizationCity: String?
-    var organizationName: String?
-}
+//struct Organizer: Codable {
+//    var organizationCity: String?
+//    var organizationName: String?
+//}

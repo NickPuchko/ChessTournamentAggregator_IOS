@@ -18,14 +18,14 @@ protocol UserRegistrationViewInput: class {
     func showEmailWarning(isHidden: Bool)
     func showPasswordWarning(isHidden: Bool)
     func showValidatePasswordWarning(isHidden: Bool)
-    func showOrganizationNameWarning(isHidden: Bool)
+//    func showOrganizationNameWarning(isHidden: Bool)
     func showEmailWasRegisteredWarning(withWarning: String, isHidden: Bool)
 }
 
 protocol UserRegistrationViewOutput: class {
     func onTapRegistration(lastName: String?, firstName: String?, patronymicName: String?, fideID: String?,
                            frcID: String?, email: String?, password: String?, passwordValidation: String?,
-                           isOrganizer: Bool, organizationCity: String?, organizationName: String?, birthdate: Date,
+                           isOrganizer: Bool,  birthdate: Date,
                            sex: String?, latinName: String?
     )
     func onTapFide()

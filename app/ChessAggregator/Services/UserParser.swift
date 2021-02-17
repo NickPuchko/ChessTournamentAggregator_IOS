@@ -92,12 +92,12 @@ class UserParser {
         if let frcID = user.player.frcID {
             result["frcID"] = frcID
         }
-        if let organizationName = user.organizer.organizationName {
-            result["organizationName"] = organizationName
-        }
-        if let organizationCity = user.organizer.organizationCity {
-            result["organizationCity"] = organizationCity
-        }
+//        if let organizationName = user.organizer.organizationName {
+//            result["organizationName"] = organizationName
+//        }
+//        if let organizationCity = user.organizer.organizationCity {
+//            result["organizationCity"] = organizationCity
+//        }
 
         if user.player.tournaments != [] {
             var tournaments: [String : Bool] = [:]
@@ -359,12 +359,12 @@ class UserParser {
             }
         }
 
-        if user.isOrganizer {
-            user.organizer = Organizer(
-                    organizationCity: userDict["organizationCity"] as? String ?? "",
-                    organizationName: userDict["organizationName"] as? String ?? ""
-            )
-        }
+//        if user.isOrganizer {
+//            user.organizer = Organizer(
+//                    organizationCity: userDict["organizationCity"] as? String ?? "",
+//                    organizationName: userDict["organizationName"] as? String ?? ""
+//            )
+//        }
         return user
     }
 
@@ -377,11 +377,11 @@ class UserParser {
             user.id = key
             user.email = thisUser["email"] as? String ?? ""
             user.isOrganizer = thisUser["isOrganizer"] as? Bool ?? false
-            if user.isOrganizer {
-                user.organizer = Organizer(
-                        organizationCity: thisUser["organizationCity"] as? String ?? "",
-                        organizationName: thisUser["organizationName"] as? String ?? "")
-            }
+//            if user.isOrganizer {
+//                user.organizer = Organizer(
+//                        organizationCity: thisUser["organizationCity"] as? String ?? "",
+//                        organizationName: thisUser["organizationName"] as? String ?? "")
+//            }
 
 
             user.player = Player(

@@ -16,8 +16,8 @@ struct UserReg {
         let password: String
         let passwordValidation: String
         let isOrganizer: Bool
-        let organisationCity: String?
-        let organisationName: String?
+//        let organisationCity: String?
+//        let organisationName: String?
         let birthdate: Date
 }
 struct UserForgot {

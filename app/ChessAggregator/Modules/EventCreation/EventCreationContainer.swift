@@ -17,7 +17,7 @@ final class EventCreationContainer {
         let router = EventCreationRouter()
         let interactor = EventCreationInteractor()
         let presenter = EventCreationPresenter(router: router, interactor: interactor)
-		var viewController = EventCreationViewController(output: presenter)
+        let viewController = EventCreationViewController(output: presenter)
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
 		router.navigationControllerProvider = { [weak viewController] in

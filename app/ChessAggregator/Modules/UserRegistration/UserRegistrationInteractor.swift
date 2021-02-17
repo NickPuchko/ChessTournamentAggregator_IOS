@@ -25,7 +25,7 @@ extension UserRegistrationInteractor: UserRegistrationInteractorInput {
                 user.player.classicFrcRating = ratings[0]
                 user.player.rapidFrcRating = ratings[1]
                 user.player.blitzFrcRating = ratings[2]
-
+                
                 let realtimeDatabaseUser = UserParser.userToFirebaseUser(user: user)
 
 
@@ -57,8 +57,8 @@ private extension UserRegistrationInteractor {
                         patronomicName: userReg.patronymicName, birthdate: userReg.birthdate, sex: userReg.sex,
                         latinName: userReg.latinName, fideID: Int(userReg.fideID), frcID: Int(userReg.frcID)
                 ),
-                email: userReg.email, isOrganizer: userReg.isOrganizer,
-                organizer: Organizer(organizationCity: userReg.organisationCity, organizationName: userReg.organisationName))
+                email: userReg.email, isOrganizer: userReg.isOrganizer
+                )
 
         return user
     }

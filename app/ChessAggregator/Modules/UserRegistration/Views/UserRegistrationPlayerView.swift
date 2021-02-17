@@ -33,7 +33,7 @@ class UserRegistrationPlayerView: AutoLayoutView {
     private lazy var firstNameStackView = buildStackView(withTextField: firstName, andLabel: firstNameWarning)
     let firstName = MaterialTextField()
     let firstNameWarning = WarningLabel()
-
+    private var userType = "Игрок"
     lazy var sex = UISegmentedControl(items: sexList)
     var sexStackView = UIStackView()
     var sexLabel = UILabel()
@@ -74,15 +74,14 @@ class UserRegistrationPlayerView: AutoLayoutView {
     private let switchToOrganizer = UISwitch()
     private let switchToOrganizerLabel = UILabel()
 
-    let organizationCity = MaterialTextField()
+//    let organizationCity = MaterialTextField()
 
-    private let organizationNameStackView = UIStackView()
-    let organizationName = MaterialTextField()
-    let organizationNameWarning = WarningLabel()
+//    private let organizationNameStackView = UIStackView()
+//    let organizationName = MaterialTextField()
+//    let organizationNameWarning = WarningLabel()
     
     private let registrationButton = UIButton(type: .system)
-    var onTapRegistrationButton: ((String?, String?, String?, String?, String?, String?,
-                                   String?, String?, Bool, String?, String?, Date, String?, String?) -> Void)?
+    var onTapRegistrationButton: ((String?, String?, String?, String?, String?, String?, String?, String?, Bool, Date, String?, String?) -> Void)?
 
     init() {
         super.init(frame: .zero)
@@ -204,23 +203,23 @@ class UserRegistrationPlayerView: AutoLayoutView {
         switchToOrganizerStackView.addArrangedSubview(switchToOrganizerLabel)
         switchToOrganizerStackView.addArrangedSubview(switchToOrganizer)
 
-        scrollableStackView.addSubview(switchToOrganizerStackView)
+        scrollableStackView.addArrangedSubview(switchToOrganizerStackView)
+        
+//        setupRoundedTextField(textField: organizationCity, textFieldPlaceholder: "Город")
+//        organizationCity.isHidden = true
+//        scrollableStackView.addArrangedSubview(organizationCity)
+//
+//        organizationNameStackView.axis = .vertical
+//        organizationNameStackView.distribution = .fill
+//        organizationNameStackView.alignment = .fill
+//        setupRoundedTextField(textField: organizationName, textFieldPlaceholder: "Название организации*")
+//        organizationNameWarning.text = "Поле названия организации пустое. Пожалуйста, заполните его"
+//        organizationNameStackView.addArrangedSubview(organizationName)
+//        organizationNameStackView.addArrangedSubview(organizationNameWarning)
+//        organizationName.isHidden = true
+//        scrollableStackView.addArrangedSubview(organizationNameStackView)
 
-        setupRoundedTextField(textField: organizationCity, textFieldPlaceholder: "Город")
-        organizationCity.isHidden = true
-        scrollableStackView.addArrangedSubview(organizationCity)
-
-        organizationNameStackView.axis = .vertical
-        organizationNameStackView.distribution = .fill
-        organizationNameStackView.alignment = .fill
-        setupRoundedTextField(textField: organizationName, textFieldPlaceholder: "Название организации*")
-        organizationNameWarning.text = "Поле названия организации пустое. Пожалуйста, заполните его"
-        organizationNameStackView.addArrangedSubview(organizationName)
-        organizationNameStackView.addArrangedSubview(organizationNameWarning)
-        organizationName.isHidden = true
-        scrollableStackView.addArrangedSubview(organizationNameStackView)
-
-        switchToOrganizer.addTarget(self, action: #selector(onTapSwitchToOrganizer), for: .touchUpInside)
+//        switchToOrganizer.addTarget(self, action: #selector(onTapSwitchToOrganizer), for: .touchUpInside)
     }
 
     override func setupConstraints() {
@@ -228,13 +227,13 @@ class UserRegistrationPlayerView: AutoLayoutView {
 
         scrollableStackView.pins()
 
-        let margins = layoutMarginsGuide
+        //let margins = layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            switchToOrganizerStackView.heightAnchor.constraint(equalToConstant: switchToOrganizerStackViewHeight),
-            switchToOrganizerStackView.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
-            switchToOrganizerStackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            switchToOrganizerStackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+//            switchToOrganizerStackView.heightAnchor.constraint(equalToConstant: switchToOrganizerStackViewHeight),
+//            switchToOrganizerStackView.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
+//            switchToOrganizerStackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+//            switchToOrganizerStackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             
             registrationButton.topAnchor.constraint(
                     equalTo: scrollableStackView.contentView.bottomAnchor,
@@ -260,28 +259,28 @@ class UserRegistrationPlayerView: AutoLayoutView {
     }
 
 
-    @objc private func onTapSwitchToOrganizer() {
-        scrollableStackView.set(contentInset:
-        UIEdgeInsets(top: 0.0, left: 0, bottom: registrationOffset, right: 0)
-        )
-        UIView.animate(withDuration: 0.5, delay:0.0, options: [],
-                animations: {
-                    self.organizationName.isHidden = !self.switchToOrganizer.isOn
-                    self.organizationCity.isHidden = !self.switchToOrganizer.isOn
-                    self.organizationNameWarning.isHidden = true
-                    self.layoutIfNeeded()
-                },
-                completion: nil
-        )
-    }
+//    @objc private func onTapSwitchToOrganizer() {
+//
+////        scrollableStackView.set(contentInset:
+//        UIEdgeInsets(top: 0.0, left: 0, bottom: registrationOffset, right: 0)
+//        )
+//        UIView.animate(withDuration: 0.5, delay:0.0, options: [],
+//                animations: {
+//                    self.organizationName.isHidden = !self.switchToOrganizer.isOn
+//                    self.organizationCity.isHidden = !self.switchToOrganizer.isOn
+//                    self.organizationNameWarning.isHidden = true
+//                    self.layoutIfNeeded()
+//                },
+//                completion: nil
+//        )
+//    }
 
     @objc private func onTapRegistration() {
 
         onTapRegistrationButton?(
                 lastName.text, firstName.text, patronymicName.text, fideID.text,
                 frcID.text, emailAddress.text, password.text, validatePassword.text,
-                switchToOrganizer.isOn, organizationCity.text, organizationName.text,
-                birthdateDatePicker.date, sex.titleForSegment(at: sex.selectedSegmentIndex),
+                switchToOrganizer.isOn, birthdateDatePicker.date, sex.titleForSegment(at: sex.selectedSegmentIndex),
                 latinFullname.text)
     }
 

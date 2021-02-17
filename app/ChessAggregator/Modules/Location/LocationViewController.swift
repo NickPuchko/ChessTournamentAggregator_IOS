@@ -29,8 +29,8 @@ final class LocationViewController: UIViewController, UISearchBarDelegate, MKLoc
     }
     override func loadView() {
         super.loadView()
-        setupTableView()
         setupSearchBar()
+        setupTableView()
         
     }
     override func viewDidLoad() {
@@ -45,7 +45,7 @@ final class LocationViewController: UIViewController, UISearchBarDelegate, MKLoc
     func setupTableView() {
         view.addSubview(searchResultsTable)
         searchResultsTable.translatesAutoresizingMaskIntoConstraints = false
-        searchResultsTable.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        searchResultsTable.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
         searchResultsTable.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         searchResultsTable.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         searchResultsTable.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
@@ -53,7 +53,6 @@ final class LocationViewController: UIViewController, UISearchBarDelegate, MKLoc
     
     func setupSearchBar(){
         view.addSubview(searchBar)
-        searchBar.placeholder = "Search location"
         let leftNavBarButton = UIBarButtonItem(customView:searchBar)
         self.navigationItem.leftBarButtonItem = leftNavBarButton
         searchBar.sizeToFit()
@@ -109,6 +108,7 @@ extension LocationViewController: UITableViewDelegate {
             guard let name = response?.mapItems[0].name else {
                 return
             }
+            
             self?.dismiss(animated: true, completion: {
                 self?.locationDelegate.updateLocation(location: name)
             })

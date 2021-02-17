@@ -33,13 +33,12 @@ class UserRegistrationViewController: UIViewController {
         registrationView.onTapRegistrationButton = { [weak self]
         lastName, firstName, patronymicName,
         fideID, frcID, emailAddress, password, validatePassword,
-        isOrganizer, organisationCity, organisationName,
-        birthdate, sex, latinName in
+        isOrganizer, birthdate, sex, latinName in
 
             self?.output.onTapRegistration(
                     lastName: lastName, firstName: firstName, patronymicName: patronymicName, fideID: fideID,
                     frcID: frcID, email: emailAddress, password: password, passwordValidation: validatePassword,
-                    isOrganizer: isOrganizer, organizationCity: organisationCity, organizationName: organisationName,
+                    isOrganizer: isOrganizer, 
                     birthdate: birthdate, sex: sex, latinName: latinName
                 
             )
@@ -91,6 +90,7 @@ class UserRegistrationViewController: UIViewController {
 }
 
 extension UserRegistrationViewController: UserRegistrationViewInput {
+    
     func showEmailWasRegisteredWarning(withWarning warning: String, isHidden: Bool) {
         registrationView.emailWasRegisteredWarning.text = warning
         registrationView.emailWasRegisteredWarning.isHidden = isHidden
@@ -117,9 +117,9 @@ extension UserRegistrationViewController: UserRegistrationViewInput {
         registrationView.validatePasswordWarning.animatedAppearance(isHidden: isHidden)
     }
 
-    func showOrganizationNameWarning(isHidden: Bool) {
-        registrationView.organizationNameWarning.animatedAppearance(isHidden: isHidden)
-    }
+//    func showOrganizationNameWarning(isHidden: Bool) {
+//        registrationView.organizationNameWarning.animatedAppearance(isHidden: isHidden)
+//    }
 
 }
 
@@ -143,8 +143,8 @@ extension UserRegistrationViewController: UITextFieldDelegate {
             return isAllowedToChange
         case registrationView.emailAddress, registrationView.password, registrationView.validatePassword:
             return output.isLoginDataOK(string: prospectiveText)
-        case registrationView.organizationName, registrationView.organizationCity:
-                return output.isOrganizationDataOK(string: prospectiveText)
+//        case registrationView.organizationName, registrationView.organizationCity:
+//                return output.isOrganizationDataOK(string: prospectiveText)
         case registrationView.sex:
             return output.isSexOK(string: prospectiveText)
         default:
@@ -187,8 +187,8 @@ private extension UserRegistrationViewController {
         self.registrationView.emailAddress.delegate = self
         self.registrationView.password.delegate = self
         self.registrationView.validatePassword.delegate = self
-        self.registrationView.organizationCity.delegate = self
-        self.registrationView.organizationName.delegate = self
+//        self.registrationView.organizationCity.delegate = self
+//        self.registrationView.organizationName.delegate = self
 
     }
 }
