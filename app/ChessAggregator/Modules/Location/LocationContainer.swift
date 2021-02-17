@@ -18,7 +18,10 @@ final class LocationContainer {
         let interactor = LocationInteractor()
         let presenter = LocationPresenter(router: router, interactor: interactor)
 		let viewController = LocationViewController(output: presenter)
-        
+
+		router.viewControllerProvider = { [weak viewController] in
+			viewController
+		}
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
 

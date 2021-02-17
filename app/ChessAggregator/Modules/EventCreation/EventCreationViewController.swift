@@ -446,9 +446,11 @@ private extension EventCreationViewController {
     func setupTextFields() {
         labelTextField.placeholder = "Название турнира"
         labelTextField.returnKeyType = .continue
+        labelTextField.clearButtonMode = .always
         labelTextField.addTarget(self, action: #selector(editLocation), for: .editingDidEndOnExit)
         locationTextField.placeholder = "Место проведения"
-        locationTextField.returnKeyType = .continue
+        locationTextField.clearButtonMode = .always
+        locationTextField.isContextMenuInteractionEnabled = false
         //locationTextField.addTarget(self, action: #selector(editOpenDate), for: .editingDidEndOnExit)
         locationTextField.addTarget(self, action: #selector(showSearchBarLocation), for: .editingDidBegin)
     }
@@ -463,11 +465,14 @@ private extension EventCreationViewController {
         toursField.placeholder = "Кол-во туров"
         toursField.inputView = toursPicker
         toursField.textAlignment = .center
+        toursField.isContextMenuInteractionEnabled = false
 
 
         ratingTypeField.placeholder = "Рейтинг"
         ratingTypeField.inputView = ratingTypePicker
         ratingTypeField.textAlignment = .center
+        ratingTypeField.isContextMenuInteractionEnabled = false
+
 
         pickerStack.addArrangedSubview(toursField)
         pickerStack.addArrangedSubview(ratingTypeField)
@@ -503,9 +508,12 @@ private extension EventCreationViewController {
 
         minutesField.text = String(90)
         minutesField.textAlignment = .center
+        minutesField.isContextMenuInteractionEnabled = false
         secondsField.textAlignment = .center
+        secondsField.isContextMenuInteractionEnabled = false
         incrementField.text = String(30)
         incrementField.textAlignment = .center
+        incrementField.isContextMenuInteractionEnabled = false
 
         minutesField.inputView = timeControlPicker
         secondsField.inputView = timeControlPicker
@@ -530,11 +538,16 @@ private extension EventCreationViewController {
     func setupDescriptionFields() {
         fundField.placeholder = "Призовой фонд, ₽"
         fundField.keyboardType = .numberPad
+        fundField.clearButtonMode = .always
+        fundField.isContextMenuInteractionEnabled = false
         feeField.placeholder = "Взнос, ₽"
         feeField.keyboardType = .numberPad
+        feeField.clearButtonMode = .always
+        feeField.isContextMenuInteractionEnabled = false
         urlField.placeholder = "Ссылка"
         urlField.keyboardType = .URL
         urlField.returnKeyType = .continue
+        urlField.clearButtonMode = .always
         urlField.addTarget(self, action: #selector(editFund), for: .editingDidEndOnExit)
     }
 

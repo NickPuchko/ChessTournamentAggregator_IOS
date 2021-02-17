@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import  MapKit
+import MapKit
 
 final class LocationViewController: UIViewController, UISearchBarDelegate, MKLocalSearchCompleterDelegate{
     
@@ -20,18 +20,18 @@ final class LocationViewController: UIViewController, UISearchBarDelegate, MKLoc
     
     init(output: LocationViewOutput) {
         self.output = output
-        
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     override func loadView() {
         super.loadView()
         setupSearchBar()
         setupTableView()
-        
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ final class LocationViewController: UIViewController, UISearchBarDelegate, MKLoc
         searchBar.delegate = self
         searchResultsTable.delegate = self
         searchResultsTable.dataSource = self
-    
+        searchBar.becomeFirstResponder()
     }
     
     func setupTableView() {
@@ -53,41 +53,43 @@ final class LocationViewController: UIViewController, UISearchBarDelegate, MKLoc
     
     func setupSearchBar(){
         view.addSubview(searchBar)
-        let leftNavBarButton = UIBarButtonItem(customView:searchBar)
-        self.navigationItem.leftBarButtonItem = leftNavBarButton
+
+        searchBar.placeholder = "Введите название места проведения"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchBar)
+
         searchBar.sizeToFit()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            searchCompleter.queryFragment = searchText
+        searchCompleter.queryFragment = searchText
     }
     
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        
         searchResults = completer.results
         searchResultsTable.reloadData()
     }
+
+
+
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-        
+        if searchBar.text == "" {
+            searchResults = []
+            searchResultsTable.reloadData()
+        } else {
+            output.searchErrorOccurred()
+        }
     }
     
 }
 extension LocationViewController: UITableViewDataSource {
    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    func numberOfSections(in tableView: UITableView) -> Int { 1 }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count
-    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { searchResults.count }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let searchResult = searchResults[indexPath.row]
-        
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        
         cell.textLabel?.text = searchResult.title
         cell.detailTextLabel?.text = searchResult.subtitle
         return cell
@@ -98,18 +100,16 @@ extension LocationViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
         let result = searchResults[indexPath.row]
         let searchRequest = MKLocalSearch.Request(completion: result)
-        
         let search = MKLocalSearch(request: searchRequest)
         search.start { [weak self] (response, error) in
-            
             guard let name = response?.mapItems[0].name else {
+                self?.output.searchErrorOccurred()
                 return
             }
-            
-            self?.dismiss(animated: true, completion: {
+            self?.dismiss(animated: true, completion: { [weak self] in
+
                 self?.locationDelegate.updateLocation(location: name)
             })
         }
