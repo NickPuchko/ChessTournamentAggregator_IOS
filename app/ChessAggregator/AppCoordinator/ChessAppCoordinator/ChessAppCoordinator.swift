@@ -1,7 +1,3 @@
-//
-// Created by Иван Лизогуб on 29.11.2020.
-//
-
 import UIKit
 
 final class ChessAppCoordinator {
@@ -24,6 +20,7 @@ final class ChessAppCoordinator {
         let navigationControllers = NavControllerType.allCases.compactMap {
             self.navigationControllers[$0]
         }
+        
         tabBarController.setViewControllers(navigationControllers, animated: true)
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
