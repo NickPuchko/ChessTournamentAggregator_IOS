@@ -41,7 +41,9 @@ final class EventApplicationViewController: UIViewController {
         applicationView.onTapCancelButton = {[weak self] in
             self?.output.onTapCancel()
         }
+        applicationView.startList.delegate = self
         applicationView.startList.dataSource = self
+        
     }
 }
 
@@ -54,10 +56,16 @@ extension EventApplicationViewController: EventApplicationViewInput {
         applicationView.updateButton(isApplied: output.isApplied)
     }
 }
-
+extension EventApplicationViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("tapped")
+        print(indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
+        output.showUserPreview()
+    }
+}
 extension EventApplicationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { playerViewModels.count }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "playerCell")
         let player = playerViewModels[indexPath.row]
@@ -69,8 +77,8 @@ extension EventApplicationViewController: UITableViewDataSource {
         } else {
             cell.detailTextLabel?.text = ""
         }
-        cell.imageView?.image = Styles.numberToImage(drawText: "\(indexPath.row + 1)") // Numbers
-
+        cell.imageView?.image = Styles.numberToImage(drawText: "\(indexPath.row + 1)")
+        cell.selectionStyle = .none// Numbers
 //        if indexPath.row < 50 {
 //            cell.imageView?.image = UIImage(systemName: "\(indexPath.row + 1).circle") // Numbers in circles
 //        } else {

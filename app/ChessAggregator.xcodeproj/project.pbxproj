@@ -91,6 +91,7 @@
 		6AC97F3474E1187790EC0D95 /* SearchTournamentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9797CA3B3EFCDCCECAC24 /* SearchTournamentsPresenter.swift */; };
 		6AC97F480E7A2324F8EF18FA /* UserProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97065AE42461955EC58DA /* UserProfilePresenter.swift */; };
 		6AC97F9EF2C368E3597B040E /* SearchTournamentsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC971D58E0BABEB95F76798 /* SearchTournamentsInteractor.swift */; };
+		731DAC3725F164200029BF7F /* UserPreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731DAC3625F164200029BF7F /* UserPreviewModel.swift */; };
 		733487AB25D9750400ECDDDF /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 730407F82550617C0036E7A6 /* SwiftKeychainWrapper */; };
 		733487B425D9757200ECDDDF /* LocationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487AE25D9757200ECDDDF /* LocationPresenter.swift */; };
 		733487B525D9757200ECDDDF /* LocationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487AF25D9757200ECDDDF /* LocationRouter.swift */; };
@@ -98,6 +99,12 @@
 		733487B725D9757200ECDDDF /* LocationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487B125D9757200ECDDDF /* LocationProtocols.swift */; };
 		733487B825D9757200ECDDDF /* LocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487B225D9757200ECDDDF /* LocationInteractor.swift */; };
 		733487B925D9757200ECDDDF /* LocationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487B325D9757200ECDDDF /* LocationContainer.swift */; };
+		73AFE14325F01A1F00B3838A /* UserPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AFE13D25F01A1F00B3838A /* UserPreviewPresenter.swift */; };
+		73AFE14425F01A1F00B3838A /* UserPreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AFE13E25F01A1F00B3838A /* UserPreviewRouter.swift */; };
+		73AFE14525F01A1F00B3838A /* UserPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AFE13F25F01A1F00B3838A /* UserPreviewViewController.swift */; };
+		73AFE14625F01A1F00B3838A /* UserPreviewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AFE14025F01A1F00B3838A /* UserPreviewProtocols.swift */; };
+		73AFE14725F01A1F00B3838A /* UserPreviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AFE14125F01A1F00B3838A /* UserPreviewInteractor.swift */; };
+		73AFE14825F01A1F00B3838A /* UserPreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AFE14225F01A1F00B3838A /* UserPreviewContainer.swift */; };
 		C31943B62568C2AC0051C8C0 /* ProfileRaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31943B52568C2AC0051C8C0 /* ProfileRaw.swift */; };
 		C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613E7483DAF7CFE6E33A5A2C /* Pods_ChessAggregator.framework */; };
 		D91FC138B62A003F0976BE0C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC601A60B37A11EC38E64 /* APIClient.swift */; };
@@ -221,12 +228,19 @@
 		6AC97D08ABC13012727393FD /* UserProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileInteractor.swift; sourceTree = "<group>"; };
 		6AC97DDC426E3F6DEC4AC478 /* UserRegistrationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationRouter.swift; sourceTree = "<group>"; };
 		6AC97EFFFD3CE5C638699A5F /* EventApplicationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventApplicationInteractor.swift; sourceTree = "<group>"; };
+		731DAC3625F164200029BF7F /* UserPreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewModel.swift; sourceTree = "<group>"; };
 		733487AE25D9757200ECDDDF /* LocationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPresenter.swift; sourceTree = "<group>"; };
 		733487AF25D9757200ECDDDF /* LocationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRouter.swift; sourceTree = "<group>"; };
 		733487B025D9757200ECDDDF /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		733487B125D9757200ECDDDF /* LocationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProtocols.swift; sourceTree = "<group>"; };
 		733487B225D9757200ECDDDF /* LocationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInteractor.swift; sourceTree = "<group>"; };
 		733487B325D9757200ECDDDF /* LocationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationContainer.swift; sourceTree = "<group>"; };
+		73AFE13D25F01A1F00B3838A /* UserPreviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewPresenter.swift; sourceTree = "<group>"; };
+		73AFE13E25F01A1F00B3838A /* UserPreviewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewRouter.swift; sourceTree = "<group>"; };
+		73AFE13F25F01A1F00B3838A /* UserPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewViewController.swift; sourceTree = "<group>"; };
+		73AFE14025F01A1F00B3838A /* UserPreviewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewProtocols.swift; sourceTree = "<group>"; };
+		73AFE14125F01A1F00B3838A /* UserPreviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewInteractor.swift; sourceTree = "<group>"; };
+		73AFE14225F01A1F00B3838A /* UserPreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewContainer.swift; sourceTree = "<group>"; };
 		BAAF54D7FF0B6F3A13447F17 /* Pods-ChessAggregator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChessAggregator.debug.xcconfig"; path = "Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator.debug.xcconfig"; sourceTree = "<group>"; };
 		C31943B52568C2AC0051C8C0 /* ProfileRaw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRaw.swift; sourceTree = "<group>"; };
 		D91FC01896C1F619D9D5B569 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
@@ -317,6 +331,7 @@
 		24ABA1D2257933BD00B3978D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				73AFE13C25F0177A00B3838A /* UserPreview */,
 				733487AD25D9755700ECDDDF /* Location */,
 				6AC979B946764083C6D9430A /* UserRegistration */,
 				6AC979F80691717F1505998A /* UserProfile */,
@@ -577,6 +592,14 @@
 			path = AuthCoordinator;
 			sourceTree = "<group>";
 		};
+		731DAC3525F164000029BF7F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				731DAC3625F164200029BF7F /* UserPreviewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		733487AD25D9755700ECDDDF /* Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -588,6 +611,20 @@
 				733487B325D9757200ECDDDF /* LocationContainer.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		73AFE13C25F0177A00B3838A /* UserPreview */ = {
+			isa = PBXGroup;
+			children = (
+				731DAC3525F164000029BF7F /* ViewModels */,
+				73AFE13D25F01A1F00B3838A /* UserPreviewPresenter.swift */,
+				73AFE13E25F01A1F00B3838A /* UserPreviewRouter.swift */,
+				73AFE13F25F01A1F00B3838A /* UserPreviewViewController.swift */,
+				73AFE14025F01A1F00B3838A /* UserPreviewProtocols.swift */,
+				73AFE14125F01A1F00B3838A /* UserPreviewInteractor.swift */,
+				73AFE14225F01A1F00B3838A /* UserPreviewContainer.swift */,
+			);
+			path = UserPreview;
 			sourceTree = "<group>";
 		};
 		B79ADC37DD382A392135B108 /* Pods */ = {
@@ -827,6 +864,7 @@
 				D91FC26C613F6A01D1DC8398 /* Player.swift in Sources */,
 				D91FC76493A71AA245E6D64C /* Tournament.swift in Sources */,
 				D91FC1BCA9CEF5F7417BA0B9 /* UIView+Layout.swift in Sources */,
+				73AFE14425F01A1F00B3838A /* UserPreviewRouter.swift in Sources */,
 				C31943B62568C2AC0051C8C0 /* ProfileRaw.swift in Sources */,
 				D91FCCCB3DE4DB1A0C47A174 /* AutoLayoutView.swift in Sources */,
 				D91FCA230504155423B9560F /* User.swift in Sources */,
@@ -835,6 +873,7 @@
 				6AC974DBDEE19C56EC671F51 /* UserRegistrationContainer.swift in Sources */,
 				6AC973BE56C56D620227BF0B /* UserRegistrationProtocols.swift in Sources */,
 				6AC97C3BAB64ADF9B302A904 /* UserRegistrationPresenter.swift in Sources */,
+				731DAC3725F164200029BF7F /* UserPreviewModel.swift in Sources */,
 				24B910C2256BD1D60076A3E1 /* AppCoordinator.swift in Sources */,
 				014BEFCD25A127480000DFAD /* MaterialStack.swift in Sources */,
 				6AC97B4021820CC7707CD19D /* UserRegistrationViewController.swift in Sources */,
@@ -855,6 +894,7 @@
 				6AC97D06E2B8C805B3BD91B6 /* SearchTournamentsProtocols.swift in Sources */,
 				6AC97F9EF2C368E3597B040E /* SearchTournamentsInteractor.swift in Sources */,
 				6AC97BE8FF07CD1A48736892 /* SearchTournamentsContainer.swift in Sources */,
+				73AFE14725F01A1F00B3838A /* UserPreviewInteractor.swift in Sources */,
 				6AC975AE26E8151CBE5C0C0B /* UIColor.swift in Sources */,
 				6AC974CBB9ACC5AFDA04DCEE /* Styles.swift in Sources */,
 				D91FCBEBAF1FE1D414B5D835 /* EventParser.swift in Sources */,
@@ -862,11 +902,13 @@
 				6AC979654688EE71C9F0EDD2 /* UserRegistrationPlayerView.swift in Sources */,
 				6AC975EADAE932EC6AF38770 /* UserRegistrationInteractor.swift in Sources */,
 				6AC977A86A632D3796F19002 /* UserRegistrationRouter.swift in Sources */,
+				73AFE14825F01A1F00B3838A /* UserPreviewContainer.swift in Sources */,
 				014BEFC625A11D020000DFAD /* PickableTextField.swift in Sources */,
 				733487B725D9757200ECDDDF /* LocationProtocols.swift in Sources */,
 				6AC97F480E7A2324F8EF18FA /* UserProfilePresenter.swift in Sources */,
 				6AC972CAFCC42E63FA70A89B /* UserProfileRouter.swift in Sources */,
 				733487B525D9757200ECDDDF /* LocationRouter.swift in Sources */,
+				73AFE14325F01A1F00B3838A /* UserPreviewPresenter.swift in Sources */,
 				733487B825D9757200ECDDDF /* LocationInteractor.swift in Sources */,
 				6AC974CFC2C98752A650849C /* UserProfileViewController.swift in Sources */,
 				6AC97485D8D9FE3128E51957 /* UserProfileProtocols.swift in Sources */,
@@ -894,6 +936,7 @@
 				D91FC2F4B2B5A31870EA49EC /* LabelStack.swift in Sources */,
 				53016F07FB8F3B9AB5B463A6 /* ForgotPasswordContainer.swift in Sources */,
 				530165BA75CED59AAD11EB64 /* ForgotPasswordInteractor.swift in Sources */,
+				73AFE14625F01A1F00B3838A /* UserPreviewProtocols.swift in Sources */,
 				5301606C4A4938AF4C633064 /* ForgotPasswordPresenter.swift in Sources */,
 				53016A372030EB56CF050794 /* ForgotPasswordProtocol.swift in Sources */,
 				530166A7710A091D3A500C40 /* ForgotPasswordRouter.swift in Sources */,
@@ -927,6 +970,7 @@
 				3397643970BAF083A0B446D7 /* HeaderCloudView.swift in Sources */,
 				6AC97109DA563A8D939CE5EB /* StatisticRow.swift in Sources */,
 				6AC97521E41A0991FEAD00E1 /* RatingSegment.swift in Sources */,
+				73AFE14525F01A1F00B3838A /* UserPreviewViewController.swift in Sources */,
 				6AC97EB8C89EE1E509806955 /* UserViewModel.swift in Sources */,
 				339761EA82142530D9D8DB5A /* FooterCloudView.swift in Sources */,
 				33976F467576B61DDA5A555A /* PlayerModel.swift in Sources */,
@@ -1081,7 +1125,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9P2Q9LCYN9;
+				DEVELOPMENT_TEAM = YDJFMC7LFN;
 				INFOPLIST_FILE = ChessAggregator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1101,7 +1145,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9P2Q9LCYN9;
+				DEVELOPMENT_TEAM = YDJFMC7LFN;
 				INFOPLIST_FILE = ChessAggregator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

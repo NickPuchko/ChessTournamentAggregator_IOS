@@ -33,7 +33,6 @@ protocol UserProfileInteractorInput: class {
 
 protocol UserProfileInteractorOutput: class {
 	func updateUser(user: User)
-
 }
 
 protocol UserProfileRouterInput: class {

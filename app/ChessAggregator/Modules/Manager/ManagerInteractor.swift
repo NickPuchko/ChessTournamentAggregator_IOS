@@ -46,7 +46,7 @@ extension ManagerInteractor: ManagerInteractorInput {
 			let player = PlayerModel(
 					name: user.player.lastName + " " + user.player.firstName,
 					rating: getCurrentRating(player: user.player, ratingType: event.ratingType, mode: event.mode
-					))
+					),id: user.id)
 			players.append(player)
 			if let rating = player.rating {
 				eloSum += rating

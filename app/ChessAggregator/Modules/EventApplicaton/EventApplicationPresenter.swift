@@ -25,6 +25,10 @@ extension EventApplicationPresenter: EventApplicationModuleInput {
 }
 
 extension EventApplicationPresenter: EventApplicationViewOutput {
+    func showUserPreview() {
+        router.showUserPreview()
+    }
+    
     var isApplied: Bool {
         get {
             interactor.checkAppliance()

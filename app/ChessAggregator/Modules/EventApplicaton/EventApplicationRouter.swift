@@ -44,4 +44,9 @@ extension EventApplicationRouter: EventApplicationRouterInput {
             navigationController?.present(alert, animated: true)
         }
     }
+    func showUserPreview(){
+        let context = UserPreviewContext(moduleOutput: nil)
+        let container = UserPreviewContainer.assemble(with: context)
+        navigationController?.pushViewController(container.viewController, animated: true)
+    }
 }

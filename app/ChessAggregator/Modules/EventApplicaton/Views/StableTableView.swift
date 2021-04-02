@@ -20,4 +20,5 @@ class StableTableView: UITableView {
         super.reloadData()
         invalidateIntrinsicContentSize()
     }
+    
 }

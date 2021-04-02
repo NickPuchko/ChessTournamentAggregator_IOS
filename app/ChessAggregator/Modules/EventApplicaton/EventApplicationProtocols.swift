@@ -24,6 +24,7 @@ protocol EventApplicationViewOutput: class {
 	func onTapCancel()
 	func onTapSite()
 	func eventState() -> Tournament
+    func showUserPreview()
 	var isApplied: Bool { get }
 }
 
@@ -43,4 +44,5 @@ protocol EventApplicationRouterInput: class {
 	func showSite(url: URL)
 	func showApply()
 	func showCancel()
+    func showUserPreview()
 }

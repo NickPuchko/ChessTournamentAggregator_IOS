@@ -40,8 +40,8 @@ extension EventApplicationInteractor: EventApplicationInteractorInput {
 		for user in users {
 			let player = PlayerModel(
 					name: user.player.lastName + " " + user.player.firstName,
-					rating: getCurrentRating(player: user.player, ratingType: tournament.ratingType, mode: tournament.mode
-					))
+					rating: getCurrentRating(player: user.player, ratingType: tournament.ratingType, mode: tournament.mode),
+                    id: user.id)
 			players.append(player)
 			if let rating = player.rating {
 				eloSum += rating

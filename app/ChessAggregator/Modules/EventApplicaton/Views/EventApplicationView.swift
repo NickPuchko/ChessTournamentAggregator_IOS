@@ -35,7 +35,7 @@ class EventApplicationView: AutoLayoutView {
     private func setupList() {
         startList.isScrollEnabled = false
         startList.backgroundColor = .white
-        startList.allowsSelection = false
+        //startList.allowsSelection = false
 
     }
 
