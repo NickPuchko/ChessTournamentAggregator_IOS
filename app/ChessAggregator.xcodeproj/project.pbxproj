@@ -99,12 +99,14 @@
 		733487B725D9757200ECDDDF /* LocationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487B125D9757200ECDDDF /* LocationProtocols.swift */; };
 		733487B825D9757200ECDDDF /* LocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487B225D9757200ECDDDF /* LocationInteractor.swift */; };
 		733487B925D9757200ECDDDF /* LocationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487B325D9757200ECDDDF /* LocationContainer.swift */; };
+		73A42FE22620C0AA00102EF8 /* PreviewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A42FE12620C0AA00102EF8 /* PreviewButton.swift */; };
 		73AFE14325F01A1F00B3838A /* UserPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AFE13D25F01A1F00B3838A /* UserPreviewPresenter.swift */; };
 		73AFE14425F01A1F00B3838A /* UserPreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AFE13E25F01A1F00B3838A /* UserPreviewRouter.swift */; };
 		73AFE14525F01A1F00B3838A /* UserPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AFE13F25F01A1F00B3838A /* UserPreviewViewController.swift */; };
 		73AFE14625F01A1F00B3838A /* UserPreviewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AFE14025F01A1F00B3838A /* UserPreviewProtocols.swift */; };
 		73AFE14725F01A1F00B3838A /* UserPreviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AFE14125F01A1F00B3838A /* UserPreviewInteractor.swift */; };
 		73AFE14825F01A1F00B3838A /* UserPreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AFE14225F01A1F00B3838A /* UserPreviewContainer.swift */; };
+		73B3F3612620795700BBB649 /* PreviewCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B3F3602620795700BBB649 /* PreviewCustomCell.swift */; };
 		C31943B62568C2AC0051C8C0 /* ProfileRaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31943B52568C2AC0051C8C0 /* ProfileRaw.swift */; };
 		C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613E7483DAF7CFE6E33A5A2C /* Pods_ChessAggregator.framework */; };
 		D91FC138B62A003F0976BE0C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC601A60B37A11EC38E64 /* APIClient.swift */; };
@@ -235,12 +237,14 @@
 		733487B125D9757200ECDDDF /* LocationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProtocols.swift; sourceTree = "<group>"; };
 		733487B225D9757200ECDDDF /* LocationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInteractor.swift; sourceTree = "<group>"; };
 		733487B325D9757200ECDDDF /* LocationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationContainer.swift; sourceTree = "<group>"; };
+		73A42FE12620C0AA00102EF8 /* PreviewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewButton.swift; sourceTree = "<group>"; };
 		73AFE13D25F01A1F00B3838A /* UserPreviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewPresenter.swift; sourceTree = "<group>"; };
 		73AFE13E25F01A1F00B3838A /* UserPreviewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewRouter.swift; sourceTree = "<group>"; };
 		73AFE13F25F01A1F00B3838A /* UserPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewViewController.swift; sourceTree = "<group>"; };
 		73AFE14025F01A1F00B3838A /* UserPreviewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewProtocols.swift; sourceTree = "<group>"; };
 		73AFE14125F01A1F00B3838A /* UserPreviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewInteractor.swift; sourceTree = "<group>"; };
 		73AFE14225F01A1F00B3838A /* UserPreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewContainer.swift; sourceTree = "<group>"; };
+		73B3F3602620795700BBB649 /* PreviewCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCustomCell.swift; sourceTree = "<group>"; };
 		BAAF54D7FF0B6F3A13447F17 /* Pods-ChessAggregator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChessAggregator.debug.xcconfig"; path = "Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator.debug.xcconfig"; sourceTree = "<group>"; };
 		C31943B52568C2AC0051C8C0 /* ProfileRaw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRaw.swift; sourceTree = "<group>"; };
 		D91FC01896C1F619D9D5B569 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
@@ -616,6 +620,7 @@
 		73AFE13C25F0177A00B3838A /* UserPreview */ = {
 			isa = PBXGroup;
 			children = (
+				73B3F35F2620793400BBB649 /* Views */,
 				731DAC3525F164000029BF7F /* ViewModels */,
 				73AFE13D25F01A1F00B3838A /* UserPreviewPresenter.swift */,
 				73AFE13E25F01A1F00B3838A /* UserPreviewRouter.swift */,
@@ -625,6 +630,15 @@
 				73AFE14225F01A1F00B3838A /* UserPreviewContainer.swift */,
 			);
 			path = UserPreview;
+			sourceTree = "<group>";
+		};
+		73B3F35F2620793400BBB649 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				73B3F3602620795700BBB649 /* PreviewCustomCell.swift */,
+				73A42FE12620C0AA00102EF8 /* PreviewButton.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B79ADC37DD382A392135B108 /* Pods */ = {
@@ -901,6 +915,7 @@
 				733487B625D9757200ECDDDF /* LocationViewController.swift in Sources */,
 				6AC979654688EE71C9F0EDD2 /* UserRegistrationPlayerView.swift in Sources */,
 				6AC975EADAE932EC6AF38770 /* UserRegistrationInteractor.swift in Sources */,
+				73A42FE22620C0AA00102EF8 /* PreviewButton.swift in Sources */,
 				6AC977A86A632D3796F19002 /* UserRegistrationRouter.swift in Sources */,
 				73AFE14825F01A1F00B3838A /* UserPreviewContainer.swift in Sources */,
 				014BEFC625A11D020000DFAD /* PickableTextField.swift in Sources */,
@@ -909,6 +924,7 @@
 				6AC972CAFCC42E63FA70A89B /* UserProfileRouter.swift in Sources */,
 				733487B525D9757200ECDDDF /* LocationRouter.swift in Sources */,
 				73AFE14325F01A1F00B3838A /* UserPreviewPresenter.swift in Sources */,
+				73B3F3612620795700BBB649 /* PreviewCustomCell.swift in Sources */,
 				733487B825D9757200ECDDDF /* LocationInteractor.swift in Sources */,
 				6AC974CFC2C98752A650849C /* UserProfileViewController.swift in Sources */,
 				6AC97485D8D9FE3128E51957 /* UserProfileProtocols.swift in Sources */,
