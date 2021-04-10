@@ -92,7 +92,6 @@ final class UserPreviewViewController: UIViewController {
     init(output: UserPreviewViewOutput) {
         self.output = output
         imageView = UIImageView(image: userImage)
-        //startList = StableTableView(frame: .zero, style: .plain)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -115,28 +114,20 @@ final class UserPreviewViewController: UIViewController {
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 0.1
         imageView.layer.borderColor = UIColor.black.cgColor
+        
+        
+        fideButton.addTarget(self, action: #selector(tappedFIDE), for: .touchUpInside)
 
-
-//        fideButton.addTarget(self, action: #selector(tappedFIDE), for: .touchUpInside)
-//
-//        frcButton.addTarget(self, action: #selector(tappedFRC), for: .touchUpInside)
-//
-//        arrowDown.addTarget(self, action: #selector(onTapStatButton), for: .touchUpInside)
+        frcButton.addTarget(self, action: #selector(tappedFRC), for: .touchUpInside)
 	}
     func setup() {
-        //view.addSubview(scrollView)
+
         view.addSubview(contentView)
-        //scrollView.addSubview(startList)
         contentView.addSubview(topView)
-        //contentView.addSubview(profileStack)
-        //contentView.addSubview(fideFrcStack)
         view.addSubview(frcButton)
         view.addSubview(fideButton)
         view.addSubview(startList)
         
-//        scrollView.alwaysBounceVertical = true
-//        scrollView.showsHorizontalScrollIndicator = false
-
         topView.backgroundColor = backgroundColor
         topView.addSubview(imageView)
         topView.addSubview(userName)
@@ -145,7 +136,8 @@ final class UserPreviewViewController: UIViewController {
         topView.addSubview(birthDateLabel)
         topView.addSubview(scoresLabel)
         topView.addSubview(startNumberLabel)
-        
+        self.startList.rowHeight = UITableView.automaticDimension
+        self.startList.estimatedRowHeight = 50.0
 //        topView.addSubview(generalStack)
 //        topView.addSubview(arrowDown)
         
@@ -252,9 +244,6 @@ final class UserPreviewViewController: UIViewController {
         startList
     ].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
-        let margins = view.safeAreaLayoutGuide
-        //scrollView.pins()
-        //topView.top()
         NSLayoutConstraint.activate([
 //            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
 //            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -272,7 +261,7 @@ final class UserPreviewViewController: UIViewController {
             imageView.widthAnchor.constraint(equalToConstant: imageDiameter),
             imageView.heightAnchor.constraint(equalToConstant: imageDiameter),
             imageView.topAnchor.constraint(equalTo: topView.topAnchor, constant: 30),
-            imageView.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
+            imageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
 
             userName.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
             userName.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
@@ -373,15 +362,15 @@ final class UserPreviewViewController: UIViewController {
 //        generalStack.layoutIfNeeded()
 //    }
 //
-//    @objc
-//    func tappedFIDE() {
-//        output.showFIDE()
-//    }
-//
-//    @objc
-//    func tappedFRC() {
-//        output.showFRC()
-//    }
+    @objc
+    func tappedFIDE() {
+        output.showFIDE()
+    }
+
+    @objc
+    func tappedFRC() {
+        output.showFRC()
+    }
 }
 
 extension UserPreviewViewController: UserPreviewViewInput {

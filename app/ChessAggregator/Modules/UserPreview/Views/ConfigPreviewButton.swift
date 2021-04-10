@@ -12,7 +12,6 @@ import UIKit
 
 class ConfigPreviewButton: AutoLayoutView {
     let mainView = UIView()
-    //arrow = UIImageView(image: UIImage(systemName: "chevron.right"))
     let statisticsImage = UIImageView()
 
     init(image: UIImage) {
@@ -52,7 +51,6 @@ class ConfigPreviewButton: AutoLayoutView {
             mainView.centerXAnchor.constraint(equalTo: superview!.centerXAnchor),
             mainView.centerYAnchor.constraint(equalTo: superview!.centerYAnchor),
 
-            //statisticsImage.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 30),
             statisticsImage.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
             statisticsImage.centerYAnchor.constraint(equalTo: mainView.centerYAnchor),
             statisticsImage.widthAnchor.constraint(equalToConstant: 50.0),

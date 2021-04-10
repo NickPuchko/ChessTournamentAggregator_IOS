@@ -11,49 +11,67 @@ import UIKit
 class PreviewCustomCell: UITableViewCell {
     
     let gameNumberLabel = UILabel()
-    let gameMembersLabel = UILabel()
+    let gamePlayer1Label = UILabel()
+    let gamePlayer2Label = UILabel()
     let gameResultLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         contentView.addSubview(gameNumberLabel)
-        contentView.addSubview(gameMembersLabel)
+        //contentView.addSubview(gameMembersLabel)
         contentView.addSubview(gameResultLabel)
-        
+        contentView.addSubview(gamePlayer1Label)
+        contentView.addSubview(gamePlayer2Label)
+        //contentView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         setupLabels()
         setupLabelsConstraint()
     }
     func setupLabels() {
         gameNumberLabel.font = UIFont(name: "Apple SD Gothic Neo", size: 16)
-        gameMembersLabel.font = UIFont(name: "Apple SD Gothic Neo", size: 16)
-        gameResultLabel.font = UIFont(name: "Apple SD Gothic Neo", size: 16)
-        
         gameNumberLabel.textColor = .black
-        gameMembersLabel.textColor = .black
+        
+        gamePlayer1Label.font = UIFont(name: "Apple SD Gothic Neo", size: 16)
+        gamePlayer1Label.textColor = .black
+        gamePlayer1Label.text = "Surkov.M.A"
+        gamePlayer1Label.lineBreakMode = .byCharWrapping
+        
+        gamePlayer2Label.font = UIFont(name: "Apple SD Gothic Neo", size: 16)
+        gamePlayer2Label.textColor = .black
+        gamePlayer2Label.text = "Puchko.N.Aasjndljaksndjkansdklansdklajsndkjasdnklansdkljandskaksdj"
+        gamePlayer2Label.lineBreakMode = .byCharWrapping
+        
+        gameResultLabel.font = UIFont(name: "Apple SD Gothic Neo", size: 16)
         gameResultLabel.textColor = .black
         
-        gameMembersLabel.text = "Surkov.M.A - Puchko.N.A"
         gameResultLabel.text = "0 - 1"
     }
     
     func setupLabelsConstraint() {
         gameNumberLabel.translatesAutoresizingMaskIntoConstraints = false
-        gameMembersLabel.translatesAutoresizingMaskIntoConstraints = false
         gameResultLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+        gamePlayer1Label.translatesAutoresizingMaskIntoConstraints = false
+        gamePlayer2Label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             gameNumberLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            gameNumberLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),         //gameNumberLabel.widthAnchor.constraint(equalToConstant: 15),
-//            gameNumberLabel.heightAnchor.constraint(equalTo:gameNumberLabel.widthAnchor),
+            gameNumberLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             
-            gameResultLabel.topAnchor.constraint(equalTo: gameNumberLabel.topAnchor),
+            gameResultLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             gameResultLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             
-            gameMembersLabel.topAnchor.constraint(equalTo: gameNumberLabel.topAnchor),
-            gameMembersLabel.leadingAnchor.constraint(equalTo: gameNumberLabel.trailingAnchor, constant: 8),
-            //gameMembersLabel.trailingAnchor.constraint(lessThanOrEqualTo: gameResultLabel.leadingAnchor, constant: -15),
+            gamePlayer1Label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
+            gamePlayer1Label.leadingAnchor.constraint(equalTo: gameNumberLabel.trailingAnchor, constant: 12),
+            gamePlayer1Label.trailingAnchor.constraint(lessThanOrEqualTo: gameResultLabel.leadingAnchor, constant: -15),
+            
+            gamePlayer2Label.topAnchor.constraint(equalTo: gamePlayer1Label.bottomAnchor, constant: 4),
+            gamePlayer2Label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
+            gamePlayer2Label.leadingAnchor.constraint(equalTo: gamePlayer1Label.leadingAnchor),
+            gamePlayer2Label.trailingAnchor.constraint(lessThanOrEqualTo: gameResultLabel.leadingAnchor, constant: -15),
         ])
+        gameNumberLabel.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
+        gamePlayer1Label.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .horizontal)
+        gamePlayer2Label.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .horizontal)
+        
     }
     
     required init?(coder: NSCoder) {

@@ -27,6 +27,7 @@ extension UserPreviewRouter: UserPreviewRouterInput {
     }
     
     func showFRC(user: User) {
+        print("fuck")
         guard let id = user.player.frcID else {
             print("У вас не указан ФШР id. Если он существует, укажите его в профиле!")
             return
@@ -37,5 +38,4 @@ extension UserPreviewRouter: UserPreviewRouterInput {
         let frcViewController = SFSafariViewController(url: frcURL)
         navigationController?.present(frcViewController, animated: true)
     }
-    
 }
