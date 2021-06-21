@@ -73,8 +73,6 @@ class APIClient {
             }
             else if let data = data {
                 do {
-//                    let result = data as! Bool
-                print(response)
                     let result = try self.jsonDecoder.decode(T.self, from: data)
                     DispatchQueue.main.async {
                         completion(.success(result))
@@ -111,7 +109,6 @@ class APIClient {
         }
 
         let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
-            print(response)
             if let error = error {
                 DispatchQueue.main.async {
                     completion(.failure(error))

@@ -28,6 +28,7 @@
 		3397643970BAF083A0B446D7 /* HeaderCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339767EB35296FBE112F731D /* HeaderCloudView.swift */; };
 		33976DCE21593941DD76E08F /* EventCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33976116032FB33EEBCC378D /* EventCardView.swift */; };
 		33976F467576B61DDA5A555A /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33976B69A91B72435E09B239 /* PlayerModel.swift */; };
+		44A6503AB05D3B0CED1B692A /* Pods_ChessAggregator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65DC3311B2CB92899F4E321 /* Pods_ChessAggregator.framework */; };
 		5301606C4A4938AF4C633064 /* ForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530169C8D0F41F26433D22AF /* ForgotPasswordPresenter.swift */; };
 		5301609BC8E54E979B8B14F8 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53016A33EFF42D93AB5DF9C6 /* ForgotPasswordViewController.swift */; };
 		5301614AFF68641F80908236 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530165E0888802D4041F3915 /* ForgotPasswordView.swift */; };
@@ -91,7 +92,7 @@
 		6AC97F3474E1187790EC0D95 /* SearchTournamentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9797CA3B3EFCDCCECAC24 /* SearchTournamentsPresenter.swift */; };
 		6AC97F480E7A2324F8EF18FA /* UserProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97065AE42461955EC58DA /* UserProfilePresenter.swift */; };
 		6AC97F9EF2C368E3597B040E /* SearchTournamentsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC971D58E0BABEB95F76798 /* SearchTournamentsInteractor.swift */; };
-		733487AB25D9750400ECDDDF /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 730407F82550617C0036E7A6 /* SwiftKeychainWrapper */; };
+		733487AB25D9750400ECDDDF /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 730407F82550617C0036E7A6 /* SwiftPackageProductDependency */; };
 		733487B425D9757200ECDDDF /* LocationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487AE25D9757200ECDDDF /* LocationPresenter.swift */; };
 		733487B525D9757200ECDDDF /* LocationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487AF25D9757200ECDDDF /* LocationRouter.swift */; };
 		733487B625D9757200ECDDDF /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487B025D9757200ECDDDF /* LocationViewController.swift */; };
@@ -99,7 +100,6 @@
 		733487B825D9757200ECDDDF /* LocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487B225D9757200ECDDDF /* LocationInteractor.swift */; };
 		733487B925D9757200ECDDDF /* LocationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487B325D9757200ECDDDF /* LocationContainer.swift */; };
 		C31943B62568C2AC0051C8C0 /* ProfileRaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31943B52568C2AC0051C8C0 /* ProfileRaw.swift */; };
-		C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613E7483DAF7CFE6E33A5A2C /* Pods_ChessAggregator.framework */; };
 		D91FC138B62A003F0976BE0C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC601A60B37A11EC38E64 /* APIClient.swift */; };
 		D91FC1BCA9CEF5F7417BA0B9 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCEF3B255AD71D488BD6B /* UIView+Layout.swift */; };
 		D91FC26C613F6A01D1DC8398 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FC11574DF8A92DBC0617B /* Player.swift */; };
@@ -164,7 +164,6 @@
 		530169C8D0F41F26433D22AF /* ForgotPasswordPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPresenter.swift; sourceTree = "<group>"; };
 		53016A234137DFC1A5BB19DD /* ForgotPasswordInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordInteractor.swift; sourceTree = "<group>"; };
 		53016A33EFF42D93AB5DF9C6 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
-		613E7483DAF7CFE6E33A5A2C /* Pods_ChessAggregator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChessAggregator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AC97065AE42461955EC58DA /* UserProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfilePresenter.swift; sourceTree = "<group>"; };
 		6AC970987EA2FEBAF2EB7451 /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		6AC970A4C41D3E1BAD6C085A /* MyEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventViewModel.swift; sourceTree = "<group>"; };
@@ -227,6 +226,7 @@
 		733487B125D9757200ECDDDF /* LocationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProtocols.swift; sourceTree = "<group>"; };
 		733487B225D9757200ECDDDF /* LocationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInteractor.swift; sourceTree = "<group>"; };
 		733487B325D9757200ECDDDF /* LocationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationContainer.swift; sourceTree = "<group>"; };
+		A65DC3311B2CB92899F4E321 /* Pods_ChessAggregator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChessAggregator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAAF54D7FF0B6F3A13447F17 /* Pods-ChessAggregator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChessAggregator.debug.xcconfig"; path = "Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator.debug.xcconfig"; sourceTree = "<group>"; };
 		C31943B52568C2AC0051C8C0 /* ProfileRaw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRaw.swift; sourceTree = "<group>"; };
 		D91FC01896C1F619D9D5B569 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
@@ -266,8 +266,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				733487AB25D9750400ECDDDF /* SwiftKeychainWrapper in Frameworks */,
-				C4FF388FB9FAF949E2700B80 /* Pods_ChessAggregator.framework in Frameworks */,
+				733487AB25D9750400ECDDDF /* BuildFile in Frameworks */,
+				44A6503AB05D3B0CED1B692A /* Pods_ChessAggregator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,7 +602,7 @@
 		D00E0B4F29C6829A60518CAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				613E7483DAF7CFE6E33A5A2C /* Pods_ChessAggregator.framework */,
+				A65DC3311B2CB92899F4E321 /* Pods_ChessAggregator.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -714,7 +714,7 @@
 				01FFDC9E253FA08B001244D1 /* Sources */,
 				01FFDC9F253FA08B001244D1 /* Frameworks */,
 				01FFDCA0253FA08B001244D1 /* Resources */,
-				96FB2E4844DAE3C11285F269 /* [CP] Embed Pods Frameworks */,
+				EF0DB87AC8FB9B1B02456F53 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -722,7 +722,7 @@
 			);
 			name = ChessAggregator;
 			packageProductDependencies = (
-				730407F82550617C0036E7A6 /* SwiftKeychainWrapper */,
+				730407F82550617C0036E7A6 /* SwiftPackageProductDependency */,
 			);
 			productName = ChessAggregator;
 			productReference = 01FFDCA2253FA08B001244D1 /* ChessAggregator.app */;
@@ -752,7 +752,7 @@
 			);
 			mainGroup = 01FFDC99253FA08B001244D1;
 			packageReferences = (
-				730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				730407F72550617C0036E7A6 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 01FFDCA3253FA08B001244D1 /* Products */;
 			projectDirPath = "";
@@ -777,23 +777,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		96FB2E4844DAE3C11285F269 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		E92B1A25107390A539A9F494 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -814,6 +797,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF0DB87AC8FB9B1B02456F53 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChessAggregator/Pods-ChessAggregator-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1138,7 +1138,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+		730407F72550617C0036E7A6 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
 			requirement = {
@@ -1149,9 +1149,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		730407F82550617C0036E7A6 /* SwiftKeychainWrapper */ = {
+		730407F82550617C0036E7A6 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			package = 730407F72550617C0036E7A6 /* RemoteSwiftPackageReference */;
 			productName = SwiftKeychainWrapper;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -2,8 +2,9 @@
 // Created by Иван Лизогуб on 18.11.2020.
 //
 
-import FirebaseAuth
 import Foundation
+import FirebaseAuth
+
 class AuthInteractor {
     weak var output: AuthInteractorOutput?
 
@@ -17,8 +18,8 @@ extension AuthInteractor: AuthInteractorInput {
 
     func signIn(withEmail email: String, password: String){
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
-            if error != nil {
-                if let errCode = AuthErrorCode(rawValue: error!._code) {
+            if let error = error {
+                if let errCode = AuthErrorCode(rawValue: error._code) {
                     switch errCode {
                     case .wrongPassword:
                         self?.output?.showError(error: "Неверный логин или пароль")
@@ -32,7 +33,5 @@ extension AuthInteractor: AuthInteractorInput {
                 self?.output?.didLogin()
             }
         }
-
-
     }
 }

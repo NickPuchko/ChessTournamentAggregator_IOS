@@ -114,9 +114,7 @@ class UserParser {
         let fideID: Int?
         let fullname: String?
         var result: (String?, Int?)
-        guard let urlString = try? ("https://ratings.ruchess.ru/people/" + String(frcID)) else {
-            return (nil,nil)
-        }
+        let urlString = "https://ratings.ruchess.ru/people/" + String(frcID)
         guard let myUrl = URL(string: urlString) else{ return (nil, nil) }
         
         do {
@@ -147,36 +145,31 @@ class UserParser {
     static func RateParser(frcID: Int) -> [Int?]{
 
         var result: [Int?] = []
-        let  arrayRate: [String]?
-        let  arrayRateFide: [String]?
+        let arrayRate: [String]?
+        let arrayRateFide: [String]?
         var classic: Int?
         var rapid: Int?
         var bliz: Int?
         var fideClassic: Int?
         var fideRapid: Int?
         var fideBliz: Int?
-        guard let urlString = try? ("https://ratings.ruchess.ru/people/" + String(frcID)) else {
-            
-            return [nil, nil, nil, nil, nil, nil]
-            
-        }
-        guard let myUrl = URL(string: urlString) else{ return  result}
+		let urlString = "https://ratings.ruchess.ru/people/" + String(frcID)
+        guard let myUrl = URL(string: urlString) else { return  result }
         do {
             guard let HTMLString = try? String(contentsOf: myUrl, encoding: .utf8) else {
-                
                 return [nil, nil, nil, nil, nil, nil]
             }
             let HTMLContent = HTMLString
-            do{
+            do {
                 let doc = try SwiftSoup.parse(HTMLContent)
-                do{
+                do {
                     guard let element = try? doc.select("ul").array() else{
                         result.append(classic)
                         result.append(rapid)
                         result.append(bliz)
                         return result
                     }
-                  do{
+                  do {
             
                     guard let stringRate = try? element[2].text() else{
                         return [nil, nil, nil, nil, nil, nil]

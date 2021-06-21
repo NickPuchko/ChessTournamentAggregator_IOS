@@ -84,11 +84,11 @@ private extension ChessAppCoordinator {
 
         UINavigationBar.appearance().titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.black,
-            NSAttributedString.Key.font : UIFont(name: "AppleSDGothicNeo-SemiBold", size: 18)
+			NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-SemiBold", size: 18) ?? .systemFont(ofSize: 18)
         ]
 
         UITabBarItem.appearance().setTitleTextAttributes([
-                NSAttributedString.Key.font : UIFont(name: "AppleSDGothicNeo-SemiBold", size: 12)
+                NSAttributedString.Key.font : UIFont(name: "AppleSDGothicNeo-SemiBold", size: 12) ?? .systemFont(ofSize: 12)
         ], for: .normal)
 
 
