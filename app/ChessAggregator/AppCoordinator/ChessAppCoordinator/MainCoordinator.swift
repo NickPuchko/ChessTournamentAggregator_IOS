@@ -1,12 +1,12 @@
 import UIKit
 
-final class ChessAppCoordinator {
+final class MainCoordinator {
     private let window: UIWindow
-    weak var appCoordinator: ChessAppCoordinatorModuleOutput?
+    weak var appCoordinator: AppCoordinator?
     private lazy var tabBarController = UITabBarController()
-    private lazy var navigationControllers = ChessAppCoordinator.makeNavigationControllers()
+    private lazy var navigationControllers = MainCoordinator.makeNavigationControllers()
 
-    init(window: UIWindow,  appCoordinator: ChessAppCoordinatorModuleOutput) {
+    init(window: UIWindow,  appCoordinator: AppCoordinator) {
         self.appCoordinator = appCoordinator
         self.window = window
         setupAppearance()
@@ -29,7 +29,7 @@ final class ChessAppCoordinator {
     }
 }
 
-private extension ChessAppCoordinator {
+private extension MainCoordinator {
     func setupTournament() {
         guard let navController = navigationControllers[.currentTournaments] else {
             fatalError("wtf no Current")
@@ -67,19 +67,14 @@ private extension ChessAppCoordinator {
         UINavigationBar.appearance().barTintColor = .white
         UINavigationBar.appearance().tintColor = .black
 
-        if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.backgroundColor = .white
+		let appearance = UINavigationBarAppearance()
+		appearance.backgroundColor = .white
 
-            UINavigationBar.appearance().tintColor = .black
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().compactAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        } else {
-            UINavigationBar.appearance().tintColor = .black
-            UINavigationBar.appearance().barTintColor = .blue
-            UINavigationBar.appearance().isTranslucent = false
-        }
+		UINavigationBar.appearance().tintColor = .black
+		UINavigationBar.appearance().standardAppearance = appearance
+		UINavigationBar.appearance().compactAppearance = appearance
+		UINavigationBar.appearance().scrollEdgeAppearance = appearance
+
         UINavigationBar.appearance().shadowImage = UIImage()
 
         UINavigationBar.appearance().titleTextAttributes = [
@@ -90,7 +85,6 @@ private extension ChessAppCoordinator {
         UITabBarItem.appearance().setTitleTextAttributes([
                 NSAttributedString.Key.font : UIFont(name: "AppleSDGothicNeo-SemiBold", size: 12) ?? .systemFont(ofSize: 12)
         ], for: .normal)
-
 
         UITabBar.appearance().barTintColor = .white
     }

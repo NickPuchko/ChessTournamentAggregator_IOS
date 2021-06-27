@@ -6,15 +6,13 @@ import UIKit
 
 final class AuthCoordinator {
     private let window: UIWindow
-    private var navigationController = UINavigationController()
-    weak var appCoordinator: AuthCoordinatorModuleOutput?
-    var phoneNumber: String?
+    private let navigationController = UINavigationController()
+    weak var appCoordinator: AppCoordinator?
 
-    init(window: UIWindow, appCoordinator: AuthCoordinatorModuleOutput) {
+    init(window: UIWindow, appCoordinator: AppCoordinator) {
         self.window = window
         self.appCoordinator = appCoordinator
     }
-
 
     func auth() {
         let context = AuthContext(moduleOutput: self)
@@ -25,11 +23,10 @@ final class AuthCoordinator {
     }
 
     func ForgotPassword() {
-        let context = ForgotPasswordContext(moduleOutput: self)
+        let context = ForgotPasswordContext()
         let container = ForgotPasswordContainer.assemble(with: context)
         navigationController.pushViewController(container.viewController, animated: true)
     }
-
 
     func userRegistrationSignUp() {
         let context = UserRegistrationContext(moduleOutput: self)
@@ -39,7 +36,6 @@ final class AuthCoordinator {
 }
 
 extension AuthCoordinator: AuthModuleOutput {
-
     func showForgotPassword() {
         ForgotPassword()
     }
@@ -52,11 +48,6 @@ extension AuthCoordinator: AuthModuleOutput {
         appCoordinator?.didLogin()
     }
 
-}
-
-extension AuthCoordinator: ForgotPasswordModuleOutput {
-    func showForgot() {
-    }
 }
 
 extension AuthCoordinator: UserRegistrationModuleOutput {

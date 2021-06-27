@@ -15,9 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
         Auth.auth().addStateDidChangeListener{ [weak self] (auth, user) in
             if Auth.auth().currentUser != nil {
-                self?.appCoordinator?.startApp()
+                self?.appCoordinator?.startMainFlow()
             } else {
-                self?.appCoordinator?.auth()
+                self?.appCoordinator?.startAuthFlow()
             }
         }
         return true

@@ -54,7 +54,6 @@
 		6AC973BE56C56D620227BF0B /* UserRegistrationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97A91E1C7192A8DC8EE92 /* UserRegistrationProtocols.swift */; };
 		6AC97409EC960E566A8ECDE7 /* EventApplicationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97402C4B2F94C23052346 /* EventApplicationProtocols.swift */; };
 		6AC97485D8D9FE3128E51957 /* UserProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC975D5AE5FF68BFFD97855 /* UserProfileProtocols.swift */; };
-		6AC974BEF17A0DD0C3D762BC /* AuthCoordinatorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97126F561FF243FFE6646 /* AuthCoordinatorProtocols.swift */; };
 		6AC974CBB9ACC5AFDA04DCEE /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97C9F012C685ADEE94F0D /* Styles.swift */; };
 		6AC974CFC2C98752A650849C /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9719A68DC18145B8CD93B /* UserProfileViewController.swift */; };
 		6AC974DBDEE19C56EC671F51 /* UserRegistrationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC978288F97CE08873FC9E3 /* UserRegistrationContainer.swift */; };
@@ -72,13 +71,12 @@
 		6AC977A86A632D3796F19002 /* UserRegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97DDC426E3F6DEC4AC478 /* UserRegistrationRouter.swift */; };
 		6AC978A83F55F586CA4F64B1 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97494364A8A41211D1FC3 /* PaddedLabel.swift */; };
 		6AC9793D65B2AE6D338CBD00 /* CharactersInString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC978757D3A6D0D18B44BFB /* CharactersInString.swift */; };
-		6AC9794BD5A4077E1682DA32 /* ChessAppCoordinatorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97CA9A97812E78E259E39 /* ChessAppCoordinatorProtocols.swift */; };
 		6AC979654688EE71C9F0EDD2 /* UserRegistrationPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97B59A22273CB308E641E /* UserRegistrationPlayerView.swift */; };
 		6AC979CAF6BD9CBF2EF92714 /* SearchTournamentsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC975FF01131FF083F11FF2 /* SearchTournamentsRouter.swift */; };
 		6AC97A0C115FFA98AC8D5C4B /* FirebaseRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC976FD34911FBA070234AF /* FirebaseRef.swift */; };
 		6AC97A7F1E9C1F5D7BE81FEA /* PasswordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9725DE11A5E51FC080F0F /* PasswordExtension.swift */; };
 		6AC97B4021820CC7707CD19D /* UserRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC971C57B5647D7E9557CF9 /* UserRegistrationViewController.swift */; };
-		6AC97BE63924551E82C79F37 /* ChessAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97CC690C3D5B114D75728 /* ChessAppCoordinator.swift */; };
+		6AC97BE63924551E82C79F37 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97CC690C3D5B114D75728 /* MainCoordinator.swift */; };
 		6AC97BE8FF07CD1A48736892 /* SearchTournamentsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97CA0693D8C33772E3C4B /* SearchTournamentsContainer.swift */; };
 		6AC97C11BC4E6B1FA977BFB6 /* UserReg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97CE1D483F9F5F0EFA3D9 /* UserReg.swift */; };
 		6AC97C19F7932EEA83A29D56 /* AuthWarningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC976062406B961C4B5800B /* AuthWarningLabel.swift */; };
@@ -92,7 +90,7 @@
 		6AC97F3474E1187790EC0D95 /* SearchTournamentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9797CA3B3EFCDCCECAC24 /* SearchTournamentsPresenter.swift */; };
 		6AC97F480E7A2324F8EF18FA /* UserProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC97065AE42461955EC58DA /* UserProfilePresenter.swift */; };
 		6AC97F9EF2C368E3597B040E /* SearchTournamentsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC971D58E0BABEB95F76798 /* SearchTournamentsInteractor.swift */; };
-		733487AB25D9750400ECDDDF /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 730407F82550617C0036E7A6 /* SwiftPackageProductDependency */; };
+		733487AB25D9750400ECDDDF /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 730407F82550617C0036E7A6 /* SwiftKeychainWrapper */; };
 		733487B425D9757200ECDDDF /* LocationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487AE25D9757200ECDDDF /* LocationPresenter.swift */; };
 		733487B525D9757200ECDDDF /* LocationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487AF25D9757200ECDDDF /* LocationRouter.swift */; };
 		733487B625D9757200ECDDDF /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733487B025D9757200ECDDDF /* LocationViewController.swift */; };
@@ -136,7 +134,7 @@
 		014BEFC525A11D020000DFAD /* PickableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickableTextField.swift; sourceTree = "<group>"; };
 		014BEFCC25A127480000DFAD /* MaterialStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialStack.swift; sourceTree = "<group>"; };
 		014BEFCF25A12C930000DFAD /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
-		01FFDCA2253FA08B001244D1 /* ChessAggregator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessAggregator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		01FFDCA2253FA08B001244D1 /* ChessAggregator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ChessAggregator.app; path = "/Users/sapientisat/Projects/ChessTournamentAggregator_IOS/app/build/Debug-iphoneos/ChessAggregator.app"; sourceTree = "<absolute>"; };
 		01FFDCA5253FA08B001244D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01FFDCAE253FA091001244D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01FFDCB1253FA091001244D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 		6AC97065AE42461955EC58DA /* UserProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfilePresenter.swift; sourceTree = "<group>"; };
 		6AC970987EA2FEBAF2EB7451 /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		6AC970A4C41D3E1BAD6C085A /* MyEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventViewModel.swift; sourceTree = "<group>"; };
-		6AC97126F561FF243FFE6646 /* AuthCoordinatorProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthCoordinatorProtocols.swift; sourceTree = "<group>"; };
 		6AC971691B5F6E590CA53D5E /* EventApplicationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventApplicationPresenter.swift; sourceTree = "<group>"; };
 		6AC9719A68DC18145B8CD93B /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		6AC971C57B5647D7E9557CF9 /* UserRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationViewController.swift; sourceTree = "<group>"; };
@@ -213,9 +210,8 @@
 		6AC97C70A2A035E42D8A6F55 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		6AC97C9F012C685ADEE94F0D /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		6AC97CA0693D8C33772E3C4B /* SearchTournamentsContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTournamentsContainer.swift; sourceTree = "<group>"; };
-		6AC97CA9A97812E78E259E39 /* ChessAppCoordinatorProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessAppCoordinatorProtocols.swift; sourceTree = "<group>"; };
 		6AC97CAD22480B195A70F4E1 /* EventApplicationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventApplicationView.swift; sourceTree = "<group>"; };
-		6AC97CC690C3D5B114D75728 /* ChessAppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessAppCoordinator.swift; sourceTree = "<group>"; };
+		6AC97CC690C3D5B114D75728 /* MainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		6AC97CE1D483F9F5F0EFA3D9 /* UserReg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReg.swift; sourceTree = "<group>"; };
 		6AC97D08ABC13012727393FD /* UserProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileInteractor.swift; sourceTree = "<group>"; };
 		6AC97DDC426E3F6DEC4AC478 /* UserRegistrationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationRouter.swift; sourceTree = "<group>"; };
@@ -266,7 +262,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				733487AB25D9750400ECDDDF /* BuildFile in Frameworks */,
+				733487AB25D9750400ECDDDF /* SwiftKeychainWrapper in Frameworks */,
 				44A6503AB05D3B0CED1B692A /* Pods_ChessAggregator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,15 +279,6 @@
 			);
 			sourceTree = "<group>";
 		};
-		01FFDCA3253FA08B001244D1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				01FFDCA2253FA08B001244D1 /* ChessAggregator.app */,
-			);
-			name = Products;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		01FFDCA4253FA08B001244D1 /* ChessAggregator */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,7 +289,6 @@
 				01FFDCB3253FA091001244D1 /* Info.plist */,
 				01FFDCBA253FA140001244D1 /* GoogleService-Info.plist */,
 				01FFDCB0253FA091001244D1 /* LaunchScreen.storyboard */,
-				01FFDCA3253FA08B001244D1 /* Products */,
 				D91FC6A4DB8175C9ED293912 /* Entities */,
 				D91FC6AD2BBB9A246B8C066F /* Views */,
 				6AC97CF89410E6EBA53F52ED /* Extensions */,
@@ -453,8 +439,7 @@
 		6AC97922ECE38E77BA5C7BE8 /* ChessAppCoordinator */ = {
 			isa = PBXGroup;
 			children = (
-				6AC97CC690C3D5B114D75728 /* ChessAppCoordinator.swift */,
-				6AC97CA9A97812E78E259E39 /* ChessAppCoordinatorProtocols.swift */,
+				6AC97CC690C3D5B114D75728 /* MainCoordinator.swift */,
 			);
 			path = ChessAppCoordinator;
 			sourceTree = "<group>";
@@ -572,7 +557,6 @@
 			isa = PBXGroup;
 			children = (
 				6AC97B1F3A1E841C46E318B1 /* AuthCoordinator.swift */,
-				6AC97126F561FF243FFE6646 /* AuthCoordinatorProtocols.swift */,
 			);
 			path = AuthCoordinator;
 			sourceTree = "<group>";
@@ -722,7 +706,7 @@
 			);
 			name = ChessAggregator;
 			packageProductDependencies = (
-				730407F82550617C0036E7A6 /* SwiftPackageProductDependency */,
+				730407F82550617C0036E7A6 /* SwiftKeychainWrapper */,
 			);
 			productName = ChessAggregator;
 			productReference = 01FFDCA2253FA08B001244D1 /* ChessAggregator.app */;
@@ -752,9 +736,9 @@
 			);
 			mainGroup = 01FFDC99253FA08B001244D1;
 			packageReferences = (
-				730407F72550617C0036E7A6 /* RemoteSwiftPackageReference */,
+				730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 			);
-			productRefGroup = 01FFDCA3253FA08B001244D1 /* Products */;
+			productRefGroup = 01FFDC99253FA08B001244D1;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -873,9 +857,7 @@
 				6AC975A9573102D2C49D4216 /* UserProfileInteractor.swift in Sources */,
 				6AC9773C9765BD57D49A64CC /* UserProfileContainer.swift in Sources */,
 				6AC97D70F4E8224D191CED9D /* AuthCoordinator.swift in Sources */,
-				6AC97BE63924551E82C79F37 /* ChessAppCoordinator.swift in Sources */,
-				6AC974BEF17A0DD0C3D762BC /* AuthCoordinatorProtocols.swift in Sources */,
-				6AC9794BD5A4077E1682DA32 /* ChessAppCoordinatorProtocols.swift in Sources */,
+				6AC97BE63924551E82C79F37 /* MainCoordinator.swift in Sources */,
 				6AC970924287644F1C0BE99F /* KeyboardAdapter.swift in Sources */,
 				6AC97C19F7932EEA83A29D56 /* AuthWarningLabel.swift in Sources */,
 				014BEFD025A12C930000DFAD /* InsetLabel.swift in Sources */,
@@ -1138,7 +1120,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		730407F72550617C0036E7A6 /* RemoteSwiftPackageReference */ = {
+		730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
 			requirement = {
@@ -1149,9 +1131,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		730407F82550617C0036E7A6 /* SwiftPackageProductDependency */ = {
+		730407F82550617C0036E7A6 /* SwiftKeychainWrapper */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 730407F72550617C0036E7A6 /* RemoteSwiftPackageReference */;
+			package = 730407F72550617C0036E7A6 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
 			productName = SwiftKeychainWrapper;
 		};
 /* End XCSwiftPackageProductDependency section */

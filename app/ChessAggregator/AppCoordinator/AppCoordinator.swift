@@ -6,37 +6,36 @@ import Foundation
 import UIKit
 
 final class AppCoordinator {
-
     private let window: UIWindow
-    private var authCoordinator: AuthCoordinator?
-    private var chessAppCoordinator: ChessAppCoordinator?
+	private var authCoordinator: AuthCoordinator {
+		AuthCoordinator(
+			window: window,
+			appCoordinator: self
+		)
+	}
+    private var chessAppCoordinator: MainCoordinator {
+        MainCoordinator(
+			window: window,
+			appCoordinator: self
+        )
+    }
 
     init(window: UIWindow) {
         self.window = window
     }
 
-    func auth() {
-        authCoordinator = AuthCoordinator(window: window, appCoordinator: self)
-        authCoordinator?.auth()
+    func startAuthFlow() {
+        authCoordinator.auth()
     }
 
 
-    func startApp() {
-        chessAppCoordinator = ChessAppCoordinator(window: window, appCoordinator: self)
-        chessAppCoordinator?.startApp()
-
+    func startMainFlow() {
+        chessAppCoordinator.startApp()
     }
-
 }
 
-extension AppCoordinator: AuthCoordinatorModuleOutput {
-
-    func didLogin() {
-        startApp()
-    }
-
-}
-
-extension AppCoordinator: ChessAppCoordinatorModuleOutput {
-
+extension AppCoordinator {
+	func didLogin() {
+		startMainFlow()
+	}
 }
